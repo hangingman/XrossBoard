@@ -22,7 +22,7 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 #include "imagepanel.hpp"
-#include "janecloneimageviewer.hpp"
+#include "xrossboardimageviewer.hpp"
 
 BEGIN_EVENT_TABLE(wxImagePanel, wxPanel)
 

@@ -1,5 +1,5 @@
 ﻿/**
- * enums.hpp - janeclones' enums
+ * enums.hpp - xrossboards' enums
  *
  * Copyright (C) 2013-2014 Hiroyuki Nagata <newserver002@gmail.com>
  * 
@@ -38,7 +38,7 @@ X_TABLE_ITEM(ID_WindowMinimize)			/* ウィンドウを最小化する					*/ \
 X_TABLE_ITEM(ID_GetBoardList)			/* 板一覧情報取得						*/ \
 X_TABLE_ITEM(ID_CheckLogDirectory)		/* 保存されているログをスレッド一覧に表示する			*/ \
 X_TABLE_ITEM(ID_GetVersionInfo)			/* バージョン情報						*/ \
-X_TABLE_ITEM(ID_WxJaneClone)                    /* メインのウィンドウID                                         */ \
+X_TABLE_ITEM(ID_WxXrossBoard)                    /* メインのウィンドウID                                         */ \
 X_TABLE_ITEM(ID_ThreadNoteBook)			/* スレッド一覧ノートブックに使うID				*/ \
 X_TABLE_ITEM(ID_BoardNoteBook)			/* 板一覧用ノートブックに使うID					*/ \
 X_TABLE_ITEM(ID_ThumbnailNoteBook)		/* 画像ビューア用ID						*/ \
@@ -89,7 +89,7 @@ X_TABLE_ITEM(ID_URLWindowButton)		/* URL入力ウィンドウのボタンを表�
 X_TABLE_ITEM(ID_UserLastClosedThreadMenuUp)	/* ユーザーが最後に閉じたスレッドの情報を			*/ \
 X_TABLE_ITEM(ID_UserLastClosedBoardMenuUp)	/* ユーザーが最後に閉じた板の情報を項目に			*/ \
 X_TABLE_ITEM(ID_UserLookingTabsMenuUp)		/* ユーザーが現在見ているスレタブ・板タブ			*/ \
-X_TABLE_ITEM(ID_JaneCloneMgrUpdate)		/* Auiマネージャーの更新を行う	         		        */ \
+X_TABLE_ITEM(ID_XrossBoardMgrUpdate)		/* Auiマネージャーの更新を行う	         		        */ \
 X_TABLE_ITEM(ID_CommonAuiToolBarUpdate)         /* Auiツールバーの更新を行う 				        */ \
 X_TABLE_ITEM(ID_FavsTreectrlUpdate)             /* お気に入りツリーの更新を行う					*/ \
 X_TABLE_ITEM(ID_NowReadingTreectrlUpdate)	/* 閲覧中ツリーの更新を行う					*/ \
@@ -97,7 +97,7 @@ X_TABLE_ITEM(ID_UserLookingTabsControl)		/* ユーザーが現在フォーカス
 X_TABLE_ITEM(ID_MoveNextTab)                    /* 表示しているタブを移動する(次)				*/ \
 X_TABLE_ITEM(ID_MovePrevTab)			/* 表示しているタブを移動する(前)				*/ \
 X_TABLE_ITEM(ID_UserLookingTabsMenuClick)	/* ユーザーが現在見ているスレタブ・板タブ			*/ \
-X_TABLE_ITEM(ID_OnOpenJaneCloneOfficial)	/* JaneClone公式サイトをブラウザで開く				*/ \
+X_TABLE_ITEM(ID_OnOpenXrossBoardOfficial)	/* XrossBoard公式サイトをブラウザで開く				*/ \
 X_TABLE_ITEM(ID_OnOpen2chViewerOfficial)	/* ●公式サイトをブラウザで開く					*/ \
 X_TABLE_ITEM(ID_ThreadContentSearchBar)		/* スレッド内容バーの検索ボックスのID				*/ \
 X_TABLE_ITEM(ID_ThreadSearchBar)		/* スレッド検索ボックスのID					*/ \
@@ -318,10 +318,10 @@ X_TABLE_ITEM(ID_OtherSettingPanelOne)             /* その他の設定画面１
 X_TABLE_ITEM(ID_ResetBoardListTree)               /* 板一覧ツリーのウィジェットの初期化イベント */ \
 X_TABLE_ITEM(ID_Receive_Timeout_Sec)              /* 受信タイムアウト秒			        */ \
 X_TABLE_ITEM(ID_Connection_Timeout_Sec)		  /* 接続タイムアウト秒	                        */ \
-X_TABLE_ITEM(ID_JaneCloneEnumsEnd)
+X_TABLE_ITEM(ID_XrossBoardEnumsEnd)
 
 // 列挙型の実体をマクロで生成する
-enum JANECLONE_ENUMS {
+enum XROSSBOARD_ENUMS {
      ID_Quit = 1,
      #define X(Enum, String) Enum,
      X_TABLE
@@ -333,7 +333,7 @@ enum JANECLONE_ENUMS {
 };
 
 // 列挙型を文字列化
-Begin_Enum_String( JANECLONE_ENUMS )
+Begin_Enum_String( XROSSBOARD_ENUMS )
 {
 
 #define X(Enum, String)  \

@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -41,18 +41,18 @@
 /*
  * 定数値の宣言
  */
-/** JaneClone公式サイトのURL */
-#define JANECLONE_DOWNLOADSITE wxT("http://hiroyuki-nagata.github.io/")
+/** XrossBoard公式サイトのURL */
+#define XROSSBOARD_DOWNLOADSITE wxT("http://hiroyuki-nagata.github.io/")
 /** ●公式サイトのURL */
 #define IICH_VIEWER_OFFICIAL   wxT("http://2ch.tora3.net/")
-/** JaneCloneの作業用隠しフォルダ名 */
-#define JANECLONE_DIR wxT(".jc")
+/** XrossBoardの作業用隠しフォルダ名 */
+#define XROSSBOARD_DIR wxT(".xb")
 /** コンフィグファイル名 */
-#define APP_CONFIG_FILE wxT("janeclone.env")
+#define APP_CONFIG_FILE wxT("xrossboard.env")
 /** クッキーの設定ファイル */
-#define COOKIE_CONFIG_FILE wxT("janeclone.env")
+#define COOKIE_CONFIG_FILE wxT("xrossboard.env")
 /** Mac OSX のアプリケーションバンドル構造 */
-#define MAC_OSX_CURDIR_PREFIX wxGetCwd() + wxT("/JaneClone.app/Contents/MacOS/")
+#define MAC_OSX_CURDIR_PREFIX wxGetCwd() + wxT("/XrossBoard.app/Contents/MacOS/")
 /** HTML中のタグ */
 #define BR "<br/>"
 
@@ -87,12 +87,12 @@
 #define KIND_DAT_PATH     12
 
 // 板一覧情報ファイルのパス
-#define BOARD_LIST_PATH ::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR + wxFILE_SEP_PATH + wxT("dat") + wxFILE_SEP_PATH + wxT("boardlist.html")
+#define BOARD_LIST_PATH ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR + wxFILE_SEP_PATH + wxT("dat") + wxFILE_SEP_PATH + wxT("boardlist.html")
 // 板一覧情報ファイルのヘッダ情報のパス
-#define BOARD_LIST_HEADER_PATH ::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR + wxFILE_SEP_PATH + wxT("dat") + wxFILE_SEP_PATH + wxT("boardlistheader.html")
+#define BOARD_LIST_HEADER_PATH ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR + wxFILE_SEP_PATH + wxT("dat") + wxFILE_SEP_PATH + wxT("boardlistheader.html")
 
 /** 各ウィジェットの名前を表す定数値 */
-#define JANECLONE_WINDOW       wxT("janeclone_window")
+#define XROSSBOARD_WINDOW       wxT("xrossboard_window")
 #define SEARCH_BAR             wxT("m_search_ctrl")
 #define SEARCH_BOX             wxT("search_box")
 #define URL_BAR                wxT("m_url_input_panel")
@@ -113,27 +113,27 @@
 
 // ユーザーエージェント
 #ifdef PACKAGE_VERSION
-   static const std::string userAgent = std::string("Monazilla/1.00 JaneClone(" PACKAGE_VERSION ")" );
+   static const std::string userAgent = std::string("Monazilla/1.00 XrossBoard(" PACKAGE_VERSION ")" );
 #else
-   static const std::string userAgent = std::string("Monazilla/1.00 JaneClone(Unknown)");
+   static const std::string userAgent = std::string("Monazilla/1.00 XrossBoard(Unknown)");
 #endif
 
 // バージョン
 #ifdef _MSC_VER
-   static const wxString janecloneVersion = wxT("Unknown"); // FIXME: Preprocessor cannot read PACKAGE_VERSION ??
+   static const wxString xrossboardVersion = wxT("Unknown"); // FIXME: Preprocessor cannot read PACKAGE_VERSION ??
 #else
-   static const wxString janecloneVersion = wxT( PACKAGE_VERSION );
+   static const wxString xrossboardVersion = wxT( PACKAGE_VERSION );
 #endif
 
 // リソースファイルのパス
 #if defined (__WXMSW__) || defined(__WXGTK__)
    #ifdef DEBIAN_PACKAGE_BUILD
-      #define RESOURCE_PATH PREFIX_DIR "/share/pixmaps/janeclone/"
+      #define RESOURCE_PATH PREFIX_DIR "/share/pixmaps/xrossboard/"
    #else
       #define RESOURCE_PATH "rc/"
    #endif
 #elif defined(__WXMAC__)
-   #define RESOURCE_PATH "JaneClone.app/Contents/Resources/"
+   #define RESOURCE_PATH "XrossBoard.app/Contents/Resources/"
 #endif
 
 // Javascriptのデフォルトのパス
@@ -284,7 +284,7 @@ typedef struct
      wxString uuidFileName; // UUIDを配られたファイル名 ex) XXXXXXXXXXXXXXXX.jpg
 } ImageFileInfo;
 
-// 板名とそのURLを保持するwxHashMap　JaneCloneが起動している間は保持される
+// 板名とそのURLを保持するwxHashMap　XrossBoardが起動している間は保持される
 // URLvsBoardNameのHashMap（板名をkeyとしてBoardURLとascii文字の固有名を持つ）
 WX_DECLARE_HASH_MAP( wxString,	 // type of the keys
 		  URLvsBoardName,// type of the values

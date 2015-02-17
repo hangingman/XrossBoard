@@ -1,5 +1,5 @@
 ﻿
-/* JaneClone - a text board site viewer for 2ch
+/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -143,7 +143,7 @@ bool AnchoredResponsePopup::CheckSkinFiles(SkinInfo* skin) {
      // スキン用のパスが設定されていなければ即リターン
      const wxString key = wxT("DEFAULT_SKINFILE_PATH");
      wxString skinPath = wxEmptyString;
-     JaneCloneUtil::GetJaneCloneProperties(key, &skinPath);
+     XrossBoardUtil::GetXrossBoardProperties(key, &skinPath);
      bool ret = false;
 
      if (skinPath == wxEmptyString) {

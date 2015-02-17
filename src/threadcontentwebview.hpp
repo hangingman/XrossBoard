@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -31,9 +31,9 @@
 #include <wx/webview.h>
 #include "enums.hpp"
 #include "datatype.hpp"
-#include "janecloneutil.hpp"
-#include "janecloneuiutil.hpp"
-#include "janecloneimageviewer.hpp"
+#include "xrossboardutil.hpp"
+#include "xrossboarduiutil.hpp"
+#include "xrossboardimageviewer.hpp"
 #include "socketcommunication.hpp"
 
 class ThreadContentWebView : public wxHtmlWindow {
@@ -75,7 +75,7 @@ private:
       * メインのスレッドにログとイベントを送る
       */
      void SendLogging(wxString& message) {
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      };
 
      // linkを左クリックした時に起こるイベント
@@ -83,7 +83,7 @@ private:
      // リンクが2chのものかどうか判定
      void OnClickOrdinaryLink(const wxString& link);
      // 画像ビューアの状態を確認し、設定する
-     void SetJaneCloneImageViewer(const wxString& href, const wxString& ext);
+     void SetXrossBoardImageViewer(const wxString& href, const wxString& ext);
      // リサイズ時のイベント
      void OnSize(wxSizeEvent& event);
      // スキン用のファイルが有るかどうか確認する

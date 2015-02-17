@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -22,7 +22,7 @@
 #include <wx/image.h>
 #include <wx/snglinst.h>
 #include <wx/fs_mem.h>
-#include "janeclone.hpp"
+#include "xrossboard.hpp"
 
 #ifdef __WXMSW__
 
@@ -33,9 +33,9 @@ static const wxCmdLineEntryDesc gCmdLineDesc[] =
 {
      // コマンドラインオプションに -p or pid=xxx と入力された場合
 #if wxCHECK_VERSION(2, 9, 0)
-     { wxCMD_LINE_OPTION, "p", "pid", "past worked JaneClone pid", 
+     { wxCMD_LINE_OPTION, "p", "pid", "past worked XrossBoard pid", 
 #else
-       { wxCMD_LINE_OPTION, wxT("p"), wxT("pid"), wxT("past worked JaneClone pid"),
+       { wxCMD_LINE_OPTION, wxT("p"), wxT("pid"), wxT("past worked XrossBoard pid"),
 #endif
 	 wxCMD_LINE_VAL_NUMBER, wxCMD_LINE_PARAM_OPTIONAL },
        { wxCMD_LINE_NONE }
@@ -65,7 +65,7 @@ private:
 #endif
 
   wxSingleInstanceChecker* m_checker;
-  JaneClone* wxJaneClone;
+  XrossBoard* wxXrossBoard;
   long m_pid;
 };
 
@@ -85,21 +85,21 @@ bool wxMain::OnInit() {
 	 // ! Fix Me ! なんかここ実装しなくても動作してるけど…
     }
      
-    // JaneClone起動前に複数起動をチェックする
-    const wxString name = wxString::Format(_("JaneClone-%s"), wxGetUserId().c_str());
+    // XrossBoard起動前に複数起動をチェックする
+    const wxString name = wxString::Format(_("XrossBoard-%s"), wxGetUserId().c_str());
     m_checker = new wxSingleInstanceChecker(name);
     if ( m_checker->IsAnotherRunning()) {
-	 wxMessageBox(wxT("誤作動防止のためJaneCloneは複数起動できません。終了します。"), 
-	    wxT("JaneClone起動"), wxOK | wxICON_ERROR);
+	 wxMessageBox(wxT("誤作動防止のためXrossBoardは複数起動できません。終了します。"), 
+	    wxT("XrossBoard起動"), wxOK | wxICON_ERROR);
 	 return false;
     }
      
     wxInitAllImageHandlers();
     wxImage::AddHandler( new wxPNGHandler );
     wxFileSystem::AddHandler(new wxMemoryFSHandler);
-    wxJaneClone = new JaneClone(NULL, ID_WxJaneClone, wxEmptyString);
-    SetTopWindow(wxJaneClone);
-    wxJaneClone->Show();
+    wxXrossBoard = new XrossBoard(NULL, ID_WxXrossBoard, wxEmptyString);
+    SetTopWindow(wxXrossBoard);
+    wxXrossBoard->Show();
     return true;
 }
 /**
@@ -109,9 +109,9 @@ int wxMain::OnExit() {
 
      unsigned long pid = wxGetProcessId();
 
-     if (JaneClone::restartAppFlag) {
+     if (XrossBoard::restartAppFlag) {
 	  // 再起動処理を行う & このプロセスは殺す
-	  wxString execute = wxGetCwd() + wxFILE_SEP_PATH + wxT("JaneClone") + wxExt;
+	  wxString execute = wxGetCwd() + wxFILE_SEP_PATH + wxT("XrossBoard") + wxExt;
 	  ::wxExecute(execute + wxString::Format(_(" -p %lu"), pid), wxEXEC_ASYNC, NULL);
      }
 
@@ -135,7 +135,7 @@ int wxMain::FilterEvent(wxEvent& event) {
 	       switch(e.GetKeyCode()) 
 	       {
 	       case 'F':
-		    wxJaneClone->CtrlF(e);
+		    wxXrossBoard->CtrlF(e);
 		    return true;
 		    break;
 	       default:
@@ -151,7 +151,7 @@ int wxMain::FilterEvent(wxEvent& event) {
 	       switch(e.GetKeyCode()) 
 	       {
 	       case WXK_RETURN:
-		    ret = wxJaneClone->Enter(e);
+		    ret = wxXrossBoard->Enter(e);
 		    return ret;
 		    break;
 	       default:
@@ -188,7 +188,7 @@ void wxMain::OnInitCmdLine(wxCmdLineParser& parser) {
  * コマンドラインからパラメーターを読み取る
  */
 bool wxMain::OnCmdLineParsed(wxCmdLineParser& parser) {
-     // JaneCloneがPIDつきで呼び出された場合
+     // XrossBoardがPIDつきで呼び出された場合
      parser.Found(wxT("p"), &m_pid);
      return true;
 }

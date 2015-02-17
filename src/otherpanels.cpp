@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -294,10 +294,10 @@ wxPanel(parent, ID_PathSettingPanel, pos, size, wxTAB_TRAVERSAL) {
 void PathSettingPanel::set_properties() {
      bool specifyBrowser = false;
      wxString browserPath, boardListPath, skinPath;
-     JaneCloneUtil::GetJaneCloneProperties(wxT("SPECIFY_DEFAULT_BROWSER"), &specifyBrowser);
-     JaneCloneUtil::GetJaneCloneProperties(wxT("DEFAULT_BROWSER_PATH"), &browserPath);
-     JaneCloneUtil::GetJaneCloneProperties(wxT("DEFAULT_BOARDLIST_PATH"), &boardListPath);
-     JaneCloneUtil::GetJaneCloneProperties(wxT("DEFAULT_SKINFILE_PATH"), &skinPath);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("SPECIFY_DEFAULT_BROWSER"), &specifyBrowser);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("DEFAULT_BROWSER_PATH"), &browserPath);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("DEFAULT_BOARDLIST_PATH"), &boardListPath);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("DEFAULT_SKINFILE_PATH"), &skinPath);
      browserCheck->SetValue(specifyBrowser);
 
 #ifdef __WXGTK__
@@ -893,7 +893,7 @@ const wxString OtherSettingPanelOne::checkboxlabels[] = {
 OtherSettingPanelOne::OtherSettingPanelOne(wxWindow* parent, const wxPoint& pos, const wxSize& size, long style):
      wxPanel(parent, ID_OtherSettingPanelOne, pos, size, wxTAB_TRAVERSAL)
 {
-     for ( size_t i = 0; i < JaneCloneUtil::ArrayLength(checkboxlabels); i++ )
+     for ( size_t i = 0; i < XrossBoardUtil::ArrayLength(checkboxlabels); i++ )
      {
 	  panels[i]      = new wxPanel(this, wxID_ANY);
 	  checkboxes[i]  = new wxCheckBox(panels[i] , wxID_ANY, checkboxlabels[i]);
@@ -1203,7 +1203,7 @@ void ColorFontSettingPanel::set_properties()
      {
 	  wxString widgetsName = pFontArray[i].first;
 	  wxString widgetsInfo = wxEmptyString;
-	  JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	  XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 
 	  if (widgetsInfo != wxEmptyString) 
 	  {
@@ -1244,7 +1244,7 @@ void ColorFontSettingPanel::set_properties()
      {
 	  wxString widgetsName = pBGArray[i].first;
 	  wxString widgetsInfo = wxEmptyString;
-	  JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	  XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 
 	  if (widgetsInfo != wxEmptyString) 
 	  {
@@ -1367,7 +1367,7 @@ void ColorFontSettingPanel::OnClickColorFontSettingButton(wxCommandEvent& event)
           /**		  
 	   * フォント設定 
 	   */
-	  const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	  const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	  const wxString font = wxString((const char*)str.c_str(), wxConvUTF8);
 	  bool needToChangeFont = this->SetEachFontSetting(font);
 
@@ -1390,7 +1390,7 @@ void ColorFontSettingPanel::OnClickColorFontSettingButton(wxCommandEvent& event)
 	  /**
 	   * 背景色設定
 	   */
-	  const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	  const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	  const wxString bgColor = wxString((const char*)str.c_str(), wxConvUTF8);
 
 #ifndef __WXMAC__
@@ -1433,7 +1433,7 @@ bool ColorFontSettingPanel::SetEachFontSetting(const wxString& font)
      	  // 結果を受け取る
      	  const wxString fontInfo  = canvasFont.GetNativeFontInfoUserDesc();
      	  // プロパティファイルに格納
-     	  JaneCloneUtil::SetJaneCloneProperties(font, fontInfo);
+     	  XrossBoardUtil::SetXrossBoardProperties(font, fontInfo);
      	  return true;
      }
 
@@ -1484,9 +1484,9 @@ void ColorFontSettingPanel::SetSampleFontSetting(const int id)
      {
 	  wxString widgetsName = wxEmptyString;
 	  wxString widgetsInfo = wxEmptyString;
-	  const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	  const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	  widgetsName = wxString((const char*)str.c_str(), wxConvUTF8);
-	  JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	  XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 
 	  if (widgetsInfo != wxEmptyString)
 	  {
@@ -1531,7 +1531,7 @@ bool ColorFontSettingPanel::SetEachBGColorSetting(const wxString& bgColor)
 	  // 結果を受け取る
 	  const wxString colorInfo = col.GetAsString();
 	  // フォント,色情報 の順でプロパティファイルに格納
-	  JaneCloneUtil::SetJaneCloneProperties(bgColor, colorInfo);
+	  XrossBoardUtil::SetXrossBoardProperties(bgColor, colorInfo);
 	  return true;
      }
 
@@ -1586,9 +1586,9 @@ void ColorFontSettingPanel::SetSampleBGColorSetting(const int id)
 	  {
 	       wxString widgetsName = wxEmptyString;
 	       wxString widgetsInfo = wxEmptyString;
-	       const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	       const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	       widgetsName = wxString((const char*)str.c_str(), wxConvUTF8);
-	       JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	       XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 
 	       if (widgetsInfo != wxEmptyString)
 	       {
@@ -1771,7 +1771,7 @@ void TabColorSettingPanel::OnClickTabColorSettingButton(wxCommandEvent& event)
 	  /**
 	   * 背景色設定
 	   */
-	  const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	  const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	  const wxString bgColor = wxString((const char*)str.c_str(), wxConvUTF8);
 
 	  bool needToChangeBGColor = this->SetEachBGColorSetting(bgColor);
@@ -1791,7 +1791,7 @@ void TabColorSettingPanel::OnClickTabColorSettingButton(wxCommandEvent& event)
           /**		  
 	   * 文字色設定
 	   */
-	  const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	  const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	  const wxString fontColor = wxString((const char*)str.c_str(), wxConvUTF8);
 	  bool needToChangeFontColor = this->SetEachFontColorSetting(fontColor);
 
@@ -1824,7 +1824,7 @@ bool TabColorSettingPanel::SetEachBGColorSetting(const wxString& bgColor)
 	  // 結果を受け取る
 	  const wxString colorInfo = col.GetAsString();
 	  // フォント,色情報 の順でプロパティファイルに格納
-	  JaneCloneUtil::SetJaneCloneProperties(bgColor, colorInfo);
+	  XrossBoardUtil::SetXrossBoardProperties(bgColor, colorInfo);
 	  return true;
      }
 
@@ -1866,9 +1866,9 @@ void TabColorSettingPanel::SetSampleBGColorSetting(const int id)
 	  {
 	       wxString widgetsName = wxEmptyString;
 	       wxString widgetsInfo = wxEmptyString;
-	       const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	       const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	       widgetsName = wxString((const char*)str.c_str(), wxConvUTF8);
-	       JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	       XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 
 	       if (widgetsInfo != wxEmptyString)
 	       {
@@ -1890,7 +1890,7 @@ void TabColorSettingPanel::SetSampleBGColorSetting(const int id)
 			 bdp->SetInnerBGColor(wxColour(wxT("rgb(255,255,255)")));
 #endif
 			 widgetsInfo = wxT("rgb(255,255,255)");
-			 JaneCloneUtil::SetJaneCloneProperties(widgetsName, widgetsInfo);
+			 XrossBoardUtil::SetXrossBoardProperties(widgetsName, widgetsInfo);
 		    } else if (id == ID_DeactiveTabBGColorButton) {
 #if wxCHECK_VERSION(2, 9, 1)
 			 bdp->SetBackgroundColour(wxColour(wxT("rgb(212,208,200)")));
@@ -1898,7 +1898,7 @@ void TabColorSettingPanel::SetSampleBGColorSetting(const int id)
 			 bdp->SetInnerBGColor(wxColour(wxT("rgb(212,208,200)")));
 #endif
 			 widgetsInfo = wxT("rgb(212,208,200)");
-			 JaneCloneUtil::SetJaneCloneProperties(widgetsName, widgetsInfo);
+			 XrossBoardUtil::SetXrossBoardProperties(widgetsName, widgetsInfo);
 		    }
 	       }
 	       
@@ -1985,9 +1985,9 @@ void TabColorSettingPanel::SetSampleFontColorSetting(const int id)
 	  {
 	       wxString widgetsName = wxEmptyString;
 	       wxString widgetsInfo = wxEmptyString;
-	       const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(id) );
+	       const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(id) );
 	       widgetsName = wxString((const char*)str.c_str(), wxConvUTF8);
-	       JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	       XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 
 	       if (widgetsInfo != wxEmptyString)
 	       {
@@ -2006,7 +2006,7 @@ void TabColorSettingPanel::SetSampleFontColorSetting(const int id)
 #else
 		    bdp->SetInnerTextForeGroundColor(wxColour(defaultRGB));
 #endif
-		    JaneCloneUtil::SetJaneCloneProperties(widgetsName, defaultRGB);
+		    XrossBoardUtil::SetXrossBoardProperties(widgetsName, defaultRGB);
 	       }
 
 	  } else {
@@ -2258,7 +2258,7 @@ void NewBoardAddDialog::CheckBoardUrl(wxCommandEvent& event)
      }
 
      PartOfURI partOfUri;
-     if ( JaneCloneUtil::SubstringURI(url, &partOfUri))
+     if ( XrossBoardUtil::SubstringURI(url, &partOfUri))
      {
 	  if ( partOfUri.hostname.Contains(wxT("jbbs.shitaraba.net")) ||
 	       partOfUri.hostname.Contains(wxT("jbbs.livedoor.jp")) )
@@ -2287,7 +2287,7 @@ void NewBoardAddDialog::GetShitarabaBoardInfo(wxCommandEvent& event)
      }
 
      PartOfURI partOfUri;
-     if ( JaneCloneUtil::SubstringURI(url, &partOfUri))
+     if ( XrossBoardUtil::SubstringURI(url, &partOfUri))
      {
 	  if ( partOfUri.hostname.Contains(wxT("jbbs.shitaraba.net")) ||
 	       partOfUri.hostname.Contains(wxT("jbbs.livedoor.jp")) )
