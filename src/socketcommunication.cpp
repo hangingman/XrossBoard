@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -52,7 +52,7 @@ SocketCommunication::SocketCommunication()
      for ( auto key : properties )
      {
 	  wxString val;
-	  JaneCloneUtil::GetJaneCloneProperties(key, &val);
+	  XrossBoardUtil::GetXrossBoardProperties(key, &val);
 	  if ( val != wxEmptyString ) 
 	  {
 	       propMap[key] = val;
@@ -74,7 +74,7 @@ int SocketCommunication::DownloadBoardList(const wxString& outputPath,
      // 一時保存用ファイルのパスを設定する
      wxString tmpPath = ::wxGetHomeDir() 
 	  + wxFILE_SEP_PATH 
-	  + JANECLONE_DIR
+	  + XROSSBOARD_DIR
 	  + wxFILE_SEP_PATH
 	  + wxT("dat")
 	  + wxFILE_SEP_PATH
@@ -94,8 +94,8 @@ int SocketCommunication::DownloadBoardList(const wxString& outputPath,
      if (wxFile::Exists(gzipPath)) 
      {
 	  // gzip拡張子のファイルがあれば、ファイルの解凍・UTF化を行う
-	  JaneCloneUtil::DecommpressFile(gzipPath, tmpPath);
-	  JaneCloneUtil::ConvertSJISToUTF8(tmpPath, (wxString&) outputPath);
+	  XrossBoardUtil::DecommpressFile(gzipPath, tmpPath);
+	  XrossBoardUtil::ConvertSJISToUTF8(tmpPath, (wxString&) outputPath);
 	  // 更新が終わったらgzipファイルを消しておく
 	  RemoveTmpFile(gzipPath);
 	  RemoveTmpFile(tmpPath);
@@ -147,7 +147,7 @@ int SocketCommunication::DownloadBoardListNew(const wxString& outputPath,
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -162,10 +162,10 @@ int SocketCommunication::DownloadBoardListNew(const wxString& outputPath,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return -1;
@@ -220,13 +220,13 @@ int SocketCommunication::DownloadBoardListMod(const wxString& outputPath,
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 	  
 	  myRequest.perform();
 
 	  long rc = curlpp::infos::ResponseCode::get(myRequest);
 	  message = wxT("HTTP") + wxString::Format(wxT("%lu"), rc) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 	  
 	  if (rc == 304) 
 	  {
@@ -250,10 +250,10 @@ int SocketCommunication::DownloadBoardListMod(const wxString& outputPath,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return -1;
@@ -356,18 +356,18 @@ wxString SocketCommunication::DownloadThreadList(wxString& boardName, wxString& 
      // gzip拡張子のファイルがあれば、ファイルの解凍・UTF化を行う
      if (wxFile::Exists(gzipPath)) 
      {
-	  JaneCloneUtil::DecommpressFile(gzipPath, tmpPath);
+	  XrossBoardUtil::DecommpressFile(gzipPath, tmpPath);
      }
 
      if (wxFile::Exists(tmpPath))
      {
 	  if (isShitaraba)
 	  {
-	       JaneCloneUtil::ConvertEUCJPToUTF8(tmpPath, outputFilePath);
+	       XrossBoardUtil::ConvertEUCJPToUTF8(tmpPath, outputFilePath);
 	  }
 	  else
 	  {
-	       JaneCloneUtil::ConvertSJISToUTF8(tmpPath, outputFilePath);
+	       XrossBoardUtil::ConvertSJISToUTF8(tmpPath, outputFilePath);
 	  }
      }
 
@@ -447,7 +447,7 @@ int SocketCommunication::DownloadThreadListNew(const wxString& gzipPath,
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -462,10 +462,10 @@ int SocketCommunication::DownloadThreadListNew(const wxString& gzipPath,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return -1;
@@ -545,7 +545,7 @@ int SocketCommunication::DownloadThreadListMod(const wxString& gzipPath,
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -560,10 +560,10 @@ int SocketCommunication::DownloadThreadListMod(const wxString& gzipPath,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return -1;
@@ -587,7 +587,7 @@ wxString SocketCommunication::DownloadThread(const wxString& boardName,
      wxString outputFilePath = 
 	  ::wxGetHomeDir()
 	  + wxFILE_SEP_PATH 
-	  + JANECLONE_DIR
+	  + XROSSBOARD_DIR
 	  + wxFILE_SEP_PATH
 	  + wxT("dat")
 	  + wxFILE_SEP_PATH
@@ -639,13 +639,13 @@ wxString SocketCommunication::DownloadThread(const wxString& boardName,
      if (wxFile::Exists(gzipPath)) 
      {
 	  // gzip拡張子のファイルがあれば、ファイルの解凍を行う
-	  JaneCloneUtil::DecommpressFile(gzipPath, tmpPath);
+	  XrossBoardUtil::DecommpressFile(gzipPath, tmpPath);
      }
 
      if (wxFile::Exists(tmpPath)) 
      {
 	  // 対象のファイルがあれば、UTF-8化を行う
-	  JaneCloneUtil::ConvertSJISToUTF8(tmpPath, outputFilePath);
+	  XrossBoardUtil::ConvertSJISToUTF8(tmpPath, outputFilePath);
      }
 
      // 更新が終わったらgzipファイルを消しておく
@@ -723,7 +723,7 @@ void SocketCommunication::DownloadThreadNew(const wxString& gzipPath,
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -733,27 +733,27 @@ void SocketCommunication::DownloadThreadNew(const wxString& gzipPath,
 	  {
 	       // 通常スレッド取得
 	       wxString message = wxT("新規取得 (ヽ´ん`)\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  } 
 	  else if (rc == 203) 
 	  {
 	       // dat落ち確定
 	       wxString message = wxT("dat落ちや 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	       DownloadThreadPast(gzipPath, headerPath, boardNameAscii, origNumber, hostName);
 	  } 
 	  else if (rc == 302) 
 	  {
 	       // dat落ちか削除
 	       wxString message = wxT("dat落ちか削除済みやな 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	       DownloadThreadPast(gzipPath, headerPath, boardNameAscii, origNumber, hostName);
 	  } 
 	  else if (rc == 404) 
 	  {
 	       // dat落ちか削除
 	       wxString message = wxT("サーバが見つからん 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  }
 
 	  // レスポンスヘッダーの書き出し
@@ -765,10 +765,10 @@ void SocketCommunication::DownloadThreadNew(const wxString& gzipPath,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 }
 
@@ -861,7 +861,7 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -879,14 +879,14 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 	  {
 	       // レスポンスコードが304ならば変更なし、何もしない
 	       wxString message = wxT("更新なし (ヽ´ん`)\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  } 
 	  else if (rc == 206) 
 	  {
 	       // スレッドに更新ありの場合の処理、更新部分を追加する
 	       wxString message = wxT("更新あり (ヽ´ん`)\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 
 	       if (!bodyBuf.empty()) 
 	       {
@@ -895,7 +895,7 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 		    ofsSjis << bodyBuf;
 		    // UTF-8に変換
 		    wxRemoveFile(datFilePath);
-		    JaneCloneUtil::ConvertSJISToUTF8(sjisDatPath, datFilePath);
+		    XrossBoardUtil::ConvertSJISToUTF8(sjisDatPath, datFilePath);
 	       }
 
 	  } 
@@ -903,7 +903,7 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 	  {
 	       // dat落ち確定
 	       wxString message = wxT("dat落ちや 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 
 	       DownloadThreadPast(gzipPath, headerPath, boardNameAscii, origNumber, hostName);
 
@@ -913,7 +913,7 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 	  {
 	       // dat落ちか削除
 	       wxString message = wxT("dat落ちか削除済みやな 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	       DownloadThreadPast(gzipPath, headerPath, boardNameAscii, origNumber, hostName);
 
 	       // 
@@ -922,7 +922,7 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 	  {
 	       // dat落ちか削除
 	       wxString message = wxT("サーバが見つからん 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  }
 
 	  // レスポンスヘッダーの書き出し
@@ -936,10 +936,10 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)datFilePath.mb_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)datFilePath.mb_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return -1;
@@ -1039,7 +1039,7 @@ int SocketCommunication::DownloadThreadPast(const wxString& gzipPath, const wxSt
 	  message += server;
 	  message += path;
 	  message += wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  // 過去スレ取得は２回目のクラスメソッド起動になるはずなので
 	  // 文字列をクリアーしておく
@@ -1053,7 +1053,7 @@ int SocketCommunication::DownloadThreadPast(const wxString& gzipPath, const wxSt
 	  {
 	       // 通常スレッド取得
 	       wxString message = wxT("新規取得 (ヽ´ん`)\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 
 	       // ファイルのリネーム
 	       wxRenameFile(pastTempPath, gzipPath);
@@ -1062,19 +1062,19 @@ int SocketCommunication::DownloadThreadPast(const wxString& gzipPath, const wxSt
 	  {
 	       // dat落ち確定
 	       wxString message = wxT("dat落ちや 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  } 
 	  else if (rc == 302) 
 	  {
 	       // dat落ちか削除
 	       wxString message = wxT("dat落ちか削除済みやな 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  } 
 	  else if (rc == 404) 
 	  {
 	       // dat落ちか削除
 	       wxString message = wxT("サーバが見つからん 彡(゜)(゜) ち〜ん\n");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  }
 
 	  // レスポンスヘッダーの書き出し
@@ -1091,10 +1091,10 @@ int SocketCommunication::DownloadThreadPast(const wxString& gzipPath, const wxSt
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)gzipPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
      
      return -1;
@@ -1123,7 +1123,7 @@ size_t SocketCommunication::WriteHeaderData(char *ptr, size_t size, size_t nmemb
      if (std::string::npos != line.find("HTTP")) 
      {
 	  wxString message = wxString(line.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
      
      // クッキーを書き出す
@@ -1135,23 +1135,23 @@ size_t SocketCommunication::WriteHeaderData(char *ptr, size_t size, size_t nmemb
 	  // 2chからもらえるCookieは複数ある
 	  if (cookie.Contains(wxT("PON"))) 
 	  {
-	       JaneCloneUtil::SetJaneCloneProperties(wxT("Cookie-PON"), cookie);
+	       XrossBoardUtil::SetXrossBoardProperties(wxT("Cookie-PON"), cookie);
 	  } 
 	  else if (cookie.Contains(wxT("HAP"))) 
 	  {
-	       JaneCloneUtil::SetJaneCloneProperties(wxT("Cookie-HAP"), cookie);
+	       XrossBoardUtil::SetXrossBoardProperties(wxT("Cookie-HAP"), cookie);
 	  } 
 	  else if (cookie.Contains(wxT("DMDM"))) 
 	  {
-	       JaneCloneUtil::SetJaneCloneProperties(wxT("DMDM"), cookie);
+	       XrossBoardUtil::SetXrossBoardProperties(wxT("DMDM"), cookie);
 	  } 
 	  else if (cookie.Contains(wxT("MDMD"))) 
 	  {
-	       JaneCloneUtil::SetJaneCloneProperties(wxT("MDMD"), cookie);
+	       XrossBoardUtil::SetXrossBoardProperties(wxT("MDMD"), cookie);
 	  } 
 	  else 
 	  {
-	       JaneCloneUtil::SetJaneCloneProperties(wxT("PREN"), cookie);
+	       XrossBoardUtil::SetXrossBoardProperties(wxT("PREN"), cookie);
 	  }
      }
 
@@ -1221,19 +1221,19 @@ wxString SocketCommunication::PostFirstToThread(URLvsBoardName& boardInfoHash, T
      }
 
      // 投稿時間を算出する(UNIX Time)
-     wxString timeNow = JaneCloneUtil::GetTimeNow();
+     wxString timeNow = XrossBoardUtil::GetTimeNow();
      wxString message = wxT("UNIX Time:") + timeNow;
-     JaneCloneUiUtil::SendLoggingHelper(message);
+     XrossBoardUiUtil::SendLoggingHelper(message);
 
-     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
+     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
      wxString headerPath = dir.GetName();
-     wxDir jcDir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
-     wxDir datDir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
+     wxDir xbDir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
+     wxDir datDir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
 
      // ユーザーのホームディレクトリに隠しフォルダがあるかどうか確認
-     if (!jcDir.HasSubDirs(wxT("dat"))) 
+     if (!xbDir.HasSubDirs(wxT("dat"))) 
      {
-	  ::wxMkdir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
+	  ::wxMkdir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
      }
 
      if (!datDir.HasSubDirs(wxT("kakikomi"))) 
@@ -1312,7 +1312,7 @@ wxString SocketCommunication::PostFirstToThread(URLvsBoardName& boardInfoHash, T
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("書き込み実行 (ヽ´ん`)\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  // 文字列をクリアーしておく
 	  this->respBuf.clear();
@@ -1323,16 +1323,16 @@ wxString SocketCommunication::PostFirstToThread(URLvsBoardName& boardInfoHash, T
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)headerPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)headerPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      // Shift_JIS から UTF-8への変換処理
      wxString tmpPath = headerPath;
      tmpPath.Replace(wxT(".header"), wxT(".tmp"));
-     JaneCloneUtil::ConvertSJISToUTF8(headerPath, tmpPath);
+     XrossBoardUtil::ConvertSJISToUTF8(headerPath, tmpPath);
      // ファイルのリネーム
      wxRenameFile(tmpPath, headerPath);
      // COOKIEのデータをコンフィグファイルに書き出す
@@ -1365,8 +1365,8 @@ wxString SocketCommunication::PostConfirmToThread(URLvsBoardName& boardInfoHash,
      // 不可視項目値をコンフィグファイルから取得する
      InitializeCookie();
      wxString hiddenName = wxT("ERROR"), hiddenVal = wxT("ERROR");
-     JaneCloneUtil::GetJaneCloneProperties(wxT("HiddenName"), &hiddenName);
-     JaneCloneUtil::GetJaneCloneProperties(wxT("HiddenValue"), &hiddenVal);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("HiddenName"), &hiddenName);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("HiddenValue"), &hiddenVal);
 
      // Cookie値を構築する
      wxString cookie;
@@ -1389,18 +1389,18 @@ wxString SocketCommunication::PostConfirmToThread(URLvsBoardName& boardInfoHash,
      }
 
      // 投稿時間を算出する(UNIX Time)
-     wxString timeNow = JaneCloneUtil::GetTimeNow();
+     wxString timeNow = XrossBoardUtil::GetTimeNow();
      wxString message = wxT("UNIX Time:") + timeNow;
-     JaneCloneUiUtil::SendLoggingHelper(message);
+     XrossBoardUiUtil::SendLoggingHelper(message);
 
-     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
+     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
      wxString headerPath = dir.GetName();
-     wxDir jcDir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
-     wxDir datDir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
+     wxDir xbDir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
+     wxDir datDir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
 
-     if (!jcDir.HasSubDirs(wxT("dat"))) 
+     if (!xbDir.HasSubDirs(wxT("dat"))) 
      {
-	  ::wxMkdir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
+	  ::wxMkdir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
      }
 
      if (!datDir.HasSubDirs(wxT("kakikomi"))) 
@@ -1481,7 +1481,7 @@ wxString SocketCommunication::PostConfirmToThread(URLvsBoardName& boardInfoHash,
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("書き込み実行 (ヽ´ん`)\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  // 文字列をクリアーしておく
 	  this->respBuf.clear();
@@ -1492,16 +1492,16 @@ wxString SocketCommunication::PostConfirmToThread(URLvsBoardName& boardInfoHash,
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)headerPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)headerPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      // Shift_JIS から UTF-8への変換処理
      wxString tmpPath = headerPath;
      tmpPath.Replace(wxT(".header"), wxT(".tmp"));
-     JaneCloneUtil::ConvertSJISToUTF8(headerPath, tmpPath);
+     XrossBoardUtil::ConvertSJISToUTF8(headerPath, tmpPath);
 
      // ファイルのリネーム
      wxRenameFile(tmpPath, headerPath);
@@ -1537,8 +1537,8 @@ wxString SocketCommunication::PostResponseToThread(URLvsBoardName& boardInfoHash
      // 不可視項目値をコンフィグファイルから取得する
      InitializeCookie();
      wxString hiddenName = wxT("ERROR"), hiddenVal = wxT("ERROR");
-     JaneCloneUtil::GetJaneCloneProperties(wxT("HiddenName"), &hiddenName);
-     JaneCloneUtil::GetJaneCloneProperties(wxT("HiddenValue"), &hiddenVal);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("HiddenName"), &hiddenName);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("HiddenValue"), &hiddenVal);
 
      // Cookie値を構築する
      wxString cookie;
@@ -1561,19 +1561,19 @@ wxString SocketCommunication::PostResponseToThread(URLvsBoardName& boardInfoHash
      }
 
      // 投稿時間を算出する(UNIX Time)
-     wxString timeNow = JaneCloneUtil::GetTimeNow();
+     wxString timeNow = XrossBoardUtil::GetTimeNow();
      wxString message = wxT("UNIX Time:") + timeNow;
-     JaneCloneUiUtil::SendLoggingHelper(message);
+     XrossBoardUiUtil::SendLoggingHelper(message);
 
-     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
+     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
      wxString headerPath = dir.GetName();
-     wxDir jcDir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
-     wxDir datDir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
+     wxDir xbDir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
+     wxDir datDir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
 
      // ユーザーのホームディレクトリに隠しフォルダがあるかどうか確認
-     if (!jcDir.HasSubDirs(wxT("dat"))) 
+     if (!xbDir.HasSubDirs(wxT("dat"))) 
      {
-	  ::wxMkdir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
+	  ::wxMkdir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("dat"));
      }
 
      if (!datDir.HasSubDirs(wxT("kakikomi"))) 
@@ -1653,7 +1653,7 @@ wxString SocketCommunication::PostResponseToThread(URLvsBoardName& boardInfoHash
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("書き込み実行 (ヽ´ん`)\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  // 文字列をクリアーしておく
 	  this->respBuf.clear();
@@ -1664,16 +1664,16 @@ wxString SocketCommunication::PostResponseToThread(URLvsBoardName& boardInfoHash
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)headerPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)headerPath.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      // Shift_JIS から UTF-8への変換処理
      wxString tmpPath = headerPath;
      tmpPath.Replace(wxT(".header"), wxT(".tmp"));
-     JaneCloneUtil::ConvertSJISToUTF8(headerPath, tmpPath);
+     XrossBoardUtil::ConvertSJISToUTF8(headerPath, tmpPath);
 
      // ファイルのリネーム
      wxRenameFile(tmpPath, headerPath);
@@ -1687,18 +1687,18 @@ void SocketCommunication::InitializeCookie()
 {
      // カレントディレクトリを設定
      wxDir dir(::wxGetHomeDir());
-     wxDir jcDir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
-     wxDir propDir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("prop"));
+     wxDir xbDir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
+     wxDir propDir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("prop"));
 
      // ユーザーのホームディレクトリに隠しフォルダがあるかどうか確認
-     if (!dir.HasSubDirs(JANECLONE_DIR)) 
+     if (!dir.HasSubDirs(XROSSBOARD_DIR)) 
      {
-	  ::wxMkdir(jcDir.GetName());
+	  ::wxMkdir(xbDir.GetName());
      }
 
-     if (!jcDir.HasSubDirs(wxT("prop"))) 
+     if (!xbDir.HasSubDirs(wxT("prop"))) 
      {
-	  ::wxMkdir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("prop"));
+	  ::wxMkdir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("prop"));
      }
 }
 /**
@@ -1712,23 +1712,23 @@ void SocketCommunication::AssembleCookie(wxString& cookie, const wxString& hidde
      // BEログインチェック
      wxString widgetsName = wxEmptyString;
      bool     widgetsInfo = false;
-     const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(ID_ResponseWindowBeChk) );
+     const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(ID_ResponseWindowBeChk) );
      widgetsName = wxString((const char*)str.c_str(), wxConvUTF8);
-     JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+     XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
      if (widgetsInfo) 
      {
 	  // BEログインして書き込む場合
 	  wxString dmdm = wxEmptyString;
 	  wxString mdmd = wxEmptyString;
-	  JaneCloneUtil::GetJaneCloneProperties(wxT("DMDM"), &dmdm);
-	  JaneCloneUtil::GetJaneCloneProperties(wxT("MDMD"), &mdmd);
+	  XrossBoardUtil::GetXrossBoardProperties(wxT("DMDM"), &dmdm);
+	  XrossBoardUtil::GetXrossBoardProperties(wxT("MDMD"), &mdmd);
 	  
 	  if ( dmdm.Len() == 0 || mdmd.Len() == 0 ) 
 	  {
 	       // クッキーがないのでログインしてクッキー☆をもらう
 	       LoginBe2ch();
-	       JaneCloneUtil::GetJaneCloneProperties(wxT("DMDM"), &dmdm);
-	       JaneCloneUtil::GetJaneCloneProperties(wxT("MDMD"), &mdmd);
+	       XrossBoardUtil::GetXrossBoardProperties(wxT("DMDM"), &dmdm);
+	       XrossBoardUtil::GetXrossBoardProperties(wxT("MDMD"), &mdmd);
 	       SubstringCookie(dmdm);
 	       SubstringCookie(mdmd);
 
@@ -1759,12 +1759,12 @@ void SocketCommunication::AssembleCookie(wxString& cookie, const wxString& hidde
 
      // Cookie-PONの取得
      wxString cookiePon;
-     JaneCloneUtil::GetJaneCloneProperties(wxT("Cookie-PON"), &cookiePon);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("Cookie-PON"), &cookiePon);
      SubstringCookie(cookiePon);
      
      // Cookie-HAPの取得
      wxString cookieHap;
-     JaneCloneUtil::GetJaneCloneProperties(wxT("Cookie-HAP"), &cookieHap);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("Cookie-HAP"), &cookieHap);
      SubstringCookie(cookieHap);
 
      // 隠し要素の取得
@@ -1772,7 +1772,7 @@ void SocketCommunication::AssembleCookie(wxString& cookie, const wxString& hidde
 
      // PRENの取得
      wxString pren;
-     JaneCloneUtil::GetJaneCloneProperties(wxT("PREN"), &pren);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("PREN"), &pren);
      SubstringCookie(pren);
 
      if (cookiePon.Len() != 0) 
@@ -1847,8 +1847,8 @@ void SocketCommunication::WriteCookieData(const wxString& dataFilePath)
      }
 
      // クッキー情報をコンフィグファイルに書き出す
-     JaneCloneUtil::SetJaneCloneProperties(wxT("HiddenName"), hiddenName);
-     JaneCloneUtil::SetJaneCloneProperties(wxT("HiddenValue"), hiddenVal);
+     XrossBoardUtil::SetXrossBoardProperties(wxT("HiddenName"), hiddenName);
+     XrossBoardUtil::SetXrossBoardProperties(wxT("HiddenValue"), hiddenVal);
 
      cookieFile.Close();
 }
@@ -1883,17 +1883,17 @@ void SocketCommunication::DownloadImageFile(const wxString& href, std::unique_pt
 void SocketCommunication::DownloadImageFileByHttp(const wxString& href, std::unique_ptr<DownloadImageResult>& result) 
 {
      // 画像の保存先をコンフィグファイルから取得する
-     // デフォルトは $HOME/.jc/cache
+     // デフォルトは $HOME/.xb/cache
      InitializeCookie();
-     wxString imageFilePath = ::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR;
+     wxString imageFilePath = ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR;
 
      wxString tmp = wxFILE_SEP_PATH;
      tmp += wxT("cache");
-     JaneCloneUtil::GetJaneCloneProperties(wxT("CachePath"), &tmp);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("CachePath"), &tmp);
      imageFilePath += tmp;
 
      // 画像ファイルパスを決定する
-     wxString md5 = JaneCloneUtil::GenerateMD5String(href);
+     wxString md5 = XrossBoardUtil::GenerateMD5String(href);
 
      wxString ext  = wxT(".") + result->ext;
      imageFilePath += wxFILE_SEP_PATH;
@@ -1903,12 +1903,12 @@ void SocketCommunication::DownloadImageFileByHttp(const wxString& href, std::uni
      result->fileName  = md5 + ext;
 
      /** Content-typeの判別 */
-     wxString contentType = JaneCloneUtil::DetermineContentType(href);
+     wxString contentType = XrossBoardUtil::DetermineContentType(href);
 
      /** hostname, pathの検出 */
      PartOfURI* uri = new PartOfURI;
      wxString url = href;
-     bool ret = JaneCloneUtil::SubstringURI(url, uri);
+     bool ret = XrossBoardUtil::SubstringURI(url, uri);
      wxString server = uri->hostname;
      wxString path = uri->path;
      wxString msg = wxT("");
@@ -1963,13 +1963,13 @@ void SocketCommunication::DownloadImageFileByHttp(const wxString& href, std::uni
 void SocketCommunication::DownloadImageFileByFtp(const wxString& href, std::unique_ptr<DownloadImageResult>& result) 
 {
      // 画像の保存先をコンフィグファイルから取得する
-     // デフォルトは $HOME/.jc/cache
+     // デフォルトは $HOME/.xb/cache
      InitializeCookie();
      wxString imageFilePath = ::wxGetHomeDir();
 
      wxString tmp = wxFILE_SEP_PATH;
      tmp += wxT("cache");
-     JaneCloneUtil::GetJaneCloneProperties(wxT("CachePath"), &tmp);
+     XrossBoardUtil::GetXrossBoardProperties(wxT("CachePath"), &tmp);
      imageFilePath += tmp;
 
 }
@@ -1988,7 +1988,7 @@ bool SocketCommunication::DownloadShingetsuThreadList(const wxString& nodeHostna
 
      // URIから各パラメーターを抜き取る
      PartOfURI* uri = new PartOfURI;
-     bool urlIsSane = JaneCloneUtil::SubstringURI(nodeHostname, uri);
+     bool urlIsSane = XrossBoardUtil::SubstringURI(nodeHostname, uri);
      const wxString protocol = uri->protocol;
      const wxString hostname = uri->hostname;
      wxString port = uri->port;
@@ -1998,12 +1998,12 @@ bool SocketCommunication::DownloadShingetsuThreadList(const wxString& nodeHostna
      // 保存対象のディレクトリが存在するか確かめる
      wxString shingetsu = ::wxGetHomeDir()
 	  + wxFILE_SEP_PATH 
-	  + JANECLONE_DIR 
+	  + XROSSBOARD_DIR 
 	  + wxFILE_SEP_PATH 
 	  + wxT("shingetsu");
 
      wxDir chkDir(shingetsu);
-     JaneCloneUtil::CreateSpecifyDirectory(chkDir, hostname);
+     XrossBoardUtil::CreateSpecifyDirectory(chkDir, hostname);
      const std::string outputFilename = 
 	  std::string(chkDir.GetName().mb_str()) 
 	  + this->separator() 
@@ -2041,7 +2041,7 @@ bool SocketCommunication::DownloadShingetsuThreadList(const wxString& nodeHostna
 	  
 	  // ログ出力
 	  wxString message = wxT("新月にアクセス (ん`　 )") + wxString(requestQuery.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -2049,10 +2049,10 @@ bool SocketCommunication::DownloadShingetsuThreadList(const wxString& nodeHostna
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputFilename.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputFilename.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return false;
@@ -2068,7 +2068,7 @@ wxString SocketCommunication::DownloadShingetsuThread(const wxString& nodeHostna
 {
      // URIから各パラメーターを抜き取る
      PartOfURI* uri = new PartOfURI;
-     bool urlIsSane = JaneCloneUtil::SubstringURI(nodeHostname, uri);
+     bool urlIsSane = XrossBoardUtil::SubstringURI(nodeHostname, uri);
      const wxString protocol = uri->protocol;
      const wxString hostname = uri->hostname;
      wxString port = uri->port;
@@ -2077,12 +2077,12 @@ wxString SocketCommunication::DownloadShingetsuThread(const wxString& nodeHostna
      // 保存対象のディレクトリが存在するか確かめる
      wxString shingetsu = ::wxGetHomeDir()
 	  + wxFILE_SEP_PATH 
-	  + JANECLONE_DIR 
+	  + XROSSBOARD_DIR 
 	  + wxFILE_SEP_PATH 
 	  + wxT("shingetsu");
 
      wxDir chkDir(shingetsu);
-     JaneCloneUtil::CreateSpecifyDirectory(chkDir, hostname);
+     XrossBoardUtil::CreateSpecifyDirectory(chkDir, hostname);
      const std::string outputFilename = 
 	  std::string(chkDir.GetName().mb_str()) 
 	  + this->separator() 
@@ -2098,7 +2098,7 @@ wxString SocketCommunication::DownloadShingetsuThread(const wxString& nodeHostna
 	       + "://"
 	       + std::string(hostname.mb_str())
 	       + "/thread.cgi/"
-	       + JaneCloneUtil::UrlEncode(title);
+	       + XrossBoardUtil::UrlEncode(title);
 
 	  // portの取得
 	  port.Replace(wxT(":"), wxEmptyString, true);
@@ -2119,7 +2119,7 @@ wxString SocketCommunication::DownloadShingetsuThread(const wxString& nodeHostna
 	  
 	  // ログ出力
 	  wxString message = wxT("新月にアクセス (ん`　 )") + wxString(requestQuery.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
@@ -2127,10 +2127,10 @@ wxString SocketCommunication::DownloadShingetsuThread(const wxString& nodeHostna
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputFilename.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxString((const char*)outputFilename.c_str(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 
      return wxEmptyString;
@@ -2145,7 +2145,7 @@ void SocketCommunication::SaveImageFileInfoDB(const wxString& href, std::unique_
      if ( ! href || ! result) 
      {
 	  wxString message = wxT("ダウンロードした画像ファイル情報が取得できませんでした.");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 	  return;
      }
 
@@ -2172,7 +2172,7 @@ void SocketCommunication::LoginBe2ch()
      {
 	  wxString widgetsName = pArray[i].first;
 	  wxString widgetsInfo = wxEmptyString;
-	  JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+	  XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
 	  
 	  if ( i == 0 ) 
 	  {
@@ -2240,7 +2240,7 @@ void SocketCommunication::LoginBe2ch()
 				curlpp::types::WriteFunctionFunctor(this, &SocketCommunication::WriteHeaderData)));
 
 	  wxString message = wxT("BEにログイン (ヽ´ん`)...\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  // 文字列をクリアーしておく
 	  this->respBuf.clear();
@@ -2251,10 +2251,10 @@ void SocketCommunication::LoginBe2ch()
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
 }
 
@@ -2264,7 +2264,7 @@ void SocketCommunication::LoginBe2ch()
 bool SocketCommunication::GetShitarabaBoardInfo(const wxString& path, wxString& boardName, wxString& category)
 {
      std::vector<std::string> container;
-     JaneCloneUtil::SplitStdString(container, std::string(path.mb_str()), "/");
+     XrossBoardUtil::SplitStdString(container, std::string(path.mb_str()), "/");
 
      if (container.size() < 3)
      {
@@ -2275,7 +2275,7 @@ bool SocketCommunication::GetShitarabaBoardInfo(const wxString& path, wxString& 
      std::string url = "jbbs.shitaraba.net/bbs/api/setting.cgi/" + container.at(1) + "/" + container.at(2) + "/";
 
      // 書き込み先
-     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
+     wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
      wxString dataFilePath = dir.GetName();
      dataFilePath += wxFILE_SEP_PATH;
      dataFilePath += wxT("shitaraba_info.txt");
@@ -2293,17 +2293,17 @@ bool SocketCommunication::GetShitarabaBoardInfo(const wxString& path, wxString& 
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("したらば掲示板にアクセス (ヽ´ん`)...\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
 
      } catch (curlpp::RuntimeError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 	  return false;
      } catch (curlpp::LogicError &e) {
 	  wxString message = wxString((const char*)e.what(), wxConvUTF8) + wxT("\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
 	  return false;
      }
 
@@ -2312,7 +2312,7 @@ bool SocketCommunication::GetShitarabaBoardInfo(const wxString& path, wxString& 
       */
      wxString outputPath = dataFilePath;
      outputPath.Replace(wxT(".txt"), wxT(".out"));
-     JaneCloneUtil::ConvertEUCJPToUTF8(dataFilePath, outputPath);
+     XrossBoardUtil::ConvertEUCJPToUTF8(dataFilePath, outputPath);
      
      wxTextFile shitarabaDataFile;
      shitarabaDataFile.Open(outputPath, wxConvUTF8);
@@ -2415,7 +2415,7 @@ wxString SocketCommunication::GetOutputFilePath(bool isShitaraba, wxString& boar
      const wxString outputFilePath =
 	  ::wxGetHomeDir()
 	  + wxFILE_SEP_PATH 
-	  + JANECLONE_DIR
+	  + XROSSBOARD_DIR
 	  + wxFILE_SEP_PATH
 	  + wxT("dat")
 	  + wxFILE_SEP_PATH
@@ -2473,7 +2473,7 @@ void SocketCommunication::LoadConfiguration(curlpp::Easy& request, const bool io
 	  else
 	  {
 	       const wxString message = wxT("無効なBASIC認証設定が無視されました");
-	       JaneCloneUiUtil::SendLoggingHelper(message);
+	       XrossBoardUiUtil::SendLoggingHelper(message);
 	  }	  
      }
 
@@ -2482,14 +2482,14 @@ void SocketCommunication::LoadConfiguration(curlpp::Easy& request, const bool io
       */
      if (propMap.find(wxT("ID_NetworkPanelUseProxy")) != propMap.end() )
      {
-	  bool useProxy = JaneCloneUtil::ParseBool(propMap[wxT("ID_NetworkPanelUseProxy")]);
+	  bool useProxy = XrossBoardUtil::ParseBool(propMap[wxT("ID_NetworkPanelUseProxy")]);
 
 	  if (useProxy)
 	  {
 	       // ProxyCache
 	       if ( propMap.find(wxT("ID_NetworkPanelUseProxyCache")) != propMap.end())
 	       {
-		    bool useProxyCache = JaneCloneUtil::ParseBool(propMap[wxT("ID_NetworkPanelUseProxyCache")]);
+		    bool useProxyCache = XrossBoardUtil::ParseBool(propMap[wxT("ID_NetworkPanelUseProxyCache")]);
 		    // TODO: (・_・)
 		    //request.setOpt(new curlpp::options::UserPwd(std::string(concat.mb_str())));
 	       }
@@ -2515,7 +2515,7 @@ void SocketCommunication::LoadConfiguration(curlpp::Easy& request, const bool io
 			 else
 			 {
 			      const wxString message = wxT("無効なProxy設定が無視されました");
-			      JaneCloneUiUtil::SendLoggingHelper(message);
+			      XrossBoardUiUtil::SendLoggingHelper(message);
 			 }     
 		    }
 	       }
@@ -2539,7 +2539,7 @@ void SocketCommunication::LoadConfiguration(curlpp::Easy& request, const bool io
 			 else
 			 {
 			      const wxString message = wxT("無効なProxy設定が無視されました");
-			      JaneCloneUiUtil::SendLoggingHelper(message);
+			      XrossBoardUiUtil::SendLoggingHelper(message);
 			 }
 		    }
 	       }

@@ -5,7 +5,7 @@ $wxUrl       = "https://github.com/wxWidgets/wxWidgets/archive/WX_3_0_2.zip"
 
 # カレントディレクトリなど
 $parentPath  = (Split-Path $script:myInvocation.MyCommand.path -parent)
-$jcBklPath   = "$parentPath\janeclone.bkl"
+$jcBklPath   = "$parentPath\xrossboard.bkl"
 $bklZipPath  = "$parentPath\bakefile.zip"
 $bklExePath  = "$parentPath\bakefile-1.2.5.1_beta-win\bkl.exe"
 $wxZipPath   = "$parentPath\WX_3_0_2.zip"

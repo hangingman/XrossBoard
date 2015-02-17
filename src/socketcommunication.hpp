@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -49,8 +49,8 @@
 #include <curlpp/Infos.hpp>
 
 #include "enums.hpp"
-#include "janecloneutil.hpp"
-#include "janecloneuiutil.hpp"
+#include "xrossboardutil.hpp"
+#include "xrossboarduiutil.hpp"
 #include "sqliteaccessor.hpp"
 
 class SocketCommunication {
@@ -161,7 +161,7 @@ private:
 
      // メインのスレッドにログとイベントを送る
      void SendLogging(wxString& message) {
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      };
 
      /**

@@ -2,9 +2,9 @@
 Type=Application
 Version=1.0
 Encoding=UTF-8
-Name=JaneClone
+Name=XrossBoard
 Comment=Cross Platform 2ch browser
-Icon=%%%janecloneexecrcdir%%%/janeclone.xpm
-Exec=janeclone
+Icon=%%%xrossboardexecrcdir%%%/xrossboard.xpm
+Exec=xrossboard
 Categories=Application;Network;
 StartupNotify=true

@@ -1,5 +1,5 @@
 // 
-// janeclone's bakefile
+// xrossboard's bakefile
 // ...edit it with emacs c++mode
 //
 
@@ -65,7 +65,7 @@ library wxsqlite3 {
 // }
 
 
-program janeclone {
+program xrossboard {
 
   includedirs = ../sqlite3 ../wxsqlite3 ../babel ../json11;
   includedirs+= $local_wx_include;
@@ -86,10 +86,10 @@ program janeclone {
     ../src/drawpane.cpp
     ../src/extractboardlist.cpp
     ../src/imagepanel.cpp
-    ../src/janeclone.cpp
-    ../src/janecloneimageviewer.cpp
-    ../src/janecloneuiutil.cpp
-    ../src/janecloneutil.cpp
+    ../src/xrossboard.cpp
+    ../src/xrossboardimageviewer.cpp
+    ../src/xrossboarduiutil.cpp
+    ../src/xrossboardutil.cpp
     ../src/main.cpp
     ../src/otherpanels.cpp
     ../src/responsewindow.cpp
@@ -108,10 +108,10 @@ program janeclone {
     ../src/drawpane.hpp
     ../src/extractboardlist.hpp
     ../src/imagepanel.hpp
-    ../src/janeclone.hpp
-    ../src/janecloneimageviewer.hpp
-    ../src/janecloneuiutil.hpp
-    ../src/janecloneutil.hpp
+    ../src/xrossboard.hpp
+    ../src/xrossboardimageviewer.hpp
+    ../src/xrossboarduiutil.hpp
+    ../src/xrossboardutil.hpp
     ../src/otherpanels.hpp
     ../src/responsewindow.hpp
     ../src/settingwindow.hpp

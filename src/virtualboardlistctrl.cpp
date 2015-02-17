@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
  */
 
 #include "virtualboardlistctrl.hpp"
-#include "janeclone.hpp"
+#include "xrossboard.hpp"
 
 IMPLEMENT_DYNAMIC_CLASS(VirtualBoardListCtrl, wxListCtrl)
 
@@ -52,7 +52,7 @@ wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRT
      // ウィンドウ内に入った際のイベント通知
      this->Connect(id,
 		   wxEVT_ENTER_WINDOW,
-		   wxMouseEventHandler(JaneClone::OnEnterWindow),
+		   wxMouseEventHandler(XrossBoard::OnEnterWindow),
 		   NULL, this);
 #endif
 
@@ -71,7 +71,7 @@ wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRT
      // プロパティファイルにフォント設定/背景色があれば使用する
      wxString widgetsName = wxT("ID_ThreadListFontButton");
      wxString widgetsInfo = wxEmptyString;
-     JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+     XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
      if (widgetsInfo != wxEmptyString) {
 	  wxFont font;
 	  bool ret = font.SetNativeFontInfoUserDesc(widgetsInfo);
@@ -80,7 +80,7 @@ wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRT
      
      widgetsName = wxT("ID_ExtractFontButton");
      widgetsInfo.Clear();
-     JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+     XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
      if (widgetsInfo != wxEmptyString) 
      {
 	  wxFont font;
@@ -90,7 +90,7 @@ wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRT
 
      widgetsName = wxT("ID_ThreadListBGColorButton");
      widgetsInfo.Clear();
-     JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);
+     XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);
      if (widgetsInfo != wxEmptyString) 
      {
 	  wxColour bgColor;
@@ -168,7 +168,7 @@ void VirtualBoardListCtrl::FileLoadMethod2ch(const wxString& boardName, const wx
 
 	  if (line.Contains(_("&"))) {
 	       // 実態参照文字の変換
-	       line = JaneCloneUtil::ConvCharacterReference(line);
+	       line = XrossBoardUtil::ConvCharacterReference(line);
 	  }
 	  // アイテム用の文字列を先に宣言する
 	  wxString itemNumber, itemBoardName, itemOid, itemSince, itemTitle, itemResponse, itemCachedResponseNumber,
@@ -184,7 +184,7 @@ void VirtualBoardListCtrl::FileLoadMethod2ch(const wxString& boardName, const wx
 	       // キー値を取得する
 	       itemOid = reThreadLine.GetMatch(line, 1);
 	       // since
-	       itemSince = JaneCloneUtil::CalcThreadCreatedTime(itemOid);
+	       itemSince = XrossBoardUtil::CalcThreadCreatedTime(itemOid);
 	       // スレタイを取得する
 	       itemTitle = reThreadLine.GetMatch(line, 2);
 	       // レス数を取得する
@@ -212,7 +212,7 @@ void VirtualBoardListCtrl::FileLoadMethod2ch(const wxString& boardName, const wx
 	  itemLastUpdate = wxEmptyString;
 
 	  // 勢い
-	  itemMomentum = JaneCloneUtil::CalcThreadMomentum(itemResponse, itemOid);
+	  itemMomentum = XrossBoardUtil::CalcThreadMomentum(itemResponse, itemOid);
 
 	  // リストにアイテムを挿入する
 	  VirtualBoardListItem listItem = VirtualBoardListItem(itemNumber, itemTitle, itemResponse, itemCachedResponseNumber,
@@ -251,7 +251,7 @@ void VirtualBoardListCtrl::FileLoadMethod2ch(const wxString& boardName, const wx
 
 	  // 特殊処理・レス数が1000ならばDAT落ち扱い
 	  if (itemResponse == wxT("1000")) listItem.setCheck(THREAD_STATE_DROP);
-	  // 新着チェックする必要のないJaneClone起動時であればすべて普通に
+	  // 新着チェックする必要のないXrossBoard起動時であればすべて普通に
 	  if (noNeedToChkThreadState) listItem.setCheck(THREAD_STATE_NORMAL);
 
 	  // Listctrlに項目を追加する
@@ -314,9 +314,9 @@ void VirtualBoardListCtrl::FileLoadMethodShingetsu(const wxString& boardName, co
 	  // 番号
 	  itemNumber = wxString::Format(wxT("%i"), loopNumber);
 	  // since
-	  itemSince = JaneCloneUtil::CalcThreadCreatedTime(itemOid);
+	  itemSince = XrossBoardUtil::CalcThreadCreatedTime(itemOid);
 	  // 勢い
-	  itemMomentum = JaneCloneUtil::CalcThreadMomentum(itemResponse, itemOid);
+	  itemMomentum = XrossBoardUtil::CalcThreadMomentum(itemResponse, itemOid);
 
           // リストにアイテムを挿入する
 	  VirtualBoardListItem listItem = VirtualBoardListItem(itemNumber, itemTitle, itemResponse, itemCachedResponseNumber,
@@ -371,7 +371,7 @@ VirtualBoardList VirtualBoardListCtrl::ThreadListUpdate(const wxString& boardNam
      for (wxString line = datfile.GetFirstLine(); !datfile.Eof(); line = datfile.GetNextLine()) {
 
 	  if (line.Contains(_("&"))) { 
-	       line = JaneCloneUtil::ConvCharacterReference(line);
+	       line = XrossBoardUtil::ConvCharacterReference(line);
 	  }
 
 	  // アイテム用の文字列を先に宣言する
@@ -388,7 +388,7 @@ VirtualBoardList VirtualBoardListCtrl::ThreadListUpdate(const wxString& boardNam
 	       // キー値を取得する
 	       itemOid = reThreadLine.GetMatch(line, 1);
 	       // since
-	       itemSince = JaneCloneUtil::CalcThreadCreatedTime(itemOid);
+	       itemSince = XrossBoardUtil::CalcThreadCreatedTime(itemOid);
 	       // スレタイを取得する
 	       itemTitle = reThreadLine.GetMatch(line, 2);
 	       // レス数を取得する
@@ -405,7 +405,7 @@ VirtualBoardList VirtualBoardListCtrl::ThreadListUpdate(const wxString& boardNam
 	  // 増レス
 	  itemIncreaseResponseNumber = wxEmptyString;
 	  // 勢い
-	  itemMomentum = JaneCloneUtil::CalcThreadMomentum(itemResponse, itemOid);
+	  itemMomentum = XrossBoardUtil::CalcThreadMomentum(itemResponse, itemOid);
 	  // 最終取得
 	  itemLastUpdate = wxEmptyString;
 
@@ -558,7 +558,7 @@ VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,const wxString& boar
 	  wxString line = datfile.GetFirstLine();
 
 	  if (line.Contains(_("&"))) { 
-	       line = JaneCloneUtil::ConvCharacterReference(line);
+	       line = XrossBoardUtil::ConvCharacterReference(line);
 	  }
 	  /**
 	   * リストに値を設定する
@@ -572,7 +572,7 @@ VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,const wxString& boar
 	  itemOid = filename->GetName();
 	  delete filename;
 	  // since
-	  itemSince = JaneCloneUtil::CalcThreadCreatedTime(itemOid);
+	  itemSince = XrossBoardUtil::CalcThreadCreatedTime(itemOid);
 	  // スレタイを取得する
 	  if (regexThreadFst.Matches(line)) {
 	       itemTitle = regexThreadFst.GetMatch(line, 5);
@@ -590,7 +590,7 @@ VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,const wxString& boar
 	  // 増レス
 	  itemIncreaseResponseNumber = wxEmptyString;
 	  // 勢い
-	  itemMomentum = JaneCloneUtil::CalcThreadMomentum(itemResponse, itemOid);
+	  itemMomentum = XrossBoardUtil::CalcThreadMomentum(itemResponse, itemOid);
 	  // 最終取得
 	  itemLastUpdate = wxEmptyString;
 

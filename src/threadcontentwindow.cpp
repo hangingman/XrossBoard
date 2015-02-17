@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
  */
 
 #include "threadcontentwindow.hpp"
-#include "janeclone.hpp"
+#include "xrossboard.hpp"
 
 IMPLEMENT_DYNAMIC_CLASS(ThreadContentWindow, wxHtmlWindow)
 
@@ -55,7 +55,7 @@ wxHtmlWindow(parent, ID_ThreadContentWindow, wxDefaultPosition, wxDefaultSize, w
      // ウィンドウ内に入った際のイベント通知
      this->Connect(ID_ThreadContentWindow,
 		   wxEVT_ENTER_WINDOW,
-		   wxMouseEventHandler(JaneClone::OnEnterWindow),
+		   wxMouseEventHandler(XrossBoard::OnEnterWindow),
 		   NULL, this);
 #endif
 
@@ -64,14 +64,14 @@ wxHtmlWindow(parent, ID_ThreadContentWindow, wxDefaultPosition, wxDefaultSize, w
      // 設定ファイルの準備をする
      // ユーザーのホームディレクトリを取得
      wxDir workDir(::wxGetHomeDir());
-     wxDir jcDir(::wxGetHomeDir() + wxFILE_SEP_PATH + JANECLONE_DIR);
+     wxDir xbDir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
 
      // ユーザーのホームディレクトリに隠しフォルダがあるかどうか確認
-     if (!workDir.HasSubDirs(JANECLONE_DIR)) {
-	  ::wxMkdir(jcDir.GetName());
+     if (!workDir.HasSubDirs(XROSSBOARD_DIR)) {
+	  ::wxMkdir(xbDir.GetName());
      }
-     if (!jcDir.HasSubDirs(wxT("prop"))) {
-	  ::wxMkdir(jcDir.GetName() + wxFILE_SEP_PATH + wxT("prop"));
+     if (!xbDir.HasSubDirs(wxT("prop"))) {
+	  ::wxMkdir(xbDir.GetName() + wxFILE_SEP_PATH + wxT("prop"));
      }
 
      // スキンを使わないならデフォルトフォントを設定する
@@ -117,7 +117,7 @@ wxHtmlWindow(parent, ID_ThreadContentWindow, wxDefaultPosition, wxDefaultSize, w
 const wxString ThreadContentWindow::GetConvertedDatFile(const wxString& threadContentPath) {
 
      // wxStringにバッファするサイズを計測する
-     size_t fileSize = JaneCloneUtil::GetFileSize(threadContentPath);
+     size_t fileSize = XrossBoardUtil::GetFileSize(threadContentPath);
 
      if (fileSize == 0)
 	  // 読み込みに失敗した場合
@@ -154,10 +154,10 @@ const wxString ThreadContentWindow::GetConvertedDatFile(const wxString& threadCo
 
 	       if (number == 1) {
 		    // 最初の１行目の処理
-		    htmlSource += JaneCloneUtil::ProcessFirstResponse(str);
+		    htmlSource += XrossBoardUtil::ProcessFirstResponse(str);
 	       } else {
 		    // それ以降の処理
-		    htmlSource += JaneCloneUtil::ProcessRestResponse(str, number);
+		    htmlSource += XrossBoardUtil::ProcessRestResponse(str, number);
 	       }
 
 	       number++;
@@ -176,9 +176,9 @@ const wxString ThreadContentWindow::GetConvertedDatFile(const wxString& threadCo
      datfile.Close();
 
      // ID:xxxxxxxxxx を置換する
-     htmlSource = JaneCloneUtil::AddID(htmlSource);
+     htmlSource = XrossBoardUtil::AddID(htmlSource);
      // >>xx のようなアンカーを受けているレスを赤くする
-     htmlSource = JaneCloneUtil::AddColorAnchoredID(htmlSource);
+     htmlSource = XrossBoardUtil::AddColorAnchoredID(htmlSource);
 
      return htmlSource;
 }
@@ -384,7 +384,7 @@ void ThreadContentWindow::SearchSelectWordByAmazon(wxCommandEvent& event)
      // AmazonはShift_JISによるURLエンコードしか受け付けないようだ
      wxString url = wxT("http://www.amazon.co.jp/gp/search/?__mk_ja_JP=%83J%83%5E%83J%83i&field-keywords=");
      const std::string buffer = babel::utf8_to_sjis(std::string(m_selectedText.mb_str()));
-     const wxString urlEncode(JaneCloneUtil::UrlEncode(buffer).c_str(), wxConvUTF8);
+     const wxString urlEncode(XrossBoardUtil::UrlEncode(buffer).c_str(), wxConvUTF8);
      url += urlEncode;
 	
      // 文字列をutf-8からShift_JISに変換しておく必要があるようだ
@@ -429,7 +429,7 @@ void ThreadContentWindow::OnLeftClickHtmlWindow(wxHtmlLinkEvent& event)
 	  {
 	       // 画像ファイルをクリックしたのでダウンロードする
 	       const wxString ext = regexImage.GetMatch(href, 3);
-	       this->SetJaneCloneImageViewer(href, ext);
+	       this->SetXrossBoardImageViewer(href, ext);
 
 	  } 
 	  else if (href.StartsWith(wxT("#"), &rest) && rest.ToLong(&res, 10)) 
@@ -498,7 +498,7 @@ void ThreadContentWindow::OnClickOrdinaryLink(const wxString& link)
      bool useDefaultBrowser = true;
      // URLからホスト名を取得する
      PartOfURI uri;
-     bool ret = JaneCloneUtil::SubstringURI(link, &uri);
+     bool ret = XrossBoardUtil::SubstringURI(link, &uri);
      
      if (ret) 
      {
@@ -530,7 +530,7 @@ void ThreadContentWindow::OnClickOrdinaryLink(const wxString& link)
 
 	  // 文字列を分割する(StringTokenizerはなぜか使用できない...バグってる？)
 	  std::vector<std::string> container;
-	  JaneCloneUtil::SplitStdString(container, std::string(path.mb_str()), "/");
+	  XrossBoardUtil::SplitStdString(container, std::string(path.mb_str()), "/");
 
 	  wxString boardName;      // 板名
 	  wxString boardURL; 	   // URLを保持する文字列
@@ -575,11 +575,11 @@ void ThreadContentWindow::OnClickOrdinaryLink(const wxString& link)
 		    ThreadInfo threadInfoHash;
 		    URLvsBoardName boardInfoHash;
 	       
-		    if (JaneClone* wxJaneClone = dynamic_cast<JaneClone*>(boardNoteBook->GetParent())) {
+		    if (XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(boardNoteBook->GetParent())) {
 
 			 // ハッシュから板名を探す
 			 NameURLHash::iterator it;
-			 for (it = wxJaneClone->retainHash.begin(); it != wxJaneClone->retainHash.end(); ++it) 
+			 for (it = wxXrossBoard->retainHash.begin(); it != wxXrossBoard->retainHash.end(); ++it) 
 			 {
 			      wxString key  = it->first;
 			      boardInfoHash = it->second;
@@ -592,7 +592,7 @@ void ThreadContentWindow::OnClickOrdinaryLink(const wxString& link)
 			 }
 
 			 // 板一覧のツリーをクリックして、それをノートブックに反映するメソッド
-			 wxJaneClone->SetBoardNameToNoteBook(boardName, boardURL, boardNameAscii);
+			 wxXrossBoard->SetBoardNameToNoteBook(boardName, boardURL, boardNameAscii);
 			 if (!urlIsThread) return; // スレッドでないならここで終了
 
 			 // スレッドタイトルを取得するため、リストコントロールを引き出してくる
@@ -626,20 +626,20 @@ void ThreadContentWindow::OnClickOrdinaryLink(const wxString& link)
 										      origNumber);
 			      delete sock;
 			      // 無事に通信が終了したならばステータスバーに表示
-			      wxJaneClone->SetStatusText(wxT(" スレッドのダウンロード終了"));
+			      wxXrossBoard->SetStatusText(wxT(" スレッドのダウンロード終了"));
 
 			      // スレッドの内容をノートブックに反映する
-			      wxJaneClone->SetThreadContentToNoteBook(threadContentPath, origNumber, title);
+			      wxXrossBoard->SetThreadContentToNoteBook(threadContentPath, origNumber, title);
 			      // ノートブックに登録されたスレッド情報をハッシュに登録する
 			      ThreadInfoHash tiHash;
-			      wxJaneClone->GetThreadInfoHash(tiHash);
+			      wxXrossBoard->GetThreadInfoHash(tiHash);
 
 			      ThreadInfo info;
 			      info.origNumber = origNumber;
 			      info.boardNameAscii = boardNameAscii;
 			      tiHash[title] = info;
 
-			      wxJaneClone->SetThreadInfoHash(tiHash);
+			      wxXrossBoard->SetThreadInfoHash(tiHash);
 
 			 } 
 			 else 
@@ -659,9 +659,9 @@ void ThreadContentWindow::OnClickOrdinaryLink(const wxString& link)
 void ThreadContentWindow::CallResponseWindowWithAnchor(wxCommandEvent& event) 
 {
      /**
-      * ここのコードはthis->GetGrandParent()と書けば一度にJaneClone本体のインスタンスが
-      * 取得できるはずなのだができない.一度JaneCloneの子インスタンスを取得してから
-      * 改めてJaneClone本体のインスタンスを取得している. Is this bug ?
+      * ここのコードはthis->GetGrandParent()と書けば一度にXrossBoard本体のインスタンスが
+      * 取得できるはずなのだができない.一度XrossBoardの子インスタンスを取得してから
+      * 改めてXrossBoard本体のインスタンスを取得している. Is this bug ?
       */
      if (wxWindow* grand = this->GetGrandParent()) 
      {
@@ -675,11 +675,11 @@ void ThreadContentWindow::CallResponseWindowWithAnchor(wxCommandEvent& event)
 	       ThreadInfo threadInfoHash;
 	       URLvsBoardName boardInfoHash;
 	       
-	       if (JaneClone* wxJaneClone = dynamic_cast<JaneClone*>(boardNoteBook->GetParent())) 
+	       if (XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(boardNoteBook->GetParent())) 
 	       {
 		    // スレッド情報をコピーしてくる
 		    ThreadInfoHash tiHash;
-		    wxJaneClone->GetThreadInfoHash(tiHash);
+		    wxXrossBoard->GetThreadInfoHash(tiHash);
 		    // 選択されたスレタブの情報を集める
 		    wxString title = threadNoteBook->GetPageText(threadNoteBook->GetSelection());
 		    threadInfoHash = tiHash[title];
@@ -687,7 +687,7 @@ void ThreadContentWindow::CallResponseWindowWithAnchor(wxCommandEvent& event)
 
 		    // ハッシュからURLを探す
 		    NameURLHash::iterator it;
-		    for (it = wxJaneClone->retainHash.begin(); it != wxJaneClone->retainHash.end(); ++it) 
+		    for (it = wxXrossBoard->retainHash.begin(); it != wxXrossBoard->retainHash.end(); ++it) 
 		    {
 			 wxString key = it->first;
 			 boardInfoHash = it->second;
@@ -700,7 +700,7 @@ void ThreadContentWindow::CallResponseWindowWithAnchor(wxCommandEvent& event)
 		    ::wxDisplaySize(&wScreenPx, &hScreenPx);
 		    // レス用のウィンドウは 640:480なので、ちょうど中央にくるように調整する
 		    wxPoint point(wScreenPx/2 - 320, hScreenPx/2 - 240);
-		    ResponseWindow* response = new ResponseWindow(wxJaneClone, title, boardInfoHash, threadInfoHash, point, m_logCtrl);
+		    ResponseWindow* response = new ResponseWindow(wxXrossBoard, title, boardInfoHash, threadInfoHash, point, m_logCtrl);
 		    // ウィンドウにテキストを設定する
 		    response->AddKakikomiText(wxString::Format(wxT(">>%ld"), m_response));
 		    response->Show(true);
@@ -725,11 +725,11 @@ void ThreadContentWindow::CallResponseWindowWithQuote(wxCommandEvent& event)
 	       ThreadInfo threadInfoHash;
 	       URLvsBoardName boardInfoHash;
 	       
-	       if (JaneClone* wxJaneClone = dynamic_cast<JaneClone*>(boardNoteBook->GetParent())) 
+	       if (XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(boardNoteBook->GetParent())) 
 	       {
 		    // スレッド情報をコピーしてくる
 		    ThreadInfoHash tiHash;
-		    wxJaneClone->GetThreadInfoHash(tiHash);
+		    wxXrossBoard->GetThreadInfoHash(tiHash);
 		    // 選択されたスレタブの情報を集める
 		    wxString title = threadNoteBook->GetPageText(threadNoteBook->GetSelection());
 		    threadInfoHash = tiHash[title];
@@ -737,7 +737,7 @@ void ThreadContentWindow::CallResponseWindowWithQuote(wxCommandEvent& event)
 
 		    // ハッシュからURLを探す
 		    NameURLHash::iterator it;
-		    for (it = wxJaneClone->retainHash.begin(); it != wxJaneClone->retainHash.end(); ++it) 
+		    for (it = wxXrossBoard->retainHash.begin(); it != wxXrossBoard->retainHash.end(); ++it) 
 		    {
 			 wxString key = it->first;
 			 boardInfoHash = it->second;
@@ -750,11 +750,11 @@ void ThreadContentWindow::CallResponseWindowWithQuote(wxCommandEvent& event)
 		    ::wxDisplaySize(&wScreenPx, &hScreenPx);
 		    // レス用のウィンドウは 640:480なので、ちょうど中央にくるように調整する
 		    wxPoint point(wScreenPx/2 - 320, hScreenPx/2 - 240);
-		    ResponseWindow* response = new ResponseWindow(wxJaneClone, title, boardInfoHash, threadInfoHash, point, m_logCtrl);
+		    ResponseWindow* response = new ResponseWindow(wxXrossBoard, title, boardInfoHash, threadInfoHash, point, m_logCtrl);
 		
 		    // ウィンドウにテキストを設定する
 		    wxString quote  = wxString::Format(wxT(">>%ld\n"), m_response);
-		    quote += JaneCloneUtil::FindAnchoredResponseText(threadInfoHash.boardNameAscii, threadInfoHash.origNumber, m_response);
+		    quote += XrossBoardUtil::FindAnchoredResponseText(threadInfoHash.boardNameAscii, threadInfoHash.origNumber, m_response);
 
 		    response->AddKakikomiText(quote);
 		    response->Show(true);
@@ -765,7 +765,7 @@ void ThreadContentWindow::CallResponseWindowWithQuote(wxCommandEvent& event)
 /*
  * 画像ビューアの状態を確認し、設定する
  */
-void ThreadContentWindow::SetJaneCloneImageViewer(const wxString& href, const wxString& ext) {
+void ThreadContentWindow::SetXrossBoardImageViewer(const wxString& href, const wxString& ext) {
 
      // 画像をダウンロードする
      std::unique_ptr<SocketCommunication> sock(new SocketCommunication());
@@ -775,7 +775,7 @@ void ThreadContentWindow::SetJaneCloneImageViewer(const wxString& href, const wx
      sock->DownloadImageFile(href, result);
 
      // 画像ビューアに表示させる
-     JaneCloneImageViewer* imageViewer = JaneClone::GetJaneCloneImageViewer();
+     XrossBoardImageViewer* imageViewer = XrossBoard::GetXrossBoardImageViewer();
      imageViewer->Show(true);
      imageViewer->SetImageFile(result);
      imageViewer->Raise();
@@ -783,7 +783,7 @@ void ThreadContentWindow::SetJaneCloneImageViewer(const wxString& href, const wx
      // wxMemoryFSHandlerに登録されているファイルを削除し、新しいファイルを登録する
      wxString filename = wxFileSystem::URLToFileName(result->imageURL).GetFullName();
 
-     // FIXME: JaneClone-1.1.5
+     // FIXME: XrossBoard-1.1.5
      //wxMemoryFSHandler::RemoveFile(filename);
 
      // wxBitmapTypeの判別
@@ -853,7 +853,7 @@ void ThreadContentWindow::SetJaneCloneImageViewer(const wxString& href, const wx
      }
      // 画像を登録する
 
-     // FIXME: JaneClone-1.1.5
+     // FIXME: XrossBoard-1.1.5
      // wxMemoryFSHandler::AddFile(filename, bitmap, type);
      // 現在位置の取得とスクロール
      int x, y; 
@@ -883,11 +883,11 @@ void ThreadContentWindow::CopyTContentsToClipBoard(wxCommandEvent& event)
 	       ThreadInfo threadInfoHash;
 	       URLvsBoardName boardInfoHash;
 	       
-	       if (JaneClone* wxJaneClone = dynamic_cast<JaneClone*>(threadNoteBook->GetParent())) 
+	       if (XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(threadNoteBook->GetParent())) 
 	       {
 		    // スレッド情報をコピーしてくる
 		    ThreadInfoHash tiHash;
-		    wxJaneClone->GetThreadInfoHash(tiHash);
+		    wxXrossBoard->GetThreadInfoHash(tiHash);
 		    // 選択されたスレタブの情報を集める
 		    const wxString title = threadNoteBook->GetPageText(threadNoteBook->GetSelection());
 		    threadInfoHash = tiHash[title];
@@ -895,7 +895,7 @@ void ThreadContentWindow::CopyTContentsToClipBoard(wxCommandEvent& event)
 
 		    // ハッシュからURLを探す
 		    NameURLHash::iterator it;
-		    for (it = wxJaneClone->retainHash.begin(); it != wxJaneClone->retainHash.end(); ++it) {
+		    for (it = wxXrossBoard->retainHash.begin(); it != wxXrossBoard->retainHash.end(); ++it) {
 			 const wxString key = it->first;
 			 boardInfoHash = it->second;
 			 if (boardInfoHash.boardNameAscii == threadInfoHash.boardNameAscii) break;
@@ -903,7 +903,7 @@ void ThreadContentWindow::CopyTContentsToClipBoard(wxCommandEvent& event)
 	       }
 
 	       // レスの内容を取得する
-	       const wxString response = JaneCloneUtil::FindAnchoredResponseText(threadInfoHash.boardNameAscii, 
+	       const wxString response = XrossBoardUtil::FindAnchoredResponseText(threadInfoHash.boardNameAscii, 
 										 threadInfoHash.origNumber,
 										 m_response, false);
 
@@ -933,11 +933,11 @@ void ThreadContentWindow::CopyTAllToClipBoard(wxCommandEvent& event)
 	  wxAuiNotebook* threadNoteBook = dynamic_cast<wxAuiNotebook*>(grand->FindWindowByLabel(THREAD_NOTEBOOK));
 	  if (threadNoteBook) 
 	  {	       
-	       if (JaneClone* wxJaneClone = dynamic_cast<JaneClone*>(threadNoteBook->GetParent())) 
+	       if (XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(threadNoteBook->GetParent())) 
 	       {
 		    // スレッド情報をコピーしてくる
 		    ThreadInfoHash tiHash;
-		    wxJaneClone->GetThreadInfoHash(tiHash);
+		    wxXrossBoard->GetThreadInfoHash(tiHash);
 		    // 選択されたスレタブの情報を集める
 		    const wxString title = threadNoteBook->GetPageText(threadNoteBook->GetSelection());
 		    threadInfoHash = tiHash[title];
@@ -945,7 +945,7 @@ void ThreadContentWindow::CopyTAllToClipBoard(wxCommandEvent& event)
 
 		    // ハッシュからURLを探す
 		    NameURLHash::iterator it;
-		    for (it = wxJaneClone->retainHash.begin(); it != wxJaneClone->retainHash.end(); ++it) 
+		    for (it = wxXrossBoard->retainHash.begin(); it != wxXrossBoard->retainHash.end(); ++it) 
 		    {
 			 const wxString key = it->first;
 			 boardInfoHash = it->second;
@@ -954,7 +954,7 @@ void ThreadContentWindow::CopyTAllToClipBoard(wxCommandEvent& event)
 	       }
 
 	       // レスの内容を取得する
-	       response = JaneCloneUtil::FindAnchoredResponseText(threadInfoHash.boardNameAscii, threadInfoHash.origNumber,
+	       response = XrossBoardUtil::FindAnchoredResponseText(threadInfoHash.boardNameAscii, threadInfoHash.origNumber,
 								  m_response, false);
 	       // URLを取得する
 	       boardURL = boardInfoHash.boardURL;
@@ -989,7 +989,7 @@ bool ThreadContentWindow::CheckSkinFiles(SkinInfo* skin)
      // スキン用のパスが設定されていなければ即リターン
      const wxString key = wxT("DEFAULT_SKINFILE_PATH");
      wxString skinPath = wxEmptyString;
-     JaneCloneUtil::GetJaneCloneProperties(key, &skinPath);
+     XrossBoardUtil::GetXrossBoardProperties(key, &skinPath);
      bool ret = false;
 
      if (skinPath == wxEmptyString) 
@@ -1045,7 +1045,7 @@ bool ThreadContentWindow::CheckSkinFiles(SkinInfo* skin)
      if (ret) 
      {  
 	  const wxString message = wxT("スキンを適用します\n");
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      }
      
      return ret;

@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -33,7 +33,7 @@
 #include "enums.hpp"
 #include "socketcommunication.hpp"
 #include "datatype.hpp"
-#include "janecloneutil.hpp"
+#include "xrossboardutil.hpp"
 
 /**
  * レス書き込み用の子ウィンドウ
@@ -81,7 +81,7 @@ private:
 
      // メインのスレッドにログとイベントを送る
      void SendLogging(wxString& message) {
-	  JaneCloneUiUtil::SendLoggingHelper(message);
+	  XrossBoardUiUtil::SendLoggingHelper(message);
      };
 
      // ユーザーがリンクをクリックした場合ブラウザでジャンプ

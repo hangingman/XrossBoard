@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# JaneClone - a text board site viewer for 2ch
+# XrossBoard - a text board site viewer for 2ch
 # Copyright (C) 2012 Hiroyuki Nagata
 #
 # This program is free software; you can redistribute it and/or
@@ -22,7 +22,7 @@
 
 appdir="%%%appdir%%%"
 libdir="%%%pkglibdir%%%"
-JANECLONE="%%%appdir%%%/JaneClone"
+JANECLONE="%%%appdir%%%/XrossBoard"
 
 if [ "`uname -s`" = "Darwin" ]
 then

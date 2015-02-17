@@ -1,16 +1,14 @@
   
-###JaneClone  ver.1.1.5  
+### XrossBoard ver.1.0.0  
 
 Work with  
 * Windows XP, Vista, 7  
 * Linux    (GTK2 or 3)  
 * Mac OS X (Lion~)  
-* BSD      (GTK2 or 3)  
-  
-[![Build Status](https://travis-ci.org/Hiroyuki-Nagata/JaneClone.svg?branch=master)](https://travis-ci.org/Hiroyuki-Nagata/JaneClone)  
+* BSD      (GTK2 or 3)    
   
 ###About
-  Cross Platform 2ch Browser  
+  Cross Platform BBS Reader  
   
 ###Build  
 ```

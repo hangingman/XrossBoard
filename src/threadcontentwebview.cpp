@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
  */
 
 #include "threadcontentwebview.hpp"
-#include "janeclone.hpp"
+#include "xrossboard.hpp"
 
 /**
  * 通常のコンストラクタ
@@ -38,7 +38,7 @@ wxHtmlWindow(parent, ID_ThreadContentWindow, wxDefaultPosition, wxDefaultSize, w
      // ウィンドウ内に入った際のイベント通知
      this->Connect(ID_ThreadContentWindow,
 		   wxEVT_ENTER_WINDOW,
-		   wxMouseEventHandler(JaneClone::OnEnterWindow),
+		   wxMouseEventHandler(XrossBoard::OnEnterWindow),
 		   NULL, this);
 #endif
 
@@ -57,7 +57,7 @@ wxHtmlWindow(parent, ID_ThreadContentWindow, wxDefaultPosition, wxDefaultSize, w
 const wxString ThreadContentWebView::GetConvertedDatFile(const wxString& threadContentPath) {
 
      // wxStringにバッファするサイズを計測する
-     size_t fileSize = JaneCloneUtil::GetFileSize(threadContentPath);
+     size_t fileSize = XrossBoardUtil::GetFileSize(threadContentPath);
 
      if (fileSize == 0)
 	  // 読み込みに失敗した場合
@@ -116,7 +116,7 @@ const wxString ThreadContentWebView::GetConvertedDatFile(const wxString& threadC
 #else
 		  const wxString jQueryPath = wxT("file:///") +
 			  curdir.GetPath() +
-			  wxT("/JaneClone.app/Contents/MacOS/script/");
+			  wxT("/XrossBoard.app/Contents/MacOS/script/");
 #endif
 
 		  // <script src="jquery.js"
@@ -183,10 +183,10 @@ const wxString ThreadContentWebView::GetConvertedDatFile(const wxString& threadC
 
 	       if (number == 1) {
 		    // 最初の１行目の処理
-		    htmlSource += JaneCloneUtil::ProcessFirstResponse(str);
+		    htmlSource += XrossBoardUtil::ProcessFirstResponse(str);
 	       } else {
 		    // それ以降の処理
-		    htmlSource += JaneCloneUtil::ProcessRestResponse(str, number);
+		    htmlSource += XrossBoardUtil::ProcessRestResponse(str, number);
 	       }
 
 	       number++;
@@ -205,7 +205,7 @@ const wxString ThreadContentWebView::GetConvertedDatFile(const wxString& threadC
      datfile.Close();
 
      // ID:xxxxxxxxxx を置換する
-     htmlSource = JaneCloneUtil::AddID(htmlSource);
+     htmlSource = XrossBoardUtil::AddID(htmlSource);
 
      return htmlSource;
 }
@@ -254,7 +254,7 @@ void ThreadContentWebView::OnLeftClickHtmlWindow(wxHtmlLinkEvent& event) {
 	  if (regexImage.Matches(href)) {
 	       // 画像ファイルをクリックしたのでダウンロードする
 	       const wxString ext = regexImage.GetMatch(href, 3);
-	       this->SetJaneCloneImageViewer(href, ext);
+	       this->SetXrossBoardImageViewer(href, ext);
 
 	  } else if (href.StartsWith(wxT("#"), &rest) && rest.ToLong(&res, 10)) {
 	       if ( 0 < res && res <= 1000) {
@@ -275,7 +275,7 @@ void ThreadContentWebView::OnClickOrdinaryLink(const wxString& link) {
      bool useDefaultBrowser = true;
      // URLからホスト名を取得する
      PartOfURI uri;
-     bool ret = JaneCloneUtil::SubstringURI(link, &uri);
+     bool ret = XrossBoardUtil::SubstringURI(link, &uri);
      
      if (ret) {
 	  if (uri.hostname.Contains(wxT("2ch.net"))) useDefaultBrowser = false;
@@ -301,7 +301,7 @@ void ThreadContentWebView::OnClickOrdinaryLink(const wxString& link) {
 
 	  // 文字列を分割する(StringTokenizerはなぜか使用できない...バグってる？)
 	  std::vector<std::string> container;
-	  JaneCloneUtil::SplitStdString(container, std::string(path.mb_str()), "/");
+	  XrossBoardUtil::SplitStdString(container, std::string(path.mb_str()), "/");
 
 	  wxString boardName;      // 板名
 	  wxString boardURL; 	   // URLを保持する文字列
@@ -341,11 +341,11 @@ void ThreadContentWebView::OnClickOrdinaryLink(const wxString& link) {
 		    ThreadInfo threadInfoHash;
 		    URLvsBoardName boardInfoHash;
 	       
-		    if (JaneClone* wxJaneClone = dynamic_cast<JaneClone*>(boardNoteBook->GetParent())) {
+		    if (XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(boardNoteBook->GetParent())) {
 
 			 // ハッシュから板名を探す
 			 NameURLHash::iterator it;
-			 for (it = wxJaneClone->retainHash.begin(); it != wxJaneClone->retainHash.end(); ++it) {
+			 for (it = wxXrossBoard->retainHash.begin(); it != wxXrossBoard->retainHash.end(); ++it) {
 			      wxString key  = it->first;
 			      boardInfoHash = it->second;
 
@@ -356,7 +356,7 @@ void ThreadContentWebView::OnClickOrdinaryLink(const wxString& link) {
 			 }
 
 			 // 板一覧のツリーをクリックして、それをノートブックに反映するメソッド
-			 wxJaneClone->SetBoardNameToNoteBook(boardName, boardURL, boardNameAscii);
+			 wxXrossBoard->SetBoardNameToNoteBook(boardName, boardURL, boardNameAscii);
 			 if (!urlIsThread) return; // スレッドでないならここで終了
 
 			 // スレッドタイトルを取得するため、リストコントロールを引き出してくる
@@ -389,20 +389,20 @@ void ThreadContentWebView::OnClickOrdinaryLink(const wxString& link) {
 										      origNumber);
 			      delete sock;
 			      // 無事に通信が終了したならばステータスバーに表示
-			      wxJaneClone->SetStatusText(wxT(" スレッドのダウンロード終了"));
+			      wxXrossBoard->SetStatusText(wxT(" スレッドのダウンロード終了"));
 
 			      // スレッドの内容をノートブックに反映する
-			      wxJaneClone->SetThreadContentToNoteBook(threadContentPath, origNumber, title);
+			      wxXrossBoard->SetThreadContentToNoteBook(threadContentPath, origNumber, title);
 			      // ノートブックに登録されたスレッド情報をハッシュに登録する
 			      ThreadInfoHash tiHash;
-			      wxJaneClone->GetThreadInfoHash(tiHash);
+			      wxXrossBoard->GetThreadInfoHash(tiHash);
 
 			      ThreadInfo info;
 			      info.origNumber = origNumber;
 			      info.boardNameAscii = boardNameAscii;
 			      tiHash[title] = info;
 
-			      wxJaneClone->SetThreadInfoHash(tiHash);
+			      wxXrossBoard->SetThreadInfoHash(tiHash);
 
 			 } else {
 			      // ERROR
@@ -417,7 +417,7 @@ void ThreadContentWebView::OnClickOrdinaryLink(const wxString& link) {
 /*
  * 画像ビューアの状態を確認し、設定する
  */
-void ThreadContentWebView::SetJaneCloneImageViewer(const wxString& href, const wxString& ext) {
+void ThreadContentWebView::SetXrossBoardImageViewer(const wxString& href, const wxString& ext) {
 
      // 画像をダウンロードする
      std::unique_ptr<SocketCommunication> sock(new SocketCommunication());
@@ -427,7 +427,7 @@ void ThreadContentWebView::SetJaneCloneImageViewer(const wxString& href, const w
      sock->DownloadImageFile(href, result);
 
      // 画像ビューアに表示させる
-     JaneCloneImageViewer* imageViewer = JaneClone::GetJaneCloneImageViewer();
+     XrossBoardImageViewer* imageViewer = XrossBoard::GetXrossBoardImageViewer();
      imageViewer->Show(true);
      imageViewer->SetImageFile(result);
      imageViewer->Raise();
@@ -435,7 +435,7 @@ void ThreadContentWebView::SetJaneCloneImageViewer(const wxString& href, const w
      // wxMemoryFSHandlerに登録されているファイルを削除し、新しいファイルを登録する
      wxString filename = wxFileSystem::URLToFileName(result->imageURL).GetFullName();
 
-     // FIXME: JaneClone-1.1.3
+     // FIXME: XrossBoard-1.1.3
      //wxMemoryFSHandler::RemoveFile(filename);
 
      // wxBitmapTypeの判別
@@ -485,7 +485,7 @@ void ThreadContentWebView::SetJaneCloneImageViewer(const wxString& href, const w
      }
      // 画像を登録する
 
-     // FIXME: JaneClone-1.1.3
+     // FIXME: XrossBoard-1.1.3
      //wxMemoryFSHandler::AddFile(filename, bitmap, type);
      // 現在位置の取得とスクロール
      int x, y; 
@@ -501,7 +501,7 @@ bool ThreadContentWebView::CheckSkinFiles(SkinInfo* skin) {
      // スキン用のパスが設定されていなければ即リターン
      const wxString key = wxT("DEFAULT_SKINFILE_PATH");
      wxString skinPath = wxEmptyString;
-     JaneCloneUtil::GetJaneCloneProperties(key, &skinPath);
+     XrossBoardUtil::GetXrossBoardProperties(key, &skinPath);
      bool ret = false;
 
      if (skinPath == wxEmptyString) {

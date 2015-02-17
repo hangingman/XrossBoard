@@ -27,12 +27,12 @@ exit /B
 setlocal & pushd .
 
 @echo ==========================================================================
-@echo JaneCloneをVisualStudioでビルドするための環境を作ります。
+@echo XrossBoardをVisualStudioでビルドするための環境を作ります。
 @echo だけど正直VC++とかいうクソ環境やめてMinGWを使ったほうがええと思うよ。
 @echo ==========================================================================
 
 powershell Set-ExecutionPolicy RemoteSigned
-powershell %~dp0janeclone.ps1
+powershell %~dp0xrossboard.ps1
 powershell Set-ExecutionPolicy Restricted
 
 @echo ==========================================================================
