@@ -1,0 +1,5 @@
+?package(xrossboard): needs="X11"              \
+  section="Applications/Network/Web Browsing" \
+  title="XrossBoard"                           \
+  command="%%%bindir%%%xrossboard"             \
+  icon="%%%xrossboardexecrcdir%%%/xrossboard.xpm"

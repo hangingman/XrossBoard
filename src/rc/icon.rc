@@ -1,0 +1,2 @@
+wxicon ICON "xrossboard.ico"
+#include "wx/msw/wx.rc"

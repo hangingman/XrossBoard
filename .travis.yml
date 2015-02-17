@@ -1,0 +1,55 @@
+os:
+  - linux
+  - osx
+
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+matrix:
+  exclude:
+    - os: osx
+      compiler: gcc
+
+cache:
+    apt: true
+
+env:
+  global:
+    - TRAVIS_CI=true
+    - secure: "W7++isBzG0Lsq3ktAIVA4FZ5O2Hn1JptWNBjDlDrxdUxM/g5HP0R8qxC58HRVEjWI9vCU7YgcsmxPhuSNdgFYhn84p4dcwU5N8PlTfz4HfpbARUu5PYlO8l8Qeag/PutDTTai2bJAhRruNvgP1NEz9Oq/KG6aHHNcVxZjP2iSo8="
+    - BINTRAY_TOKEN=${BINTRAY_TOKEN}
+
+before_install:
+  - echo $TRAVIS_OS_NAME
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then export CXX=clang++ && CC=clang && sudo add-apt-repository -y ppa:h-rayflood/llvm; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
+
+install:
+  - echo $TRAVIS_OS_NAME
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -qq gnulib dh-make; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install libwxgtk2.8-dev libxml2-dev libssl-dev debhelper autotools-dev automake gnupg lintian fakeroot pbuilder cdbs gnome-pkg-tools libwxsqlite3-2.8-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update && brew install gnu-sed wxmac; fi
+
+before_script:
+  - echo $TRAVIS_OS_NAME
+  - autoreconf -i -I/usr/share/gnulib/m4 -I `pwd`/m4
+
+script:
+  - echo $TRAVIS_OS_NAME
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then ./configure && make -j2 package-deb-local; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./configure && make && make osx-make-bin package-osx-intel64-dmg; fi
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+
+after_success:
+  - if [ "$TRAVIS_OS_NAME" == "osx" -o "$CXX" == "clang++" ]; then cd misc && ./upload_bintray.sh; fi

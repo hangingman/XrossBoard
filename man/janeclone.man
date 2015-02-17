@@ -1,0 +1,11 @@
+.TH xrossboard 1  "%%%DATE%%%" "version %%%VERSION%%%" "USER COMMANDS"
+.SH NAME
+xrossboard \- Cross Platform 2ch browser
+.SH SYNOPSIS
+.B xrossboard
+.SH DESCRIPTION
+ XrossBoard is a plain browser dedicated to read 2ch thread. 
+ Using a library called wxWidgets. It will work on Windows, 
+ Linux, Mac. It will keep the platform-specific user interface..
+.SH AUTHOR
+Hiroyuki Nagata

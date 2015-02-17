@@ -1,0 +1,300 @@
+***********************************
+XrossBoard のインストール方法
+XrossBoard Installation Instructions
+***********************************
+
+Copyright (C) 2014 Hiroyuki Nagata
+
+ Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without warranty of any kind.
+
+基本インストール
+==================
+
+　Windows, Linux, Mac, BSD環境にてconfigure;makeのコマンドを実行すれば
+XrossBoardの実行ファイルが作成されます.以下, Window, Linux, Mac, BSD環境
+の順にインストール方法を記載します.
+
+ A.Windows(MinGW32)
+ B.Windows(MinGW64)
+ C.Windows(VC++)
+ D.Linux(RedHat系)
+ E.Linux(Debian系)
+ F.Mac OSX
+ G.BSD
+
+ [A.Windows(MinGW32)]
+ A-1. 依存するライブラリのインストール
+  
+  ライブラリは動的リンクにて作成します。
+  必要なライブラリはwxWidgets-3.0, libxml2, zlib, libcurlです.
+  MinGW環境はmsys2(http://sourceforge.net/projects/msys2/)を推奨します.
+
+  [msys2のインストール]
+  http://sourceforge.net/projects/msys2/files/Base/
+  より、環境にあったものをダウンロードしてください。
+  64BitOSならば64bit版を落としておきましょう。(64Bit→x86_64、32Bit→i686です) 
+  その後インストーラよりインストールすると、c:\にフォルダができてます。(64Bitならmsys64になります)
+   
+  その中にあるmingw32_shell.batを動かしてシェルが動けばＯＫです。
+  まずは
+
+  $ pacman -Suy
+
+  を打ち込んでシステム全体を更新しておきましょう。
+
+  [開発用ツールのインストール]
+  $ pacman -S autoconf automake git libtool make mintty
+  $ pacman -S mingw-w64-i686-gcc
+
+  [依存ライブラリのインストール]
+  $ pacman -S mingw-w64-i686-libxml2
+  $ pacman -S mingw-w64-i686-curl
+  $ pacman -S mingw-w64-i686-zlib
+  $ pacman -S mingw-w64-i686-wxWidgets
+
+  wx-configコマンドが使用出来れば成功
+  $ wx-config --version
+  $ 3.0.2
+
+ A-2. パッケージング
+
+  [XrossBoardのコンパイル]
+  $ git clone git://github.com/Hiroyuki-Nagata/XrossBoard.git
+  $ cd /path/to/XrossBoard
+  $ ./bootstrap
+  $ ./configure
+  $ make
+  $ make install package-win32-msi
+
+  プロジェクト内部にpackageディレクトリができていればビルド成功です
+
+ [B.Windows(MinGW64)]
+ B-1. 依存するライブラリのインストール
+
+  ライブラリは動的リンクにて作成します。
+  必要なライブラリはwxWidgets-3.0, libxml2, zlib, libcurlです.
+  MinGW環境はmsys2(http://sourceforge.net/projects/msys2/)を推奨します.
+
+  [msys2のインストール]
+  http://sourceforge.net/projects/msys2/files/Base/
+  より、環境にあったものをダウンロードしてください。
+  64BitOSならば64bit版を落としておきましょう。(64Bit→x86_64、32Bit→i686です) 
+  その後インストーラよりインストールすると、c:\にフォルダができてます。(64Bitならmsys64になります)
+   
+  その中にあるmingw64_shell.batを動かしてシェルが動けばＯＫです。
+  まずは
+
+  $ pacman -Suy
+
+  を打ち込んでシステム全体を更新しておきましょう。
+
+  [開発用ツールのインストール]
+  $ pacman -S autoconf automake git libtool make mintty
+  $ pacman -S mingw-w64-x86_64-gcc
+
+  [依存ライブラリのインストール]
+  $ pacman -S mingw-w64-x86_64-libxml2
+  $ pacman -S mingw-w64-x86_64-curl
+  $ pacman -S mingw-w64-x86_64-zlib
+  $ pacman -S mingw-w64-x86_64-wxWidgets
+
+  wx-configコマンドが使用出来れば成功
+  $ wx-config --version
+  $ 3.0.2
+
+ B-2. パッケージング
+
+  [XrossBoardのコンパイル]
+  $ git clone git://github.com/Hiroyuki-Nagata/XrossBoard.git
+  $ cd /path/to/XrossBoard
+  $ ./bootstrap
+  $ ./configure
+  $ make
+  $ make install package-win64-msi
+
+  もしLinuxからクロスコンパイルをする場合は以下の通り
+  $ ./bootstrap
+  $ PATH=$PATH:/usr/x86_64-w64-mingw32/bin               \
+  XML2CONFIG='/usr/x86_64-w64-mingw32/bin/xml2-config'   \
+  WX_CONFIG_PATH='/usr/x86_64-w64-mingw32/bin/wx-config' \
+  ./configure --prefix=/usr/x86_64-w64-mingw32           \
+  --build=x86_64-unknown-linux-gnu                       \
+  --host=x86_64-w64-mingw32                              \
+  --target=x86_64-w64-mingw32
+  $ make
+
+  プロジェクト内部にextras/packageディレクトリができていればビルド成功です.
+  Linux上でのWindows向けバイナリビルド方法については以下のリンクを参照してください.
+  https://github.com/Hiroyuki-Nagata/XrossBoard/wiki/_pages
+
+ [C.Windows(VC++)]
+ C-1. 環境構築
+ 
+   [ソースコードのチェックアウト]
+   以下のサイトからgitをダウンロードしてインストールしてください。設定などはご自身で調査をお願いします。
+   インストールできたら「Git Bash」を起動して、以下のコマンドを実行してください。
+
+   $ cd [ソースを格納したいフォルダ]
+   $ git clone https://github.com/Hiroyuki-Nagata/XrossBoard.git
+
+   ※チェックアウトが遅いときは「git clone」を「git clone --depth=50」などに変えてください。
+   ※Visual Studioの内部機能の「チームエクスプローラー」からソースをチェックアウトすることもできます。
+
+   [wxWidgetsのビルド]
+   チェックアウトしたディレクトリを$(XrossBoard)と表記します。
+   エクスプローラで $(XrossBoard)\bakefile に移動し「xrossboard.bat」をダブルクリックで起動してください。
+   エラーなくバッチ処理が終了したら次の手順に進んでください。必要資材のダウンロードとビルドのため時間がかかります。
+
+   [Nugetの設定]
+   VisualStudio 2013を起動して、自動生成されたxrossboard.slnを開く。
+   メニューバーから「ツール -> NuGetパッケージマネージャー -> パッケージマネージャーコンソール」に移動
+   パッケージマネージャーコンソールのウィンドウが開くので、ウィンドウ上部の規定のプロジェクトをxrossboardに変更する。
+
+   対話環境が立ち上がるので、以下のように入力する
+   PM> Install-Package curlpp
+   PM> Install-Package libxml2
+   PM> Install-Package libiconv
+
+ C-2. ビルド
+
+   xrossboardのソリューションを右クリックしてビルドする。
+   ビルドの際は「Release」でビルドしてください。
+
+ [D.Linux(RedHat系)]
+ D-1. 依存するライブラリのインストール
+
+  FedoraもしくはCentosの環境を想定します.
+  i386, x86_64の環境どちらでもコンパイルできると思います。
+　筆者はFedora17 x86_64の環境でビルドを行いました。
+  必要なライブラリはwxWidgets-2.8.12, libxml2です.
+
+  [wxWidgetsのインストール]
+  # yum install wxWidgets-devel
+
+  wx-configコマンドが使用出来れば成功
+  $ wx-config --version
+  $ 2.8.12
+
+  [libxml2, libcurlのインストール]
+  libxml2をyumを使ってインストールしてください
+  # yum install libxml2 libxml2-devel
+  # yum install libcurl-devel <- libcurlに関しては名前が違うかも
+
+ D-2. パッケージング
+
+  [XrossBoardのコンパイル]
+
+  $ git clone git://github.com/Hiroyuki-Nagata/XrossBoard.git
+  $ cd /path/to/XrossBoard
+  $ ./bootstrap
+  $ ./configure
+  $ make
+  $ make install
+
+  プロジェクト内部にpackageディレクトリができていればビルド成功です
+
+ [E.Linux(Debian系)]
+ E-1. 依存するライブラリのインストール
+
+  DebianもしくはUbuntuの環境を想定します.
+  amd64, x86_64の環境どちらでもコンパイルできると思います.
+  Debian Wheezy,Sidのx86_64の環境でビルドを行いました.
+  また,Travis環境( Ubuntu 12.0.4 x86_64の環境)で常にパッケージビルドを行っています.
+
+  // XrossBoard本体のビルド用
+  # apt-get install debhelper autotools-dev libatk1.0-0 libc6		\ 
+  libcairo2 libdbus-1-3 libfontconfig1 libfreetype6 libgcc1   		\
+  libglib2.0-0 libgtk2.0-0 libpango1.0-0 libstdc++6 libwxbase2.8-0 	\
+  libwxgtk2.8-0 libxml2-dev autoconf automake libtool devscripts        \
+  fonts-mona cdbs
+
+  // ソースをダウンロードするため
+  # apt-get install git
+
+ E-2. パッケージング
+
+  $ git clone git://github.com/Hiroyuki-Nagata/XrossBoard.git
+  $ cd /path/to/XrossBoard
+  $ ./bootstrap
+  $ ./configure
+  $ make
+
+  ・make installで /usr/local 以下に xrossboard のラッパースクリプトが入ります
+　・make package-deb で Debian のパッケージを作成できます
+
+ [F.Mac OSX]
+ F-1. 依存するライブラリのインストール
+
+  clang, gsed, wxWidgetsのインストール
+  # sudo port install clang-3.4 gsed libtool wxWidgets(開発版をインストールする)
+  あとlibcurl, libxml2も開発版を入れる
+  # sudo port install libcurl4-*** libxml2-*** (名前忘れました）
+
+ F-2. パッケージング
+
+  $ git clone git://github.com/Hiroyuki-Nagata/XrossBoard.git
+  $ cd /path/to/XrossBoard
+  $ git submodule init
+  $ git submodule update
+  $ ./bootstrap
+  $ ./configure CC='clang-mp-3.3' CXX='clang++-mp-3.3 -std=c++11 -stdlib=libc++'
+  $ make
+
+ [G.BSD]
+ G-1. 依存するライブラリのインストール
+
+  まず最初にGNOMEによるデスクトップ環境を構築してください。
+  また、ビルドにはGNU Autotoolsのパッケージ群が必要になります。
+  (automake/autoconf/libtool/autoreconf...)
+
+  必要なものを準備する
+  # pkg_add -r autoconf automake autoreconf
+  # pkg_add -r gsed
+  # pkg_add -r subversion
+
+  libc++/libcxxrtをビルドする必要がある(面倒ですねえ。。。)
+  # svn co svn://svn.freebsd.org/base/releng/9.1/lib /usr/src/lib
+  # svn co svn://svn.freebsd.org/base/releng/9.1/contrib /usr/src/contrib
+  # cd /usr/src/lib/libcxxrt
+  # make
+  # make install
+  # cd /usr/src/lib/libc++
+  # make CXX=clang++
+  # make install
+
+  # libcurlをビルドする
+  # cd /usr/ports/ftp/curl
+  # make && make install && make clean
+
+  wxWidgetsのライブラリのインストール
+  (wx-2.8はバグがあるので最新版をインストールする)
+  # git clone https://github.com/wxWidgets/wxWidgets.git
+  # cd wxWidgets
+  # git checkout WX_3_0_0-rc2
+  # cd ../
+  # mkdir wxWidgets-3.0.0-rc2
+  # cd wxWidgets-3.0.0-rc2/
+  # ../wxWidgets/configure CXXFLAGS="-stdlib=libc++ -std=c++11"       \
+    OBJCXXFLAGS="-stdlib=libc++ -std=c++11" CPPFLAGS="-stdlib=libc++" \
+    LDFLAGS="-stdlib=libc++" CXX=clang++ CXXCPP="clang++ -E" CC=clang \
+    CPP="clang -E" --enable-unicode --enable-debug --enable-gdb-debug \
+    --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin \
+    --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin   \
+    --enable-std_containers --enable-std_iostreams --enable-std_string
+  # make
+  # make install
+
+  ちゃんんとバージョンが出たら成功
+  # wx-config --version
+  3.0.0
+
+ G-2. パッケージング
+
+  $ git clone git://github.com/Hiroyuki-Nagata/XrossBoard.git
+  $ cd /path/to/XrossBoard
+  $ ./bootstrap
+  $ ./configure CC='clang' CXX='clang++ -std=c++11 -stdlib=libc++'  
+  $ make

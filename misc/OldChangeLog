@@ -1,0 +1,9358 @@
+Non-maintainer upload
+
+commit 4cd0b19
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-25
+
+    Fix MinGW build
+
+Makefile.am
+src/Makefile.am
+src/janeclone.cpp
+
+commit 3fe5c50
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-25
+
+    Update README.md [skip ci
+
+README.md
+
+commit e6c82b2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-25
+
+    Release JaneClone-1.1.5
+
+ChangeLog
+NEWS
+configure.ac
+src/janeclone.cpp
+
+commit 3d7d957
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-25
+
+    Add SPEC file generate batch
+    Change NetworkSettingPanel's timeout unit sec -> msec Fix #51
+
+Makefile.am
+src/otherpanels.cpp
+
+commit 3f32505
+Merge: 37c0c50 81ead3f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-25
+
+    Merge pull request #58 from vabock/refactor_pane
+    
+    Refactor wxAui pane by vabock
+
+commit 81ead3f
+Author: Vabock <vabock@gmail.com>
+Date:   2015-01-24
+
+    Implement SwitchRightPane Tool Button
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit a8bb7b0
+Author: Vabock <vabock@gmail.com>
+Date:   2015-01-22
+
+    Refactor wxAui Pane Handling
+    Fixes #54
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 37c0c50
+Merge: 9b08c5e f6d00b0
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-20
+
+    Merge pull request #56 from vabock/dev/pathsep
+    
+    Use wxFILE_SEP_PATH instead of wxFileSeparator
+
+commit 9b08c5e
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2015-01-19
+
+    Write INSTALL for detail [skip ci]
+
+INSTALL
+bakefile/janeclone.bat
+bakefile/janeclone.ps1
+
+commit 4bd2f9a
+Merge: f487fdb f4ab968
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-18
+
+    Merge pull request #55 from Hiroyuki-Nagata/vc
+    
+    Deal with Visual Studio [skip ci]
+
+commit f4ab968
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-18
+
+    Fix source code UTF-8 -> UTF-8 BOM
+
+bakefile/janeclone.bkl
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/drawpane.cpp
+src/drawpane.hpp
+src/enums.hpp
+src/enumstring.hpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/main.cpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwebview.cpp
+src/threadcontentwebview.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit e0f4ef3
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-18
+
+    Fix char concat for MSVC
+
+bakefile/janeclone.bat
+src/datatype.hpp
+
+commit 2c845d6
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-18
+
+    Fix bakefile and datatype.hpp for MSVC
+
+bakefile/janeclone.bkl
+src/datatype.hpp
+
+commit 1beee55
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix bakefile and batch file
+
+bakefile/bakefile.bat
+bakefile/janeclone.bat
+bakefile/janeclone.bkl
+
+commit f487fdb
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix bsd-sed bug
+    Fix sqlite3 is sys, wxsqlite3 is builtin situasion bug
+
+Makefile.am
+configure.ac
+src/Makefile.am
+wxsqlite3/Makefile.am
+
+commit 6bd7565
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix janeclone.bat
+
+bakefile/janeclone.bat
+
+commit 62fbbf3
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix janeclone.bat
+
+bakefile/janeclone.bat
+bakefile/janeclone.ps1
+
+commit 596dbf1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix bsd sed error "sed: illegal option -- r "
+
+Makefile.am
+
+commit b51f310
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Replace small build number from osx dylib
+
+Makefile.am
+
+commit dc08d31
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix OSX ResourcePath (JaneClone.app/Contents/MacOS/rc/ -> JaneClone.app/Contents/Resources)
+    Fix Linux ResourcePath (/usr/share/pixmaps/janeclone -> $(prefix)/share/pixmaps/janeclone)
+    SQLite3 & wxSQLite3 build is now static
+
+Makefile.am
+misc/osx-dependency-check.sh
+sqlite3/Makefile.am
+src/Makefile.am
+src/datatype.hpp
+wxsqlite3/Makefile.am
+
+commit f6d00b0
+Author: Vabock <vabock@gmail.com>
+Date:   2015-01-17
+
+    Use wxFILE_SEP_PATH instead of wxFileSeparator
+
+src/anchoredresponsepopup.cpp
+src/datatype.hpp
+src/janeclone.cpp
+src/janecloneimageviewer.cpp
+src/janecloneutil.cpp
+src/main.cpp
+src/responsewindow.cpp
+src/socketcommunication.cpp
+src/sqliteaccessor.cpp
+src/threadcontentwebview.cpp
+src/threadcontentwindow.cpp
+
+commit a2f2dab
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Fix matrix element of appveyor.yml
+
+appveyor.yml
+
+commit 5beb7c2
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Delete tab from appveyor.yml
+
+appveyor.yml
+
+commit 43f8f82
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-17
+
+    Add appveyor.yml
+
+appveyor.yml
+bakefile/janeclone.ps1
+
+commit e03c395
+Merge: 2479a9d 763e334
+Author: Hiroyuki Nagata <hiroyuki-nagata@panzer_girl.com>
+Date:   2015-01-17
+
+    Merge branch 'master' into vc
+
+commit 763e334
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-16
+
+    Add forgotten man page file
+
+man/janeclone.man
+
+commit 13e7ab1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-16
+
+    Add consideration for $prefix + "/share/pixmaps/janeclone/"
+
+ChangeLog
+Makefile.am
+configure.ac
+misc/janeclone.menu
+src/Makefile.am
+src/datatype.hpp
+
+commit fe78b8a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-16
+
+    If platform is osx, sqlite3 & wxsqlite3 is builtin
+
+configure.ac
+
+commit a15cd0d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-16
+
+    Add plain man page
+
+Makefile.am
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+
+commit 54ddb0a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-16
+
+    Fix below lintian error
+    E:janeclone: arch-dependent-file-in-usr-share usr/share/janeclone/JaneClone
+
+Makefile.am
+src/Makefile.am
+src/janeclone.cpp
+
+commit 48120d6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-16
+
+    Move resource files "/usr/share/janeclone/rc" to "/usr/share/pixmaps/janeclone/rc",
+    and fix source code to commonalize process of loading images.
+
+Makefile.am
+debian/rules
+src/Makefile.am
+src/datatype.hpp
+src/janeclone.cpp
+src/janecloneuiutil.cpp
+src/janecloneutil.cpp
+src/threadcontentwindow.cpp
+
+commit 6f7da41
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-15
+
+    Fix below lintian error
+    E:janeclone: helper-templates-in-copyright
+    W:janeclone: copyright-has-url-from-dh_make-boilerplate
+    E:janeclone: copyright-contains-dh_make-todo-boilerplate
+
+Makefile.am
+
+commit 6cb6792
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-15
+
+    Fix below lintian error
+    W:janeclone: readme-debian-contains-debmake-template
+
+Makefile.am
+
+commit 4d50a44
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-15
+
+    Fix below lintian error
+    W:janeclone: extended-description-line-too-long
+    W:janeclone: extended-description-line-too-long
+
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+
+commit fc44236
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-15
+
+    Fix below lintian error
+    W: janeclone source: dh-make-template-in-source debian/janeclone.doc-base.EX
+    W: janeclone: extra-license-file usr/share/janeclone/rc/COPYING
+    W: janeclone: extra-license-file usr/share/janeclone/rc/gpl-2.0.txt
+
+ChangeLog
+Makefile.am
+configure.ac
+
+commit 6cc36df
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-15
+
+    Fix below lintian error
+    W:janeclone source: changelog-should-mention-nmu
+    W:janeclone source: source-nmu-has-incorrect-version-number 1.1.4
+
+ChangeLog
+Makefile.am
+
+commit 3f2cf98
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-14
+
+    Update control.ubuntu
+
+debian/control.ubuntu
+
+commit 1507e15
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-14
+
+    Fix MinGW build [skip ci]
+
+cmdline_twitter/Makefile.am
+wxsqlite3/Makefile.am
+
+commit ab8e83b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-14
+
+    Remove uuid checking process from configure.ac
+    Change cmdline_twitter link way Dynamic -> Static
+
+.travis.yml
+cmdline_twitter/Makefile.am
+configure.ac
+src/Makefile.am
+
+commit d275710
+Merge: ab9d9a2 06f57b2
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-14
+
+    Merge pull request #52 from vabock/md5
+    
+    vabock's MD5 modification !
+
+commit 06f57b2
+Author: Vabock <vabock@gmail.com>
+Date:   2015-01-10
+
+    Remove crossguid
+
+Makefile.am
+configure.ac
+crossguid/.gitattributes
+crossguid/.gitignore
+crossguid/LICENSE
+crossguid/Makefile.am
+crossguid/README.md
+crossguid/VisualStudio/CrossGuid.opensdf
+crossguid/VisualStudio/CrossGuid.sln
+crossguid/VisualStudio/CrossGuid.vcxproj
+crossguid/VisualStudio/CrossGuid.vcxproj.filters
+crossguid/android.sh
+crossguid/android/AndroidManifest.xml
+crossguid/android/ant.properties
+crossguid/android/build.xml
+crossguid/android/jni/Android.mk
+crossguid/android/jni/Application.mk
+crossguid/android/jni/jnitest.cpp
+crossguid/android/proguard-project.txt
+crossguid/android/project.properties
+crossguid/android/res/drawable-hdpi/ic_launcher.png
+crossguid/android/res/drawable-ldpi/ic_launcher.png
+crossguid/android/res/drawable-mdpi/ic_launcher.png
+crossguid/android/res/drawable-xhdpi/ic_launcher.png
+crossguid/android/res/layout/main.xml
+crossguid/android/res/values/strings.xml
+crossguid/android/src/ca/graemehill/crossguid/testapp/MainActivity.java
+crossguid/clean.sh
+crossguid/guid.cpp
+crossguid/guid.h
+crossguid/linux.sh
+crossguid/mac.sh
+crossguid/test.cpp
+crossguid/test.h
+crossguid/testmain.cpp
+src/Makefile.am
+src/janecloneutil.hpp
+
+commit c59438a
+Author: Vabock <vabock@gmail.com>
+Date:   2015-01-10
+
+    Replace crossguid to libcrypto(OpenSSL)'s MD5
+
+.travis.yml
+configure.ac
+src/Makefile.am
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/socketcommunication.cpp
+
+commit 2479a9d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-12
+
+    Make branch for visual studio
+
+bakefile/janeclone.bat
+bakefile/janeclone.bkl
+bakefile/janeclone.ps1
+janeclone.bkl
+
+commit ab9d9a2
+Merge: 454dd11 d06c8bc
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Merge pull request #48 from Hiroyuki-Nagata/legitimate-deb
+    
+    Fix configure script for flexible build
+
+commit d06c8bc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Fix dependency
+
+debian/control.ubuntu
+misc/upload_bintray.sh
+sqlite3/Makefile.am
+wxsqlite3/Makefile.am
+
+commit 1b6c09b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Fix configure script for flexible build
+
+.travis.yml
+ChangeLog
+Makefile.am
+configure.ac
+src/Makefile.am
+
+commit 454dd11
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Fix file hierarchy for legitimate debian package
+
+.travis.yml
+ChangeLog
+Makefile.am
+cmdline_twitter/Makefile.am
+crossguid/Makefile.am
+curlpp/src/curlpp/Makefile.am
+curlpp/src/utilspp/Makefile.am
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+sqlite3/Makefile.am
+src/Makefile.am
+wxsqlite3/Makefile.am
+
+commit a3c36e5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Update .travis.yml
+
+.travis.yml
+
+commit 5a42f61
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Update control.ubuntu
+
+debian/control.ubuntu
+
+commit 4987f63
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Update rules
+    
+    Add 1/rules/clean-la.mk.in: Remove dependency_libs lines from .la
+
+debian/rules
+
+commit 3ed27bc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-06
+
+    Update for osx binary upload
+
+.travis.yml
+misc/upload_bintray.sh
+packages.config
+
+commit 104807d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-05
+
+    Fix change pane function
+
+src/janeclone.cpp
+
+commit 891a604
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-05
+
+    Fix travis setting
+    Fix byteorder.hpp for MinGW
+    Fix compile option
+
+.travis.yml
+cmdline_twitter/Makefile.am
+cmdline_twitter/hashcodes/byteorder.hpp
+configure.ac
+
+commit 9a36dba
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-04
+
+    Add portable_endian.h ( public domain ) for osx build
+
+cmdline_twitter/Makefile.am
+cmdline_twitter/hashcodes/byteorder.hpp
+cmdline_twitter/hashcodes/portable_endian.hpp
+
+commit 3d3a41b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-04
+
+    Update janeclone.menu [skip ci]
+
+misc/janeclone.menu
+
+commit f9c1541
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-04
+
+    Delete debian/menu [skip ci]
+
+debian/menu
+
+commit 9a72135
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-04
+
+    Fix package build error
+    Fix W: janeclone: menu-item-creates-new-section Applications/Network/BBS Reader usr/share/menu/janeclone:5
+
+cmdline_twitter/Makefile.am
+debian/control.jessie
+debian/menu
+
+commit 2e18ad0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-04
+
+    Add subdirectory cmdline_twitter
+
+ChangeLog
+Makefile.am
+cmdline_twitter/AUTHORS
+cmdline_twitter/COPYING
+cmdline_twitter/ChangeLog
+cmdline_twitter/INSTALL
+cmdline_twitter/LICENSE
+cmdline_twitter/Makefile.am
+cmdline_twitter/NEWS
+cmdline_twitter/README
+cmdline_twitter/README.md
+cmdline_twitter/hashcodes/byteorder.hpp
+cmdline_twitter/hashcodes/crypto_hash.cpp
+cmdline_twitter/hashcodes/crypto_hash.hpp
+cmdline_twitter/hashcodes/hashtest_cpp.cpp
+cmdline_twitter/hashcodes/hmac.hpp
+cmdline_twitter/hashcodes/md5.cpp
+cmdline_twitter/hashcodes/md5.hpp
+cmdline_twitter/hashcodes/sha1.cpp
+cmdline_twitter/hashcodes/sha1.hpp
+cmdline_twitter/http/httpclient.cpp
+cmdline_twitter/http/httpclient.hpp
+cmdline_twitter/http/httpcurl.cpp
+cmdline_twitter/http/httpcurl.hpp
+cmdline_twitter/include/minisetting.hpp
+cmdline_twitter/include/picojson.h
+cmdline_twitter/include/typedef.hpp
+cmdline_twitter/keys/apikeys.hpp
+cmdline_twitter/main.cpp
+cmdline_twitter/main.hpp
+cmdline_twitter/oauth/base64.cpp
+cmdline_twitter/oauth/base64.hpp
+cmdline_twitter/oauth/oauth.cpp
+cmdline_twitter/oauth/oauth.hpp
+cmdline_twitter/sample_setkey.sh
+cmdline_twitter/twitter/twitter_client.cpp
+cmdline_twitter/twitter/twitter_client.hpp
+cmdline_twitter/twitter/twitter_json.hpp
+cmdline_twitter/ui/simple_terminal.cpp
+cmdline_twitter/ui/simple_terminal.hpp
+cmdline_twitter/ui/simple_ui.cpp
+cmdline_twitter/ui/simple_ui.hpp
+cmdline_twitter/write_apikeys.sh
+configure.ac
+janeclone.bkl
+
+commit addca92
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2015-01-03
+
+    Change some classes to struct in datatype.hpp
+    Add some function.
+
+Makefile.am
+src/datatype.hpp
+src/enums.hpp
+src/imagepanel.hpp
+src/janeclone.cpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit 37ee2a1
+Merge: 7c2c73f 086f43b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2015-01-02
+
+    Merge pull request #47 from vabock/imageviewer-fix
+    
+    Imageviewer fix by vabock
+
+commit 086f43b
+Author: Vabock <vabock@gmail.com>
+Date:   2015-01-01
+
+    Remove wxWindow::FindWindowById
+
+src/janecloneimageviewer.cpp
+
+commit 562b1a9
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-31
+
+    Refactor JaneCloneImageViewer's ContextMenu
+
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit 6272343
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-31
+
+    Trackpad support
+    Fixes #46
+
+src/janecloneimageviewer.cpp
+
+commit 7c2c73f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-30
+
+    Implement save all image files in ImageViewer
+
+src/enums.hpp
+src/extractboardlist.cpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/threadcontentwebview.cpp
+
+commit 980229e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-30
+
+    Add developer name
+
+src/janeclone.cpp
+
+commit edd5aab
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-30
+
+    Fix travis setting
+
+.travis.yml
+
+commit 49e1c7a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-29
+
+    Fix old fassion coding style
+    ...new/delete -> unique_ptr
+
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentwebview.cpp
+src/threadcontentwindow.cpp
+
+commit 60ea5f7
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-29
+
+    Fix segmentation fault bug when pug color ID.
+    Fix travis setting
+
+.travis.yml
+src/janecloneutil.cpp
+
+commit b384d50
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-29
+
+    Add viewer_operate.xrc
+
+.travis.yml
+src/rc/hint.xrc
+src/rc/viewer_operate.xrc
+src/settingwindow.cpp
+src/settingwindow.hpp
+
+commit 211c3d8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-28
+
+    Prepare ViewerSettingWindow
+
+.travis.yml
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+
+commit bcf2316
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-28
+
+    Update configure.ac
+
+configure.ac
+
+commit d3e8ba1
+Author: Hiroyuki Nagata <hiroyuki-nagata@panzer_girl.com>
+Date:   2014-12-24
+
+    Update some config [skip ci]
+
+.travis.yml
+janeclone.bkl
+
+commit 5cff5ba
+Author: Hiroyuki Nagata <hiroyuki-nagata@panzer_girl.com>
+Date:   2014-12-24
+
+    Add NuGet packages.config
+
+packages.config
+
+commit fc3cf37
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-12-24
+
+    Add bakefile for vs2013 [skip ci]
+
+CMakeLists.txt
+crossguid/CMakeLists.txt
+curlpp/CMakeLists.txt
+curlpp/include/CMakeLists.txt
+curlpp/include/curlpp/CMakeLists.txt
+curlpp/include/curlpp/internal/CMakeLists.txt
+curlpp/include/utilspp/CMakeLists.txt
+curlpp/include/utilspp/functor/CMakeLists.txt
+curlpp/include/utilspp/singleton/CMakeLists.txt
+curlpp/src/CMakeLists.txt
+curlpp/src/curlpp/CMakeLists.txt
+curlpp/src/curlpp/internal/CMakeLists.txt
+curlpp/src/utilspp/CMakeLists.txt
+janeclone.bkl
+sqlite3/CMakeLists.txt
+src/CMakeLists.txt
+test/CMakeLists.txt
+wxsqlite3/CMakeLists.txt
+
+commit 38e502e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-20
+
+    Fix CMakeLists.txt skeltons [skip ci]
+
+.gitignore
+CMakeLists.txt
+curlpp/include/curlpp/CMakeLists.txt
+
+commit 6e9a4a4
+Merge: 582d119 6fe9409
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-20
+
+    I forget commit from other machine, sorry [skip ci]
+    
+    Merge branch 'master' of github.com:Hiroyuki-Nagata/JaneClone
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+commit 582d119
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-20
+
+    Add CMakeLists.txt generated am2cmake [skip ci]
+
+CMakeLists.txt
+crossguid/CMakeLists.txt
+curlpp/CMakeLists.txt
+curlpp/include/CMakeLists.txt
+curlpp/include/curlpp/CMakeLists.txt
+curlpp/include/curlpp/internal/CMakeLists.txt
+curlpp/include/utilspp/CMakeLists.txt
+curlpp/include/utilspp/functor/CMakeLists.txt
+curlpp/include/utilspp/singleton/CMakeLists.txt
+curlpp/src/CMakeLists.txt
+curlpp/src/curlpp/CMakeLists.txt
+curlpp/src/curlpp/internal/CMakeLists.txt
+curlpp/src/utilspp/CMakeLists.txt
+sqlite3/CMakeLists.txt
+src/CMakeLists.txt
+test/CMakeLists.txt
+wxsqlite3/CMakeLists.txt
+
+commit 6fe9409
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-12-19
+
+    Update ChangeLog INSTALL [skip ci]
+
+ChangeLog
+INSTALL
+
+commit 8f4c17c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-18
+
+    Implement #28. Closed #28
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.hpp
+
+commit 3d3784a
+Merge: ae01253 21167ad
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-17
+
+    Merge pull request #43 from vabock/rolling-bugfix-1
+    
+    定期的バグフィックスその1
+
+commit 21167ad
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-17
+
+    Fix JaneClone::pid heap-use-after-free
+    Fixes #42
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/main.cpp
+
+commit ca3ee63
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-13
+
+    Fix clean up -Wall warnings
+    Fixes #38
+
+src/responsewindow.cpp
+src/virtualboardlistctrl.hpp
+
+commit 99c0285
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-13
+
+    Remove unnecessary board info deletion
+    Fixes #37
+
+src/janeclone.cpp
+
+commit ae01253
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-17
+
+    Implement red response popup ( beta )
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+
+commit ae41ab1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-16
+
+    Implement red response extract
+
+src/datatype.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/threadcontentwindow.cpp
+
+commit d8891a4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-16
+
+    Update Travis setting for osx build
+
+.travis.yml
+
+commit 36fb131
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Fix automake syntax src/Makefile.am
+
+.travis.yml
+src/Makefile.am
+
+commit f5f8254
+Merge: b3cfc73 74e125f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Merge pull request #41 from vabock/refactor-uiutil
+    
+    Refactor JaneCloneUiUtil(wxString manipulation)
+
+commit 74e125f
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-15
+
+    Refactor JaneCloneUiUtil(wxString manipulation)
+
+src/janeclone.cpp
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+
+commit b3cfc73
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Fix wx-2.8 wxString error...
+
+src/extractboardlist.cpp
+
+commit 1e70403
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Add function to format HTML source at ThreadContentWindow
+
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/threadcontentwindow.cpp
+
+commit 07cdee3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Test for debian/control files
+
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+
+commit 2ca30e6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Remove addtional library from .travis.yml
+
+.travis.yml
+
+commit 9329114
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Fix Travis error
+
+src/janeclone.cpp
+
+commit bec3c57
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Revert "Deal with Travis build error"
+    
+    This reverts commit 90ef407ebcdea830332caa6cdb5e5f458b4d4db1.
+    
+    Conflicts:
+    	configure.ac
+
+Makefile.am
+configure.ac
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+src/Makefile.am
+
+commit 0cc8224
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Update configure.ac
+
+configure.ac
+
+commit 59ecd7d
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Update configure.ac
+
+configure.ac
+
+commit 6714530
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Update .travis.yml
+
+.travis.yml
+
+commit 7a41028
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-15
+
+    Update Travis setting
+
+.travis.yml
+
+commit d96b308
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-14
+
+    Update Travis setting
+
+.travis.yml
+
+commit 85721b0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-14
+
+    Update Travis setting
+
+.travis.yml
+
+commit 90ef407
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-14
+
+    Deal with Travis build error
+    ( ... On Linux/BSD build, JaneClone will use sqlite3 & wxsqlite3 provided by package)
+
+Makefile.am
+configure.ac
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+src/Makefile.am
+
+commit 5ec1e2d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-14
+
+    Deal with wx-2.8 and wx-3.0 wxT macro difference
+
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+
+commit 9d796c0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-14
+
+    Fix #36 , support OS X Command and Q event
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 3946e60
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-14
+
+    Fix --enable-webview build.
+    (...But I wonder why GTK build link is wx-3.0 and wx-2.8 ???
+    I don't intend to link JaneClone with wx-2.8.
+    libtool or wxWidgets bug ??? )
+
+src/drawpane.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwebview.cpp
+src/threadcontentwebview.hpp
+
+commit 7e4ea0a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-13
+
+    Add HTML source view function
+
+src/Makefile.am
+src/enums.hpp
+src/janecloneutil.cpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit d57ad72
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-12
+
+    Change default thread viewer wxWebView -> wxHtmlWindow
+    Because wxWebView is difficult to customize.
+
+.gitignore
+README.md
+configure.ac
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+src/Makefile.am
+src/janeclone.hpp
+src/threadcontentbar.hpp
+
+commit fc54c16
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-12-12
+
+    Add osx build
+
+.travis.yml
+
+commit 8d27d32
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-12-12
+
+    Fix configure.ac for crosscompile
+
+.travis.yml
+configure.ac
+
+commit 212d589
+Merge: 838e5bc c4d44ec
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-11
+
+    Merge pull request #35 from vabock/pkginfo-fix
+    
+    壊れたPkgInfoが作成される
+
+commit c4d44ec
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-11
+
+    Fix broken PkgInfo
+
+Makefile.am
+
+commit 838e5bc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-09
+
+    Try to Fix #34
+
+src/janeclone.cpp
+src/settingwindow.cpp
+
+commit 6d8cc77
+Merge: a1d3005 4657889
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-12-09
+
+    Merge pull request #33 from vabock/retina
+    
+    Retinaディスプレイ対応
+
+commit 4657889
+Author: Vabock <vabock@gmail.com>
+Date:   2014-12-09
+
+    Retina support
+
+Makefile.am
+
+commit a1d3005
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-06
+
+    Fix wx-2.8 and wx-3.0 's wxString diff.
+
+src/settingwindow.cpp
+
+commit dda9028
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-06
+
+    Fix Makefile.am miss
+
+src/Makefile.am
+
+commit fdc021c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-06
+
+    Fix hint.xrc stub description to official. Fix build error.
+
+src/janeclone.cpp
+src/otherpanels.cpp
+src/rc/hint.xrc
+
+commit 12d0417
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-05
+
+    Use XRC file, and fix JaneClone initialize process.
+
+src/Makefile.am
+src/janeclone.cpp
+src/rc/hint.xrc
+src/settingwindow.cpp
+src/settingwindow.hpp
+
+commit dbabda2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-05
+
+    Fix build error and implement OtherSettingPanelOne
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit eaebd7a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-12-05
+
+    Update otherpanels.cpp for OtherSettingPanelOne
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 821b955
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-30
+
+    Update otherpanels.cpp for OtherSettingPanelOne
+
+.travis.yml
+debian/control.ubuntu
+debian/control.wheezy
+src/enums.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit f9c0da9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-25
+
+    Fix Makefile shell
+
+Makefile.am
+
+commit 24c43d1
+Author: hiroyuki nagata <hiroyuki@vyatta-maiden.hm.moe>
+Date:   2014-11-25
+
+    Update upload_bintray.sh
+
+Makefile.am
+misc/upload_bintray.sh
+
+commit e68ef23
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-24
+
+    Update travis.yml
+
+.travis.yml
+
+commit 9e0631a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-24
+
+    Add script for uploading deb file to bintray
+
+.travis.yml
+misc/upload_bintray.sh
+
+commit 15ad9ac
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-23
+
+    Fix compile error and make command
+
+.gitignore
+.travis.yml
+json11/.deps/.dirstamp
+json11/.dirstamp
+src/janeclone.cpp
+
+commit 9caf6af
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-23
+
+    Fix make distdir target script
+
+ChangeLog
+src/Makefile.am
+
+commit afa9c30
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-23
+
+    Add json11 for 2ch.net new API.
+
+json11/.deps/.dirstamp
+json11/.dirstamp
+json11/LICENSE.txt
+json11/README.md
+json11/json11.cpp
+json11/json11.hpp
+json11/test.cpp
+src/Makefile.am
+src/janeclone.cpp
+
+commit a291372
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-19
+
+    Update wxWebView source code for executing javascript
+
+src/datatype.hpp
+src/janecloneutil.cpp
+src/script/MIT-LICENSE.txt
+src/script/README.md
+src/script/bower.json
+src/script/contextMenu.css
+src/script/contextMenu.js
+src/script/contextMenu.js.jquery.json
+src/script/contextMenu.min.js
+src/script/embedded.js
+src/script/jquery-2.1.1.min.js
+src/script/pop.js
+src/threadcontentwebview.cpp
+
+commit ec71223
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-18
+
+    Add dynamic javascript file loading system
+
+Makefile.am
+src/Makefile.am
+src/datatype.hpp
+src/janecloneutil.cpp
+src/rc/janeclone.xpm
+src/script/embedded.js
+src/script/pop.js
+src/threadcontentwebview.cpp
+
+commit 4a87f42
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-13
+
+    Fix "E: janeclone: menu-icon-too-big usr/share/janeclone/rc/janeclone.xpm: 128x128 > 32x32"
+
+ChangeLog
+configure.ac
+debian/rules
+src/rc/janeclone.xpm
+wxsqlite3/wxsqlite3.cpp
+
+commit 12bb32b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-04
+
+    Add osx build process in Travis CI setting
+    Fix lintian error "E: janeclone: non-empty-dependency_libs-in-la-file"
+
+.travis.yml
+Makefile.am
+
+commit 40a4d49
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Fix lintian error "E: janeclone source: invalid-standards-version 1.1.4"
+
+Makefile.am
+configure.ac
+debian/control.jessie
+debian/control.ubuntu
+debian/control.wheezy
+
+commit 9fefe7d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Use testing debuild option "--preserve-env --preserve-envvar PATH"
+
+Makefile.am
+
+commit 0439416
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Fix debuild command for environment variable
+
+Makefile.am
+
+commit c3e58ed
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Add dependency "cdbs"
+
+.travis.yml
+
+commit 10a9448
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Add control file for Travis ubuntu.
+
+Makefile.am
+debian/control.ubuntu
+
+commit cd487d5
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Deal with old dh-make by "yes" command. Use Travis env command.
+
+.travis.yml
+Makefile.am
+
+commit 1004ece
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Fix Makefile.am for building pacakge requiring package
+
+.travis.yml
+
+commit c6d43f5
+Merge: a189df2 6f13ae6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Merge branch 'master' of github.com:Hiroyuki-Nagata/JaneClone
+    
+    I forget below commit pull...
+    
+    Conflicts:
+    	.travis.yml
+
+commit a189df2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Update Makefile.am ( package build ) , and update Travis CI setting
+
+.travis.yml
+ChangeLog
+Makefile.am
+src/Makefile.am
+
+commit 6f13ae6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Update Travis CI setting
+
+.travis.yml
+
+commit f3e048f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Update Travis CI setting
+
+.travis.yml
+cross-i686-w64-mingw32.sh
+x86_64-apple-darwin.sh
+
+commit 09ffd11
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Fix coding miss ( use of 'this' keyword in static function )
+
+src/janecloneuiutil.cpp
+
+commit 43c1a8b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Deal with old version wxWidgets conversion std::string to wxString
+
+src/janecloneutil.cpp
+
+commit 89b9c49
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-03
+
+    Deal with copyright, fix macro error
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+
+commit 003b992
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-02
+
+    Fix macro error.
+
+src/janeclone.hpp
+
+commit deb0154
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-02
+
+    Update Travis setting ( g++ version 4.8 -> 4.7 )
+
+.travis.yml
+
+commit 5e29507
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-02
+
+    Update Travis setting
+
+.travis.yml
+
+commit 58418c2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-11-02
+
+    Update Travis setting
+
+.travis.yml
+
+commit 2370427
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-10-01
+
+    Delete unused macros, fix GTK build.
+
+src/threadcontentwebview.cpp
+src/threadcontentwebview.hpp
+
+commit d69c4f5
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-09-28
+
+    Add http proxy configuration loading function.
+
+configure.ac
+src/enums.hpp
+src/janecloneutil.hpp
+src/otherpanels.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 813a8b1
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-09-27
+
+    Fix coding miss.
+
+src/settingwindow.cpp
+src/threadcontentwebview.cpp
+
+commit cdf28fd
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-09-27
+
+    Add some function in NetworkSettingPanel
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+
+commit b9d1a38
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-09-26
+
+    fixed #29 ; Suppress invalid encoding warning.
+
+configure.ac
+src/Makefile.am
+src/datatype.hpp
+src/enums.hpp
+src/janecloneutil.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentwebview.cpp
+src/threadcontentwebview.hpp
+
+commit d35bf94
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-09-22
+
+    Make html viewer font can see AA.
+
+src/datatype.hpp
+src/threadcontentwebview.cpp
+
+commit 7a09f52
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-21
+
+    Add missing sources.
+
+src/threadcontentwebview.cpp
+src/threadcontentwebview.hpp
+
+commit d26bfae
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-21
+
+    Start to use wxWebView ! Smooth browsing now !
+
+configure.ac
+debian/control.jessie
+src/Makefile.am
+src/datatype.hpp
+src/janeclone.hpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.hpp
+
+commit a059a27
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-20
+
+    Update control files.
+
+debian/control.jessie
+debian/control.wheezy
+
+commit ad90872
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-20
+
+    Release JaneClone-1.1.4
+
+ChangeLog
+INSTALL
+NEWS
+
+commit 49b614d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-20
+
+    MinGW gcc will compile crossguid.
+
+crossguid/Makefile.am
+
+commit 0c7cbfc
+Author: hiroyuki nagata <hiroyuki@vyatta-maiden.hm.moe>
+Date:   2014-09-19
+
+    Add dependency for libuuid
+
+configure.ac
+
+commit ef27e85
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-09-18
+
+    Delete boost-uuid -> add cross guid.
+
+Makefile.am
+configure.ac
+crossguid/.gitattributes
+crossguid/.gitignore
+crossguid/LICENSE
+crossguid/Makefile.am
+crossguid/README.md
+crossguid/VisualStudio/CrossGuid.opensdf
+crossguid/VisualStudio/CrossGuid.sln
+crossguid/VisualStudio/CrossGuid.vcxproj
+crossguid/VisualStudio/CrossGuid.vcxproj.filters
+crossguid/android.sh
+crossguid/android/AndroidManifest.xml
+crossguid/android/ant.properties
+crossguid/android/build.xml
+crossguid/android/jni/Android.mk
+crossguid/android/jni/Application.mk
+crossguid/android/jni/jnitest.cpp
+crossguid/android/proguard-project.txt
+crossguid/android/project.properties
+crossguid/android/res/drawable-hdpi/ic_launcher.png
+crossguid/android/res/drawable-ldpi/ic_launcher.png
+crossguid/android/res/drawable-mdpi/ic_launcher.png
+crossguid/android/res/drawable-xhdpi/ic_launcher.png
+crossguid/android/res/layout/main.xml
+crossguid/android/res/values/strings.xml
+crossguid/android/src/ca/graemehill/crossguid/testapp/MainActivity.java
+crossguid/clean.sh
+crossguid/guid.cpp
+crossguid/guid.h
+crossguid/linux.sh
+crossguid/mac.sh
+crossguid/test.cpp
+crossguid/test.h
+crossguid/testmain.cpp
+src/Makefile.am
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+uuid-boost/.gitattributes
+uuid-boost/include/boost/uuid/name_generator.hpp
+uuid-boost/include/boost/uuid/nil_generator.hpp
+uuid-boost/include/boost/uuid/random_generator.hpp
+uuid-boost/include/boost/uuid/seed_rng.hpp
+uuid-boost/include/boost/uuid/sha1.hpp
+uuid-boost/include/boost/uuid/string_generator.hpp
+uuid-boost/include/boost/uuid/uuid.hpp
+uuid-boost/include/boost/uuid/uuid_generators.hpp
+uuid-boost/include/boost/uuid/uuid_io.hpp
+uuid-boost/include/boost/uuid/uuid_serialize.hpp
+uuid-boost/index.html
+uuid-boost/test/Jamfile.v2
+uuid-boost/test/compile_name_generator.cpp
+uuid-boost/test/compile_nil_generator.cpp
+uuid-boost/test/compile_random_generator.cpp
+uuid-boost/test/compile_seed_rng.cpp
+uuid-boost/test/compile_string_generator.cpp
+uuid-boost/test/compile_uuid.cpp
+uuid-boost/test/compile_uuid_generators.cpp
+uuid-boost/test/compile_uuid_io.cpp
+uuid-boost/test/compile_uuid_serialize.cpp
+uuid-boost/test/test_generators.cpp
+uuid-boost/test/test_include1.cpp
+uuid-boost/test/test_include2.cpp
+uuid-boost/test/test_io.cpp
+uuid-boost/test/test_name_generator.cpp
+uuid-boost/test/test_nil_generator.cpp
+uuid-boost/test/test_random_generator.cpp
+uuid-boost/test/test_serialization.cpp
+uuid-boost/test/test_sha1.cpp
+uuid-boost/test/test_string_generator.cpp
+uuid-boost/test/test_tagging.cpp
+uuid-boost/test/test_uuid.cpp
+uuid-boost/test/test_uuid_class.cpp
+uuid-boost/test/test_uuid_in_map.cpp
+uuid-boost/test/test_wserialization.cpp
+uuid-boost/uuid.html
+
+commit ae2c1e3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-12
+
+    Deal with notifing thread tab close event.
+
+src/janeclone.cpp
+
+commit 771c5ce
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-11
+
+    Add function to sync tree tab and now reading thread.
+
+src/janeclone.cpp
+
+commit 0d8e17c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-09-10
+
+    fixed #30 ; I use uuid-boost, delete wxuuid.
+
+Makefile.am
+configure.ac
+libwxuuid/Makefile.am
+libwxuuid/global.h
+libwxuuid/md5.h
+libwxuuid/md5c.c
+libwxuuid/test/wxuuid-test1.cpp
+libwxuuid/wxGUID.cpp
+libwxuuid/wxGUID.h
+libwxuuid/wxMD5.cpp
+libwxuuid/wxMD5.h
+libwxuuid/wxUUID.cpp
+libwxuuid/wxUUID.h
+src/Makefile.am
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+uuid-boost/.gitattributes
+uuid-boost/include/boost/uuid/name_generator.hpp
+uuid-boost/include/boost/uuid/nil_generator.hpp
+uuid-boost/include/boost/uuid/random_generator.hpp
+uuid-boost/include/boost/uuid/seed_rng.hpp
+uuid-boost/include/boost/uuid/sha1.hpp
+uuid-boost/include/boost/uuid/string_generator.hpp
+uuid-boost/include/boost/uuid/uuid.hpp
+uuid-boost/include/boost/uuid/uuid_generators.hpp
+uuid-boost/include/boost/uuid/uuid_io.hpp
+uuid-boost/include/boost/uuid/uuid_serialize.hpp
+uuid-boost/index.html
+uuid-boost/test/Jamfile.v2
+uuid-boost/test/compile_name_generator.cpp
+uuid-boost/test/compile_nil_generator.cpp
+uuid-boost/test/compile_random_generator.cpp
+uuid-boost/test/compile_seed_rng.cpp
+uuid-boost/test/compile_string_generator.cpp
+uuid-boost/test/compile_uuid.cpp
+uuid-boost/test/compile_uuid_generators.cpp
+uuid-boost/test/compile_uuid_io.cpp
+uuid-boost/test/compile_uuid_serialize.cpp
+uuid-boost/test/test_generators.cpp
+uuid-boost/test/test_include1.cpp
+uuid-boost/test/test_include2.cpp
+uuid-boost/test/test_io.cpp
+uuid-boost/test/test_name_generator.cpp
+uuid-boost/test/test_nil_generator.cpp
+uuid-boost/test/test_random_generator.cpp
+uuid-boost/test/test_serialization.cpp
+uuid-boost/test/test_sha1.cpp
+uuid-boost/test/test_string_generator.cpp
+uuid-boost/test/test_tagging.cpp
+uuid-boost/test/test_uuid.cpp
+uuid-boost/test/test_uuid_class.cpp
+uuid-boost/test/test_uuid_in_map.cpp
+uuid-boost/test/test_wserialization.cpp
+uuid-boost/uuid.html
+
+commit a48fc93
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-08-12
+
+    Add unit test.
+
+.gitignore
+libwxuuid/Makefile.am
+libwxuuid/test/wxuuid-test1.cpp
+
+commit ca56afa
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-08-03
+
+    fixed #31 ; Modify the way to get instance of wxMenu.
+
+src/janeclone.cpp
+
+commit 45b5cab
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-30
+
+    Fix coding style
+
+src/janeclone.cpp
+
+commit c469dda
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-30
+
+    Modify copyright year.
+
+src/enums.hpp
+src/imagepanel.hpp
+src/janecloneimageviewer.hpp
+
+commit 58adfc6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-30
+
+    Modify copyright year.
+
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/drawpane.cpp
+src/drawpane.hpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/main.cpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit ed3135e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-30
+
+    fixed #26 ; prevent to overwrite dat file when HTTP 302 received.
+
+Makefile.am
+src/socketcommunication.cpp
+
+commit dcb33d0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-29
+
+    fixed #25 ; remove useless std::endl.
+
+src/janecloneuiutil.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit e25ca37
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-07-27
+
+    Change get instance method ( new/delete -> unique_ptr<T> )
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit b2490a8
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-07-27
+
+    Some fix for search box initial value.
+
+src/janeclone.cpp
+
+commit 40862c8
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-07-27
+
+    Implement multiplatform tabbed tree(boardlist/fav/now reading)
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.hpp
+
+commit 789666b
+Author: 永田 裕之 <newserver002@gmail.com>
+Date:   2014-07-27
+
+    Fix favtree and now reading tree behavior on OS X
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+x86_64-apple-darwin.sh
+
+commit ec40c68
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-26
+
+    Add some helper function JaneCloneUiUtil::QueueEventHelper, SendLoggingHelper
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+src/janecloneutil.hpp
+src/main.cpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.hpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.hpp
+
+commit 9f05260
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-26
+
+    Fix Favarite page and Now reading page
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janecloneuiutil.cpp
+
+commit 29b1222
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-24
+
+    Add janecloneuiutil class.
+    Add search bar for Favarite page and Now reading page.
+
+src/Makefile.am
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneuiutil.cpp
+src/janecloneuiutil.hpp
+
+commit a2c6038
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-20
+
+    Add favarite page and now reading page.
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 33a3b69
+Author: 永田 裕之 <hiroyuki@nagata-no-MacBook-Pro.local>
+Date:   2014-07-20
+
+    fix OS X crash bug when JaneClone start
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit c3330ef
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-20
+
+    fix copyright generator
+
+ChangeLog
+Makefile.am
+configure.ac
+
+commit 8ab3d9a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-07-20
+
+    Update various files
+      - update ChangeLog, .gitignore
+      - fix Makefile.am for new automake syntax
+      - fix debian control file for legitimate debian package
+
+.gitignore
+ChangeLog
+Makefile.am
+curlpp/src/curlpp/Makefile.am
+curlpp/src/curlpp/internal/Makefile.am
+curlpp/src/utilspp/Makefile.am
+debian/control.jessie
+debian/control.wheezy
+src/janeclone.cpp
+
+commit 5126962
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-29
+
+    Modify MinGW packaging script.
+
+Makefile.am
+
+commit 21b7c5f
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-29
+
+    add script for cross compile by MinGW
+
+cross-i686-w64-mingw32.sh
+cross-x86_64-w64-mingw32.sh
+
+commit 8578da5
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-29
+
+    fix automake warning
+
+src/Makefile.am
+
+commit 7c19ebe
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-06-28
+
+    fix configure.ac for MinGW cross compile
+
+configure.ac
+src/socketcommunication.cpp
+
+commit 9748c2a
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-19
+
+    Add script for GPG key sign
+
+Makefile.am
+
+commit cc5654b
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-19
+
+    Deal with building JaneClone with Debian jessie.
+    Delete configure file (because it is generated file)
+
+configure
+debian/control.jessie
+src/Makefile.am
+
+commit 831d65b
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-19
+
+    Add debian package control file.
+
+Makefile.am
+debian/control.jessie
+debian/control.wheezy
+debian/rules
+
+commit 5b012d6
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2014-06-18
+
+    GCC-4.8対応
+    configure.acを一部修正
+
+ChangeLog
+configure
+configure.ac
+src/sqliteaccessor.cpp
+
+commit b4e9346
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-06-14
+
+    文字コード変換ライブラリをbabelに変更
+
+.gitmodules
+Makefile.am
+README.md
+babel/apple.csv
+babel/babel.cpp
+babel/babel.h
+babel/c932-uni.dat
+babel/cp932.csv
+babel/euc-scr.dat
+babel/euc-sjis.dat
+babel/euc-uni.csv
+babel/euc2-uni.dat
+babel/euc3-uni.dat
+babel/scoremap.csv
+babel/sjis-euc.csv
+babel/sjis-euc.dat
+babel/sjis-scr.dat
+babel/uni-c932.dat
+babel/uni-euc.dat
+babel/uni-scr.dat
+babel/uni-utc.dat
+babel/utc-uni.dat
+babel/utc.csv
+bootstrap
+configure.ac
+libwxnkf
+src/Makefile.am
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/threadcontentwindow.cpp
+
+commit f7ff236
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-05-16
+
+    パッケージビルドが通らなくなっていたので修正
+
+ChangeLog
+Makefile.am
+
+commit 02725bf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-16
+
+    ２ペインと３ペインの表示切替を実装
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 39bd0a9
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2014-03-15
+
+    Update README.md
+
+README.md
+
+commit 92e317c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-15
+
+    READMEファイルの体裁を変える
+
+README
+README.md
+src/janeclone.cpp
+src/janeclone.hpp
+src/main.cpp
+
+commit a837d1c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-15
+
+    フォーカスがある状態でEnterキー押下すると板一覧/スレ一覧検索を実施できるようにした
+
+bootstrap
+src/janeclone.cpp
+src/janeclone.hpp
+src/main.cpp
+
+commit 6d4cca4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-15
+
+    したらば掲示板対応：CSVファイル取得
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/socketcommunication.cpp
+
+commit e77e968
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-07
+
+    したらば掲示板対応：スレ一覧更新
+
+src/janeclone.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit c9ce431
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-01
+
+    Macにおいてもしたらば掲示板の板名取得機能が使えるように修正
+
+Makefile.am
+src/Makefile.am
+
+commit 26ec36b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-01
+
+    AutotoolsのC++11対応
+
+.gitignore
+aclocal.m4
+configure.ac
+curlpp/include/curlpp/config.h
+m4/ax_cxx_compile_stdcxx_11.m4
+
+commit 633d05d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-01
+
+    Autotoolsの自動生成ファイルをリポジトリから削除
+
+.gitmodules
+curlpp/depcomp
+curlpp/include/curlpp/config.h~
+curlpp/install-sh
+curlpp/ltmain.sh
+curlpp/missing
+libwxnkf
+src/Makefile.am
+
+commit 0bf651a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2014-03-01
+
+    Autotoolsの自動生成ファイルをリポジトリから削除、libwxnkfの移動
+
+config.guess
+config.h.in
+config.sub
+configure.ac
+depcomp
+install-sh
+libwxnkf/Makefile.am
+libwxnkf/flagset.cpp
+libwxnkf/flagset.h
+libwxnkf/utf16util.cpp
+libwxnkf/utf16util.h
+libwxnkf/utf8table.cpp
+libwxnkf/utf8table.h
+libwxnkf/util.cpp
+libwxnkf/util.h
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+libwxnkf/wxnkfbaseconfig.h
+libwxnkf/wxnkfencoding.cpp
+libwxnkf/wxnkfencoding.h
+ltmain.sh
+missing
+
+commit 897ca73
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-30
+
+    外部板追加機能を追加
+
+ChangeLog
+configure
+src/enums.hpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/otherpanels.cpp
+src/rc/COPYING
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit a64e67e
+Author: hiroyuki-nagata-bsd <newserver002@gmail.com>
+Date:   2013-12-29
+
+    FreeBSD向けビルドのためconfigureを修正
+
+INSTALL
+configure.ac
+curlpp/src/curlpp/Makefile.am
+curlpp/src/curlpp/internal/Makefile.am
+curlpp/src/utilspp/Makefile.am
+
+commit ffef216
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-29
+
+    MinGW向けのビルドスクリプトを修正
+
+Makefile.am
+src/janeclone.cpp
+
+commit 7f6d53f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-29
+
+    ビルドスクリプトを改良
+
+Makefile.am
+configure
+configure.ac
+
+commit e70afb0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-29
+
+    JaneClone-1.1.3をリリース
+
+COPYING
+ChangeLog
+Makefile.am
+NEWS
+configure
+configure.ac
+src/Makefile.am
+
+commit b7dc571
+Author: Hiroyuki-Nagata@MinGW <newserver002@gmail.com>
+Date:   2013-12-28
+
+    Windows向けビルドにてウィンドウのフォーカス切り替えを改良した
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentwindow.cpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit c922358
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-28
+
+    スマートポインタの使用を増やした
+
+src/janeclone.cpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 5be9eaa
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-28
+
+    検索ボックスの表示/非表示の描画を修正
+
+src/janeclone.cpp
+
+commit cea0ab6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-28
+
+    MacOSXでの描画の挙動を修正
+
+Makefile.am
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit d07ff38
+Author: Hiroyuki-Nagata@MinGW <newserver002@gmail.com>
+Date:   2013-12-27
+
+    MSWとMacでスレッド再読み込みの際、正しく描画がされないバグを修正
+
+src/janeclone.cpp
+
+commit 8123079
+Author: Hiroyuki-Nagata@MinGW <newserver002@gmail.com>
+Date:   2013-12-26
+
+    MinGW向けにパッケージ作成スクリプトを修正
+
+Makefile.am
+
+commit 09c745a
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-12-26
+
+    .gitignoreを更新
+
+.gitignore
+
+commit 51c65ba
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-26
+
+    MinGWビルドでのクラッシュの原因となる関数を削除
+
+src/responsewindow.cpp
+src/threadcontentwindow.hpp
+
+commit 86e4146
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-25
+
+    設定画面にDoeタブを追加
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 9f27c60
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-21
+
+    curlppのauto_ptrをunique_ptrに書きかえ
+
+configure
+configure.ac
+curlpp/include/curlpp/Easy.hpp
+curlpp/include/curlpp/internal/CurlHandle.hpp
+curlpp/include/utilspp/clone_ptr.hpp
+curlpp/include/utilspp/functor/Binder.hpp
+curlpp/include/utilspp/functor/Functor.hpp
+curlpp/src/curlpp/Easy.cpp
+curlpp/src/curlpp/internal/CurlHandle.cpp
+
+commit ae5fdb9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-20
+
+    MinGWでのビルド及び簡略化のためcurlはシステム側にインストールされているとして構成から排除
+
+.gitmodules
+Makefile.am
+bootstrap
+configure
+configure.ac
+curl
+curlpp/src/curlpp/Makefile.am
+curlpp/src/curlpp/internal/Makefile.am
+curlpp/src/utilspp/Makefile.am
+src/Makefile.am
+
+commit d5c7d9f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-20
+
+    MinGWでのビルド及び簡略化のためSpiderMonkeyは構成から排除
+    移転先=> https://github.com/Hiroyuki-Nagata/js-1.5-rc6a.git
+
+Makefile.am
+configure
+configure.ac
+js-1.5-rc6a/AUTHORS
+js-1.5-rc6a/COPYING
+js-1.5-rc6a/ChangeLog
+js-1.5-rc6a/INSTALL
+js-1.5-rc6a/Makefile.am
+js-1.5-rc6a/NEWS
+js-1.5-rc6a/README
+js-1.5-rc6a/TODO
+js-1.5-rc6a/configure
+js-1.5-rc6a/configure.ac
+js-1.5-rc6a/src/Makefile.am
+js-1.5-rc6a/src/js.c
+js-1.5-rc6a/src/js.msg
+js-1.5-rc6a/src/jsapi.c
+js-1.5-rc6a/src/jsapi.h
+js-1.5-rc6a/src/jsarena.c
+js-1.5-rc6a/src/jsarena.h
+js-1.5-rc6a/src/jsarray.c
+js-1.5-rc6a/src/jsarray.h
+js-1.5-rc6a/src/jsatom.c
+js-1.5-rc6a/src/jsatom.h
+js-1.5-rc6a/src/jsautocfg.h
+js-1.5-rc6a/src/jsautotoolscfg.h
+js-1.5-rc6a/src/jsautotoolscfg.h.in
+js-1.5-rc6a/src/jsbit.h
+js-1.5-rc6a/src/jsbool.c
+js-1.5-rc6a/src/jsbool.h
+js-1.5-rc6a/src/jsclist.h
+js-1.5-rc6a/src/jscntxt.c
+js-1.5-rc6a/src/jscntxt.h
+js-1.5-rc6a/src/jscompat.h
+js-1.5-rc6a/src/jsconfig.h
+js-1.5-rc6a/src/jscpucfg
+js-1.5-rc6a/src/jscpucfg.c
+js-1.5-rc6a/src/jscpucfg.h
+js-1.5-rc6a/src/jsdate.c
+js-1.5-rc6a/src/jsdate.h
+js-1.5-rc6a/src/jsdbgapi.c
+js-1.5-rc6a/src/jsdbgapi.h
+js-1.5-rc6a/src/jsdhash.c
+js-1.5-rc6a/src/jsdhash.h
+js-1.5-rc6a/src/jsdtoa.c
+js-1.5-rc6a/src/jsdtoa.h
+js-1.5-rc6a/src/jsemit.c
+js-1.5-rc6a/src/jsemit.h
+js-1.5-rc6a/src/jsexn.c
+js-1.5-rc6a/src/jsexn.h
+js-1.5-rc6a/src/jsfile.c
+js-1.5-rc6a/src/jsfile.h
+js-1.5-rc6a/src/jsfun.c
+js-1.5-rc6a/src/jsfun.h
+js-1.5-rc6a/src/jsgc.c
+js-1.5-rc6a/src/jsgc.h
+js-1.5-rc6a/src/jshash.c
+js-1.5-rc6a/src/jshash.h
+js-1.5-rc6a/src/jsinterp.c
+js-1.5-rc6a/src/jsinterp.h
+js-1.5-rc6a/src/jslibmath.h
+js-1.5-rc6a/src/jslock.c
+js-1.5-rc6a/src/jslock.h
+js-1.5-rc6a/src/jslog2.c
+js-1.5-rc6a/src/jslong.c
+js-1.5-rc6a/src/jslong.h
+js-1.5-rc6a/src/jsmath.c
+js-1.5-rc6a/src/jsmath.h
+js-1.5-rc6a/src/jsnum.c
+js-1.5-rc6a/src/jsnum.h
+js-1.5-rc6a/src/jsobj.c
+js-1.5-rc6a/src/jsobj.h
+js-1.5-rc6a/src/jsopcode.c
+js-1.5-rc6a/src/jsopcode.h
+js-1.5-rc6a/src/jsopcode.tbl
+js-1.5-rc6a/src/jsosdep.h
+js-1.5-rc6a/src/jsotypes.h
+js-1.5-rc6a/src/jsparse.c
+js-1.5-rc6a/src/jsparse.h
+js-1.5-rc6a/src/jsprf.c
+js-1.5-rc6a/src/jsprf.h
+js-1.5-rc6a/src/jsprvtd.h
+js-1.5-rc6a/src/jspubtd.h
+js-1.5-rc6a/src/jsregexp.c
+js-1.5-rc6a/src/jsregexp.h
+js-1.5-rc6a/src/jsscan.c
+js-1.5-rc6a/src/jsscan.h
+js-1.5-rc6a/src/jsscope.c
+js-1.5-rc6a/src/jsscope.h
+js-1.5-rc6a/src/jsscript.c
+js-1.5-rc6a/src/jsscript.h
+js-1.5-rc6a/src/jsshell.msg
+js-1.5-rc6a/src/jsstddef.h
+js-1.5-rc6a/src/jsstr.c
+js-1.5-rc6a/src/jsstr.h
+js-1.5-rc6a/src/jstypes.h
+js-1.5-rc6a/src/jsutil.c
+js-1.5-rc6a/src/jsutil.h
+js-1.5-rc6a/src/jsxdrapi.c
+js-1.5-rc6a/src/jsxdrapi.h
+js-1.5-rc6a/src/prmjtime.c
+js-1.5-rc6a/src/prmjtime.h
+js-1.5-rc6a/src/resource.h
+js-1.5-rc6a/src/stamp-h1
+src/Makefile.am
+
+commit 8fbf0bf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-18
+
+    書き込み設定用画面を追加
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 9dba921
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-18
+
+    設定画面に操作パネルを追加
+
+src/datatype.hpp
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit b8cf55c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-14
+
+    MinGW向けビルドの修正
+
+src/sqliteaccessor.cpp
+
+commit 9be7a65
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-14
+
+    Doxyfileを追加
+
+.gitmodules
+Doxyfile
+Makefile.am
+
+commit f876f84
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-14
+
+    新規板追加ダイアログにて、対象がしたらば掲示板ならば板名とカテゴリを自動取得する機能を追加
+
+src/janecloneutil.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit dbcfae9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-13
+
+    ChangeLog/NEWS/READMEの更新
+
+ChangeLog
+NEWS
+README
+
+commit 21c79fa
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-13
+
+    新規板追加のダイアログボックスの機能追加
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 0adedbc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-13
+
+    新規板追加のダイアログボックスの機能追加
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 1b6f7a1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-12
+
+    外部板登録用ダイアログを追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 41c20cf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-12
+
+    更新があればスレタブのアイコンを変更
+
+src/janeclone.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 82697c9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-12
+
+    アイコンをコミット
+
+src/rc/document-close-4.png
+
+commit 729ace6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-12-12
+
+    スレッド一覧情報を更新した際に、スレタブのスレッドがdat落ちしていればアイコンを変更
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/virtualboardlistctrl.hpp
+
+commit 582e953
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    スレタブにアイコンを追加
+
+.gitignore
+src/datatype.hpp
+src/janeclone.cpp
+src/rc/COPYING
+src/rc/document-new-7.png
+src/rc/document-new-8.png
+
+commit 8aa8b2c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    ポップアップ中でリンクをクリックするとブラウザで開く
+
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+
+commit 999857c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    BEログインの通信処理を追加
+
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 7a7bfa4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    BEのチェック機能と画像ウィンドウの最前面化を追加
+
+src/enums.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/threadcontentwindow.cpp
+
+commit 0a18fae
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    BEログイン設定の保存機能を作成
+
+src/imagepanel.cpp
+src/janeclone.cpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 620f364
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    Ctrlキーを押しながらマウスのホイール上下で画像の拡大縮小を行う機能を追加
+
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit 4318aef
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-30
+
+    画像ビューア上で画像のリサイズを行う機能を追加
+
+src/enums.hpp
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit fb24768
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-29
+
+    画像ビューア上で画像の回転を行う機能を追加
+
+src/enums.hpp
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit 8902444
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-28
+
+    画像をブラウザで開く機能、名前をつけて保存する機能を追加
+
+src/enums.hpp
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit 19acb98
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-28
+
+    書き込み後にスレッドを更新する機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 5bdebd3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-27
+
+    すべての検索バーについてCtrl+Fキーを使えるようにした
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit f4286c1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-27
+
+    新月のコードをオプショナルにした(--enable-shingetsuをconfigureで実行するとビルド)
+
+aclocal.m4
+configure
+configure.ac
+src/janeclone.cpp
+src/janeclone.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit d39cccd
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-26
+
+    メニューバー部分の実装を追加
+
+src/janeclone.cpp
+
+commit 217c13c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-26
+
+    メニューの表示タブを一部実装
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 6ffb79a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-26
+
+    スレッド内容の検索バーについてもCtrl+Fで表示切替出来るように修正
+
+src/enums.hpp
+src/janeclone.cpp
+src/threadcontentbar.cpp
+
+commit 816cfd1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-26
+
+    スレッド内容バーの内容を隠す機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit 56b20ca
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-26
+
+    スレッド一覧ウィンドウでCtrl+Fキーで検索ウィンドウを表示切替する機能を追加
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/main.cpp
+
+commit 041e9dc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-25
+
+    全体的なタブの移動機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 3931d64
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-25
+
+    すべてのタブのスレッド一覧を更新する機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit e4b0feb
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-24
+
+    選択されている板のスレッド一覧情報を削除する機能を追加
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+
+commit 118c62b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-24
+
+    板情報もお気に入り登録出来るように修正
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/responsewindow.cpp
+src/sqliteaccessor.cpp
+
+commit 661a838
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-24
+
+    書き込み時のsageチェック機能を追加
+
+src/enums.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit a21bb94
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-24
+
+    すべてのタブをお気に入り登録する機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit f8b8806
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-24
+
+    誤記修正
+
+Makefile.am
+
+commit cf9fec5
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-24
+
+    スレッド中にあるURLを踏んだ場合の処理を追加
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 83fd9b8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-23
+
+    お気に入りの追加削除と表示を実装した
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit f865378
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-23
+
+    スレッドをお気に入りに登録する処理を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 1d49174
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-22
+
+    スレッドを最下段までスクロールさせる機能を追加
+
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit 33d9004
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-21
+
+    Mac OS Xでのビルド調整
+
+js-1.5-rc6a/src/jsprf.c
+test/jc-test1.cpp
+
+commit 076dd04
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-21
+
+    -pedanticをオプションにつけた際の警告を修正
+
+libwxnkf/Makefile.am
+libwxnkf/wxnkf.cpp
+libwxnkf/wxnkfencoding.cpp
+
+commit 54409c3
+Merge: 8651446 4bf0dc6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-20
+
+    Merge branch 'master' of github.com:Hiroyuki-Nagata/JaneClone
+    
+    Conflicts:
+    	libwxnkf/wxnkfencoding.cpp
+    
+    修正を前に戻してマージ
+
+commit 8651446
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-19
+
+    libwxnkfのバグ修正を最小限にした
+
+libwxnkf/wxnkfencoding.cpp
+
+commit 4bf0dc6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-19
+
+    libwxnkfの変換バグを修正
+
+libwxnkf/Makefile.am
+libwxnkf/inputcode.cpp
+libwxnkf/inputcode.h
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+libwxnkf/wxnkfbaseconfig.h
+libwxnkf/wxnkfencoding.cpp
+test/jc-test1.cpp
+
+commit e55f63d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-18
+
+    libwxnkfの調整
+
+libwxnkf/wxnkf.cpp
+
+commit 67e4526
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-18
+
+    とりあえずlibwxnkfでShift_JIS -> UTF-8変換ができていた状態に戻す
+
+libwxnkf/util.cpp
+libwxnkf/util.h
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+
+commit 8aacd91
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-11
+
+    ・bootstrapの一部修正
+
+bootstrap
+
+commit c737752
+Author: hiroyuki-nagata-bsd <newserver002@gmail.com>
+Date:   2013-11-11
+
+    FreeBSDでのビルドとメニューへの展開処理を追加
+
+INSTALL
+Makefile.am
+configure.ac
+misc/janeclone.desktop
+src/socketcommunication.cpp
+
+commit 0cbe3a7
+Author: hiroyuki-nagata-bsd <newserver002@gmail.com>
+Date:   2013-11-08
+
+    JaneClone can build with FreeBSD
+
+INSTALL
+bootstrap
+configure.ac
+
+commit 5e40814
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-11-07
+
+    ・SpiderMonkeyのva_list()関数への対処が仮だったものを恒久対処した
+    (configureでva_listが使えるならばva_listを使用するように変更, C99対応コンパイラならばOKのはず)
+
+js-1.5-rc6a/configure
+js-1.5-rc6a/configure.ac
+js-1.5-rc6a/src/Makefile.am
+js-1.5-rc6a/src/jsprf.c
+
+commit 81be452
+Author: hiroyuki nagata <hiroyuki@fox-girl>
+Date:   2013-10-19
+
+    debパッケージのビルドが通らなくなっていたので修正した
+    また、必要なパッケージについての記述を増やした
+
+ChangeLog
+INSTALL
+Makefile.am
+
+commit 93911c8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-07
+
+    板一覧更新の際、既存のデータは削除するようにした
+
+src/janeclone.cpp
+
+commit 02093e4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-06
+
+    板一覧更新の際、既存のデータは削除するようにした
+
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit bac7faa
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-06
+
+    ダウンロードした画像ファイル情報をSQLiteに格納する処理を追加
+
+src/datatype.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit d514660
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-05
+
+    ファイルの修正漏れを修正
+
+src/enums.hpp
+
+commit f9ea835
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-05
+
+    ファイルの修正
+
+src/enums.hpp
+
+commit 0ce9761
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-05
+
+    列挙型の記述形式を変更しコメントを復帰
+
+src/enums.hpp
+
+commit 0e6a76b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-10-04
+
+    MacOSX向けdmgファイル作成バッチ処理を追加
+
+Makefile.am
+
+commit eab0f14
+Author: K.Watanabe <kwtnb@outlook.com>
+Date:   2013-10-01
+
+    タブ操作設定画面のモックアップを追加した。
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 1dbcbb7
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-30
+
+    dylibの配布処理を改良
+
+Makefile.am
+
+commit 05f3ec9
+Merge: e38639d 6aba131
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-09-28
+
+    Merge pull request #13 from k-watanabe/fixtypo
+    
+    fix typo
+
+commit 6aba131
+Author: K.Watanabe <kwtnb@outlook.com>
+Date:   2013-09-29
+
+    fix typo
+    
+    Dafault => Default
+
+src/otherpanels.cpp
+
+commit e38639d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-22
+
+    ・画像ファイル管理用のSQLアクセサコードを追加
+
+src/datatype.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 1fc58ef
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-09
+
+    ・MacOSX向け動的リンクライブラリのチェック用シェルを追加
+
+Makefile.am
+misc/osx-dependency-check.sh
+
+commit b4f4b33
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-09
+
+    ・MacOSX向け動的リンクライブラリの配布処理を修正
+
+Makefile.am
+
+commit d953851
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-08
+
+    ・MacOSX向け動的リンクライブラリのバッチ処理を途中まで追加
+
+Makefile.am
+
+commit a9815ca
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-03
+
+    ・MacOSX向けの動的リンクライブラリの配布処理を修正
+
+Makefile.am
+configure.ac
+
+commit 37bb8ca
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-09-02
+
+    ・MacOSX向け動的リンクライブラリの配布処理を追加
+
+Makefile.am
+
+commit 05f62c1
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-09-01
+
+    ・Linuxのデフォルトフォント設定の処理方法を変更
+
+src/anchoredresponsepopup.cpp
+src/threadcontentwindow.cpp
+
+commit 86aa426
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-09-01
+
+    ・フォント未設定時のクラッシュバグを防ぐ実装を追加
+
+src/janeclone.cpp
+
+commit 656f164
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-08-31
+
+    ・SpiderMonkeyがLinuxでビルドできていなかったためconfigure.acを一部修正
+
+js-1.5-rc6a/configure.ac
+js-1.5-rc6a/src/Makefile.am
+js-1.5-rc6a/src/jstypes.h
+
+commit 834801c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-31
+
+    ・MacOSXでのバイナリ配布はスタティックビルド
+
+configure.ac
+js-1.5-rc6a/src/jsprf.c
+
+commit dbf759b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-31
+
+    ・MacOSX向けのいくつかの修正
+
+src/janeclone.cpp
+src/threadcontentwindow.hpp
+
+commit c478de2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-31
+
+    ・MinGW32でSpiderMonkeyをビルドする際、未定義の定数値がある場合に対応した
+
+js-1.5-rc6a/src/jsnum.c
+
+commit fc3ec41
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-31
+
+    ・Debian向けパッケージ作成時の[-Werror=format-security]によるエラーに対処
+
+js-1.5-rc6a/src/js.c
+
+commit 6ef05b3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-30
+
+    ・DebianパッケージにはMonaフォントを依存関係に追加
+
+Makefile.am
+
+commit f09a92a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-30
+
+    ・configure.acのバージョンをコミットし忘れているので追加
+
+ChangeLog
+configure
+configure.ac
+
+commit d8ff7c6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-30
+
+    ・JaneClone-1.1.2をリリース
+
+ChangeLog
+INSTALL
+
+commit 2d74b44
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-30
+
+    ・wxMemoryFSHandlerについてはJaneClone-1.1.3まで実装を持ち越し、コメントアウトしておく
+
+src/janecloneutil.cpp
+src/threadcontentwindow.cpp
+
+commit 4b24119
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-30
+
+    ・最近閉じたスレの表示で、数回マウスカーソルを合わせるとハングするバグを修正
+    ・最近閉じた板/スレは直近16個までに限定させた
+    ・最近閉じた板/スレのデータが何もないときには仮のデータを入れる
+
+src/janeclone.cpp
+src/sqliteaccessor.cpp
+
+commit 82c6e32
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-29
+
+    ・zipファイル作成用のバッチ処理を追加
+
+Makefile.am
+
+commit d54e640
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-29
+
+    ・"No font for displaying text in encoding"というダイアログが表示されるバグを修正
+    ・wxWidgets-2.8.12-mswにて、main.cppの一部修正
+
+src/janeclone.cpp
+src/main.cpp
+
+commit 39347d1
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-28
+
+    ・不要コードを削除
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 944bdcd
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-28
+
+    ・ChangeLogの更新
+    ・wx-2.9.5での仮想関数対策
+
+ChangeLog
+src/threadcontentwindow.hpp
+
+commit 4cf7e1b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・Makefile.amの修正(libjsのリンク)
+    ・レス用ウィンドウの細かい修正
+
+src/Makefile.am
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit ad276b2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・MinGW向けビルドを通した
+
+.gitignore
+js-1.5-rc6a/configure.ac
+js-1.5-rc6a/src/jslibmath.h
+js-1.5-rc6a/src/jsprf.c
+js-1.5-rc6a/src/jstypes.h
+
+commit f9a542f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・MinGW/Cygwin向けルートをconfigure.acに追加
+
+js-1.5-rc6a/configure.ac
+
+commit 193913c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・SpiderMonkeyの設定を少し書き換えてコンパイル可能にした
+
+js-1.5-rc6a/configure.ac
+js-1.5-rc6a/src/jscpucfg
+js-1.5-rc6a/src/jslibmath.h
+js-1.5-rc6a/src/jsprf.c
+
+commit 87b7314
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・SpiderMonkey-1.5-rc6aをプロジェクトに編入
+    (Autoconf対応についてはhttp://module.jp/blog/autotoolize_spidermonkey.htmlを参照)
+
+Makefile.am
+configure.ac
+js-1.5-rc6a/AUTHORS
+js-1.5-rc6a/COPYING
+js-1.5-rc6a/ChangeLog
+js-1.5-rc6a/INSTALL
+js-1.5-rc6a/Makefile.am
+js-1.5-rc6a/NEWS
+js-1.5-rc6a/README
+js-1.5-rc6a/TODO
+js-1.5-rc6a/configure
+js-1.5-rc6a/configure.ac
+js-1.5-rc6a/src/Makefile.am
+js-1.5-rc6a/src/js.c
+js-1.5-rc6a/src/js.msg
+js-1.5-rc6a/src/jsapi.c
+js-1.5-rc6a/src/jsapi.h
+js-1.5-rc6a/src/jsarena.c
+js-1.5-rc6a/src/jsarena.h
+js-1.5-rc6a/src/jsarray.c
+js-1.5-rc6a/src/jsarray.h
+js-1.5-rc6a/src/jsatom.c
+js-1.5-rc6a/src/jsatom.h
+js-1.5-rc6a/src/jsautocfg.h
+js-1.5-rc6a/src/jsautotoolscfg.h
+js-1.5-rc6a/src/jsautotoolscfg.h.in
+js-1.5-rc6a/src/jsbit.h
+js-1.5-rc6a/src/jsbool.c
+js-1.5-rc6a/src/jsbool.h
+js-1.5-rc6a/src/jsclist.h
+js-1.5-rc6a/src/jscntxt.c
+js-1.5-rc6a/src/jscntxt.h
+js-1.5-rc6a/src/jscompat.h
+js-1.5-rc6a/src/jsconfig.h
+js-1.5-rc6a/src/jscpucfg
+js-1.5-rc6a/src/jscpucfg.c
+js-1.5-rc6a/src/jscpucfg.h
+js-1.5-rc6a/src/jsdate.c
+js-1.5-rc6a/src/jsdate.h
+js-1.5-rc6a/src/jsdbgapi.c
+js-1.5-rc6a/src/jsdbgapi.h
+js-1.5-rc6a/src/jsdhash.c
+js-1.5-rc6a/src/jsdhash.h
+js-1.5-rc6a/src/jsdtoa.c
+js-1.5-rc6a/src/jsdtoa.h
+js-1.5-rc6a/src/jsemit.c
+js-1.5-rc6a/src/jsemit.h
+js-1.5-rc6a/src/jsexn.c
+js-1.5-rc6a/src/jsexn.h
+js-1.5-rc6a/src/jsfile.c
+js-1.5-rc6a/src/jsfile.h
+js-1.5-rc6a/src/jsfun.c
+js-1.5-rc6a/src/jsfun.h
+js-1.5-rc6a/src/jsgc.c
+js-1.5-rc6a/src/jsgc.h
+js-1.5-rc6a/src/jshash.c
+js-1.5-rc6a/src/jshash.h
+js-1.5-rc6a/src/jsinterp.c
+js-1.5-rc6a/src/jsinterp.h
+js-1.5-rc6a/src/jslibmath.h
+js-1.5-rc6a/src/jslock.c
+js-1.5-rc6a/src/jslock.h
+js-1.5-rc6a/src/jslog2.c
+js-1.5-rc6a/src/jslong.c
+js-1.5-rc6a/src/jslong.h
+js-1.5-rc6a/src/jsmath.c
+js-1.5-rc6a/src/jsmath.h
+js-1.5-rc6a/src/jsnum.c
+js-1.5-rc6a/src/jsnum.h
+js-1.5-rc6a/src/jsobj.c
+js-1.5-rc6a/src/jsobj.h
+js-1.5-rc6a/src/jsopcode.c
+js-1.5-rc6a/src/jsopcode.h
+js-1.5-rc6a/src/jsopcode.tbl
+js-1.5-rc6a/src/jsosdep.h
+js-1.5-rc6a/src/jsotypes.h
+js-1.5-rc6a/src/jsparse.c
+js-1.5-rc6a/src/jsparse.h
+js-1.5-rc6a/src/jsprf.c
+js-1.5-rc6a/src/jsprf.h
+js-1.5-rc6a/src/jsprvtd.h
+js-1.5-rc6a/src/jspubtd.h
+js-1.5-rc6a/src/jsregexp.c
+js-1.5-rc6a/src/jsregexp.h
+js-1.5-rc6a/src/jsscan.c
+js-1.5-rc6a/src/jsscan.h
+js-1.5-rc6a/src/jsscope.c
+js-1.5-rc6a/src/jsscope.h
+js-1.5-rc6a/src/jsscript.c
+js-1.5-rc6a/src/jsscript.h
+js-1.5-rc6a/src/jsshell.msg
+js-1.5-rc6a/src/jsstddef.h
+js-1.5-rc6a/src/jsstr.c
+js-1.5-rc6a/src/jsstr.h
+js-1.5-rc6a/src/jstypes.h
+js-1.5-rc6a/src/jsutil.c
+js-1.5-rc6a/src/jsutil.h
+js-1.5-rc6a/src/jsxdrapi.c
+js-1.5-rc6a/src/jsxdrapi.h
+js-1.5-rc6a/src/prmjtime.c
+js-1.5-rc6a/src/prmjtime.h
+js-1.5-rc6a/src/resource.h
+js-1.5-rc6a/src/stamp-h1
+
+commit 38f4989
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・板一覧リスト新規取得時の挙動変更
+
+src/janeclone.cpp
+
+commit 69393af
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    ・UI上の細かい修正
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/threadcontentwindow.cpp
+
+commit 6428927
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    Mac OSX向けの修正：wxFrame::MaximizeはWindows/GTKのみ使用できるメソッドのため、削除
+
+src/janeclone.cpp
+
+commit d64ff39
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-25
+
+    Mac OSX向けの修正：GenericStaticTextを使用
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 993920a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-24
+
+    ・Windows向けビルドがwx-2.9でも可能であることを確認
+    ・ビルドスクリプトを一部修正
+
+Makefile.am
+src/Makefile.am
+src/main.cpp
+
+commit 57e5c09
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-24
+
+    ・wxCHECK_VERSIONで#ifdefを構成
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit a7a9145
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-23
+
+    Mac OSX向けの修正
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit fad3399
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-23
+
+    コンボボックスの初期値は空文字とする
+
+src/janeclone.cpp
+
+commit 6783c42
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-22
+
+    ・タブ色にデフォルト色を追加
+
+src/otherpanels.cpp
+
+commit 2fd467a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-22
+
+    ・タブ色の設定画面を実装
+
+src/drawpane.cpp
+src/drawpane.hpp
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 321771e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-20
+
+    ・細かい修正
+
+src/janeclone.cpp
+
+commit 6da5c93
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-20
+
+    ・細かい修正
+
+src/janeclone.cpp
+
+commit 89480b8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-20
+
+    ・スレッド一覧から文字列を検索した際に、１つ目のタブの文字列しか検索対象にならないバグを修正
+
+src/janeclone.cpp
+
+commit e78b911
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-20
+
+    ・タブ色設定用画面を追加
+    ・drawpane.cpp, drawpane.hppを修正
+
+src/drawpane.cpp
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 2b37412
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-20
+
+    ・ログ出力/スレッド一覧/スレッド一覧抽出部分にフォント/背景色の適用が可能になった
+
+src/janeclone.cpp
+src/virtualboardlistctrl.cpp
+
+commit 535a939
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-19
+
+    ・フォント/背景色変更処理を板一覧ツリーに実装
+
+src/drawpane.cpp
+src/janeclone.cpp
+src/otherpanels.cpp
+
+commit 0b947df
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-19
+
+    ・wxDCの文字列を中央寄せ/中央揃えできるよう修正
+
+src/drawpane.cpp
+src/drawpane.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 67360a6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-19
+
+    ・BasicDrawPaneクラスを修正
+
+src/drawpane.cpp
+src/drawpane.hpp
+
+commit f68dfbb
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-19
+
+    ・BasicDrawPaneクラスを追加
+    ・ライセンス表記を追加
+
+src/Makefile.am
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 2baaa53
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-19
+
+    ・ユーザー個別設定処理を追加
+
+src/otherpanels.cpp
+
+commit 301fc1a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-19
+
+    ・ユーザー個別設定用画面を作成
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 9fda933
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-18
+
+    ・背景色選択処理を修正
+
+src/otherpanels.cpp
+
+commit c2c6ea9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-18
+
+    MacOSXにて背景色選択処理を実施した際クラッシュしないように対応した
+
+src/janeclone.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit f050065
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-18
+
+    ・ボタン別の背景色選択処理を作成. あいかわらずMacOSXはクラッシュするので対処必要
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 8a83b5b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-17
+
+    ・プロパティファイルの項目があるかどうか確認する関数作成 \
+
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/otherpanels.cpp
+
+commit ab44a3d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-17
+
+    ・フォント読み出し処理を修正 \
+    ・臨時的に用意していたフォント読み出し処理を削除
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit f0d2711
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-17
+
+    ・板/スレッドタブ変更時にURLが正確に表示されないバグを修正
+
+src/janeclone.cpp
+
+commit ba819e7
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-16
+
+    ・フォントの変更後サンプル部分のフォントが切り替わるようにした
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit b724c26
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-16
+
+    ・Windows/MacOSX向けにパス設定の画面表示を修正した
+    ・フォントと色選択ダイアログを作成した
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 0dd95e4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-16
+
+    ・列挙型の生成と同時に文字列化を実施
+
+src/enums.hpp
+src/otherpanels.cpp
+
+commit 7211b87
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・メニューから設定画面を呼び出し可能にした
+
+src/janeclone.cpp
+
+commit df40032
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・パス設定画面に既存のパス設定をクリアするボタンを追加（何気にJaneStyleにはない機能）
+
+src/enums.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+
+commit 4185fb5
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・簡単なスキンならば読み込めるようになった
+
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/threadcontentwindow.cpp
+
+commit 28327de
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・スキン読みとり処理を追加
+
+src/datatype.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 785791a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・スキン読み込み用構造体を定義
+
+src/datatype.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 4f9d428
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・設定画面のwxDirPickerCtrlを修正
+
+src/otherpanels.cpp
+
+commit b878760
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    ・設定画面の表示方法を変更.Mac OSX, 設定画面を消したあとに操作が効かなくなるバグを修正.
+
+src/janeclone.cpp
+src/otherpanels.cpp
+src/settingwindow.cpp
+
+commit e195e9a
+Merge: 02b31d9 c9e8651
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-13
+
+    Merge branch 'master' of github.com:Hiroyuki-Nagata/JaneClone
+
+commit 02b31d9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-08
+
+    ・検索ボックスの初期値に不要な文字列が入るので削除
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+
+commit c9e8651
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-10
+
+    ・IDごとの動作切り替え部分を作成
+
+src/janeclone.cpp
+src/otherpanels.cpp
+
+commit ffc49a0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-08
+
+    Mac OSXでIDが正常に抽出できない問題を修正
+
+src/janecloneutil.cpp
+
+commit 33de909
+Merge: 0ac0290 73028d6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-07
+
+    Merge branch 'master' of github.com:Hiroyuki-Nagata/JaneClone
+
+commit 0ac0290
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-05
+
+    Mac OSXで設定画面を開くとクラッシュするバグを修正
+
+src/datatype.hpp
+src/enums.hpp
+src/enumstring.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+src/threadcontentbar.hpp
+
+commit 73028d6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-05
+
+    enumstring.hppを追加
+
+src/datatype.hpp
+src/enumstring.hpp
+src/otherpanels.cpp
+
+commit 94939e3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-05
+
+    ・列挙型の文字列化を行うヘッダファイルを追加
+
+src/Makefile.am
+src/datatype.hpp
+src/enums.hpp
+src/otherpanels.cpp
+
+commit 1fdd257
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    ・JaneClone各ウィンドウのフォントと色の設定画面を追加
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit f607cdd
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    ・sedによる書き換え処理の修正
+
+Makefile.am
+
+commit 53463bb
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    ・#ifdefの一部修正
+
+src/threadcontentbar.hpp
+
+commit 09e18d2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    ・.travis.ymlを修正
+
+.travis.yml
+
+commit 98aed84
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    ・.travis.ymlを修正
+
+.travis.yml
+
+commit 7f71aa6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    ・travis.ymlを登録.CIお試し
+
+.travis.yml
+
+commit 57418df
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    Mac OSXでのスレッド取得処理中のクラッシュバグを修正
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit f07451e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-08-04
+
+    Mac OSXの画像読み込み処理が動作できるよう修正
+
+src/janecloneutil.cpp
+src/main.cpp
+src/threadcontentbar.cpp
+src/threadcontentwindow.cpp
+
+commit e8ba072
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-29
+
+    ・微調整；スレッド表示部分のバグ修正
+
+src/janecloneutil.cpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit c1a03d7
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-29
+
+    ・wxBitmapButtonはMacでのクラッシュの原因になっている臭いので少し修正
+
+src/janeclone.cpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit c7860fe
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-29
+
+    ・スレッドの更新処理を改良
+
+src/janeclone.cpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit b4c2813
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-29
+
+    wx-2.9向けの#ifdefを新たに設定
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+
+commit 4da8242
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-28
+
+    wx-2.9向けにイベント処理を修正
+
+src/janeclone.hpp
+src/responsewindow.hpp
+src/socketcommunication.hpp
+
+commit 907e1cc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-28
+
+    ・スレッド間通信でクラッシュするMacのためにロギングをイベント形式に変更
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentwindow.cpp
+
+commit aad6198
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-28
+
+    ・５レス以上レスするとリンクを赤くする機能を追加
+
+src/janecloneutil.cpp
+
+commit 16a22af
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-28
+
+    ・ID抽出を機能を実装
+
+src/anchoredresponsepopup.cpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+
+commit 3eb9698
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-28
+
+    ・スレッドウィンドウでIDをリンク化
+
+src/datatype.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/threadcontentwindow.cpp
+
+commit 1082494
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-28
+
+    ・各種動作設定用画面を追加
+
+src/enums.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit f7273ec
+Merge: 1875fd5 19c3c5a
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-07-27
+
+    Merge pull request #8 from Hiroyuki-Nagata/jc_mac_osx
+    
+    JaneClone for MacOSXをマージしますた
+
+commit 19c3c5a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-27
+
+    libwxnkfのリターン文忘れを修正
+
+libwxnkf/wxnkf.cpp
+
+commit 33c278c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-27
+
+    ・libwxnkfのオブジェクトの渡し方を変更
+
+libwxnkf/util.cpp
+libwxnkf/util.h
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+
+commit 29f6f91
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-27
+
+    libwxnkf向け修正
+
+Makefile.am
+aclocal.m4
+configure
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+
+commit 6db5af3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-24
+
+    ・libwxnkfのオプションを簡略化
+
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+
+commit 6b18f40
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-07-23
+
+    ・libwxnkfのオプション設定部分を修正
+
+.gitignore
+libwxnkf/wxnkf.cpp
+
+commit c42c4ca
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-22
+
+    ・MacOSX向け修正
+
+libwxnkf/wxnkf.cpp
+src/socketcommunication.cpp
+
+commit 1875fd5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-07-22
+
+    Update README
+
+README
+
+commit dc5b532
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-18
+
+    ・テストコード修正
+
+aclocal.m4
+configure
+test/jc-test1.cpp
+
+commit 6c7b3a3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-18
+
+    ・テストコードを追加
+
+.gitignore
+Makefile.am
+Makefile.in
+configure.ac
+curlpp/Makefile.in
+curlpp/include/Makefile.in
+curlpp/include/curlpp/Makefile.in
+curlpp/include/curlpp/internal/Makefile.in
+curlpp/include/utilspp/Makefile.in
+curlpp/include/utilspp/functor/Makefile.in
+curlpp/include/utilspp/singleton/Makefile.in
+curlpp/src/Makefile.in
+curlpp/src/curlpp/Makefile.in
+curlpp/src/curlpp/internal/Makefile.in
+curlpp/src/utilspp/Makefile.in
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+sqlite3/Makefile.in
+src/Makefile.in
+test/Makefile.am
+test/jc-test1.cpp
+wxsqlite3/Makefile.in
+
+commit def4918
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-18
+
+    ・雑多なファイルの移動
+
+Makefile.am
+janeclone.nsi.in
+janeclone.wrapper
+misc/janeclone.nsi.in
+misc/janeclone.wrapper
+
+commit 562f786
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-18
+
+    ・wxTreeCtrl::Expandはwx-2.9以上では使わないように修正
+
+src/janeclone.cpp
+
+commit e77b623
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-17
+
+    ・複数レスのポップアップに対応
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+
+commit 5c22c04
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-17
+
+    ・指定したレスのコピー機能を実装
+
+src/enums.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit be0f0ed
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-16
+
+    ・プレビュー画面でアンカーをURLとして処理させるよう変更
+
+src/datatype.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+
+commit 4c3974d
+Merge: 106d515 55fd366
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-16
+
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+    
+    pullするのを忘れてた
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+    
+    pullするのを忘れてた
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+    
+    pullするのを忘れてた
+
+commit 106d515
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-16
+
+    ・設定画面の初期表示サッシュの位置を修正
+    ・２ちゃんねるビューワ公式サイトを開く機能を追加
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/settingwindow.cpp
+
+commit 55fd366
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-15
+
+     Info.plist   .MacOSX Finder                 .
+
+Makefile.am
+
+commit 70b1d69
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-15
+
+    ・書き込み時のプレビュー連携を修正(SetSelection -> ChangeSelection)
+
+src/responsewindow.cpp
+
+commit df5f13b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-15
+
+    ・libpngの警告メッセージ「known incorrect sRGB profile」が出力されないように画像ファイルを修正
+
+.gitignore
+src/rc/amazon.png
+src/rc/application-side-tree.png
+src/rc/application-tile-horizontal.png
+src/rc/appointment-new.png
+src/rc/bookmark-new.png
+src/rc/configure-2.png
+src/rc/dialog-accept.png
+src/rc/dialog-error.png
+src/rc/download-3.png
+src/rc/edit-add-3.png
+src/rc/edit-delete.png
+src/rc/edit-find-replace.png
+src/rc/emblem-favorite.png
+src/rc/emblem-regex.png
+src/rc/emblem-system.png
+src/rc/emblem-unreadable.png
+src/rc/folder.png
+src/rc/format-justify-left.png
+src/rc/go-bottom.png
+src/rc/go-down-4.png
+src/rc/go-down.png
+src/rc/go-last.png
+src/rc/go-next.png
+src/rc/go-up.png
+src/rc/google.png
+src/rc/help-browser.png
+src/rc/image-x-generic.png
+src/rc/page-edit.png
+src/rc/site_search.png
+src/rc/system-search-5.png
+src/rc/system-search.png
+src/rc/text-html.png
+src/rc/view-choose.png
+src/rc/view-file-columns.png
+src/rc/view-refresh.png
+src/rc/yahoo.png
+
+commit a8f40f4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-15
+
+    ・投稿時に書き込みのプレビューを実施できるようにした
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit a55e3f3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-14
+
+    ・引用付きレスを投稿する機能を追加
+
+src/datatype.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/threadcontentwindow.cpp
+
+commit c69fb6d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-14
+
+    ・レス番号をクリックすると、それに対してレスができる機能を追加
+    ・JaneCloneクラスの構成の変更
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 9314e2b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-13
+
+    Mac OSXでの画像読み込みを考慮したコードを追加\nINSTALLファイルを更新
+
+.gitignore
+INSTALL
+src/datatype.hpp
+src/janeclone.cpp
+
+commit b83ba97
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-13
+
+    ・wx-2.8との互換性のためのコードを追加
+
+src/janeclone.cpp
+
+commit 20bf3b8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-13
+
+    ・MacOSX上でのビルドに成功(clang++-mp-3.3, -stdlib=libc++, -std=c++11, libtool(MacPorts)
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 722f29e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-12
+
+    wxWindowList::NodeをwxWindowList::const_iteratorで書き直し
+
+src/janeclone.cpp
+
+commit 312fe48
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-12
+
+    MacOSX上での修正
+
+src/socketcommunication.cpp
+
+commit e778839
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-12
+
+    ・clang++向けの修正２
+
+src/virtualboardlistctrl.hpp
+
+commit e74acd0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-12
+
+    clang++がテンプレートをデフォルト引数とした時にコンパイルできないので、コードを修正
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 67eca12
+Merge: a9a4552 50dfec9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-10
+
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+
+commit a9a4552
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-10
+
+     Mac OSX
+
+configure.ac
+m4/ax_compiler_vendor.m4
+m4/wxwin.m4
+
+commit 50dfec9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-01
+
+    ・curlppにてMinGW向けビルドの修正
+
+curlpp/include/curlpp/internal/buildconfig.h
+
+commit 1d18f9e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-07-01
+
+    ・MinGWにてビルドの調整
+
+configure
+configure.ac
+src/Makefile.am
+src/Makefile.in
+src/socketcommunication.cpp
+
+commit 425dd21
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-30
+
+    ・改行コードを含んだテキストを投稿した際に文字化けするバグを修正
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 23e5a32
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-30
+
+    ・忍法帳に対応
+
+src/datatype.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit f103058
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-30
+
+    ・wxHttpで記述されている箇所をcurlppに書きなおし
+    ・書き込み処理を動作するように修正（忍法帳非対応）
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit adc4fd4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-28
+
+    ・スレタイ検索に一致した項目の色を変える機能を追加
+
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 82cf62d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-26
+
+    ・スレッド一覧リストにてキーワードでスレタイを検索できるようにした
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit ecc37bc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-26
+
+    ・datファイルの更新取得に対応
+
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+src/socketcommunication.cpp
+
+commit 78d5c2e
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-25
+
+    ・マクロの展開方法を変更、config.hをインクルードするようにした
+
+src/Makefile.am
+src/Makefile.in
+src/datatype.hpp
+src/janeclone.cpp
+src/socketcommunication.cpp
+
+commit 56b9551
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-25
+
+    ・スレッド一覧リストが更新できないバグを修正
+    ・過去スレを取得しに行く時無限ループになるバグを修正
+
+src/socketcommunication.cpp
+
+commit 9b2dceb
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-24
+
+    ・過去スレ取得処理を追加
+
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 5da4850
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-24
+
+    ・画像ファイルダウンロードの際に、スクロール位置が最初に戻ってしまう問題に対処
+    ・画像ファイルダウンロードの際に、UUID生成に失敗しセグメンテーション違反になるバグを修正
+
+libwxuuid/wxUUID.cpp
+libwxuuid/wxUUID.h
+src/threadcontentwindow.cpp
+
+commit d1617f4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-24
+
+    ・スレッド再読み込みの際、直前に読んでいた位置までスクロールさせるようにした
+
+src/enums.hpp
+src/janeclone.cpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 8b482e9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-24
+
+    ・HTTP/GET処理部分をcurlppにて書き換え.処理速度が早くなった.
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 0c89f6a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-23
+
+    ・HTTP/GET処理部分をcurlppにて書き換え
+
+src/janeclone.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 1650c7b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-20
+
+    ・一部通信処理をcurlppにて書き換え
+
+Makefile.am
+Makefile.in
+configure
+src/janeclone.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 634ad82
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-14
+
+    INSTALLとconfigure.acの修正
+
+INSTALL
+configure.ac
+
+commit 6a2cbc2
+Merge: 9ddcccf d8489ef
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-13
+
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+
+commit 9ddcccf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-13
+
+    bootstrap時のsedの環境依存問題を修正
+
+bootstrap
+
+commit d8489ef
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-13
+
+    ・メニューにショートカットを追加する処理を追加
+
+ChangeLog
+Makefile.am
+Makefile.in
+configure
+configure.ac
+misc/janeclone.menu
+
+commit 8b67ec6
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-12
+
+    ・Debian向けパッケージのラッパースクリプトを作成
+
+Makefile.am
+Makefile.in
+bootstrap
+janeclone.wrapper
+src/Makefile.am
+src/Makefile.in
+
+commit eebc6e9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-11
+
+    ・janeclone_1.1.1_amd64.debをビルドしインストールすることができるようになった
+
+ChangeLog
+Makefile.am
+Makefile.in
+bootstrap
+curl
+
+commit 003c410
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-10
+
+    ・ブランチ：curl_v7.30_jcを作成、docやman pageなどを作成しないようにした
+
+curl
+
+commit 097a18c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-10
+
+    ・現状ソースの保存
+
+ChangeLog
+Makefile.am
+Makefile.in
+configure
+configure.ac
+
+commit edda356
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-03
+
+    ・make package-debコマンドでDebian向けパッケージをビルドできるようにした
+
+ChangeLog
+Makefile.am
+Makefile.in
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxuuid/Makefile.am
+libwxuuid/Makefile.in
+src/Makefile.am
+src/Makefile.in
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit 1a3d46d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-02
+
+    ・Debianパッケージ用の設定を追加
+
+ChangeLog
+Makefile.am
+Makefile.in
+configure
+configure.ac
+curlpp/include/curlpp/internal/Makefile.in
+curlpp/include/utilspp/functor/Makefile.in
+curlpp/include/utilspp/singleton/Makefile.in
+curlpp/src/curlpp/Makefile.am
+curlpp/src/curlpp/Makefile.in
+
+commit 95688b2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-02
+
+    ・インストール場所の変更
+
+Makefile.in
+aclocal.m4
+configure
+configure.ac
+curlpp/Makefile.in
+curlpp/include/Makefile.in
+curlpp/include/curlpp/Makefile.am
+curlpp/include/curlpp/Makefile.in
+curlpp/include/curlpp/config.h
+curlpp/include/curlpp/config.h~
+curlpp/include/curlpp/internal/Makefile.am
+curlpp/include/curlpp/internal/Makefile.in
+curlpp/include/utilspp/Makefile.am
+curlpp/include/utilspp/Makefile.in
+curlpp/include/utilspp/functor/Makefile.am
+curlpp/include/utilspp/functor/Makefile.in
+curlpp/include/utilspp/singleton/Makefile.am
+curlpp/include/utilspp/singleton/Makefile.in
+curlpp/src/Makefile.in
+curlpp/src/curlpp/Makefile.in
+curlpp/src/curlpp/internal/Makefile.in
+curlpp/src/utilspp/Makefile.in
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+m4/ax_boost_base.m4
+sqlite3/Makefile.am
+sqlite3/Makefile.in
+src/Makefile.in
+wxsqlite3/Makefile.in
+
+commit 60d7e30
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-06-01
+
+    ・make installでのライブラリインストール場所の変更
+
+curlpp/src/curlpp/Makefile.am
+curlpp/src/curlpp/Makefile.in
+curlpp/src/utilspp/Makefile.am
+curlpp/src/utilspp/Makefile.in
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxuuid/Makefile.am
+libwxuuid/Makefile.in
+sqlite3/Makefile.am
+sqlite3/Makefile.in
+src/Makefile.am
+src/Makefile.in
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit 9d7d2ae
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-31
+
+    ・とりあえず新月のスレッドを取得できるようにした
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 06e33c9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-30
+
+    ・SQL文が間違えているため修正
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/socketcommunication.cpp
+src/sqliteaccessor.cpp
+
+commit 3c760fd
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-28
+
+    ・新月のスレッド一覧をスレッド一覧リストに表示できるようにした
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit af43a28
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-27
+
+    ・shingetsuの公開ノードからスレッド一覧リストを取得する機能を追加
+
+src/Makefile.am
+src/Makefile.in
+src/janeclone.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit dbde14a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-27
+
+    ・curlからバージョン情報を呼び出すテストを追加
+
+curlpp/curlpp-0.7.3
+src/janeclone.cpp
+
+commit ce78eac
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-26
+
+    ・libzmqを削除
+    ・curl, curlppを編入、ビルド可能とした
+
+.gitmodules
+INSTALL
+Makefile.am
+Makefile.in
+aclocal.m4
+bootstrap
+config.h.in
+configure
+configure.ac
+cppzmq
+curl
+curlpp/AUTHORS
+curlpp/CHANGES
+curlpp/COPYING
+curlpp/ChangeLog
+curlpp/INSTALL
+curlpp/Makefile.am
+curlpp/Makefile.in
+curlpp/NEWS
+curlpp/README
+curlpp/README.win32
+curlpp/TODO
+curlpp/depcomp
+curlpp/include/Makefile.am
+curlpp/include/Makefile.in
+curlpp/include/curlpp/Easy.hpp
+curlpp/include/curlpp/Easy.inl
+curlpp/include/curlpp/Exception.hpp
+curlpp/include/curlpp/Form.hpp
+curlpp/include/curlpp/Info.hpp
+curlpp/include/curlpp/Info.inl
+curlpp/include/curlpp/Infos.hpp
+curlpp/include/curlpp/Makefile.am
+curlpp/include/curlpp/Makefile.in
+curlpp/include/curlpp/Multi.hpp
+curlpp/include/curlpp/Option.hpp
+curlpp/include/curlpp/Option.inl
+curlpp/include/curlpp/OptionBase.hpp
+curlpp/include/curlpp/Options.hpp
+curlpp/include/curlpp/Types.hpp
+curlpp/include/curlpp/cURLpp.hpp
+curlpp/include/curlpp/config.h
+curlpp/include/curlpp/config.h.in
+curlpp/include/curlpp/config.h.sample
+curlpp/include/curlpp/config.h~
+curlpp/include/curlpp/config.win32.h
+curlpp/include/curlpp/internal/CurlHandle.hpp
+curlpp/include/curlpp/internal/CurlHandle.inl
+curlpp/include/curlpp/internal/Makefile.am
+curlpp/include/curlpp/internal/Makefile.in
+curlpp/include/curlpp/internal/OptionContainer.hpp
+curlpp/include/curlpp/internal/OptionContainer.inl
+curlpp/include/curlpp/internal/OptionContainerType.hpp
+curlpp/include/curlpp/internal/OptionList.hpp
+curlpp/include/curlpp/internal/OptionSetter.hpp
+curlpp/include/curlpp/internal/OptionSetter.inl
+curlpp/include/curlpp/internal/SList.hpp
+curlpp/include/curlpp/internal/buildconfig.h
+curlpp/include/curlpp/internal/global.h
+curlpp/include/curlpp/stamp-h2
+curlpp/include/utilspp/EmptyType.hpp
+curlpp/include/utilspp/Functors.hpp
+curlpp/include/utilspp/Makefile.am
+curlpp/include/utilspp/Makefile.in
+curlpp/include/utilspp/NonCopyable.hpp
+curlpp/include/utilspp/NullType.hpp
+curlpp/include/utilspp/Singleton.hpp
+curlpp/include/utilspp/SmartPtr.hpp
+curlpp/include/utilspp/ThreadingFactoryMutex.hpp
+curlpp/include/utilspp/ThreadingFactoryMutex.inl
+curlpp/include/utilspp/ThreadingSingle.hpp
+curlpp/include/utilspp/ThreadingSingle.inl
+curlpp/include/utilspp/TypeList.hpp
+curlpp/include/utilspp/TypeTrait.hpp
+curlpp/include/utilspp/clone_ptr.hpp
+curlpp/include/utilspp/functor/Binder.hpp
+curlpp/include/utilspp/functor/Functor.hpp
+curlpp/include/utilspp/functor/FunctorHandler.hpp
+curlpp/include/utilspp/functor/FunctorImpl.hpp
+curlpp/include/utilspp/functor/Makefile.am
+curlpp/include/utilspp/functor/Makefile.in
+curlpp/include/utilspp/functor/MemFunHandler.hpp
+curlpp/include/utilspp/singleton/CreationStatic.hpp
+curlpp/include/utilspp/singleton/CreationStatic.inl
+curlpp/include/utilspp/singleton/CreationUsingNew.hpp
+curlpp/include/utilspp/singleton/CreationUsingNew.inl
+curlpp/include/utilspp/singleton/LifetimeDefault.hpp
+curlpp/include/utilspp/singleton/LifetimeDefault.inl
+curlpp/include/utilspp/singleton/LifetimeLibrary.hpp
+curlpp/include/utilspp/singleton/LifetimeLibrary.inl
+curlpp/include/utilspp/singleton/LifetimeWithLongevity.hpp
+curlpp/include/utilspp/singleton/LifetimeWithLongevity.inl
+curlpp/include/utilspp/singleton/Makefile.am
+curlpp/include/utilspp/singleton/Makefile.in
+curlpp/include/utilspp/singleton/PrivateMembers.hpp
+curlpp/include/utilspp/singleton/PrivateMembers.inl
+curlpp/include/utilspp/singleton/SingletonHolder.hpp
+curlpp/include/utilspp/singleton/SingletonHolder.inl
+curlpp/install-sh
+curlpp/ltmain.sh
+curlpp/missing
+curlpp/src/Makefile.am
+curlpp/src/Makefile.in
+curlpp/src/curlpp/Easy.cpp
+curlpp/src/curlpp/Exception.cpp
+curlpp/src/curlpp/Form.cpp
+curlpp/src/curlpp/Info.cpp
+curlpp/src/curlpp/Makefile.am
+curlpp/src/curlpp/Makefile.in
+curlpp/src/curlpp/Multi.cpp
+curlpp/src/curlpp/OptionBase.cpp
+curlpp/src/curlpp/Options.cpp
+curlpp/src/curlpp/autolink.h
+curlpp/src/curlpp/cURLpp.cpp
+curlpp/src/curlpp/internal/CurlHandle.cpp
+curlpp/src/curlpp/internal/Makefile.am
+curlpp/src/curlpp/internal/Makefile.in
+curlpp/src/curlpp/internal/OptionList.cpp
+curlpp/src/curlpp/internal/OptionSetter.cpp
+curlpp/src/curlpp/internal/SList.cpp
+curlpp/src/utilspp/LifetimeLibrary.cpp
+curlpp/src/utilspp/Makefile.am
+curlpp/src/utilspp/Makefile.in
+curlpp/src/utilspp/PrivateMembers.cpp
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+libzmq
+m4/ax_boost_base.m4
+sqlite3/Makefile.in
+src/Makefile.am
+src/Makefile.in
+src/janeclone.cpp
+src/janeclone.hpp
+src/zmqcommunication.cpp
+src/zmqcommunication.hpp
+wxsqlite3/Makefile.in
+
+commit 3b41471
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-26
+
+    ・初回起動時にウィンドウの位置がディスプレイの外に出てしまう問題に対応
+
+libtool
+src/janeclone.cpp
+src/zmqcommunication.cpp
+src/zmqcommunication.hpp
+
+commit 60c5d11
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-26
+
+    ・janeclone-1.1.1をリリース、バグ修正と機能変更、機能追加
+
+ChangeLog
+Makefile.am
+Makefile.in
+NEWS
+configure
+configure.ac
+libtool
+src/Makefile.am
+src/Makefile.in
+src/datatype.hpp
+src/janeclone.hpp
+
+commit d26062f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-26
+
+    ・プロジェクトにcppzmqを追加
+
+.gitmodules
+cppzmq
+libzmq
+src/Makefile.am
+src/Makefile.in
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/socketcommunication.hpp
+
+commit 58d8532
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-26
+
+    ・新月の公開ノードをツリーに登録できるようにした
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+
+commit 913cf59
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-25
+
+    ・新月の公開ノードを保存するツリーを追加
+
+.gitmodules
+configure
+configure.ac
+cppzmq
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 9fb25c8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-25
+
+    ・ライセンス等バージョン情報用ダイアログを設定
+
+.gitmodules
+INSTALL
+README
+cppzmq
+libzmq
+src/Makefile.am
+src/Makefile.in
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/rc/gpl-2.0.txt
+
+commit 8f54101
+Merge: b569549 212c016
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-25
+
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+    
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+    
+    ・既存コードとのマージ
+
+commit b569549
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-25
+
+    ・libzmqをプロジェクトに編入(git submodule形式)
+
+.gitmodules
+Makefile.am
+Makefile.in
+aclocal.m4
+bootstrap
+configure
+configure.ac
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+libzmq
+sqlite3/Makefile.in
+src/Makefile.in
+wxsqlite3/Makefile.in
+
+commit 212c016
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-22
+
+    ・板一覧ツリーをタブ形式に変更
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 895bda8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-22
+
+    ・通信設定用画面を追加
+
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+
+commit 43b8c3f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-22
+
+    ・設定ファイルの読み書きを修正
+
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/responsewindow.cpp
+src/settingwindow.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentwindow.cpp
+
+commit c59fb5c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-22
+
+    ・各種パス設定用ウィンドウを作成
+    ・環境設定ファイルの読み書き機能を追加
+
+src/Makefile.am
+src/Makefile.in
+src/enums.hpp
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/otherpanels.cpp
+src/otherpanels.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+
+commit c300d7d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-22
+
+    ・設定画面を追加
+
+src/Makefile.am
+src/Makefile.in
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/settingwindow.cpp
+src/settingwindow.hpp
+
+commit 60d20d8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-20
+
+    ・Windows向けの微調整
+
+janeclone.nsi.in
+src/janeclone.cpp
+
+commit 203db16
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-19
+
+    ・板一覧リストとスレッド表示部分の縦⇔横分割切り替えを実装した
+
+src/janeclone.cpp
+
+commit c642132
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-19
+
+    ・ツールバーのアイコン切り替えを実装
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 52a8ef9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-19
+
+    ・板一覧ツリーの表示非表示切り替えを実装
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 2ad8280
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-19
+
+    ・フロート可能なツールバーを追加、その他微妙な調整
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/rc/COPYING
+src/rc/application-side-tree.png
+src/rc/application-tile-horizontal.png
+src/rc/configure-2.png
+src/rc/page-edit.png
+src/rc/system-search-5.png
+src/rc/view-choose.png
+src/rc/view-file-columns.png
+
+commit 2f38743
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-18
+
+    ・スレッド一覧リストの背景色を縞模様にした
+
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 3cfc3eb
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-17
+
+    ・最近閉じた板タブについてもメニューから開けるようにした
+
+src/janeclone.cpp
+
+commit 51d5fba
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-17
+
+    ・ユーザーが最後に閉じたスレッドを開く機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 96e63dc
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-17
+
+    ・再起動時の新着チェック処理の廃止
+    ・板一覧ツリーのサイズ調整
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit b3237b9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-16
+
+    ・スレッド一覧の更新時に前回との差分を計算し新着レスの情報をアイコンに表示できるようにした
+    ・スレッド一覧の更新時に新着レス、取得などの情報をリストに表示できるようにした
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/rc/COPYING
+src/rc/download-3.png
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 5a89d36
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-14
+
+    ・使う人がいるのか疑問ではあるがメニューバーからのスレッド一覧リストのソートを実装した
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit c6fae15
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-13
+
+    ・過去に取得したスレッド情報参照用のルートを作成
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit ade5b6a
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-13
+
+    ・無駄なコードを削除
+
+src/datatype.hpp
+src/janeclone.cpp
+src/virtualboardlistctrl.hpp
+
+commit 7ae11f3
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-13
+
+    ・暫定的にスレッド一覧リストの新着チェック用アイコンを表示できるようにした
+
+configure
+configure.ac
+libtool
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/rc/COPYING
+src/rc/LICENSES
+src/rc/LICENSES_full_documentation_std.txt
+src/rc/dialog-accept.png
+src/rc/edit-add-3.png
+src/rc/go-down-4.png
+src/rc/site_search.png
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 77fcb5f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-08
+
+    ・ポップアップ内部のフォントをスレッド内部のフォントと合わせた
+
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+
+commit 4ea7ea2
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-08
+
+    ・INSTALLを更新
+
+INSTALL
+
+commit c1a71b4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-07
+
+    ・板一覧ツリーにて検索したキーワードを再起動後にコンボボックスに表示できるようにした
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+
+commit 2e3ac60
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-07
+
+    ・検索ワード保存用DB周りのコードを追加
+
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit f0984cf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-06
+
+    ・板一覧ツリーで板名を検索する機能を追加した
+
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+
+commit 32bc867
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-06
+
+    ・検索ボックス内の処理をいくつか実装した
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit b84cea4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-06
+
+    ・検索ボックスに正規表現用のチェックボックスを追加した
+
+src/datatype.hpp
+src/janeclone.cpp
+src/rc/emblem-regex.png
+src/threadcontentbar.hpp
+
+commit 6fa6c21
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-05
+
+    ・検索ボックスの閉じるボタンを押すことで、ボックスを隠すことができるようにした
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit f41c69f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-05
+
+    ・検索ボックスウィジェット作成用コードを一般化
+    ・板一覧ツリーに検索ボックスを追加
+    ・バージョン情報をコンパイル時に追加できるようにした
+
+Makefile.in
+aclocal.m4
+configure
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+sqlite3/Makefile.in
+src/Makefile.am
+src/Makefile.in
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+wxsqlite3/Makefile.in
+
+commit b96c3ae
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-05
+
+    ・デバッグコードの削除
+
+src/socketcommunication.cpp
+
+commit 596d062
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-05
+
+    ・初回起動時に自動的に板一覧更新を行うように動作を変更
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 593b2d7
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-05
+
+    ・書き込み権限の問題を解消するため、取得したdatや画像は$HOME/.jc/以下に格納するようにした
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/responsewindow.cpp
+src/socketcommunication.cpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+src/threadcontentwindow.cpp
+
+commit 7a0b86d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-04
+
+    ・ウィンドウを動かした際にスレッドが>>1まで戻ってしまう問題に対処
+
+src/threadcontentwindow.cpp
+
+commit 853e393
+Merge: 4f6108b 943b964
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-05-03
+
+    Merge pull request #4 from k-watanabe/bugfix
+    
+    問題無さそうですのでマージさせて頂きます。
+    ご協力ありがとうございます。
+
+commit 943b964
+Author: K.Watanabe <kwtnb@outlook.com>
+Date:   2013-05-04
+
+    メニュー展開時に発生していたセグメンテーション違反を修正した
+
+src/janeclone.cpp
+
+commit 4f6108b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-05-01
+
+    ・ショートカットからJaneCloneを起動できないバグを修正
+
+janeclone.nsi.in
+
+commit 89d7744
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-30
+
+    ・Mac向けのビルド用スクリプトを整備した
+    （現状ビルドはできるが実行不可）
+
+Makefile.am
+Makefile.in
+aclocal.m4
+configure
+configure.ac
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+sqlite3/Makefile.in
+src/Makefile.in
+src/main.cpp
+src/sqliteaccessor.cpp
+wxsqlite3/Makefile.in
+
+commit 88c9baf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-29
+
+    ・Windows向けバイナリにてツリーコントロールがクラッシュするバグを修正
+    ・janeclone-1.1.0をリリース
+
+ChangeLog
+NEWS
+configure
+configure.ac
+libtool
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 4f19cae
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-28
+
+    ・Windows向けインストーラの設定を変更した
+
+Makefile.am
+Makefile.in
+janeclone.nsi.in
+libtool
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 9fb9bbe
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-28
+
+    ・少し修正
+
+src/janeclone.cpp
+
+commit 401efb0
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-28
+
+    ・スレッド一覧から検索するためのツールバーを追加
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit da47eca
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-28
+
+    ・m4ディレクトリにAX_CHECK_COMPILE_FLAGを加えた
+    ・バッファオーバーフロー対策とC++11用オプションを加えてビルドできるようにした
+
+INSTALL
+Makefile.in
+aclocal.m4
+bootstrap
+configure
+configure.ac
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+m4/m4_ax_check_compile_flag.m4
+sqlite3/Makefile.in
+src/Makefile.in
+wxsqlite3/Makefile.in
+
+commit 402857b
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-28
+
+    ・Linuxにてレスアンカーポップアップ表示で落ちるバグを修正した
+
+Makefile.am
+Makefile.in
+src/anchoredresponsepopup.cpp
+
+commit 2d4338d
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-28
+
+    ・Debian系ディストリビューション向けの設定ファイルをMakefile.amに追加
+
+ChangeLog
+Makefile.am
+Makefile.in
+libtool
+src/janeclone.cpp
+
+commit 6c73c9c
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-26
+
+    ・Windows向けバイナリにて、スレッド一覧およびスレッド表示画面がデータ取得時に最大化しないバグを修正
+
+libtool
+src/janeclone.cpp
+
+commit 2b170a8
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-25
+
+    ・Debian Wheezy上でWindows向けバイナリのビルドに成功した
+
+Makefile.am
+Makefile.in
+libtool
+src/Makefile.am
+src/Makefile.in
+
+commit 8802ace
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-23
+
+    ・JaneClone初回起動時に板一覧更新をしても反映されない問題を修正
+
+src/janeclone.cpp
+
+commit da023a4
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-23
+
+    ・設定ファイルにフォントが設定されていなければSetFontsは実行しないようにした
+
+src/janeclone.cpp
+src/threadcontentwindow.cpp
+
+commit d7e9bb9
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-04-23
+
+    ・Debian Wheezyでのビルドを行った
+    ・SQLite3の読み込み設定を元に戻した
+
+Makefile.am
+Makefile.in
+aclocal.m4
+config.h.in
+configure
+configure.ac
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+sqlite3/Makefile.in
+src/Makefile.am
+src/Makefile.in
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit d174309
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-04-20
+
+    ・RPM用SPECファイルを途中まで作成した
+
+Makefile.am
+Makefile.in
+
+commit 49b89a8
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-04-19
+
+    ・Linux(Fedora17でのビルド実行)
+    ・Windows以外の場合SQLite3のライブラリはシステムのものを使用させるよう設定
+
+Makefile.am
+Makefile.in
+aclocal.m4
+configure
+configure.ac
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+ltmain.sh
+m4/ltversion.m4
+sqlite3/Makefile.in
+src/Makefile.am
+src/Makefile.in
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit 56a8b84
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-04-19
+
+    ・ChangeLog, NEWSを追加
+
+ChangeLog
+Makefile.am
+Makefile.in
+NEWS
+configure
+configure.ac
+libtool
+src/threadcontentwindow.cpp
+
+commit 3cfc1d1
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-04-19
+
+    ・仮想リストがソートされた状態でも正しくスレッドを取得できるようにした
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 817c29b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-04-18
+
+    ・JaneClone公式サイトをブラウザで開く機能を追加
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 0b1f41e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-04-15
+
+    ・JaneClone_x64が終了時にクラッシュするバグを修正
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/main.cpp
+
+commit 5e8f8c5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-04-14
+
+    ・パッケージ作成用スクリプトを一部修正
+    ・パッケージ名にwin32/64を追加した
+
+Makefile.am
+Makefile.in
+janeclone.nsi.in
+
+commit ce6488c
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-26
+
+    ・ダウンロードされた画像をサムネイルとして表示させた
+
+src/janecloneutil.cpp
+src/threadcontentwindow.cpp
+
+commit 0c2abdb
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-26
+
+    ・画像リンクを含むスレッドを開いた場合、仮の画像をまず表示させるようにした
+
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/main.cpp
+src/rc/image-x-generic.png
+
+commit 0a2a1c0
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-26
+
+    ・画像がある場合<img>タグをつけるようにした
+    ・画像リンクでない場合デフォルトのブラウザで開くように変更
+
+src/Makefile.am
+src/Makefile.in
+src/enums.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/main.cpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 6f078dc
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-24
+
+    ・タブに画像のサムネイルを表示させるようにした
+
+src/janecloneimageviewer.cpp
+
+commit 59a7bdc
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-24
+
+    ・画像ビューア上のイベントをいくつか実装
+
+src/enums.hpp
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit cc3bd62
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-24
+
+    ・マウスホイール上下操作で画像の切り替えを行えるようにした
+
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+
+commit 981a36b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-23
+
+    ・画像ビューアを実装した
+    ・画像読み取り用のクラスをプロジェクトに追加した
+
+src/Makefile.am
+src/Makefile.in
+src/enums.hpp
+src/imagepanel.cpp
+src/imagepanel.hpp
+src/janeclone.cpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/socketcommunication.cpp
+src/threadcontentwindow.cpp
+
+commit 56c4b8e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-22
+
+    ・画像ビューアについて、メインウィンドウに確保したインスタンスを使いまわす形式に改良
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentwindow.cpp
+
+commit 68b78ee
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-22
+
+    ・wxAuiNotebookのオプションを変更し、タブの一覧を選択できるようにした
+
+src/janeclone.cpp
+
+commit d270d1b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-21
+
+    ・wxUUIDを修正した箇所がバグっていたのでもう一度修正
+    ・画像ビューアの呼び出し部分を作成
+
+libwxuuid/wxMD5.cpp
+libwxuuid/wxMD5.h
+libwxuuid/wxUUID.cpp
+src/datatype.hpp
+src/enums.hpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/socketcommunication.cpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit b395f28
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-20
+
+    ・HTMLのフォントのポイント設定部分を変数化
+
+src/threadcontentwindow.cpp
+
+commit b7d7368
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-18
+
+    ・スレッド内のフォントを変更できるようにした
+
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit b866cfa
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-17
+
+    ・ユーザーが開いている板とスレッドをメニューの項目として表示されるようにした
+    ・スレッド一覧情報の細かい修正
+
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/virtualboardlistctrl.cpp
+
+commit 943be10
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-17
+
+    ・スレッド一覧、スレッド閲覧画面の更新時にペインがうまく表示されないバグを修正
+    ・スレッド一覧画面で勢いが表示されるようにした
+
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/virtualboardlistctrl.cpp
+
+commit 71c9f50
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-17
+
+    ・ユーザーが最近閉じたタブを記録できるようにした
+
+README
+src/datatype.hpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 2998fe3
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-15
+
+    ・文字列中の実体参照文字を変換する処理を追加
+
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit dfa1ec2
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-15
+
+    ・wxBitmapButtonの画像読み取り方法を修正
+
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit aec271a
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-14
+
+    ・タブ切り替え時のタイトル設定処理を実装
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 43a1947
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-14
+
+    ・JaneCloneの再起動処理を実装した
+
+Makefile.in
+aclocal.m4
+config.guess
+config.sub
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+sqlite3/Makefile.in
+src/Makefile.in
+src/janeclone.cpp
+src/janeclone.hpp
+src/main.cpp
+wxsqlite3/Makefile.in
+
+commit 235e327
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-14
+
+    ・MinGW64での環境構築手順をINSTALLに記載
+
+INSTALL
+
+commit 1bb624c
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-14
+
+    ・MinGW64でのビルド対応
+
+Makefile.am
+Makefile.in
+libwxuuid/Makefile.am
+
+commit 234637d
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-11
+
+    ・インストーラにすべての実行ファイルとライブラリを格納した
+    ・make cleanでパッケージも削除できるようにした
+
+Makefile.am
+Makefile.in
+janeclone.nsi.in
+libtool
+rc/COPYING
+rc/amazon.png
+rc/appointment-new.png
+rc/bookmark-new.png
+rc/dialog-error.png
+rc/edit-delete.png
+rc/edit-find-replace.png
+rc/emblem-favorite.png
+rc/emblem-system.png
+rc/emblem-unreadable.png
+rc/folder.png
+rc/format-justify-left.png
+rc/go-bottom.png
+rc/go-down.png
+rc/go-last.png
+rc/go-next.png
+rc/go-up.png
+rc/google.png
+rc/help-browser.png
+rc/icon.rc
+rc/janeclone.icns
+rc/janeclone.ico
+rc/janeclone.xpm
+rc/system-search.png
+rc/text-html.png
+rc/view-refresh.png
+rc/yahoo.png
+src/Makefile.am
+src/Makefile.in
+
+commit 07e1cd7
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-03-11
+
+    ・RPMビルド用記述を増やした
+
+Makefile.am
+
+commit 5896fd7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-10
+
+    ・NSIS用スクリプトを追加
+
+Makefile.am
+Makefile.in
+janeclone.nsi.in
+
+commit c174488
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-10
+
+    ・NSISを使ったインストーラ作成スクリプトを途中まで作成
+
+Makefile.am
+Makefile.in
+configure.ac
+libtool
+src/Makefile.am
+src/Makefile.in
+
+commit a2c505b
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-03-10
+
+    ・Linux向けにMakefile.amを変更, INSTALLの内容を修正
+
+INSTALL
+src/Makefile.am
+
+commit d08bbe7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-10
+
+    ・板一覧情報の収納と展開を行うメソッドを修正
+    ・テーブルの情報を削除するメソッドを追加
+    ・Bindの使い方を間違えていたので修正
+
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 4e3472a
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-10
+
+    ・SQLiteのバージョンを下げ、SQLiteの動作時にJaneCloneが落ちる問題を解消した
+
+sqlite3/shell.c
+sqlite3/sqlite3.c
+sqlite3/sqlite3.h
+src/sqliteaccessor.cpp
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit 8f30707
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-07
+
+    ・SQLiteAccessorがうまく動かないため一時保存
+
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+src/janeclone.cpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit bfdcc97
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-07
+
+    dllのビルドができるようになった（ただし動作せず）
+
+Makefile.in
+aclocal.m4
+config.guess
+config.h.in
+config.sub
+configure
+configure.ac
+libtool
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxuuid/Makefile.am
+libwxuuid/Makefile.in
+libwxuuid/wxGUID.cpp
+libwxuuid/wxGUID.h
+libwxuuid/wxMD5.cpp
+libwxuuid/wxMD5.h
+libwxuuid/wxUUID.cpp
+libwxuuid/wxUUID.h
+ltmain.sh
+m4/libtool.m4
+m4/ltoptions.m4
+sqlite3/Makefile.am
+sqlite3/Makefile.in
+src/Makefile.am
+src/Makefile.in
+src/janeclone.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.hpp
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+
+commit 2e716d5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-03
+
+    ・Metakit向けのメソッドをSQLite向けに書き換えた
+
+src/janeclone.cpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 5d98502
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-02
+
+    ・Metakitを排除しSQLite3, wxSQLite3を使ったビルドができるようにした
+
+src/Makefile.am
+src/Makefile.in
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/metakitaccessor.cpp
+src/metakitaccessor.hpp
+src/sqliteaccessor.cpp
+src/sqliteaccessor.hpp
+
+commit 96018b6
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-01
+
+    ・metakitをプロジェクトから外した
+    ・sqlite3, wxsqlite3をプロジェクトに加え、Makefile.amを追加
+
+Makefile.am
+Makefile.in
+config.h.in
+configure
+configure.ac
+libmk4/Makefile.am
+libmk4/Makefile.in
+libmk4/README
+libmk4/borc.h
+libmk4/column.cpp
+libmk4/column.h
+libmk4/column.inl
+libmk4/custom.cpp
+libmk4/custom.h
+libmk4/derived.cpp
+libmk4/derived.h
+libmk4/doxy.h
+libmk4/field.cpp
+libmk4/field.h
+libmk4/field.inl
+libmk4/fileio.cpp
+libmk4/format.cpp
+libmk4/format.h
+libmk4/gnuc.h
+libmk4/handler.cpp
+libmk4/handler.h
+libmk4/handler.inl
+libmk4/header.h
+libmk4/license.terms
+libmk4/mfc.h
+libmk4/mk4.h
+libmk4/mk4.inl
+libmk4/mk4dll.h
+libmk4/mk4io.h
+libmk4/mk4str.h
+libmk4/mk4str.inl
+libmk4/msvc.h
+libmk4/mwcw.h
+libmk4/persist.cpp
+libmk4/persist.h
+libmk4/remap.cpp
+libmk4/remap.h
+libmk4/std.cpp
+libmk4/std.h
+libmk4/store.cpp
+libmk4/store.h
+libmk4/store.inl
+libmk4/string.cpp
+libmk4/table.cpp
+libmk4/univ.cpp
+libmk4/univ.h
+libmk4/univ.inl
+libmk4/view.cpp
+libmk4/viewx.cpp
+libmk4/win.h
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxuuid/Makefile.am
+libwxuuid/Makefile.in
+sqlite3/Makefile.am
+sqlite3/Makefile.in
+sqlite3/shell.c
+sqlite3/sqlite3.c
+sqlite3/sqlite3.h
+sqlite3/sqlite3ext.h
+wxsqlite3/LICENCE.txt
+wxsqlite3/Makefile.am
+wxsqlite3/Makefile.in
+wxsqlite3/wx/wxsqlite3.h
+wxsqlite3/wx/wxsqlite3def.h
+wxsqlite3/wx/wxsqlite3dyn.h
+wxsqlite3/wx/wxsqlite3opt.h
+wxsqlite3/wxsqlite3.cpp
+
+commit 949cb71
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-03-01
+
+    ・wxWidgetsのバージョンを2.8に切り替え
+    ・それにともなってwxStringのマクロ宣言等を変更
+
+Makefile.in
+aclocal.m4
+bootstrap
+config.guess
+config.sub
+configure
+libmk4/Makefile.in
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+libwxuuid/wxGUID.cpp
+libwxuuid/wxMD5.cpp
+libwxuuid/wxUUID.cpp
+ltmain.sh
+src/Makefile.am
+src/Makefile.in
+src/anchoredresponsepopup.cpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/main.cpp
+src/metakitaccessor.cpp
+src/responsewindow.cpp
+src/socketcommunication.cpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.cpp
+
+commit 6d92641
+Author: Hiroyuki Nagata <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2013-02-28
+
+    Linuxでのビルド
+
+Makefile.in
+aclocal.m4
+config.guess
+config.sub
+configure
+configure.ac
+libmk4/Makefile.in
+libtool
+libwxnkf/Makefile.in
+libwxuuid/Makefile.in
+ltmain.sh
+src/Makefile.am
+src/Makefile.in
+
+commit c89cd76
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-02-28
+
+    ・Linux上でのバグ修正
+    -> wxMD5.cppのインクルードファイルを修正
+    -> wxUUID.cppの意味のない仮想関数を削除
+    -> 画像ビューアにアイコンを追加
+    ・INSTALLにLinuxでのビルド手順を追記
+
+INSTALL
+libwxuuid/wxMD5.cpp
+libwxuuid/wxUUID.cpp
+libwxuuid/wxUUID.h
+src/janecloneimageviewer.cpp
+
+commit 68b0ec7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-28
+
+    ・スレッド更新時、datファイルにNULL文字が追加されてしまうバグを修正
+
+src/socketcommunication.cpp
+
+commit d97f787
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-28
+
+    ・アイコン用のライセンス表記を追加
+
+rc/COPYING
+rc/amazon.png
+src/rc/COPYING
+src/rc/amazon.png
+src/rc/appointment-new.png
+src/rc/bookmark-new.png
+src/rc/dialog-error.png
+src/rc/edit-delete.png
+src/rc/edit-find-replace.png
+src/rc/emblem-favorite.png
+src/rc/emblem-system.png
+src/rc/emblem-unreadable.png
+src/rc/folder.png
+src/rc/format-justify-left.png
+src/rc/go-bottom.png
+src/rc/go-down.png
+src/rc/go-last.png
+src/rc/go-next.png
+src/rc/go-up.png
+src/rc/google.png
+src/rc/help-browser.png
+src/rc/icon.rc
+src/rc/janeclone.icns
+src/rc/janeclone.ico
+src/rc/janeclone.xpm
+src/rc/system-search.png
+src/rc/text-html.png
+src/rc/view-refresh.png
+src/rc/yahoo.png
+
+commit 9ded9e4
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-28
+
+    ・wxUUIDのバグ修正(wxUniCharでアラートが出る問題)
+    ・JaneCloneを複数起動できないようにした
+
+libwxuuid/wxUUID.cpp
+src/main.cpp
+
+commit c00b3d2
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-27
+
+    ・JaneCloneの.hppファイルのインクルードガードをHPPに修正
+    ・UUID生成用wxUUIDをライブラリとしてプロジェクトに編入した(ライセンスはwxWindowライセンス)
+
+Makefile.am
+Makefile.in
+configure
+configure.ac
+libmk4/Makefile.am
+libmk4/Makefile.in
+libmk4/borc.h
+libmk4/column.cpp
+libmk4/column.h
+libmk4/column.inl
+libmk4/custom.cpp
+libmk4/custom.h
+libmk4/derived.cpp
+libmk4/derived.h
+libmk4/doxy.h
+libmk4/field.cpp
+libmk4/field.h
+libmk4/field.inl
+libmk4/fileio.cpp
+libmk4/format.cpp
+libmk4/format.h
+libmk4/gnuc.h
+libmk4/handler.cpp
+libmk4/handler.h
+libmk4/handler.inl
+libmk4/header.h
+libmk4/include/Makefile.am
+libmk4/include/Makefile.in
+libmk4/include/mk4.h
+libmk4/include/mk4.inl
+libmk4/include/mk4dll.h
+libmk4/include/mk4io.h
+libmk4/include/mk4str.h
+libmk4/include/mk4str.inl
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libmk4/libmk4/borc.h
+libmk4/libmk4/column.cpp
+libmk4/libmk4/column.h
+libmk4/libmk4/column.inl
+libmk4/libmk4/custom.cpp
+libmk4/libmk4/custom.h
+libmk4/libmk4/derived.cpp
+libmk4/libmk4/derived.h
+libmk4/libmk4/doxy.h
+libmk4/libmk4/field.cpp
+libmk4/libmk4/field.h
+libmk4/libmk4/field.inl
+libmk4/libmk4/fileio.cpp
+libmk4/libmk4/format.cpp
+libmk4/libmk4/format.h
+libmk4/libmk4/gnuc.h
+libmk4/libmk4/handler.cpp
+libmk4/libmk4/handler.h
+libmk4/libmk4/handler.inl
+libmk4/libmk4/header.h
+libmk4/libmk4/mfc.h
+libmk4/libmk4/msvc.h
+libmk4/libmk4/mwcw.h
+libmk4/libmk4/persist.cpp
+libmk4/libmk4/persist.h
+libmk4/libmk4/remap.cpp
+libmk4/libmk4/remap.h
+libmk4/libmk4/std.cpp
+libmk4/libmk4/std.h
+libmk4/libmk4/store.cpp
+libmk4/libmk4/store.h
+libmk4/libmk4/store.inl
+libmk4/libmk4/string.cpp
+libmk4/libmk4/table.cpp
+libmk4/libmk4/univ.cpp
+libmk4/libmk4/univ.h
+libmk4/libmk4/univ.inl
+libmk4/libmk4/view.cpp
+libmk4/libmk4/viewx.cpp
+libmk4/libmk4/win.h
+libmk4/mfc.h
+libmk4/mk4.h
+libmk4/mk4.inl
+libmk4/mk4dll.h
+libmk4/mk4io.h
+libmk4/mk4str.h
+libmk4/mk4str.inl
+libmk4/msvc.h
+libmk4/mwcw.h
+libmk4/persist.cpp
+libmk4/persist.h
+libmk4/remap.cpp
+libmk4/remap.h
+libmk4/std.cpp
+libmk4/std.h
+libmk4/store.cpp
+libmk4/store.h
+libmk4/store.inl
+libmk4/string.cpp
+libmk4/table.cpp
+libmk4/univ.cpp
+libmk4/univ.h
+libmk4/univ.inl
+libmk4/view.cpp
+libmk4/viewx.cpp
+libmk4/win.h
+libtool
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxnkf/flagset.cpp
+libwxnkf/flagset.h
+libwxnkf/include/Makefile.am
+libwxnkf/include/Makefile.in
+libwxnkf/include/wx/wxnkf.h
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+libwxnkf/libwxnkf/flagset.cpp
+libwxnkf/libwxnkf/flagset.h
+libwxnkf/libwxnkf/utf16util.cpp
+libwxnkf/libwxnkf/utf16util.h
+libwxnkf/libwxnkf/utf8table.cpp
+libwxnkf/libwxnkf/utf8table.h
+libwxnkf/libwxnkf/util.cpp
+libwxnkf/libwxnkf/util.h
+libwxnkf/libwxnkf/wxnkf.cpp
+libwxnkf/libwxnkf/wxnkfbaseconfig.h
+libwxnkf/libwxnkf/wxnkfencoding.cpp
+libwxnkf/libwxnkf/wxnkfencoding.h
+libwxnkf/utf16util.cpp
+libwxnkf/utf16util.h
+libwxnkf/utf8table.cpp
+libwxnkf/utf8table.h
+libwxnkf/util.cpp
+libwxnkf/util.h
+libwxnkf/wx/wxnkf.h
+libwxnkf/wxnkf.cpp
+libwxnkf/wxnkfbaseconfig.h
+libwxnkf/wxnkfencoding.cpp
+libwxnkf/wxnkfencoding.h
+libwxuuid/Makefile.am
+libwxuuid/Makefile.in
+libwxuuid/global.h
+libwxuuid/md5.h
+libwxuuid/md5c.c
+libwxuuid/wxGUID.cpp
+libwxuuid/wxGUID.h
+libwxuuid/wxMD5.cpp
+libwxuuid/wxMD5.h
+libwxuuid/wxUUID.cpp
+libwxuuid/wxUUID.h
+src/Makefile.am
+src/Makefile.in
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/enums.hpp
+src/extractboardlist.hpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/metakitaccessor.hpp
+src/responsewindow.hpp
+src/socketcommunication.hpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.hpp
+
+commit d578bd3
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-27
+
+    ・HTTPによる画像ダウンロード機能を追加
+    ・正規表現をつかったURI要素の抽出機能を追加
+    ・READMEを編集
+    ・datatype.hppに新しい構造体を定義・内容を整理
+
+README
+src/datatype.hpp
+src/janeclone.cpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/socketcommunication.cpp
+
+commit 0c4c495
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-26
+
+    画像ビューアと画像ダウンロードの通信部分を作成
+
+src/datatype.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit b0013e6
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-25
+
+    画像ビューアをコンパイル対象に追加
+
+src/Makefile.am
+src/Makefile.in
+src/datatype.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 015bc5b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-25
+
+    画像ビューアのひな形を作成
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneimageviewer.cpp
+src/janecloneimageviewer.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 0bb1c22
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-24
+
+    誤作動を防ぐため、列挙型を一つのファイルにまとめた
+
+Makefile.in
+aclocal.m4
+configure
+configure.ac
+libmk4/Makefile.in
+libmk4/include/Makefile.in
+libmk4/libmk4/Makefile.in
+libwxnkf/Makefile.in
+libwxnkf/include/Makefile.in
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.in
+src/anchoredresponsepopup.cpp
+src/enums.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/responsewindow.hpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.hpp
+
+commit 483765d
+Author: hiroyuki <newserver002@gmail.com>
+Date:   2013-02-16
+
+    ・Linuxでのconfigure実行
+
+Makefile.in
+aclocal.m4
+configure
+libmk4/Makefile.in
+libmk4/include/Makefile.in
+libmk4/libmk4/Makefile.in
+libwxnkf/Makefile.in
+libwxnkf/include/Makefile.in
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.in
+
+commit 2b160da
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-11
+
+    ・Windows向けにパッケージング部分を少し修正
+
+INSTALL
+src/Makefile.am
+src/Makefile.in
+
+commit b6ac6ee
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-11
+
+    ・Windowsでのバイナリインストール部分を作成
+    ・ライブラリのリンクが.laのままだったため修正
+
+Makefile.in
+aclocal.m4
+configure
+libmk4/Makefile.in
+libmk4/include/Makefile.in
+libmk4/libmk4/Makefile.in
+libwxnkf/Makefile.in
+libwxnkf/include/Makefile.in
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.am
+src/Makefile.in
+
+commit 708e919
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-02-11
+
+    ・Makefile.amのリンカ設定を修正
+
+src/Makefile.am
+src/Makefile.in
+
+commit 06c344f
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2013-02-11
+
+    ・Macでのビルドのためconfigure.acにAC_CHECK_SIZEOFを追加
+    ・Macにおいても静的リンクライブラリが望ましいと考えMakefile.amを修正
+    ・threadcontentwindowを少し修正
+    ・/mk 以下のMakefileを削除
+
+AUTHORS
+COPYING
+ChangeLog
+INSTALL
+Makefile
+Makefile.am
+Makefile.in
+NEWS
+README
+aclocal.m4
+config.guess
+config.h
+config.h.in
+config.sub
+configure
+configure.ac
+depcomp
+install-sh
+libmk4/Makefile.am
+libmk4/Makefile.in
+libmk4/README
+libmk4/include/Makefile.am
+libmk4/include/Makefile.in
+libmk4/include/mk4.h
+libmk4/include/mk4.inl
+libmk4/include/mk4dll.h
+libmk4/include/mk4io.h
+libmk4/include/mk4str.h
+libmk4/include/mk4str.inl
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libmk4/libmk4/borc.h
+libmk4/libmk4/column.cpp
+libmk4/libmk4/column.h
+libmk4/libmk4/column.inl
+libmk4/libmk4/custom.cpp
+libmk4/libmk4/custom.h
+libmk4/libmk4/derived.cpp
+libmk4/libmk4/derived.h
+libmk4/libmk4/doxy.h
+libmk4/libmk4/field.cpp
+libmk4/libmk4/field.h
+libmk4/libmk4/field.inl
+libmk4/libmk4/fileio.cpp
+libmk4/libmk4/format.cpp
+libmk4/libmk4/format.h
+libmk4/libmk4/gnuc.h
+libmk4/libmk4/handler.cpp
+libmk4/libmk4/handler.h
+libmk4/libmk4/handler.inl
+libmk4/libmk4/header.h
+libmk4/libmk4/mfc.h
+libmk4/libmk4/msvc.h
+libmk4/libmk4/mwcw.h
+libmk4/libmk4/persist.cpp
+libmk4/libmk4/persist.h
+libmk4/libmk4/remap.cpp
+libmk4/libmk4/remap.h
+libmk4/libmk4/std.cpp
+libmk4/libmk4/std.h
+libmk4/libmk4/store.cpp
+libmk4/libmk4/store.h
+libmk4/libmk4/store.inl
+libmk4/libmk4/string.cpp
+libmk4/libmk4/table.cpp
+libmk4/libmk4/univ.cpp
+libmk4/libmk4/univ.h
+libmk4/libmk4/univ.inl
+libmk4/libmk4/view.cpp
+libmk4/libmk4/viewx.cpp
+libmk4/libmk4/win.h
+libmk4/license.terms
+libtool
+libwxnkf/Makefile
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxnkf/include/Makefile.am
+libwxnkf/include/Makefile.in
+libwxnkf/include/wx/wxnkf.h
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+libwxnkf/libwxnkf/flagset.cpp
+libwxnkf/libwxnkf/flagset.h
+libwxnkf/libwxnkf/utf16util.cpp
+libwxnkf/libwxnkf/utf16util.h
+libwxnkf/libwxnkf/utf8table.cpp
+libwxnkf/libwxnkf/utf8table.h
+libwxnkf/libwxnkf/util.cpp
+libwxnkf/libwxnkf/util.h
+libwxnkf/libwxnkf/wxnkf.cpp
+libwxnkf/libwxnkf/wxnkfbaseconfig.h
+libwxnkf/libwxnkf/wxnkfencoding.cpp
+libwxnkf/libwxnkf/wxnkfencoding.h
+ltmain.sh
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+missing
+mk/Makefile.msw_x64.mk
+mk/Makefile.osx.mk
+mk/Makefile.unx.mk
+rc/amazon.png
+rc/appointment-new.png
+rc/bookmark-new.png
+rc/dialog-error.png
+rc/edit-delete.png
+rc/edit-find-replace.png
+rc/emblem-favorite.png
+rc/emblem-system.png
+rc/emblem-unreadable.png
+rc/folder.png
+rc/format-justify-left.png
+rc/go-bottom.png
+rc/go-down.png
+rc/go-last.png
+rc/go-next.png
+rc/go-up.png
+rc/google.png
+rc/help-browser.png
+rc/icon.rc
+rc/janeclone.icns
+rc/janeclone.ico
+rc/janeclone.xpm
+rc/system-search.png
+rc/text-html.png
+rc/view-refresh.png
+rc/yahoo.png
+src/Makefile.am
+src/Makefile.in
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/main.cpp
+src/metakitaccessor.cpp
+src/metakitaccessor.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 4790f80
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-11
+
+    ・make installターゲットの整備を行った
+    ・Mac OSX向けのMakefile.amを作成
+
+INSTALL
+Makefile.in
+config.h.in
+configure.ac
+libmk4/Makefile.in
+libmk4/include/Makefile.in
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libwxnkf/Makefile.in
+libwxnkf/include/Makefile.in
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.am
+src/Makefile.in
+
+commit 0633259
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-10
+
+    ・MinGW64でのビルドに成功した
+    ・JaneClone本体ビルドのためのMakefile.amを大幅に変更した
+
+INSTALL
+config.sub
+configure.ac
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.am
+src/Makefile.in
+
+commit cfcb625
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-02-10
+
+    ・Windows(MinGW32)でのAutotoolを使ったコンパイルを可能にした
+    ・INSTALLにインストール方法を記載した
+    ・CopyingをGPL v2 の条文を記載
+
+COPYING
+INSTALL
+Makefile
+README
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libtool
+libwxnkf/Makefile
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.am
+src/Makefile.in
+
+commit cf20793
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-01-27
+
+    とりあえずコンパイルが通るところまで作成。リンクが出来ない。
+
+Makefile
+Makefile.in
+config.h
+configure
+configure.ac
+libmk4/Makefile.am
+libmk4/Makefile.in
+libmk4/include/Makefile.in
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libwxnkf/Makefile
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxnkf/include/Makefile.in
+libwxnkf/libwxnkf/Makefile.in
+src/Makefile.am
+src/Makefile.in
+
+commit e55a2bc
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-01-27
+
+    JaneCloneのautoconf化(まだ完全ではない)
+
+AUTHORS
+COPYING
+ChangeLog
+INSTALL
+Makefile.am
+Makefile.in
+Makefile.msw_x64.mk
+Makefile.osx.mk
+Makefile.unx.mk
+NEWS
+aclocal.m4
+config.guess
+config.h
+config.h.in
+configure
+configure.ac
+depcomp
+install-sh
+libmk4/Makefile.am
+libmk4/Makefile.in
+libmk4/README
+libmk4/include/Makefile.am
+libmk4/include/Makefile.in
+libmk4/include/mk4.h
+libmk4/include/mk4.inl
+libmk4/include/mk4dll.h
+libmk4/include/mk4io.h
+libmk4/include/mk4str.h
+libmk4/include/mk4str.inl
+libmk4/libmk4/Makefile.am
+libmk4/libmk4/Makefile.in
+libmk4/libmk4/borc.h
+libmk4/libmk4/column.cpp
+libmk4/libmk4/column.h
+libmk4/libmk4/column.inl
+libmk4/libmk4/custom.cpp
+libmk4/libmk4/custom.h
+libmk4/libmk4/derived.cpp
+libmk4/libmk4/derived.h
+libmk4/libmk4/doxy.h
+libmk4/libmk4/field.cpp
+libmk4/libmk4/field.h
+libmk4/libmk4/field.inl
+libmk4/libmk4/fileio.cpp
+libmk4/libmk4/format.cpp
+libmk4/libmk4/format.h
+libmk4/libmk4/gnuc.h
+libmk4/libmk4/handler.cpp
+libmk4/libmk4/handler.h
+libmk4/libmk4/handler.inl
+libmk4/libmk4/header.h
+libmk4/libmk4/mfc.h
+libmk4/libmk4/msvc.h
+libmk4/libmk4/mwcw.h
+libmk4/libmk4/persist.cpp
+libmk4/libmk4/persist.h
+libmk4/libmk4/remap.cpp
+libmk4/libmk4/remap.h
+libmk4/libmk4/std.cpp
+libmk4/libmk4/std.h
+libmk4/libmk4/store.cpp
+libmk4/libmk4/store.h
+libmk4/libmk4/store.inl
+libmk4/libmk4/string.cpp
+libmk4/libmk4/table.cpp
+libmk4/libmk4/univ.cpp
+libmk4/libmk4/univ.h
+libmk4/libmk4/univ.inl
+libmk4/libmk4/view.cpp
+libmk4/libmk4/viewx.cpp
+libmk4/libmk4/win.h
+libmk4/license.terms
+libtool
+libwxnkf/Makefile.am
+libwxnkf/Makefile.in
+libwxnkf/Makefile.msw_x64.mk
+libwxnkf/include/Makefile.am
+libwxnkf/include/Makefile.in
+libwxnkf/include/wx/wxnkf.h
+libwxnkf/libwxnkf/Makefile.am
+libwxnkf/libwxnkf/Makefile.in
+libwxnkf/libwxnkf/flagset.cpp
+libwxnkf/libwxnkf/flagset.h
+libwxnkf/libwxnkf/utf16util.cpp
+libwxnkf/libwxnkf/utf16util.h
+libwxnkf/libwxnkf/utf8table.cpp
+libwxnkf/libwxnkf/utf8table.h
+libwxnkf/libwxnkf/util.cpp
+libwxnkf/libwxnkf/util.h
+libwxnkf/libwxnkf/wxnkf.cpp
+libwxnkf/libwxnkf/wxnkfbaseconfig.h
+libwxnkf/libwxnkf/wxnkfencoding.cpp
+libwxnkf/libwxnkf/wxnkfencoding.h
+libwxnkf/src/flagset.cpp
+libwxnkf/src/flagset.h
+libwxnkf/src/utf16util.cpp
+libwxnkf/src/utf16util.h
+libwxnkf/src/utf8table.cpp
+libwxnkf/src/utf8table.h
+libwxnkf/src/util.cpp
+libwxnkf/src/util.h
+libwxnkf/src/wx/wxnkf.h
+libwxnkf/src/wxnkf.cpp
+libwxnkf/src/wxnkfbaseconfig.h
+libwxnkf/src/wxnkfencoding.cpp
+libwxnkf/src/wxnkfencoding.h
+ltmain.sh
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+missing
+mk/Makefile.msw_x64.mk
+mk/Makefile.osx.mk
+mk/Makefile.unx.mk
+src/Makefile.am
+src/Makefile.in
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+
+commit 3120ef7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-01-15
+
+    レスのポップアップの際に>>1が表示されないバグを修正
+    ポップアップするウィンドウのサイズを最小サイズにした
+
+Makefile.msw_x64.mk
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 3a47db1
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-01-13
+
+    JaneClone64bit版(MinGW64環境)でのビルドに成功した。Makefileを追加。
+
+Makefile.msw_x64.mk
+libwxnkf/Makefile.msw_x64.mk
+
+commit 2c5f0b3
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-01-03
+
+    スレッド内容バー部分のボタンにIDを与えた。wxTreeCtrlのデストラクタでセグメンテーション違反が起きていたバグを修正した。
+
+src/janeclone.cpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 61a7c40
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2013-01-03
+
+    wxBitmapButtonをwxAuiToolBarに置き換えた
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit bdae066
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-31
+
+    スレッド表示部分のレス番をリンクにした
+
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 3c9e9d9
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-31
+
+    一部のアイコンをコミットし忘れていたので追加
+
+rc/go-down.png
+rc/go-up.png
+
+commit 81c297b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-31
+
+    スレッド検索用バーを画面更新時も表示できるようにした
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit af3224b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-31
+
+    スレッド表示画面とスレッド検索バーを結合させた
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+src/threadcontentwindow.hpp
+
+commit 3302559
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-30
+
+    アイコンをプロジェクトに追加
+
+rc/appointment-new.png
+rc/bookmark-new.png
+rc/dialog-error.png
+rc/edit-delete.png
+rc/emblem-unreadable.png
+rc/format-justify-left.png
+rc/go-bottom.png
+rc/go-last.png
+rc/system-search.png
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit 9e95f88
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2012-12-30
+
+    mac向けMakefileを一部修正
+
+Makefile.osx.mk
+
+commit e81b1c1
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-29
+
+    スレッド表示部分用の検索バーと各種ボタンの雛形をコミット
+
+src/threadcontentbar.cpp
+src/threadcontentbar.hpp
+
+commit 99f53cb
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-12-26
+
+    wxFormatにて型指定が異常で警告が出ていた部分を修正
+
+src/socketcommunication.cpp
+
+commit f9cbb03
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2012-12-25
+
+    メソッド名がかぶっていたので修正した
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 98e175b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-25
+
+    cookie取得後の書き込み処理を実装した
+
+src/responsewindow.cpp
+src/socketcommunication.cpp
+
+commit d50d36b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-24
+
+    初回書き込み、確認後の書き込み処理を確実に行えるように修正した
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit e3b1d4c
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-11
+
+    実装方針をコメントで定義
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+
+commit 72a54b0
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-12-02
+
+    初の書込に成功した
+
+README
+src/responsewindow.cpp
+src/socketcommunication.cpp
+
+commit 8eafe82
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-30
+
+    隠し要素を利用した投稿を途中まで作成
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 4a6d2de
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-29
+
+    wxHtmlのカスタムタグを使用し、<FORM>, <INPUT>タグを使用できるようにした。
+
+src/datatype.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit dd0e6a7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-27
+
+    サーバーから与えられた隠し要素をファイルに記録できるようにした
+
+src/socketcommunication.cpp
+
+commit 89cbb44
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-26
+
+    クッキー情報をコンフィグファイルに書き出す処理を実装した
+
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit c8fd7fc
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-26
+
+    クッキーをサーバから受け取る部分を作成
+
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 0e3b816
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-15
+
+    リファラが正しく設定できていないので修正した
+
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit c4f5a37
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-13
+
+    ログ出力が出せるように改良した
+
+src/janeclone.cpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 698ced5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-09
+
+    鬼門であったPOST処理を実装
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/socketcommunication.cpp
+
+commit 2fbea5d
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-11-04
+
+    書き込み用のソケット通信処理を書き進める
+
+src/socketcommunication.cpp
+
+commit fb4938c
+Merge: 0cf3177 bef94bf
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-03
+
+    Merge branch 'master' of https://github.com/Hiroyuki-Nagata/JaneClone
+
+commit 0cf3177
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-11-03
+
+    板タブ、スレタブでの変更時にURLをウィンドウに反映されるようにした
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit bef94bf
+Author: hiroyuki nagata <newserver002@gmail.com>
+Date:   2012-10-31
+
+    Makefileのちょっとした修正
+
+Makefile.osx.mk
+
+commit 13ba7aa
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-29
+
+    各画面でのフォントの指定を可能にした
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 1e2dda1
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-28
+
+    フォント設定ダイアログを増やした
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 6d2aa9e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-25
+
+    フォント設定ダイアログを作成した
+
+src/janeclone.cpp
+src/janeclone.hpp
+
+commit 283d267
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-25
+
+    スレッド画面での右クリック時にアイコンを表示させた
+
+src/janeclone.cpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit c5bc98a
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-23
+
+    選択されたテキストでGoogle, Yahoo, Amazon検索を可能にした
+
+rc/amazon.png
+rc/google.png
+rc/yahoo.png
+src/threadcontentwindow.cpp
+
+commit 1aee372
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-22
+
+    初回書き込みのcookie受け取り部分の実装を進めた
+
+src/responsewindow.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit a7107cf
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-22
+
+    文字列URLエンコードのテスト
+
+libwxnkf/Makefile
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 402420b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-10-22
+
+    libnkfへの変更をJaneCloneに反映、ビルド後正常動作を確認
+
+libwxnkf/src/wx/wxnkf.h
+libwxnkf/src/wxnkf.cpp
+libwxnkf/src/wxnkfencoding.cpp
+libwxnkf/src/wxnkfencoding.h
+
+commit f91efa2
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-30
+
+    ソケット通信部分の実装を進めた
+
+src/datatype.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/responsewindow.cpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 4c89428
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-30
+
+    クッキー保存機能を作成した
+
+Makefile
+src/janeclone.cpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit cc6f3c2
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-30
+
+    書き込み用ソケット通信部分の雛形を作成
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+
+commit 99d2ed4
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-30
+
+    ひと通りすべての項目をソート可能にした
+
+src/janeclone.cpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 1309b8c
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-28
+
+    ようやく仮想リストのソートプログラムができた（一部）
+
+Makefile
+src/janeclone.cpp
+src/janeclone.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 0ae8af0
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-23
+
+    仮想リストのアイテムをクラス化した
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 1d6f556
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-11
+
+    更に修正
+
+src/janeclone.cpp
+
+commit 6458de7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-11
+
+    レス用ウィンドウの出現位置の修正
+
+src/janeclone.cpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 5fa312d
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-09-11
+
+    Linux用Makefileの修正
+
+Makefile.unx.mk
+
+commit 7be0f35
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-11
+
+    wxGladeでレス用のウィンドウを自動生成した
+
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 4905ad5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-11
+
+    レス用のウィンドウを追加
+
+src/janeclone.cpp
+src/janeclone.hpp
+src/responsewindow.cpp
+src/responsewindow.hpp
+
+commit 2dc04ac
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-08
+
+    選択したテキストからの検索機能を追加
+
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit 9e1be61
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-08
+
+    リンクのコピー機能を追加
+
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+
+commit c377909
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-08
+
+    構成とファイル名の変更
+
+Makefile
+include/AnchoredResponsePopup.h
+include/DataType.h
+include/ExtractBoardList.h
+include/JaneClone.h
+include/JaneCloneUtil.h
+include/MetakitAccessor.h
+include/SocketCommunication.h
+include/ThreadContentWindow.h
+include/VirtualBoardListCtrl.h
+libwxnkf/Makefile
+libwxnkf/include/flagset.h
+libwxnkf/include/utf16util.h
+libwxnkf/include/utf8table.h
+libwxnkf/include/util.h
+libwxnkf/include/wx/wxnkf.h
+libwxnkf/include/wxnkfbaseconfig.h
+libwxnkf/include/wxnkfencoding.h
+libwxnkf/src/flagset.h
+libwxnkf/src/utf16util.h
+libwxnkf/src/utf8table.h
+libwxnkf/src/util.h
+libwxnkf/src/wx/wxnkf.h
+libwxnkf/src/wxnkfbaseconfig.h
+libwxnkf/src/wxnkfencoding.h
+src/AnchoredResponsePopup.cpp
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/Main.cpp
+src/MetakitAccessor.cpp
+src/SocketCommunication.cpp
+src/ThreadContentWindow.cpp
+src/VirtualBoardListCtrl.cpp
+src/anchoredresponsepopup.cpp
+src/anchoredresponsepopup.hpp
+src/datatype.hpp
+src/extractboardlist.cpp
+src/extractboardlist.hpp
+src/janeclone.cpp
+src/janeclone.hpp
+src/janecloneutil.cpp
+src/janecloneutil.hpp
+src/main.cpp
+src/metakitaccessor.cpp
+src/metakitaccessor.hpp
+src/socketcommunication.cpp
+src/socketcommunication.hpp
+src/threadcontentwindow.cpp
+src/threadcontentwindow.hpp
+src/virtualboardlistctrl.cpp
+src/virtualboardlistctrl.hpp
+
+commit 1a1d174
+Author: hiroyuki <hiroyuki@192.168.11.33>
+Date:   2012-09-06
+
+    Makefileの追加
+
+Makefile.osx.mk
+src/JaneClone.cpp
+
+commit 7cee2c1
+Author: hiroyuki <hiroyuki@192.168.11.33>
+Date:   2012-09-06
+
+    Macでのビルドに成功した
+
+README
+src/JaneClone.cpp
+
+commit 7e66285
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-06
+
+    HtmlWindowでのイベント処理を追加
+
+include/JaneClone.h
+include/ThreadContentWindow.h
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+
+commit 0169301
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-06
+
+    スレッドのリロード処理を変更
+
+src/JaneClone.cpp
+
+commit 0d67d20
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-05
+
+    HtmlWindowでの右クリック処理を追加した
+
+include/ThreadContentWindow.h
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+
+commit 896aec1
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-05
+
+    似たような処理をコールバック関数化
+
+include/JaneCloneUtil.h
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+
+commit 3761727
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-05
+
+    datファイルの削除機能を追加した
+
+src/JaneClone.cpp
+
+commit 28126c1
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-04
+
+    datファイルをクリップボードにコピーする機能を追加
+
+include/JaneClone.h
+src/JaneClone.cpp
+src/VirtualBoardListCtrl.cpp
+
+commit 80425e0
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-04
+
+    datを保存する機能を追加
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 218a902
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-04
+
+    スレタブを閉じるコマンドとブラウザで開くコマンドを実装した
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit cb34b41
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-03
+
+    ログ一覧出力をとりあえず実装
+
+include/VirtualBoardListCtrl.h
+src/JaneClone.cpp
+src/VirtualBoardListCtrl.cpp
+
+commit 7376cf4
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    ログフォルダのチェックメソッドを途中まで作成
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 0de4e52
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    ウィンドウの最大化情報を記憶できるようにした
+
+src/JaneClone.cpp
+
+commit 4f37b6e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    スレッド・板情報をクリップボードにコピーする処理を実装した
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 42be195
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    スレッド一覧の更新処理を実装した
+
+include/VirtualBoardListCtrl.h
+src/JaneClone.cpp
+src/VirtualBoardListCtrl.cpp
+
+commit 0c15564
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    HTTP通信の際のログ出力テスト
+
+include/JaneClone.h
+include/SocketCommunication.h
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+
+commit 3235511
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    スレッド一覧をブラウザで開く処理を実装した
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit d59726f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    これより左・右のスレッド一覧タブをを閉じるを実装した
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 1e2266c
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    すべてのスレッド一覧タブを閉じるを実装
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit e0b46c6
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-02
+
+    現在選択されていないスレッド一覧タブを閉じるを実装
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 04b0306
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-09-02
+
+    ポップアップメニューでの操作をひとつ実装してみた
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit a0450f2
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-09-02
+
+    レスアンカーのポップアップの位置を調節した
+
+src/JaneClone.cpp
+
+commit 8e3a13b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-01
+
+    スレッドの１が読み込めていなかったバグを修正した・URL検出正規表現を修正した
+
+include/DataType.h
+include/ThreadContentWindow.h
+src/ThreadContentWindow.cpp
+
+commit e89c5e9
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-09-01
+
+    とりあえずバグを修正してまともに動くことを確認した
+
+include/JaneClone.h
+include/MetakitAccessor.h
+src/JaneClone.cpp
+src/MetakitAccessor.cpp
+
+commit 797e5b3
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-09-01
+
+    ユーザーが以前見ていたスレッドを記憶する機能を実装した
+
+include/JaneClone.h
+include/MetakitAccessor.h
+src/JaneClone.cpp
+src/MetakitAccessor.cpp
+
+commit f242c4a
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-09-01
+
+    ユーザーが以前見ていたスレッドを記憶する処理を途中まで作成
+
+include/DataType.h
+include/JaneClone.h
+include/MetakitAccessor.h
+src/JaneClone.cpp
+src/MetakitAccessor.cpp
+
+commit a57317a
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-09-01
+
+    板一覧から板名をクリックすると、その板の一番最初のスレッドがダウンロードされてしまうバグを修正(GTK環境)
+
+src/JaneClone.cpp
+
+commit 6dedeea
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-09-01
+
+    不必要なメソッドを削除
+
+src/JaneClone.cpp
+
+commit 7a0e32c
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-09-01
+
+    ステータスバーの設置前にテキストを入力しているバグを修正
+
+Makefile.unx.mk
+src/JaneClone.cpp
+
+commit 168274b
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-09-01
+
+    gtkでのリストコントロールの調整を行った
+
+Makefile.unx.mk
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 5a01010
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-08-31
+
+    静的ライブラリテスト。うまくいかないのでやはりソースからビルドしてもらうしかないと思われる。
+
+Makefile.unx.mk
+src/AnchoredResponsePopup.cpp
+
+commit 6fcdfef
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-08-31
+
+    Linux向けの若干の修正と静的リンクによるビルドテスト
+
+Makefile.unx.mk
+src/AnchoredResponsePopup.cpp
+src/JaneCloneUtil.cpp
+
+commit 74c88b8
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-30
+
+    windows上でのレスアンカーポップアップ処理を実装した
+
+include/AnchoredResponsePopup.h
+include/DataType.h
+include/FindIndicatedResponse.h
+include/JaneClone.h
+include/JaneCloneUtil.h
+include/ThreadContentWindow.h
+src/AnchoredResponsePopup.cpp
+src/ExtractBoardList.cpp
+src/FindIndicatedResponse.cpp
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/ThreadContentWindow.cpp
+
+commit 2d9424b
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-30
+
+    wxStringからchar*への変換でwx-2.9の機能が必要になったため、必要なライブラリの条件を書き換える
+
+README
+include/AnchoredResponsePopup.h
+include/ExtractBoardList.h
+include/FindIndicatedResponse.h
+include/JaneClone.h
+src/AnchoredResponsePopup.cpp
+src/ExtractBoardList.cpp
+src/FindIndicatedResponse.cpp
+src/JaneClone.cpp
+
+commit e8d6c8f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-30
+
+    アンカーポップアップ処理のスタブ処理を作った
+
+include/AnchoredResponsePopup.h
+include/JaneClone.h
+src/AnchoredResponsePopup.cpp
+src/JaneClone.cpp
+
+commit 9cb314a
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-30
+
+    ポップアップウィンドウを途中まで実装
+
+include/AnchoredResponsePopup.h
+include/DataType.h
+include/JaneClone.h
+include/ThreadContentWindow.h
+src/AnchoredResponsePopup.cpp
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+
+commit b245372
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-28
+
+    スレッドでのアンカー処理の下準備までコーディングした
+
+include/ExtractBoardList.h
+include/FindIndicatedResponse.h
+include/JaneClone.h
+include/ThreadContentWindow.h
+src/ExtractBoardList.cpp
+src/FindIndicatedResponse.cpp
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+
+commit ba6a183
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-28
+
+    レスアンカー用正規表現作ったけど元からあったので記録だけ残す
+
+include/JaneClone.h
+include/ThreadContentWindow.h
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+
+commit 14b4e4e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-28
+
+    HtmlCellを実装
+
+include/ThreadContentWindow.h
+src/ThreadContentWindow.cpp
+
+commit bf41523
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-28
+
+    HtmlWindow中のURLに<a>タグを付加した
+
+include/ThreadContentWindow.h
+src/ThreadContentWindow.cpp
+
+commit 1f9035f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-23
+
+    wxnkf内のリソース閉じ忘れの修正を反映
+
+libwxnkf/src/wxnkf.cpp
+
+commit cb5acdd
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-21
+
+    ログにアスキーアートを追加してみた。気に入らないので後で変えると思う。
+
+src/JaneClone.cpp
+
+commit 792f24f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-21
+
+    終了時のウィンドウの大きさと位置を記録できるようにした
+
+src/JaneClone.cpp
+
+commit 2542ccc
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-21
+
+    前回終了時のレイアウトを記録できるようにした
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit e9f0413
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-20
+
+    ログ出力画面を追加した
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit b6d3058
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-08-20
+
+    Linux用のMakefileに若干の修正を加えた
+
+Makefile.unx.mk
+libwxnkf/include/util.h
+libwxnkf/src/utf16util.cpp
+libwxnkf/src/wxnkf.cpp
+
+commit d300a6e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-20
+
+    スレッド一覧ノートブックで右クリックされた時の処理を作成した
+
+src/JaneClone.cpp
+
+commit b8789ed
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-20
+
+    板一覧タブで右クリックした際のポップアップメニューを作成した
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit cff0a05
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-19
+
+    libwxnkfの修正を反映した
+
+libwxnkf/src/wxnkf.cpp
+
+commit 044eced
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-16
+
+    不具合の原因はwxSleepを消し忘れたせいだった。文字コード変換処理を正常に行うことに成功した。
+
+include/JaneCloneUtil.h
+libwxnkf/Makefile
+src/SocketCommunication.cpp
+
+commit 5680784
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-15
+
+    libwxnkfをプロジェクトに編入した。変換はできたが異常終了する。
+
+Makefile
+include/JaneCloneUtil.h
+libnkf/FlagSet.cpp
+libnkf/FlagSet.h
+libnkf/InputCodeList.cpp
+libnkf/InputCodeList.h
+libnkf/LibNKF.cpp
+libnkf/LibNKF.h
+libnkf/Makefile
+libnkf/NKFBaseConfig.h
+libnkf/NKFNativeEncoding.cpp
+libnkf/NKFNativeEncoding.h
+libnkf/UTF16Util.cpp
+libnkf/UTF16Util.h
+libnkf/UTF8Table.cpp
+libnkf/UTF8Table.h
+libnkf/Util.cpp
+libnkf/Util.h
+libwxnkf/Makefile
+libwxnkf/include/flagset.h
+libwxnkf/include/utf16util.h
+libwxnkf/include/utf8table.h
+libwxnkf/include/util.h
+libwxnkf/include/wx/wxnkf.h
+libwxnkf/include/wxnkfbaseconfig.h
+libwxnkf/include/wxnkfencoding.h
+libwxnkf/src/flagset.cpp
+libwxnkf/src/utf16util.cpp
+libwxnkf/src/utf8table.cpp
+libwxnkf/src/util.cpp
+libwxnkf/src/wxnkf.cpp
+libwxnkf/src/wxnkfencoding.cpp
+src/JaneCloneUtil.cpp
+src/SocketCommunication.cpp
+
+commit 0038d34
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-08-06
+
+    libnkfcppをプロジェクトに入れた。なかなかうまく動いてくれない。
+
+Makefile
+include/JaneCloneUtil.h
+include/SocketCommunication.h
+libnkf/FlagSet.cpp
+libnkf/FlagSet.h
+libnkf/InputCodeList.cpp
+libnkf/InputCodeList.h
+libnkf/LibNKF.cpp
+libnkf/LibNKF.h
+libnkf/Makefile
+libnkf/NKFBaseConfig.h
+libnkf/NKFNativeEncoding.cpp
+libnkf/NKFNativeEncoding.h
+libnkf/UTF16Util.cpp
+libnkf/UTF16Util.h
+libnkf/UTF8Table.cpp
+libnkf/UTF8Table.h
+libnkf/Util.cpp
+libnkf/Util.h
+libnkf/config.h
+libnkf/libnkf.c
+libnkf/libnkf.h
+libnkf/utf8tbl.c
+libnkf/utf8tbl.h
+src/JaneCloneUtil.cpp
+
+commit 5df61c3
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-07-01
+
+    libnkfをプロジェクトに取り込んだ
+
+Makefile
+Makefile.unx.mk
+include/JaneCloneUtil.h
+libnkf/Makefile
+libnkf/config.h
+libnkf/libnkf.c
+libnkf/libnkf.h
+libnkf/utf8tbl.c
+libnkf/utf8tbl.h
+src/JaneCloneUtil.cpp
+src/SocketCommunication.cpp
+
+commit 27b8bd7
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-28
+
+    もう一度文字コード変換をwxの内部機構に任せてみる
+
+Makefile
+include/JaneCloneUtil.h
+src/JaneCloneUtil.cpp
+
+commit 125e3ae
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-06-26
+
+    Fedoraによるビルド・いくつか修正
+
+src/SocketCommunication.cpp
+src/ThreadContentWindow.cpp
+
+commit 9ab3887
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-26
+
+    wxHtmlWindowにスレッドを読み込ませたがかなり重く感じる、もう少し軽くできないか試行錯誤をする。
+
+include/JaneCloneUtil.h
+include/ThreadContentWindow.h
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/ThreadContentWindow.cpp
+
+commit dab142e
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-26
+
+    ・スレッド一覧の新規ダウンロード、更新時のタブ選択を改良した
+    ・HtmlWindowの実装を進めた
+
+include/JaneClone.h
+include/ThreadContentWindow.h
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+
+commit 7063c39
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-25
+
+    wxHtmlWindowのスタブを作成
+
+include/ThreadContentWindow.h
+include/VirtualBoardListCtrl.h
+src/JaneClone.cpp
+src/ThreadContentWindow.cpp
+src/VirtualBoardListCtrl.cpp
+
+commit f3eeba9
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-25
+
+    スレッドの更新処理を追加した
+
+include/SocketCommunication.h
+src/SocketCommunication.cpp
+
+commit 7ffd639
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-23
+
+    スレッドのダウンロードを可能にした
+
+include/JaneClone.h
+include/VirtualBoardListCtrl.h
+rc/janeclone.icns
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+src/VirtualBoardListCtrl.cpp
+
+commit e720d15
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-19
+
+    スレッド読み込みの実装を進めた・ハッシュに詰めたリストコントロールに問題あり
+
+Makefile
+include/SocketCommunication.h
+include/VirtualBoardListCtrl.h
+rc/janeclone.ico
+rc/janeclone.xpm
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+
+commit c9ee130
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-06-18
+
+    Linux向けにMakefileを作成・タブ変更時にセグメンテーション違反が起こるバグを修正
+
+Makefile.unx
+Makefile.unx.mk
+src/JaneClone.cpp
+src/Main.cpp
+
+commit 117d121
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-18
+
+    肝心の仮想リストを入れ忘れたので再コミット
+
+include/VirtualBoardListCtrl.h
+src/VirtualBoardListCtrl.cpp
+
+commit f2713f5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-18
+
+    仮想リストを完全に実装した yahoo !
+
+Makefile
+include/DataType.h
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit e763c22
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-17
+
+    さらにMakefileを改良
+
+Makefile
+
+commit a6155bf
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-16
+
+    Makefileの改良とスレッド一覧ファイル読み込み時のバグを修正
+
+Makefile
+src/JaneClone.cpp
+
+commit 425a5c8
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-11
+
+    ・ユーザーが以前開いていたタブを記憶するように実装した
+    ・iconvを復活させた
+
+Makefile
+include/JaneClone.h
+include/JaneCloneUtil.h
+include/MetakitAccessor.h
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/MetakitAccessor.cpp
+
+commit 276791f
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-10
+
+    ・Hashの実装方法変更
+    ・Metakitにユーザが見ていた板名を記録
+
+include/DataType.h
+include/JaneClone.h
+include/MetakitAccessor.h
+src/JaneClone.cpp
+src/MetakitAccessor.cpp
+
+commit b14784c
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-06-09
+
+    wxAuiManager::Add()の順番と反映がLinuxとWindowsで逆なので、順番をifdefで設定した
+
+src/JaneClone.cpp
+
+commit fc5d9c5
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-09
+
+    GUIの描画において、構造がイマイチだったので組み直した
+
+Makefile
+include/DataType.h
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 3ea9c5c
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-06-07
+
+    Linux gcc のコンパイル時警告にしたがってソースを修正した
+
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/SocketCommunication.cpp
+
+commit de3490d
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-07
+
+    UnixTimeからスレッドの作成された時間を計算する処理を追加した
+
+include/JaneCloneUtil.h
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+
+commit 95c0865
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-06
+
+    HTTPのヘッダファイル読み込み処理・書込処理を追加した
+
+include/JaneCloneUtil.h
+include/SocketCommunication.h
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/SocketCommunication.cpp
+
+commit 0aac0c0
+Author: Hiroyuki-Nagata <newserver002@gmail.com>
+Date:   2012-06-06
+
+    ・板名タブと中のリストを、同じオブジェクトに包含して実装した
+
+include/DataType.h
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit faae81f
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-06-01
+
+    スレッド一覧更新処理を実装する準備
+
+include/JaneClone.h
+include/SocketCommunication.h
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+
+commit 312934f
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-31
+
+    ・スレッド一覧をタブに読み込む処理まで実装した
+
+include/JaneClone.h
+include/SocketCommunication.h
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+
+commit 1e335b1
+Author: foltia <jagdironscrap@gmail.com>
+Date:   2012-05-30
+
+    gccの警告を修正・wx2.8でもビルド可能にした
+
+include/SocketCommunication.h
+src/SocketCommunication.cpp
+
+commit 4532905
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-30
+
+    Makefileの変更
+
+Makefile
+Makefile.unx
+
+commit 6d704d5
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-30
+
+    板一覧情報の更新をwxのみを使って実装した
+
+src/SocketCommunication.cpp
+
+commit 4d91ecc
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-29
+
+    ・HTTP通信をwxWidgetsのみで行う方法を確立したのでwxHTTPを中心にコーディングし直す
+
+include/JaneClone.h
+include/SocketCommunication.h
+include/gimite/socket.h
+src/SocketCommunication.cpp
+
+commit c94f6a9
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-05-28
+
+    Linux向けに少し修正を加えた
+
+Makefile.unx
+rc/janeclone.xpm
+wiki/janeclone.jpg
+
+commit 9ea8a70
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-27
+
+    ・wiki用のスクリーンショットをプロジェクトに入れた
+    ・アイコンの変更
+    ・検索バー・URL入力欄の実装
+
+include/ExtractBoardList.h
+include/JaneClone.h
+rc/aichan.ico
+rc/aichan.xpm
+rc/edit-find-replace.png
+rc/emblem-favorite.png
+rc/emblem-system.png
+rc/go-next.png
+rc/help-browser.png
+rc/icon.rc
+rc/janeclone.ico
+rc/janeclone.xpm
+rc/view-refresh.png
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+wiki/janeclone.jpg
+
+commit 0c80787
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-27
+
+    UIをauiとrichtextを使って実装しなおした
+
+Makefile
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 9f9e1d5
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-25
+
+    とりあえずメニューバー部分のスタブを作成し終えた
+
+include/ExtractBoardList.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit b9df9e7
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-25
+
+    ・メニューバー部分を新たに設定した
+    ・ライセンスをGPLv2に設定した
+
+README
+include/DataType.h
+include/ExtractBoardList.h
+include/JaneClone.h
+include/JaneCloneUtil.h
+include/MetakitAccessor.h
+include/SocketCommunication.h
+rc/icon.rc
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/Main.cpp
+src/MetakitAccessor.cpp
+src/SocketCommunication.cpp
+
+commit 8ebddb8
+Author: foltia <foltia@p28204-ipngn100107osakakita.osaka.ocn.ne.jp>
+Date:   2012-05-24
+
+    64bit Fedoraでのビルドに成功
+    ・gccでのコンパイル時に発生する警告にしたがってコードを修正した
+
+Makefile.unx
+README
+include/JaneClone.h
+include/MetakitAccessor.h
+src/ExtractBoardList.cpp
+src/MetakitAccessor.cpp
+
+commit 6f540cf
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-17
+
+    ・iconvを排除した
+    ・Metakit.cppでキャストが上手くいっていない部分を修正
+
+Makefile
+include/JaneCloneUtil.h
+src/ExtractBoardList.cpp
+src/JaneCloneUtil.cpp
+src/MetakitAccessor.cpp
+
+commit e377b92
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-05-15
+
+    xpmファイルのwarning対策を行い、UNIX系マシンからでもアイコンを使えるようにした
+
+rc/aichan.xpm
+src/JaneClone.cpp
+
+commit 1e7bbfc
+Author: hiroyuki <hiroyuki@SHRINEMAIDEN.newserver004.com>
+Date:   2012-05-15
+
+    Debianで無事ビルドができたのでコミット。環境依存の部分をマークアップした。
+
+Makefile.unx
+README
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/MetakitAccessor.cpp
+src/SocketCommunication.cpp
+
+commit 010fda3
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-14
+
+    Metakitを使って以前と同じような板一覧情報を更新処理を実装できた
+
+Makefile
+include/ExtractBoardList.h
+include/JaneClone.h
+include/MetakitAccessor.h
+include/SQLiteAccessor.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/MetakitAccessor.cpp
+src/SQLiteAccessor.cpp
+
+commit 49c1671
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-13
+
+    wxSQLite3をLinuxで使おうとした際実行時にエラーが確認されたため、次のコミットからはMetakitというDBを使用することにする。
+    このコミットでの変更
+    ・スレッド一覧ダウンロード処理のスタブ作成
+    ・ツリーコントロール内のアイコン読み込みをプロジェクトのフォルダ内から読み込む形にした
+
+Makefile
+include/JaneClone.h
+include/SocketCommunication.h
+rc/folder.png
+rc/text-html.png
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+
+commit fa19e4a
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-07
+
+    SQLiteから板一覧情報を抽出してレイアウトに反映
+
+src/JaneClone.cpp
+
+commit d6a3aef
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-05
+
+    SQLiteに板一覧情報を収納し、そこから値を取り出すことができた
+
+include/ExtractBoardList.h
+include/SQLiteAccessor.h
+include/SocketCommunication.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/SQLiteAccessor.cpp
+src/SocketCommunication.cpp
+
+commit 3870a89
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-04
+
+    情報取得処理をフレームクラスから分離した。板一覧情報取得までテスト済。
+
+Makefile
+Makefile.unx
+README
+include/JaneClone.h
+include/JaneCloneUtil.h
+include/SQLiteAccessor.h
+include/SocketCommunication.h
+src/JaneClone.cpp
+src/JaneCloneUtil.cpp
+src/SQLiteAccessor.cpp
+src/SocketCommunication.cpp
+
+commit 1796cad
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-05-04
+
+    板一覧情報をSQLiteに一度入れる用にソースを変えた
+
+Makefile
+include/ExtractBoardList.h
+include/JaneClone.h
+include/SQLiteAccessor.h
+include/SQLiteBundle.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/SQLiteAccessor.cpp
+src/SQLiteBundle.cpp
+
+commit 62fbfee
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-04-10
+
+    ExtractBoardListでバグがあるようだ。原因を探ってフィックスするつもり。
+
+include/DataType.h
+include/JaneClone.h
+include/SQLiteBundle.h
+src/JaneClone.cpp
+src/SQLiteBundle.cpp
+
+commit 3639d29
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-03-30
+
+    右クリックした際のイベント処理のテスト
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 8befcd4
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-03-29
+
+    eclipseからコミットするテスト。
+
+Makefile
+Makefile.unx
+README
+include/DataType.h
+include/ExtractBoardList.h
+include/JaneClone.h
+include/SQLiteBundle.h
+include/SocketCommunication.h
+include/gimite/socket.h
+rc/aichan.ico
+rc/aichan.xpm
+rc/icon.rc
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+src/Main.cpp
+src/SQLiteBundle.cpp
+src/SocketCommunication.cpp
+
+commit c372a02
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-02-27
+
+    終了ボタンで終了する際にセグメンテーション違反が起きる問題を解決
+
+Makefile
+include/JaneClone.h
+include/SQLiteBundle.h
+src/JaneClone.cpp
+src/SQLiteBundle.cpp
+
+commit a3e169d
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-02-13
+
+    wxNotebookをwxAuiNotebookに変えた。見栄えが良くなった上に、タブの入れ替えが設定なしでできるようになった。コードの整理のために処理系はヘッダファイルに逃すように実装したい。
+
+Makefile
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 63b0366
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-02-09
+
+    そろそろソースが把握しづらくなってきた。スレッド一覧読み込み処理を追加
+
+Makefile
+src/JaneClone.cpp
+
+commit b702f06
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-02-03
+
+    データ型の追加、スレッド一覧読み込み処理の記述開始
+
+include/DataType.h
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 3f6c6b8
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-29
+
+    HTTPヘッダを別に出力
+
+src/JaneClone.cpp
+
+commit 71896b2
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-27
+
+    SQLiteを扱うクラスを作成。Linux,Macでもアイコンが使えるようにxpmファイルを追加
+
+Makefile
+Makefile.unx
+include/JaneClone.h
+include/SQLiteBundle.h
+include/SocketCommunication.h
+rc/aichan.xpm
+src/SQLiteBundle.cpp
+src/SocketCommunication.cpp
+
+commit b67817a
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-09
+
+    データ型定義ファイルを忘れていたので追加
+
+include/DataType.h
+
+commit de94b06
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-09
+
+    アイコンを使用してみた。プログラム板のコピペが面白かったのでチンパンジーにした。
+
+Makefile
+include/JaneClone.h
+rc/aichan.ico
+rc/icon.rc
+src/JaneClone.cpp
+
+commit 3f92bd5
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-05
+
+    右上ウィンドウをうまく最大化できていない。スレッド一覧画面のスタブ的な実装
+
+Makefile
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 91d3a0c
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-05
+
+    板名をタブに反映する処理を実装した。またiconvを使った際にハングする不具合を解消した。
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 44b3504
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-04
+
+    市川 宙さん作成のsocket.hファイルを追加した。やはりwxだけで通信部分を作成するのは難しいと判断した。
+
+Makefile
+include/JaneClone.h
+include/SocketCommunication.h
+include/gimite/socket.h
+src/JaneClone.cpp
+src/SocketCommunication.cpp
+
+commit 43b1a4f
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-04
+
+    $BHD0lMw99?7=hM}$r<BAu$G$-$?!#<!$O%9%l%C%I0lMw99?7=hM}$r<BAu$9$k!#(B
+
+include/JaneClone.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit adbd154
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-03
+
+    うまくいくかいな
+
+Makefile
+README
+dat/BoardList.gzip
+dat/transtable.dat
+include/JaneClone.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit d701cac
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2012-01-02
+
+    変更点をとりあえず追加
+
+Makefile
+include/JaneClone.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit 4f24b26
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-27
+
+    boostを排除してwxWidgetsのライブラリを使用。コンパイル時間が短縮できた。（記述量は少し増えた？）。エラー処理を追加しなければならない。
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit a8e1e77
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-25
+
+    板一覧表示用ペインを作成
+
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit 9886661
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-24
+
+    板一覧情報更新処理を実装した
+
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit f4b349f
+Author: root <root@SHRINEMAIDEN.newserver004.com>
+Date:   2011-12-23
+
+    Linux用のMakefileを用意した。それに加えて若干の修正。
+
+Makefile.unx
+README
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit e81776c
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-20
+
+    XML$B=hM}$NDI2C(B
+
+dat/BoardListSJIS.xml
+dat/BoardListUTF8.xml
+include/ExtractBoardList.h
+include/JaneClone.h
+src/ExtractBoardList.cpp
+src/JaneClone.cpp
+
+commit e9892af
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-19
+
+    更新していなかったものを追加
+
+Makefile
+README
+dat/BoardList.gzip
+include/JaneClone.h
+src/JaneClone.cpp
+
+commit fe5d9db
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-19
+
+    ２回目のコミット。板一覧更新処理を途中まで作った。それに加えて個々の処理が肥大化していたので、メソッドを切った。
+
+JaneClone.cbp
+JaneClone.exe
+JaneClone.layout
+JaneClone.o
+Main.o
+include/BoardList.h
+include/ExtractBoardList.h
+src/BoardList.cpp
+src/ExtractBoardList.cpp
+
+commit 6e9be68
+Author: Hiroyuki Nagata <newserver002@gmail.com>
+Date:   2011-12-04
+
+    first commit
+
+JaneClone.cbp
+JaneClone.exe
+JaneClone.layout
+JaneClone.o
+Main.o
+Makefile
+README
+dat/BoardList.gzip
+dat/BoardListSJIS.xml
+dat/BoardListUTF8.xml
+dat/transtable.dat
+include/BoardList.h
+include/JaneClone.h
+src/BoardList.cpp
+src/JaneClone.cpp
+src/Main.cpp
