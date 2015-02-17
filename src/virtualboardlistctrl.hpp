@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -29,7 +29,7 @@
 #include <vector>
 #include <algorithm>
 #include "datatype.hpp"
-#include "janecloneutil.hpp"
+#include "xrossboardutil.hpp"
 
 /**
  * スレッドの状態

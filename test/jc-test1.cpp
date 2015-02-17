@@ -1,7 +1,7 @@
 #include <wx/wx.h>
 #include <wx/wxnkf.h>
 
-class JaneCloneTest1 : public wxAppConsole {
+class XrossBoardTest1 : public wxAppConsole {
 
 public:
      virtual bool OnInit();
@@ -12,13 +12,13 @@ private:
      int Test2();
 };
 
-IMPLEMENT_APP(JaneCloneTest1)
+IMPLEMENT_APP(XrossBoardTest1)
 
-bool JaneCloneTest1::OnInit() {
+bool XrossBoardTest1::OnInit() {
      return true;
 }
 
-int JaneCloneTest1::OnRun() {
+int XrossBoardTest1::OnRun() {
 
      Test1();
      Test2();
@@ -26,7 +26,7 @@ int JaneCloneTest1::OnRun() {
      return 0;
 }
 
-int JaneCloneTest1::Test1() {
+int XrossBoardTest1::Test1() {
 
      wxString test1 = wxT("aあいうえお");
 
@@ -46,7 +46,7 @@ int JaneCloneTest1::Test1() {
      return 0;
 }
 
-int JaneCloneTest1::Test2() {
+int XrossBoardTest1::Test2() {
 
      wxString test2 = wxT("testあいうえお");
 

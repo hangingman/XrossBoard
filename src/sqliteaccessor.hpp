@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -33,11 +33,7 @@
 #include "datatype.hpp"
 
 // SQLiteのデータベースファイルのパス
-#ifdef __WXMSW__
-static const wxString SQLITE_FILE_PATH = wxT("\\janeclone.db");
-#else
-static const wxString SQLITE_FILE_PATH = wxT("/janeclone.db");
-#endif
+static const wxString SQLITE_FILE_PATH = wxFILE_SEP_PATH + wxT("xrossboard.db");
 
 // SQL処理
 #define INITIALIZE_JC_WXSQLITE3(db, now)    \
@@ -88,19 +84,19 @@ public:
       */
      static wxArrayString GetCategoryList();
      /**
-      * ユーザーがJaneClone終了時にタブで開いていた板の名前を登録する
+      * ユーザーがXrossBoard終了時にタブで開いていた板の名前を登録する
       */
      static void SetUserLookingBoardList(wxArrayString& userLookingBoardListArray);
      /**
-      * JaneClone開始時に以前ユーザーがタブで開いていた板の名前を取得する
+      * XrossBoard開始時に以前ユーザーがタブで開いていた板の名前を取得する
       */
      static wxArrayString GetUserLookedBoardList();
      /**
-      * ユーザーがJaneClone終了時にタブで開いていたスレッドの情報を登録する
+      * ユーザーがXrossBoard終了時にタブで開いていたスレッドの情報を登録する
       */
      static void SetUserLookingThreadList(wxArrayString& userLookingThreadListArray);
      /**
-      * JaneClone開始時に以前ユーザーがタブで開いていたスレッドの情報を取得する
+      * XrossBoard開始時に以前ユーザーがタブで開いていたスレッドの情報を取得する
       */
      static wxArrayString GetUserLookedThreadList();
      /**
@@ -201,7 +197,7 @@ public:
 private:
 
      /**
-      * JaneCloneが使用するSQLiteのDBファイルの場所を返す
+      * XrossBoardが使用するSQLiteのDBファイルの場所を返す
       */
      static wxString GetDBFilePath();
 

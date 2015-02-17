@@ -1,4 +1,4 @@
-﻿/* JaneClone - a text board site viewer for 2ch
+﻿/* XrossBoard - a text board site viewer for 2ch
  * Copyright (C) 2012-2014 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
@@ -40,7 +40,7 @@
 #endif
 
 #include "enums.hpp"
-#include "janecloneutil.hpp"
+#include "xrossboardutil.hpp"
 #include "drawpane.hpp"
 #include "sqliteaccessor.hpp"
 #include "socketcommunication.hpp"
@@ -60,7 +60,7 @@ typedef std::vector<TextCtrlTuple>        TextCtrlTupleList;
      {											  \
 	  wxString widgetsName = std::get<0>(*i);					  \
 	  wxString widgetsInfo = wxEmptyString;						  \
-	  JaneCloneUtil::GetJaneCloneProperties(widgetsName, &widgetsInfo);		  \
+	  XrossBoardUtil::GetXrossBoardProperties(widgetsName, &widgetsInfo);		  \
 											  \
 	  if (widgetsInfo != wxEmptyString)						  \
 	  {										  \
@@ -76,7 +76,7 @@ typedef std::vector<TextCtrlTuple>        TextCtrlTupleList;
      {											  \
 	  wxString widgetsName = std::get<0>(*i);					  \
 	  wxString widgetsInfo = std::get<1>(*i)->GetValue();				  \
-	  JaneCloneUtil::SetJaneCloneProperties(widgetsName, widgetsInfo);		  \
+	  XrossBoardUtil::SetXrossBoardProperties(widgetsName, widgetsInfo);		  \
      }											  \
 
 /**
@@ -184,22 +184,22 @@ private:
      // end wxGlade
      void OnBrowserCheck(wxCommandEvent& event) {
 	  // デフォルトのブラウザを指定する
-	  JaneCloneUtil::SetJaneCloneProperties<bool>(wxT("SPECIFY_DEFAULT_BROWSER"), browserCheck->IsChecked());
+	  XrossBoardUtil::SetXrossBoardProperties<bool>(wxT("SPECIFY_DEFAULT_BROWSER"), browserCheck->IsChecked());
 	  this->set_properties();
      };
      void OnChangeDirPickerBrowser(wxFileDirPickerEvent& event) {
 	  // ブラウザのパスを更新する
-	  JaneCloneUtil::SetJaneCloneProperties<wxString>(wxT("DEFAULT_BROWSER_PATH"), event.GetPath());
+	  XrossBoardUtil::SetXrossBoardProperties<wxString>(wxT("DEFAULT_BROWSER_PATH"), event.GetPath());
 	  this->set_properties();
      };
      void OnChangeDirPickerBoardList(wxFileDirPickerEvent& event) {
 	  // 板一覧のパスを更新する
-	  JaneCloneUtil::SetJaneCloneProperties<wxString>(wxT("DEFAULT_BOARDLIST_PATH"), event.GetPath());
+	  XrossBoardUtil::SetXrossBoardProperties<wxString>(wxT("DEFAULT_BOARDLIST_PATH"), event.GetPath());
 	  this->set_properties();
      };
      void OnChangeDirPickerSkin(wxFileDirPickerEvent& event) {
 	  // スキンのパスを更新する
-	  JaneCloneUtil::SetJaneCloneProperties<wxString>(wxT("DEFAULT_SKINFILE_PATH"), event.GetPath());
+	  XrossBoardUtil::SetXrossBoardProperties<wxString>(wxT("DEFAULT_SKINFILE_PATH"), event.GetPath());
 	  this->set_properties();
      };
      void ClearPathSetting(wxCommandEvent& event) {
@@ -207,11 +207,11 @@ private:
 	  const int id = event.GetId();
 
 	  if (id == ID_ClearBrowserPath) {     
-	       JaneCloneUtil::DeleteJaneClonePropertyEntry(wxT("DEFAULT_BROWSER_PATH"));
+	       XrossBoardUtil::DeleteXrossBoardPropertyEntry(wxT("DEFAULT_BROWSER_PATH"));
 	  } else if (id == ID_ClearBoardListPath) {
-	       JaneCloneUtil::DeleteJaneClonePropertyEntry(wxT("DEFAULT_BOARDLIST_PATH"));
+	       XrossBoardUtil::DeleteXrossBoardPropertyEntry(wxT("DEFAULT_BOARDLIST_PATH"));
 	  } else if (id == ID_ClearSkinPath) {
-	       JaneCloneUtil::DeleteJaneClonePropertyEntry(wxT("DEFAULT_SKINFILE_PATH"));
+	       XrossBoardUtil::DeleteXrossBoardPropertyEntry(wxT("DEFAULT_SKINFILE_PATH"));
 	  }
 	  this->set_properties();
      };
@@ -575,7 +575,7 @@ public:
      void UpdateResources() {
 
 	  // 内部で保存されたIDを元に文字列を生成する
-	  const std::string &str = EnumString<JANECLONE_ENUMS>::From( static_cast<JANECLONE_ENUMS>(m_id) );
+	  const std::string &str = EnumString<XROSSBOARD_ENUMS>::From( static_cast<XROSSBOARD_ENUMS>(m_id) );
 	  const wxString bgColor = wxString((const char*)str.c_str(), wxConvUTF8);
 
 	  // 背景色を変更する必要があるかどうかのフラグ
@@ -597,7 +597,7 @@ public:
 	       // 結果を受け取る
 	       const wxString colorInfo = col.GetAsString();
 	       // フォント,色情報 の順でプロパティファイルに格納
-	       JaneCloneUtil::SetJaneCloneProperties(bgColor, colorInfo);
+	       XrossBoardUtil::SetXrossBoardProperties(bgColor, colorInfo);
 	       needToChangeBGColor = true;
 	  }
 

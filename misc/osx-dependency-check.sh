@@ -1,15 +1,15 @@
 #!/bin/bash
 
 #
-# MacOSX上でJaneCloneをビルドした際のJaneCloneとライブラリの依存関係を出力します
+# MacOSX上でXrossBoardをビルドした際のXrossBoardとライブラリの依存関係を出力します
 #
 
 # 場所が違うなら書き換えること
-BUNDLE_PATH=../JaneClone.app/Contents/MacOS
-OSX_JANECLONE_EXE=${BUNDLE_PATH}/janeclone
+BUNDLE_PATH=../XrossBoard.app/Contents/MacOS
+OSX_JANECLONE_EXE=${BUNDLE_PATH}/xrossboard
 
 echo "==============================================================="
-echo "=              JaneCloneの依存関係を出力します　　　　　　　　　　　="
+echo "=              XrossBoardの依存関係を出力します　　　　　　　　　　　="
 echo "==============================================================="
 
 otool -L ${OSX_JANECLONE_EXE}

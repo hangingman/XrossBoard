@@ -2,36 +2,36 @@ AUTOMAKE_OPTIONS 	= foreign subdir-objects
 EXTRA_DIST		= rc
 EXTRA_DATA		= $(wildcard rc/*)
 
-bin_PROGRAMS 		= janeclone
+bin_PROGRAMS 		= xrossboard
 
-janecloneexecrcdir	= $(prefix)/share/pixmaps/@PACKAGE@
-janecloneexecrc_DATA	= $(wildcard rc/*)
+xrossboardexecrcdir	= $(prefix)/share/pixmaps/@PACKAGE@
+xrossboardexecrc_DATA	= $(wildcard rc/*)
 
-janecloneexecscriptdir	= $(datarootdir)/@PACKAGE@/script
-janecloneexecscript_DATA= $(wildcard script/*)
+xrossboardexecscriptdir	= $(datarootdir)/@PACKAGE@/script
+xrossboardexecscript_DATA= $(wildcard script/*)
 
-janeclone_SOURCES 	= extractboardlist.hpp        \
+xrossboard_SOURCES 	= extractboardlist.hpp        \
 		          main.cpp                    \
 		          socketcommunication.cpp     \
 		          anchoredresponsepopup.cpp   \
-		          janeclone.cpp               \
+		          xrossboard.cpp               \
 		          sqliteaccessor.cpp          \
 		          socketcommunication.hpp     \
 		          virtualboardlistctrl.cpp    \
 		          anchoredresponsepopup.hpp   \
-		          janeclone.hpp               \
+		          xrossboard.hpp               \
 		          sqliteaccessor.hpp          \
 		          threadcontentbar.cpp        \
 		          virtualboardlistctrl.hpp    \
 		          datatype.hpp                \
-		          janecloneutil.cpp           \
+		          xrossboardutil.cpp           \
 		          responsewindow.cpp          \
 		          threadcontentbar.hpp        \
 		          extractboardlist.cpp        \
-		          janecloneutil.hpp           \
+		          xrossboardutil.hpp           \
 		          responsewindow.hpp          \
-		          janecloneimageviewer.cpp    \
-		          janecloneimageviewer.hpp    \
+		          xrossboardimageviewer.cpp    \
+		          xrossboardimageviewer.hpp    \
 		          imagepanel.cpp	      \
 			  imagepanel.hpp	      \
 			  settingwindow.cpp	      \
@@ -42,8 +42,8 @@ janeclone_SOURCES 	= extractboardlist.hpp        \
 		          drawpane.hpp                \
 		          enums.hpp		      \
 		          enumstring.hpp              \
-		          janecloneuiutil.cpp         \
-		          janecloneuiutil.hpp         \
+		          xrossboarduiutil.cpp         \
+		          xrossboarduiutil.hpp         \
 			  ../babel/babel.cpp          \
 			  ../babel/babel.h            \
 			  ../json11/json11.cpp	      \
@@ -51,7 +51,7 @@ janeclone_SOURCES 	= extractboardlist.hpp        \
 
 if USE_WX_WEBVIEW
 # wxWebView support
-janeclone_SOURCES += threadcontentwebview.cpp   \
+xrossboard_SOURCES += threadcontentwebview.cpp   \
 		     threadcontentwebview.hpp
 
 JC_FLAG_STRING	   = `@WX_CONFIG_PATH@ --version=@WX_VERSION_MAJOR@.@WX_VERSION_MINOR@ --libs aui,qa,adv,base,core,html,net,xrc,webview`
@@ -62,14 +62,14 @@ EXTRA_SCRIPTS		= $(wildcard script/*)
 
 else
 # Use wxHtmlWindow
-janeclone_SOURCES += threadcontentwindow.cpp    \
+xrossboard_SOURCES += threadcontentwindow.cpp    \
 		     threadcontentwindow.hpp
 
 JC_FLAG_STRING	   = `@WX_CONFIG_PATH@ --version=@WX_VERSION_MAJOR@.@WX_VERSION_MINOR@ --libs aui,qa,adv,base,core,html,net,xrc`
 endif
 
 # common build rule
-janeclone_CXXFLAGS = @CXXFLAGS@ @XML2CFLAGS@ @CRYPTO_CFLAGS@ \
+xrossboard_CXXFLAGS = @CXXFLAGS@ @XML2CFLAGS@ @CRYPTO_CFLAGS@ \
 		     -I$(top_builddir)/babel          \
 		     -I$(top_builddir)/src/rc
 
@@ -78,35 +78,35 @@ ACLOCAL_AMFLAGS    = -I m4
 # For Icon build and library dependency
 if USE_WINDRES
 # Platform is Windows
-janeclone_LDFLAGS  = $(JC_FLAG_STRING) -s
-janeclone_LDADD    = janeclone_rc.o @XML2LIBS@ @CRYPTO_LIBS@ $(top_builddir)/cmdline_twitter/libctw.a
+xrossboard_LDFLAGS  = $(JC_FLAG_STRING) -s
+xrossboard_LDADD    = xrossboard_rc.o @XML2LIBS@ @CRYPTO_LIBS@ $(top_builddir)/cmdline_twitter/libctw.a
 
-janeclone_rc.o : $(top_builddir)/src/rc/icon.rc
+xrossboard_rc.o : $(top_builddir)/src/rc/icon.rc
 	@WX_RESCOMP@ -i $^ -O coff -o $@
 
 else
 # Platform is not Windows
-janeclone_LDFLAGS  = $(JC_FLAG_STRING)
-janeclone_LDADD    = @XML2LIBS@ @CRYPTO_LIBS@ $(top_builddir)/cmdline_twitter/libctw.a
+xrossboard_LDFLAGS  = $(JC_FLAG_STRING)
+xrossboard_LDADD    = @XML2LIBS@ @CRYPTO_LIBS@ $(top_builddir)/cmdline_twitter/libctw.a
 
 endif
 
 # Build or not
 if BUILDING_WXSQLITE3
-  janeclone_CXXFLAGS += -I$(top_builddir)/wxsqlite3
-  janeclone_LDADD    += $(top_builddir)/wxsqlite3/libwxsqlite3.a
+  xrossboard_CXXFLAGS += -I$(top_builddir)/wxsqlite3
+  xrossboard_LDADD    += $(top_builddir)/wxsqlite3/libwxsqlite3.a
 endif
 
 if BUILDING_SQLITE3
-  janeclone_CXXFLAGS += -I$(top_builddir)/sqlite3
-  janeclone_LDADD    += $(top_builddir)/sqlite3/libsqlite3.a
+  xrossboard_CXXFLAGS += -I$(top_builddir)/sqlite3
+  xrossboard_LDADD    += $(top_builddir)/sqlite3/libsqlite3.a
 else
-  janeclone_LDFLAGS  += -lsqlite3
+  xrossboard_LDFLAGS  += -lsqlite3
 endif
 
 if BUILDING_CURLPP
-  janeclone_CXXFLAGS += -I$(top_builddir)/curlpp/include
-  janeclone_LDADD    += $(top_builddir)/curlpp/src/curlpp/libcurlpp.la 	          \
+  xrossboard_CXXFLAGS += -I$(top_builddir)/curlpp/include
+  xrossboard_LDADD    += $(top_builddir)/curlpp/src/curlpp/libcurlpp.la 	          \
 		        $(top_builddir)/curlpp/src/utilspp/libutilspp.la 	  \
 		        $(top_builddir)/curlpp/src/curlpp/internal/libinternal.la
 endif

@@ -18,38 +18,38 @@ SUBDIRS += cmdline_twitter src test
 # パッケージ作成用サブディレクトリも設定する
 DIST_SUBDIRS = $(SUBDIRS)
 
-# janeclone.wrapper向けルール
-bin_SCRIPTS = janeclone
+# xrossboard.wrapper向けルール
+bin_SCRIPTS = xrossboard
 CLEANFILES  = $(bin_SCRIPTS)
-EXTRA_DIST  = misc/janeclone.wrapper  \
-	      misc/janeclone.menu     \
-	      misc/janeclone.desktop  \
+EXTRA_DIST  = misc/xrossboard.wrapper  \
+	      misc/xrossboard.menu     \
+	      misc/xrossboard.desktop  \
 	      test                    \
 	      $(wildcard babel/*.dat) \
 	      $(wildcard bebel/*.csv) \
-	      man/janeclone.man
+	      man/xrossboard.man
 
 # 書き換えスクリプト
-janecloneexecdir 	= $(datarootdir)/@PACKAGE@
-janecloneexecrcdir	= $(prefix)/share/pixmaps/@PACKAGE@
+xrossboardexecdir 	= $(datarootdir)/@PACKAGE@
+xrossboardexecrcdir	= $(prefix)/share/pixmaps/@PACKAGE@
 
 do_subst_wrapper =  sed -e 's,%%%appdir%%%,$(datarootdir)/@PACKAGE@,g' \
 			-e 's,%%%pkglibdir%%%,$(pkglibdir),g'
 do_subst_menu 	 =  sed -e 's,%%%bindir%%%,$(bindir)/,g' \
-			-e 's,%%%janecloneexecrcdir%%%,$(janecloneexecrcdir),g'
+			-e 's,%%%xrossboardexecrcdir%%%,$(xrossboardexecrcdir),g'
 
 # Doxygen
 docs: src/*.cpp src/*.hpp Doxyfile
 	doxygen && cd docs/ && git add . && git commit -m 'updated docs' && git push origin gh-pages
 
 # manページ
-man1_MANS = man/janeclone.man
+man1_MANS = man/xrossboard.man
 
-# janecloneスクリプトを作成する
-janeclone:
+# xrossboardスクリプトを作成する
+xrossboard:
 if USE_LINUX
 	if [ -d debian ]; then \
-		$(do_subst_menu) misc/janeclone.menu > debian/menu; \
+		$(do_subst_menu) misc/xrossboard.menu > debian/menu; \
 	fi
 endif
 
@@ -58,9 +58,9 @@ install-data-local:
 	@if test ! -d debian; then										      \
 	   cp -r $(top_builddir)/src/rc $(datarootdir)/@PACKAGE@;						      \
 	   if test "x`uname -s`" = "xFreeBSD"; then                   						      \
-	      $(do_subst_menu) $(top_builddir)/misc/janeclone.desktop > /usr/local/share/applications/janeclone.desktop; \
+	      $(do_subst_menu) $(top_builddir)/misc/xrossboard.desktop > /usr/local/share/applications/xrossboard.desktop; \
 	   else                                                                                          		 \
-	      $(do_subst_menu) $(top_builddir)/misc/janeclone.desktop > /usr/share/applications/janeclone.desktop;       \
+	      $(do_subst_menu) $(top_builddir)/misc/xrossboard.desktop > /usr/share/applications/xrossboard.desktop;       \
 	   fi;														 \
 	fi
 
@@ -75,8 +75,8 @@ ChangeLog: configure.ac
 
 # NSISの設定ファイル
 MAKENSIS    = makensis
-NSIS_NSI_IN = $(top_builddir)/misc/janeclone.nsi.in
-NSIS_NSI    = $(top_builddir)/extras/janeclone.nsi
+NSIS_NSI_IN = $(top_builddir)/misc/xrossboard.nsi.in
+NSIS_NSI    = $(top_builddir)/extras/xrossboard.nsi
 NLIST	    = $(shell for x in {1..$(words $(WIN32_DEP))}; do echo $$x; done)
 WIN32_DEP   = libstdc++ libgcc libxml2 zlib libcurl libjpeg libpng libtiff ssleay32 libeay32
 
@@ -94,7 +94,7 @@ PACKAGER="Hiroyuki Nagata"
 AUTHOR="Hiroyuki Nagata"
 
 # OSX application bundle用の設定
-ICONFILE		= janeclone.icns
+ICONFILE		= xrossboard.icns
 ICONPATH		= $(wildcard $(top_builddir)/src/rc/* )
 RCPATH			= $(top_builddir)/src/rc
 SCRIPTPATH		= $(top_builddir)/src/script
@@ -220,7 +220,7 @@ generate-spec:
 	@echo "Create SPEC file..."
 # SPECファイルを作成する
 	touch $(SPECFILE_PATH)
-	@echo "%define	       name    janeclone					 "	> $(SPECFILE_PATH)
+	@echo "%define	       name    xrossboard					 "	> $(SPECFILE_PATH)
 	@echo "%define	       version 1.1.4						 "	>> $(SPECFILE_PATH)
 	@echo "%define	       release 0						 "	>> $(SPECFILE_PATH)
 	@echo "%define	       prefix  /usr						 "	>> $(SPECFILE_PATH)
@@ -233,7 +233,7 @@ generate-spec:
 	@echo "Packager: Hiroyuki Nagata <newserver002@gmail.com>			 "	>> $(SPECFILE_PATH)
 	@echo "BuildRoot: /var/tmp/%{name}-%{version}-root				 "	>> $(SPECFILE_PATH)
 	@echo "Summary: Cross Platform 2ch browser					 "	>> $(SPECFILE_PATH)
-	@echo "License: see /usr/share/doc/janeclone/copyright				 "	>> $(SPECFILE_PATH)
+	@echo "License: see /usr/share/doc/xrossboard/copyright				 "	>> $(SPECFILE_PATH)
 	@echo "Group: Applications/Internet						 "	>> $(SPECFILE_PATH)
 	@echo "Url: http://hiroyuki-nagata.github.io/					 "	>> $(SPECFILE_PATH)
 	@echo "										 "	>> $(SPECFILE_PATH)
@@ -245,7 +245,7 @@ generate-spec:
 	@echo "BuildRequires: libxml2-devel						 "      >> $(SPECFILE_PATH) 
 	@echo "										 "	>> $(SPECFILE_PATH)
 	@echo "%description" >> $(SPECFILE_PATH)
-	@echo "JaneClone is a plain browser dedicated to read 2ch thread. Using a library called wxWidgets." >> $(SPECFILE_PATH)
+	@echo "XrossBoard is a plain browser dedicated to read 2ch thread. Using a library called wxWidgets." >> $(SPECFILE_PATH)
 	@echo "It will work on Windows, Linux, Mac. It will keep the platform-specific user interface." >> $(SPECFILE_PATH)
 	@echo "" >> $(SPECFILE_PATH)
 	@echo "%prep" >> $(SPECFILE_PATH)
@@ -323,10 +323,10 @@ package-deb: package-deb-license local-distdir-remove dist
 	sed -i 's/%%%STANDARDS-VERSION%%%/@DEB_STANDARDS_VERSION@/g' $(distdir)/debian/control #  debian policy version
 	sed -i 's/%%%VERSION%%%/$(PACKAGE_VERSION)+nmuX/g' $(distdir)/debian/control           #  upstream version 
 	sed -i 's/%%%PACKAGE_BUGREPORT%%%/$(PACKAGE_BUGREPORT)/g' $(distdir)/debian/control    #  bugreport address
-	sed -i 's/%%%VERSION%%%/$(VERSION)/g' $(distdir)/man/janeclone.man             	       #  upstream version
-	sed -i "s/%%%DATE%%%/`date +\"%B %d, %Y\"`/g" $(distdir)/man/janeclone.man
+	sed -i 's/%%%VERSION%%%/$(VERSION)/g' $(distdir)/man/xrossboard.man             	       #  upstream version
+	sed -i "s/%%%DATE%%%/`date +\"%B %d, %Y\"`/g" $(distdir)/man/xrossboard.man
 	@echo "-----------------------------------------------------------------------------"
-	@cat $(distdir)/man/janeclone.man
+	@cat $(distdir)/man/xrossboard.man
 	@echo "-----------------------------------------------------------------------------"
 	cp $(top_builddir)/debian/rules   $(distdir)/debian/rules                              #  rule file
 	rm -f $(distdir)/debian/*.ex                                                           #  delete example files
@@ -443,7 +443,7 @@ MACJANEEXE   = $(BUNDLE)/Contents/MacOS/$(PACKAGE_NAME)
 DYLIBBUNDLER = dylibbundler
 
 wxmac-dist-shared-lib:
-	@echo "Copying and Patching JaneClone subdirectory libraries to " $(BINDIR)/lib " ..."
+	@echo "Copying and Patching XrossBoard subdirectory libraries to " $(BINDIR)/lib " ..."
 	mkdir $(BINDIR)/lib
 	@for dylibs in `otool -L $(MACJANEEXE) | grep -o /.\*.dylib | sort -u `; do \
 	   if [[ $$dylibs != /usr/lib/* ]]; then                                    \
@@ -456,7 +456,7 @@ wxmac-dist-shared-lib:
 	   fi                                                                       \
 	done
 	@echo "=====================================================================";
-	@echo "End of JaneClone's dependency patching...                            ";
+	@echo "End of XrossBoard's dependency patching...                            ";
 	@echo "=====================================================================";
 	@for deplibs in `otool -L $(BINDIR)/lib/*.dylib | grep -o /.\*dylib | sort -u`; do   \
 	   if [[ $$deplibs = /usr/local/lib/* ]] || [[ $$deplibs = /opt/local/lib/* ]]; then \
@@ -467,7 +467,7 @@ wxmac-dist-shared-lib:
 	   fi;                    \
 	done
 	@echo "=====================================================================";
-	@echo "End of JaneClone's dependency libraries copying...                   ";
+	@echo "End of XrossBoard's dependency libraries copying...                   ";
 	@echo "=====================================================================";
 	@chmod +w $(BINDIR)/lib/*.dylib;
 	@for file in `ls $(BINDIR)/lib/*.dylib` ; do \
@@ -485,7 +485,7 @@ wxmac-dist-shared-lib:
 package-osx-intel64-dmg:
 	@echo "!!! Start make disk image file !!!";
 	hdiutil create -ov -srcfolder $(BUNDLE) -fs HFS+ -format UDZO \
-               -imagekey zlib-level=9 -volname "JaneClone.app" $(PACKAGE)-osx64-$(VERSION).dmg;
+               -imagekey zlib-level=9 -volname "XrossBoard.app" $(PACKAGE)-osx64-$(VERSION).dmg;
 	@echo "!!! Finish make disk image file !!!";
 
 # インストーラ作成のための準備

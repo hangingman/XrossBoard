@@ -18,7 +18,7 @@ install:
 build_script:
   - cmd: 'echo Build folder is: %APPVEYOR_BUILD_FOLDER%'
   - cmd: 'cd %APPVEYOR_BUILD_FOLDER%\bakefile'
-  - cmd: '.\janeclone.bat'
+  - cmd: '.\xrossboard.bat'
 
 #install:
 #  - set PATH=%PATH%;C:\MinGW\msys\1.0\bin;C:\MinGW\bin

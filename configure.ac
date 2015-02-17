@@ -2,10 +2,10 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([JaneClone], [1.1.5], [newserver002@gmail.com])
+AC_INIT([XrossBoard], [1.0.0], [newserver002@gmail.com])
 
 # SCM URL
-AC_SUBST(UPSTREAM_URL, [https://github.com/Hiroyuki-Nagata/JaneClone])
+AC_SUBST(UPSTREAM_URL, [https://github.com/Hiroyuki-Nagata/XrossBoard])
 # Refering Debian Policy Version 
 # -> http://www.debian.or.jp/community/devel/debian-policy-ja/policy.ja.html/
 AC_SUBST(DEB_STANDARDS_VERSION, [3.9.3])
@@ -266,7 +266,7 @@ fi
 #-----------------------------------------------------------------------
 
 #-----------------------------------------------------------------------
-# janeclone shingetsu support, default is disable
+# xrossboard shingetsu support, default is disable
 #
 AC_ARG_ENABLE([shingetsu],
     AS_HELP_STRING([--enable-shingetsu], [Enable feature to connect p2p board system shingetsu]))
@@ -309,7 +309,7 @@ case "${ax_cv_c_compiler_vendor}" in
 	   AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
         ;;	
    *)
-	AC_MSG_ERROR("ERROR: JaneClone cannot compile with this compiler.")
+	AC_MSG_ERROR("ERROR: XrossBoard cannot compile with this compiler.")
 	;;
 esac
 
