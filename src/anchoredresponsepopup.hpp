@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,15 +24,9 @@
 
 #include <wx/msgdlg.h>
 #include <wx/html/htmlwin.h>
-#include <wx/scrolwin.h>
 #include <wx/popupwin.h>
-#include <wx/sizer.h>
-#include <wx/spinctrl.h>
-#include <wx/stattext.h>
-#include <wx/dir.h>
-#include <wx/fileconf.h>
+
 #include "datatype.hpp"
-#include "xrossboardutil.hpp"
 
 class AnchoredResponsePopup: public wxPopupTransientWindow {
 
@@ -64,7 +58,6 @@ private:
      bool CheckSkinFiles(SkinInfo* skin);
      // 指定されたファイル中のテキストをメモリに展開する
      wxString ReadPlainTextFile(const wxString& filePath);
-
      // ユーザーがリンクをクリックした場合ブラウザでジャンプ
      void OnLinkClocked(wxHtmlLinkEvent& event)
 	  {

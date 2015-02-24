@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -42,46 +42,7 @@
 #include <wx/fs_mem.h>
 #include <wx/treectrl.h>
 #include <wx/fileconf.h>
-#include <babel.h>
 #include "datatype.hpp"
-#include "enums.hpp"
-#include "xrossboarduiutil.hpp"
-
-/**
- * XrossBoardのファイル操作用クラス
- */
-class XrossBoardDirTraverser : public wxDirTraverser {
-
-public:
-     XrossBoardDirTraverser (){}
-
-     wxDirTraverseResult OnFile(const wxString& fileName) {
-	  m_files.Add(fileName);
-	  wxString log = wxString(fileName);
-	  SendLogging(log);
-	  return wxDIR_CONTINUE;
-     };
-
-     wxDirTraverseResult OnDir(const wxString& dirName) {
-	  m_files.Add(dirName);
-	  wxString log = wxString(dirName);
-	  SendLogging(log);
-	  return wxDIR_CONTINUE;
-     };
-
-     void GetResultFiles(wxArrayString& result) {
-	  result = m_files;
-     };
-
-private:
-     // 取得したファイル
-     wxArrayString m_files;
-
-     // メインのスレッドにログとイベントを送る
-     void SendLogging(wxString& message) {
-	  XrossBoardUiUtil::SendLoggingHelper(message);
-     };
-};
 
 /**
  * XrossBoardのファイル操作用クラス
@@ -91,10 +52,12 @@ class XrossBoardUtil {
 public:
      /**
       * gzipファイルを解凍する処理
-      * 引数１は読み込み元gzipファイルのPATH、引数２は解凍先のファイルのPATH
+      * @param const wxString& 読み込み元gzipファイルのパス
+      * @param const wxString& 解凍先のファイルのパス
+      *
       * いずれもファイル名までを記述する
       */
-     static void DecommpressFile(wxString& inputPath, wxString& outputPath);
+     static void DecommpressFile(const wxString& inputPath, const wxString& outputPath);
      /**
       * ダウンロードしたファイルの文字コードをShift-JISからUTF-8に変換する処理
       * @param wxString& inputPath  読み込み元のパス

@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,26 +22,15 @@
 #ifndef RESPONSEWINDOW_HPP_
 #define RESPONSEWINDOW_HPP_
 
-#include <babel.h>
 #include <wx/wx.h>
 #include <wx/notebook.h>
 #include <wx/html/htmlwin.h>
-#include <wx/html/htmlwin.h>
-#include <wx/html/winpars.h>
-#include <wx/valgen.h>
-#include <wx/tokenzr.h>
-#include "enums.hpp"
 #include "socketcommunication.hpp"
-#include "datatype.hpp"
+//#include "datatype.hpp"
 #include "xrossboardutil.hpp"
 
 /**
- * レス書き込み用の子ウィンドウ
- */
-// begin wxGlade: ::extracode
-// end wxGlade
-
-/**
+ * レス書き込み用の子ウィンドウを表すクラス
 
  書き込みの流れ
 
@@ -68,8 +57,6 @@
 class ResponseWindow: public wxDialog {
 
 public:
-     // begin wxGlade: ResponseWindow::ids
-     // end wxGlade
      ResponseWindow(wxWindow* parent, wxString& title, URLvsBoardName& boardInfoHash,
 		    ThreadInfo& threadInfoHash, wxPoint& point, wxTextCtrl* logCtrl);
      // レス投稿時にテキスト情報を付加する
@@ -78,11 +65,6 @@ public:
      static wxString threadTitle;
 
 private:
-
-     // メインのスレッドにログとイベントを送る
-     void SendLogging(wxString& message) {
-	  XrossBoardUiUtil::SendLoggingHelper(message);
-     };
 
      // ユーザーがリンクをクリックした場合ブラウザでジャンプ
      void OnLinkClocked(wxHtmlLinkEvent& event)
@@ -166,8 +148,8 @@ protected:
      wxPanel* space;
      wxButton* postButton;
      wxButton* quitButton;
-     // end wxGlade
+
      DECLARE_EVENT_TABLE()
-}; // wxGlade: end class
+};
 
 #endif /* RESPONSEWINDOW_HPP_ */

@@ -1,7 +1,6 @@
 ﻿/**
  * xrossboardimageviewer.cpp - xrossboard's plain imageviewer
- *
- * Copyright (c) 2013 Hiroyuki Nagata <newserver002@gmail.com>
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,10 +22,20 @@
 
 #include <array>
 #include <algorithm>
+#include <wx/dc.h>
+#include <wx/dcclient.h>
+#include <wx/file.h>
+#include <wx/filename.h>
+#include <wx/clipbrd.h>
+
 #include "xrossboardimageviewer.hpp"
+#include "enums.hpp"
+#include "datatype.hpp"
+#include "imagepanel.hpp"
+#include "xrossboarduiutil.hpp"
 
 #ifndef __WXMSW__
-#include"../rc/xrossboard.xpm"
+   #include"../rc/xrossboard.xpm"
 #endif
 
 BEGIN_EVENT_TABLE(XrossBoardImageViewer, wxFrame)
