@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,39 +22,11 @@
 #ifndef SOCKETCOMMUNICATION_HPP_
 #define SOCKETCOMMUNICATION_HPP_
 
-#include <sstream>
-#include <iostream>
-
-#include <wx/wx.h>
-#include <wx/string.h>
-#include <wx/filefn.h>
-#include <wx/filename.h>
-#include <wx/textfile.h>
-#include <wx/protocol/http.h>
-#include <wx/protocol/protocol.h>
-#include <wx/wfstream.h>
-#include <wx/datstrm.h>
-#include <wx/regex.h>
-#include <wx/dir.h>
-#include <wx/utils.h>
-#include <wx/config.h>
-#include <wx/fileconf.h>
-#include <wx/sstream.h>
-#include <wx/sckstrm.h>
-#include <wx/uri.h>
-
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
-#include <curlpp/Infos.hpp>
+#include "datatype.hpp"
 
-#include "enums.hpp"
-#include "xrossboardutil.hpp"
-#include "xrossboarduiutil.hpp"
-#include "sqliteaccessor.hpp"
 
 class SocketCommunication {
-
 
 public:
 
@@ -159,21 +131,6 @@ public:
 
 private:
 
-     // メインのスレッドにログとイベントを送る
-     void SendLogging(wxString& message) {
-	  XrossBoardUiUtil::SendLoggingHelper(message);
-     };
-
-     /**
-      * ファイル区切り文字
-      */
-     inline char separator() {
-#ifdef __WXMSW__
-	  return '\\';
-#else
-	  return '/';
-#endif
-     };
      /**
       * ヘッダファイル情報
       */
@@ -183,10 +140,11 @@ private:
       */
      std::string bodyBuf;
      /**
-      * コンフィグ情報
+      * コンフィグ情報、定数値
       */
      std::map<wxString, wxString> propMap;
      static const wxString properties[];
+     static const wxString buttonText;
      const bool SEND = true;
      const bool RECV = false;
      /**
@@ -295,8 +253,6 @@ private:
       * COOKIEのデータ書き出しを行う
       */
      void WriteCookieData(const wxString& dataFilePath);
-     // wxFileConfigクラスのインスタンス(書き込みの際のみ確保される)
-     wxFileConfig* config;
      // 投稿内容を保存するクラス(書き込みの際のみ確保される)
      std::unique_ptr<PostContent> postContent;
 

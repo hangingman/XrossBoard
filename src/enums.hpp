@@ -1,7 +1,7 @@
 ﻿/**
  * enums.hpp - xrossboards' enums
  *
- * Copyright (C) 2013-2014 Hiroyuki Nagata <newserver002@gmail.com>
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,12 +24,8 @@
 
 #include <wx/wx.h>
 #include <wx/listctrl.h>
-#include <wx/regex.h>
-#include <wx/txtstrm.h>
 #include <vector>
-#include <algorithm>
 #include "datatype.hpp"
-#include "xrossboardutil.hpp"
 
 /**
  * スレッドの状態
@@ -349,12 +345,7 @@ public:
      /**
       * 内部のリストをコピーして渡す
       */
-     void CopyVectorItems(VirtualBoardList& vBoardList) {
-
-	  //先にメモリ領域を確保する
-	  vBoardList.reserve(m_vBoardList.size());
-	  std::copy(m_vBoardList.begin(), m_vBoardList.end(), std::back_inserter(vBoardList));
-     };
+     void CopyVectorItems(VirtualBoardList& vBoardList);
      /**
       * スレッドタイトル検索を実施する
       */

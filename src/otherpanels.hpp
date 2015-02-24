@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,6 +26,7 @@
 
 #include <utility>
 #include <tuple>
+#include <vector>
 #include <wx/wx.h>
 #include <wx/image.h>
 #include <wx/spinctrl.h>
@@ -41,12 +42,11 @@
 
 #include "enums.hpp"
 #include "xrossboardutil.hpp"
-#include "drawpane.hpp"
-#include "sqliteaccessor.hpp"
-#include "socketcommunication.hpp"
 
-// begin wxGlade: ::extracode
-// end wxGlade
+/**
+ * 設定画面のGUIのコードは何をしてもぐちゃぐちゃになってしまう
+ * 漸進的にXRCによるコードに改善していく
+ */
 
 // Utility class definition
 typedef std::tuple<wxString, wxTextCtrl*> TextCtrlTuple;

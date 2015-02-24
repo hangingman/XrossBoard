@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,8 +19,6 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 
-#include "xrossboardutil.hpp"
-
 #if defined(__APPLE__)
    #define COMMON_DIGEST_FOR_OPENSSL
    #include <CommonCrypto/CommonDigest.h>
@@ -29,13 +27,19 @@
    #include <openssl/md5.h>
 #endif
 
+#include <babel.h>
+
+#include "xrossboardutil.hpp"
+#include "enums.hpp"
+#include "xrossboarduiutil.hpp"
+
 /**
  * gzipファイルを解凍する処理
  * 引数１は読み込み元gzipファイルのPATH、引数２は解凍先のファイルのPATH
  * いずれもファイル名までを記述する
  */
-void XrossBoardUtil::DecommpressFile(wxString & inputPath,
-				    wxString & outputPath) {
+void XrossBoardUtil::DecommpressFile(const wxString& inputPath, const wxString& outputPath)
+{
      // gzファイルをZlibを使って解凍する
      const gzFile infile = gzopen(inputPath.mb_str(), "rb");
      FILE *outfile = fopen(outputPath.mb_str(), "wb");
@@ -1552,22 +1556,4 @@ void XrossBoardUtil::SplitStdString(std::vector<std::string>& theStringVector,	/
         start = (   ( end > (std::string::npos - theDelimiter.size()) )
                   ?  std::string::npos  :  end + theDelimiter.size());
     }
-}
-/**
- * あるディレクトリ以下のすべてのファイルとディレクトリを再帰的に取得する
- * @param  targetDir 対象のディレクトリ
- * @param  result    結果を格納する配列
- * @result 取得したファイルとディレクトリの数
- */
-size_t XrossBoardUtil::GetFileNamesRecursive(const wxDir& targetDir, wxArrayString& result)
-{
-     size_t ret = 1;
-     
-     XrossBoardDirTraverser* traverser = new XrossBoardDirTraverser();
-     targetDir.Traverse(*traverser);
-     traverser->GetResultFiles(result);
-     ret = result.GetCount();
-     delete traverser;
-
-     return ret;
 }
