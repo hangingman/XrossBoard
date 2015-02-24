@@ -167,9 +167,12 @@ fi
 #
 AS_IF([test x"$PLATFORM_STRING" = x"Linux" -o x"$PLATFORM_STRING" = x"BSD"], [
     # Linux will use pkg-config
-    PKG_CHECK_MODULES([WXSQLITE3], [wxsqlite3-$wx_config_major_version.$wx_config_minor_version])
-    CXXFLAGS="$CXXFLAGS $WXSQLITE3_CFLAGS"
-    LIBS="$LIBS $WXSQLITE3_LIBS"
+    PKG_CHECK_MODULES([WXSQLITE3], 
+    		      [wxsqlite3-$wx_config_major_version.$wx_config_minor_version],
+    		      [CXXFLAGS="$CXXFLAGS $WXSQLITE3_CFLAGS"
+    		       LIBS="$LIBS $WXSQLITE3_LIBS"],
+		      [AC_MSG_NOTICE([we will build wxsqlite3...])				    
+		       AM_CONDITIONAL(BUILDING_WXSQLITE3, true)])
     ], [
     # Others will check AC_TRY_LINK
     AC_MSG_CHECKING([for wxsqlite3])                                              
@@ -181,7 +184,7 @@ AS_IF([test x"$PLATFORM_STRING" = x"Linux" -o x"$PLATFORM_STRING" = x"BSD"], [
                 has_wxsqlite3=1,                                                  
                 has_wxsqlite3=0)                                                  
     AC_LANG_POP(C++)                                                              
-    if test $has_wxsqlite3 = 0; then                                              
+    if test $has_wxsqlite3 = 0; then
       AC_MSG_RESULT([no])                                                         
       AC_MSG_NOTICE([we will build wxsqlite3...])                                 
       AM_CONDITIONAL(BUILDING_WXSQLITE3, true)                                    
