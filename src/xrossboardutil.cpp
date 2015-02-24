@@ -663,9 +663,11 @@ bool XrossBoardUtil::DDNodeHasTarget(const htmlNodePtr dd, const wxString& targe
  */
 wxString XrossBoardUtil::FindResponseByIndex(const wxString& rawHtml, const wxString& extractIndex) {
 
-     const std::string temporary = std::string(rawHtml.mb_str());
-     const htmlDocPtr docPtr = htmlReadMemory(temporary.c_str(), temporary.size(), "", "utf-8", 
-					      HTML_PARSE_RECOVER|HTML_PARSE_NOERROR|HTML_PARSE_NOWARNING);
+     // wxString::mb_str で変換するとWindowsの場合CP932が返ってくるので
+     // まずはUTF-8のwxCharBufferに変換してやる
+     const wxCharBuffer &cb = rawHtml.utf8_str();
+     const htmlDocPtr docPtr = htmlReadMemory(cb.data(), ::strlen(cb.data()), "", "utf-8", 
+ 					      HTML_PARSE_RECOVER|HTML_PARSE_NOERROR|HTML_PARSE_NOWARNING);
 
      // HTMLのDOM形式にする
      wxString lumpOfHTML = HTML_HEADER_POPUP;
