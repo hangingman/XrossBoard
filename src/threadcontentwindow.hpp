@@ -137,6 +137,13 @@ private:
      // 指定されたファイル中のテキストをメモリに展開する
      wxString ReadPlainTextFile(const wxString& filePath);
 
+#ifdef __WXMSW__ /** Windows上のScrolledWindowのワークアラウンド */
+
+     void PageUp(wxScrollWinEvent& event);
+     void PageDown(wxScrollWinEvent& event);
+
+#endif /** Windows上のScrolledWindowのワークアラウンド */
+
      DECLARE_EVENT_TABLE()
      DECLARE_DYNAMIC_CLASS(ThreadContentWindow)
 
