@@ -18,11 +18,10 @@ SUBDIRS += cmdline_twitter src test
 # パッケージ作成用サブディレクトリも設定する
 DIST_SUBDIRS = $(SUBDIRS)
 
-# xrossboard.wrapper向けルール
+# automakeによるパッケージ定義
 bin_SCRIPTS = xrossboard
 CLEANFILES  = $(bin_SCRIPTS)
-EXTRA_DIST  = misc/xrossboard.wrapper  \
-	      misc/xrossboard.menu     \
+EXTRA_DIST  = misc/xrossboard.menu     \
 	      misc/xrossboard.desktop  \
 	      test                    \
 	      $(wildcard babel/*.dat) \
@@ -32,11 +31,8 @@ EXTRA_DIST  = misc/xrossboard.wrapper  \
 # 書き換えスクリプト
 xrossboardexecdir 	= $(datarootdir)/@PACKAGE@
 xrossboardexecrcdir	= $(prefix)/share/pixmaps/@PACKAGE@
-
-do_subst_wrapper =  sed -e 's,%%%appdir%%%,$(datarootdir)/@PACKAGE@,g' \
-			-e 's,%%%pkglibdir%%%,$(pkglibdir),g'
-do_subst_menu 	 =  sed -e 's,%%%bindir%%%,$(bindir)/,g' \
-			-e 's,%%%xrossboardexecrcdir%%%,$(xrossboardexecrcdir),g'
+do_subst_menu 	        =  sed -e 's,%%%bindir%%%,$(bindir)/,g' \
+			       -e 's,%%%xrossboardexecrcdir%%%,$(xrossboardexecrcdir),g'
 
 # Doxygen
 docs: src/*.cpp src/*.hpp Doxyfile
