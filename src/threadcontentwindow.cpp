@@ -40,9 +40,13 @@ BEGIN_EVENT_TABLE(ThreadContentWindow, wxHtmlWindow)
    EVT_MENU(ID_CopyTContentsToClipBoard, ThreadContentWindow::CopyTContentsToClipBoard) 
    EVT_MENU(ID_CopyTAllToClipBoard, ThreadContentWindow::CopyTAllToClipBoard)   
    EVT_SIZE(ThreadContentWindow::OnSize) 
-   #ifdef DEBUG
-   EVT_MENU(ID_HtmlSourceDebug, ThreadContentWindow::HtmlSourceDebug)
-   #endif
+
+#ifdef __WXMSW__ /** Windows Only */
+   EVT_SCROLLWIN_PAGEUP(ThreadContentWindow::PageUp)
+   EVT_SCROLLWIN_PAGEDOWN(ThreadContentWindow::PageDown)
+   EVT_SCROLLWIN_LINEUP(ThreadContentWindow::PageUp)
+   EVT_SCROLLWIN_LINEDOWN(ThreadContentWindow::PageDown)
+#endif
 END_EVENT_TABLE()
 
 /**
@@ -218,11 +222,6 @@ void ThreadContentWindow::OnRightClickHtmlWindow(wxMouseEvent& event) {
      copy->Enable(ID_CopyURLFromHtmlWindow, false); // デフォルトでは使用不能
      copy->Append(ID_SelectAllTextHtmlWindow, wxT("全て選択"));
      copy->Append(ID_ShowRawHtmlFromHtmlWindow, wxT("ソースを表示する"));
-
-#ifdef DEBUG
-     // デバッグ用メニュー
-     copy->Append(ID_HtmlSourceDebug, wxT("HTMLソース表示"));
-#endif
 
      // イベント発生後にあったデータをクリアする
      m_selectedText.Clear();
@@ -869,13 +868,6 @@ void ThreadContentWindow::SetXrossBoardImageViewer(const wxString& href, const w
      GetViewStart(&x, &y);
      this->AppendToPage(wxEmptyString);
      Scroll(x, y);
-}
-/*
- * HTMLのデバッグ用イベント
- */
-void ThreadContentWindow::HtmlSourceDebug(wxCommandEvent& event) 
-{
-     wxMessageBox(this->m_htmlSource);
 }
 /*
  * レスの内容をクリップボードにコピーする

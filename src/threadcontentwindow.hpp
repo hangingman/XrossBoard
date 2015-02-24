@@ -112,8 +112,6 @@ private:
      void SearchSelectWordByAmazon(wxCommandEvent& event);
      // 選択したテキストでスレタイ検索
      void SearchThreadBySelectWord(wxCommandEvent& event);
-     // HTMLのデバッグ用イベント
-     void HtmlSourceDebug(wxCommandEvent& event);
      // linkを左クリックした時に起こるイベント
      void OnLeftClickHtmlWindow(wxHtmlLinkEvent& event);
      // レス番号を左クリックした時に起こるイベント
