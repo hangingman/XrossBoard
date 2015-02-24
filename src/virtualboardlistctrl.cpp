@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,8 +19,13 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 
+#include <algorithm>
+#include <wx/regex.h>
+#include <wx/txtstrm.h>
+
 #include "virtualboardlistctrl.hpp"
 #include "xrossboard.hpp"
+#include "xrossboardutil.hpp"
 
 IMPLEMENT_DYNAMIC_CLASS(VirtualBoardListCtrl, wxListCtrl)
 
@@ -40,7 +45,8 @@ VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,
 					   const std::map<wxString,ThreadList>& oldThreadMap,
 					   bool targetIsShingetsu):
 
-wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRTUAL) {
+wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRTUAL) 
+{
 
      this->Hide();
      f_nowSearching = false;
@@ -145,8 +151,8 @@ wxListCtrl(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_VIRT
  * 2chのdatファイルを読み出す処理
  */
 void VirtualBoardListCtrl::FileLoadMethod2ch(const wxString& boardName, const wxString& outputPath, 
-					     const std::map<wxString,ThreadList>& oldThreadMap) {
-
+					     const std::map<wxString,ThreadList>& oldThreadMap) 
+{
      // 過去のデータがあるかどうかのフラグを立てる
      bool hasOldData, noNeedToChkThreadState = false;
      wxString stub = wxT("NO_NEED_TO_CHK_THREAD_STATE");
@@ -275,8 +281,8 @@ void VirtualBoardListCtrl::FileLoadMethod2ch(const wxString& boardName, const wx
  * 新月ののcsvファイルを読み出す処理
  */
 void VirtualBoardListCtrl::FileLoadMethodShingetsu(const wxString& boardName, const wxString& outputPath, 
-						   const std::map<wxString,ThreadList>& oldThreadMap) {
-
+						   const std::map<wxString,ThreadList>& oldThreadMap) 
+{
      // テキストファイルの読み込み
      wxTextFile csvfile(outputPath);
      csvfile.Open();
@@ -347,8 +353,8 @@ void VirtualBoardListCtrl::FileLoadMethodShingetsu(const wxString& boardName, co
  * @pram  wxString outputPath  datファイルのパス
  * @param VirtualBoardList     更新したリストのコンテナ
  */
-VirtualBoardList VirtualBoardListCtrl::ThreadListUpdate(const wxString& boardName, const wxString& outputPath) {
-
+VirtualBoardList VirtualBoardListCtrl::ThreadListUpdate(const wxString& boardName, const wxString& outputPath) 
+{
      this->Hide();
      f_nowSearching = false;
 
@@ -507,9 +513,10 @@ wxString VirtualBoardListCtrl::OnGetItemText(long item, long column) const {
 /**
  * 仮想リスト内のアイコンを表示させる
  */
-int VirtualBoardListCtrl::OnGetItemColumnImage(long item, long column) const {
-
-     if (column != COL_CHK) {
+int VirtualBoardListCtrl::OnGetItemColumnImage(long item, long column) const 
+{
+     if (column != COL_CHK) 
+     {
 	  return -1;
      }
      return m_vBoardList[item].getCheck();
@@ -517,10 +524,12 @@ int VirtualBoardListCtrl::OnGetItemColumnImage(long item, long column) const {
 /**
  * 仮想リスト内の色情報等の設定
  */
-wxListItemAttr* VirtualBoardListCtrl::OnGetItemAttr(long item) const {
-
-     if (f_nowSearching) {
-	  if (item <= searchItemNum) {
+wxListItemAttr* VirtualBoardListCtrl::OnGetItemAttr(long item) const 
+{
+     if (f_nowSearching) 
+     {
+	  if (item <= searchItemNum) 
+	  {
 	       return (wxListItemAttr*)&m_attr_search;
 	  }
      }
@@ -534,8 +543,8 @@ wxListItemAttr* VirtualBoardListCtrl::OnGetItemAttr(long item) const {
  * @param wxString outputPath  datファイルのパス
  */
 VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,const wxString& boardName, const wxArrayString& datFileList) :
-     wxListCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxLC_VIRTUAL) {
-
+     wxListCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxLC_VIRTUAL) 
+{
      this->Hide();
      f_nowSearching = false;
 
@@ -547,7 +556,7 @@ VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,const wxString& boar
 	  wxTextFile datfile(datFileList[i]);
 	  datfile.Open();
 
-	  // アイテム用の文字列を先に宣言する
+// アイテム用の文字列を先に宣言する
 	  wxString itemNumber, itemBoardName, itemOid, itemSince, itemTitle, itemResponse, itemCachedResponseNumber,
 	       itemNewResponseNumber, itemIncreaseResponseNumber, itemMomentum, itemLastUpdate;
 
@@ -634,9 +643,8 @@ VirtualBoardListCtrl::VirtualBoardListCtrl(wxWindow* parent,const wxString& boar
 /**
  * 内部のリストをソートする
  */
-void VirtualBoardListCtrl::SortVectorItems(int col) {
-     
-     
+void VirtualBoardListCtrl::SortVectorItems(int col) 
+{     
      this->Hide();
      f_nowSearching = false;
 
@@ -747,11 +755,22 @@ void VirtualBoardListCtrl::SortVectorItems(int col) {
      SetItemCount(m_vBoardList.size());
      this->Show();
 }
+
+/**
+ * 内部のリストをコピーして渡す
+ */
+void VirtualBoardListCtrl::CopyVectorItems(VirtualBoardList& vBoardList) 
+{
+     //先にメモリ領域を確保する
+     vBoardList.reserve(m_vBoardList.size());
+     std::copy(m_vBoardList.begin(), m_vBoardList.end(), std::back_inserter(vBoardList));
+}
+
 /**
  * スレッドタイトル検索を実施する
  */
-void VirtualBoardListCtrl::SearchAndSortItems(const wxString& keyword) {
-
+void VirtualBoardListCtrl::SearchAndSortItems(const wxString& keyword) 
+{
      this->Hide();
 
      // 要素を一度全て削除する

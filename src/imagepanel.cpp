@@ -2,7 +2,7 @@
  * imagepanel.cpp - simple panel for wxImage
  * I refer http://wiki.wxwidgets.org/An_image_panel
  *
- * Copyright (c) 2013 Hiroyuki Nagata <newserver002@gmail.com>
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,6 +23,7 @@
  */
 #include "imagepanel.hpp"
 #include "xrossboardimageviewer.hpp"
+#include "enums.hpp"
 
 BEGIN_EVENT_TABLE(wxImagePanel, wxPanel)
 

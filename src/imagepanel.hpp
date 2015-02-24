@@ -2,7 +2,7 @@
  * imagepanel.hpp - simple panel for wxImage
  * I refer http://wiki.wxwidgets.org/An_image_panel
  *
- * Copyright (C) 2013-2014 Hiroyuki Nagata <newserver002@gmail.com>
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,9 +25,7 @@
 #define IMAGEPANEL_HPP_
 
 #include <wx/wx.h>
-#include <wx/sizer.h>
 #include "datatype.hpp"
-#include "enums.hpp"
 
 class wxImagePanel : public wxPanel {
 
