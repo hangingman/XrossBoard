@@ -57,7 +57,16 @@ wxHtmlWindow(parent, ID_ThreadContentWindow, wxDefaultPosition, wxDefaultSize, w
 		   wxEVT_ENTER_WINDOW,
 		   wxMouseEventHandler(XrossBoard::OnEnterWindow),
 		   NULL, this);
+
+     // wxWidgetsが用意したイベントハンドラを切り離す
+     // wxScrolled は wxScrollHelperBase::HandleOnMouseWheelの部分がバグっている
+     // スクロールした距離のぶんだけイベントを呼び出しているので処理が重く遅延が発生している。
+     this->DeleteEvtHandler();
+
 #endif
+
+     // 自動スクロールは混乱の元なので使わない
+     this->StopAutoScrolling();
 
      // 指定されたパスからHTMLファイルを読み出す
      wxString htmlSource = GetConvertedDatFile(threadContentPath);
@@ -1065,3 +1074,23 @@ wxString ThreadContentWindow::ReadPlainTextFile(const wxString& filePath)
 
      return htmlDOM;
 }
+
+#ifdef __WXMSW__ /** Windows上のScrolledWindowのワークアラウンド */
+
+void ThreadContentWindow::PageUp(wxScrollWinEvent& event)
+{
+     wxPoint p;
+     this->GetHtmlWindowScrollPos(&p);
+     //XrossBoardUiUtil::SendLoggingHelper(wxString::Format( wxT("x: %d y: %d\n"), p.x, p.y));
+     Scroll(p.x, p.y + 30);
+}
+
+void ThreadContentWindow::PageDown(wxScrollWinEvent& event)
+{
+     wxPoint p;
+     this->GetHtmlWindowScrollPos(&p);
+     //XrossBoardUiUtil::SendLoggingHelper(wxString::Format( wxT("x: %d y: %d\n"), p.x, p.y));
+     Scroll(p.x, p.y - 30);
+}
+
+#endif /** Windows上のScrolledWindowのワークアラウンド */
