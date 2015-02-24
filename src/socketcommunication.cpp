@@ -1260,7 +1260,7 @@ wxString SocketCommunication::PostFirstToThread(URLvsBoardName& boardInfoHash, T
 				    wxFILE_SEP_PATH,
 				    wxFILE_SEP_PATH,
 				    wxFILE_SEP_PATH,
-				    timeNow.mb_str());
+				    timeNow.c_str());
 
      // Postする内容のデータサイズを取得する
      wxString kakikomiInfo = wxT("bbs=") + boardInfoHash.boardNameAscii + wxT("&key=")
@@ -1415,7 +1415,7 @@ wxString SocketCommunication::PostConfirmToThread(URLvsBoardName& boardInfoHash,
 				    wxFILE_SEP_PATH,
 				    wxFILE_SEP_PATH,
 				    wxFILE_SEP_PATH,
-				    timeNow.mb_str());
+				    timeNow.c_str());
 
      // Postする内容のデータサイズを取得する
      wxString kakikomiInfo = wxT("bbs=") + boardInfoHash.boardNameAscii + wxT("&key=")
@@ -1576,7 +1576,7 @@ wxString SocketCommunication::PostResponseToThread(URLvsBoardName& boardInfoHash
 				    wxFILE_SEP_PATH,
 				    wxFILE_SEP_PATH,
 				    wxFILE_SEP_PATH,
-				    timeNow.mb_str());
+				    timeNow.c_str());
 
      // Postする内容のデータサイズを取得する
      wxString kakikomiInfo = wxT("bbs=") + boardInfoHash.boardNameAscii + wxT("&key=")
