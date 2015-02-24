@@ -30,7 +30,7 @@
 #include "datatype.hpp"
 
 // SQLiteのデータベースファイルのパス
-static const wxString SQLITE_FILE_PATH = wxFILE_SEP_PATH + wxT("xrossboard.db");
+static const wxString SQLITE_FILE_PATH = wxString::Format(wxT("%cxrossboard.db"), wxFILE_SEP_PATH);
 
 // SQL処理
 #define INITIALIZE_JC_WXSQLITE3(db, now)    \
