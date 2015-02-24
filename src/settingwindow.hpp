@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,14 +22,12 @@
 #ifndef SETTINGWINDOW_HPP
 #define SETTINGWINDOW_HPP
 
-#include <wx/wx.h>
-#include <wx/image.h>
 #include <wx/splitter.h>
 #include <wx/treectrl.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/notebook.h>
+#include <wx/msgdlg.h>
 #include "enums.hpp"
-#include "otherpanels.hpp"
 
 class SettingDialog: public wxDialog 
 {

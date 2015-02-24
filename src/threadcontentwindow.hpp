@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,17 +25,7 @@
 #include <wx/html/htmlwin.h>
 #include <wx/html/htmldefs.h>
 #include <wx/event.h>
-#include <wx/clipbrd.h>
-#include <wx/dataobj.h>
-#include <wx/image.h>
-#include "enums.hpp"
 #include "datatype.hpp"
-#include "xrossboardutil.hpp"
-#include "xrossboarduiutil.hpp"
-#include "xrossboardimageviewer.hpp"
-#include "socketcommunication.hpp"
-
-
 
 class HtmlSourceDialog : public wxDialog 
 {
@@ -89,12 +79,6 @@ private:
       * 指定されたパスからHTMLファイルを読み出し、2ch形式に加工する
       */
      const wxString GetConvertedDatFile(const wxString& threadContentPath);
-     /**
-      * メインのスレッドにログとイベントを送る
-      */
-     void SendLogging(wxString& message) {
-	  XrossBoardUiUtil::SendLoggingHelper(message);
-     };
 
      // HtmlWindowで選択しているテキストをクリップボードにコピーする
      void CopyFromHtmlWindow(wxCommandEvent& event);

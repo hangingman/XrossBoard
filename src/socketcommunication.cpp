@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,11 +19,24 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Infos.hpp>
+
+#include <wx/protocol/http.h>
+#include <wx/wfstream.h>
+#include <wx/uri.h>
+#include <wx/datstrm.h>
+
 #include "socketcommunication.hpp"
+#include "sqliteaccessor.hpp"
+#include "enums.hpp"
+#include "xrossboardutil.hpp"
+#include "xrossboarduiutil.hpp"
 
 const wxString SocketCommunication::properties[] = {
      wxT("ID_NetworkPanelUseProxy")		,/* プロキシを使用するかどうか				*/ 
-     wxT("ID_NetworkPanelUseProxyCache")	,/* プロキシでキャッシュを使用するかどうか			*/	  
+     wxT("ID_NetworkPanelUseProxyCache")	,/* プロキシでキャッシュを使用するかどうか		*/	  
      wxT("ID_NetworkPanelBasicAuthUserName")	,/* ベーシック認証のユーザー名				*/ 
      wxT("ID_NetworkPanelBasicAuthPassword")	,/* ベーシック認証のパスワード				*/ 
      wxT("ID_NetworkPanelProxyReceiveAddr")	,/* Proxy受信用アドレス					*/ 
@@ -38,6 +51,8 @@ const wxString SocketCommunication::properties[] = {
      wxT("ID_Receive_Timeout_Sec")	        ,/* 受信タイムアウト秒			                */
      wxT("ID_Connection_Timeout_Sec")		 /* 接続タイムアウト秒			                */
 };
+
+const wxString SocketCommunication::buttonText = wxT("%8F%91%82%AB%8D%9E%82%DE");
 
 /**
  * コンストラクタ
@@ -1221,8 +1236,8 @@ wxString SocketCommunication::PostFirstToThread(URLvsBoardName& boardInfoHash, T
      }
 
      // 投稿時間を算出する(UNIX Time)
-     wxString timeNow = XrossBoardUtil::GetTimeNow();
-     wxString message = wxT("UNIX Time:") + timeNow;
+     const wxString timeNow = XrossBoardUtil::GetTimeNow();
+     const wxString message = wxT("UNIX Time:") + timeNow;
      XrossBoardUiUtil::SendLoggingHelper(message);
 
      wxDir dir(::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR);
@@ -1241,23 +1256,11 @@ wxString SocketCommunication::PostFirstToThread(URLvsBoardName& boardInfoHash, T
 	  ::wxMkdir(datDir.GetName() + wxFILE_SEP_PATH + wxT("kakikomi"));
      }
 
-#ifdef __WXMSW__
-     // Windowsではパスの区切りは"\"
-     headerPath += wxT("\\dat\\");
-     headerPath += wxT("kakikomi");
-     headerPath += wxT("\\");
-     headerPath += timeNow;
-     headerPath += wxT(".header");
-#else
-     // それ以外ではパスの区切りは"/"
-     headerPath += wxT("/dat/");
-     headerPath += wxT("kakikomi");
-     headerPath += wxT("/");
-     headerPath += timeNow;
-     headerPath += wxT(".header");
-#endif
-
-     wxString buttonText = wxT("%8F%91%82%AB%8D%9E%82%DE");
+     headerPath += wxString::Format(wxT("%cdat%ckakikomi%c%s.header"), 
+				    wxFILE_SEP_PATH,
+				    wxFILE_SEP_PATH,
+				    wxFILE_SEP_PATH,
+				    timeNow.mb_str());
 
      // Postする内容のデータサイズを取得する
      wxString kakikomiInfo = wxT("bbs=") + boardInfoHash.boardNameAscii + wxT("&key=")
@@ -1408,23 +1411,11 @@ wxString SocketCommunication::PostConfirmToThread(URLvsBoardName& boardInfoHash,
 	  ::wxMkdir(datDir.GetName() + wxFILE_SEP_PATH + wxT("kakikomi"));
      }
 
-#ifdef __WXMSW__
-     // Windowsではパスの区切りは"\"
-     headerPath += wxT("\\dat\\");
-     headerPath += wxT("kakikomi");
-     headerPath += wxT("\\");
-     headerPath += timeNow;
-     headerPath += wxT(".header");
-#else
-     // それ以外ではパスの区切りは"/"
-     headerPath += wxT("/dat/");
-     headerPath += wxT("kakikomi");
-     headerPath += wxT("/");
-     headerPath += timeNow;
-     headerPath += wxT(".header");
-#endif
-
-     wxString buttonText = wxT("%8F%91%82%AB%8D%9E%82%DE");
+     headerPath += wxString::Format(wxT("%cdat%ckakikomi%c%s.header"), 
+				    wxFILE_SEP_PATH,
+				    wxFILE_SEP_PATH,
+				    wxFILE_SEP_PATH,
+				    timeNow.mb_str());
 
      // Postする内容のデータサイズを取得する
      wxString kakikomiInfo = wxT("bbs=") + boardInfoHash.boardNameAscii + wxT("&key=")
@@ -1581,23 +1572,11 @@ wxString SocketCommunication::PostResponseToThread(URLvsBoardName& boardInfoHash
 	  ::wxMkdir(datDir.GetName() + wxFILE_SEP_PATH + wxT("kakikomi"));
      }
 
-#ifdef __WXMSW__
-     // Windowsではパスの区切りは"\"
-     headerPath += wxT("\\dat\\");
-     headerPath += wxT("kakikomi");
-     headerPath += wxT("\\");
-     headerPath += timeNow;
-     headerPath += wxT(".header");
-#else
-     // それ以外ではパスの区切りは"/"
-     headerPath += wxT("/dat/");
-     headerPath += wxT("kakikomi");
-     headerPath += wxT("/");
-     headerPath += timeNow;
-     headerPath += wxT(".header");
-#endif
-
-     wxString buttonText = wxT("%8F%91%82%AB%8D%9E%82%DE");
+     headerPath += wxString::Format(wxT("%cdat%ckakikomi%c%s.header"), 
+				    wxFILE_SEP_PATH,
+				    wxFILE_SEP_PATH,
+				    wxFILE_SEP_PATH,
+				    timeNow.mb_str());
 
      // Postする内容のデータサイズを取得する
      wxString kakikomiInfo = wxT("bbs=") + boardInfoHash.boardNameAscii + wxT("&key=")

@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,8 +19,22 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 
+#include <algorithm>
+#include <wx/clipbrd.h>
+#include <wx/dataobj.h>
+#include <wx/image.h>
+#include <babel.h>
+
 #include "threadcontentwindow.hpp"
 #include "xrossboard.hpp"
+#include "extractboardlist.hpp"
+#include "responsewindow.hpp"
+#include "virtualboardlistctrl.hpp"
+#include "xrossboardutil.hpp"
+#include "xrossboarduiutil.hpp"
+#include "xrossboardimageviewer.hpp"
+#include "socketcommunication.hpp"
+#include "enums.hpp"
 
 IMPLEMENT_DYNAMIC_CLASS(ThreadContentWindow, wxHtmlWindow)
 

@@ -1,5 +1,5 @@
-﻿/* XrossBoard - a text board site viewer for 2ch
- * Copyright (C) 2012-2014 Hiroyuki Nagata
+﻿/* XrossBoard - a text board site viewer for open BBS
+ * Copyright (C) 2011-2015 Hiroyuki Nagata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,7 +21,9 @@
 
 
 #include "settingwindow.hpp"
-
+#include "otherpanels.hpp"
+#include <wx/image.h>
+#include <wx/xrc/xmlres.h>
 
 BEGIN_EVENT_TABLE(SettingDialog, wxDialog)
    EVT_BUTTON(ID_OnOkSetting, SettingDialog::OnQuit)
