@@ -1023,8 +1023,24 @@ void XrossBoard::DoLayout()
      m_mgr.SetManagedWindow(this);
 
      // XrossBoardのバージョン
-     wxString xbVer = xrossboardVersion;
+     wxString xbVer = wxEmptyString;
      XrossBoardUtil::GetXrossBoardProperties(wxT("XBVersion"), &xbVer);
+     if ( xbVer == wxEmptyString )
+     {
+	  // TODO: 初回起動 or コンフィグを消している時の処理を追加する
+	  //       コンフィグファイルの初期化やSQLの実行など
+     }
+     else
+     {
+	  if ( xbVer.Contains(".") && xbVer != xrossboardVersion && xbVer.Replace(".", "") == 2 )
+	  {
+	       wxString currentVer = xrossboardVersion;
+	       currentVer.Replace(".", "");
+	       // TODO: 比較して処理する
+	  }
+     }
+     // 現在のバージョンをコンフィグファイルに書き込む
+     XrossBoardUtil::SetXrossBoardProperties(wxT("XBVersion"), xrossboardVersion);
 
      long x = 640, y = 480;
      XrossBoardUtil::GetXrossBoardProperties(wxT("FrameX"), &x);
