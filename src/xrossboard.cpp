@@ -324,7 +324,7 @@ XrossBoard::XrossBoard(wxWindow* parent, int id, const wxString& title, const wx
      // 各種GUI設定を行う
      SetProperties();       // 前回までの設定を読み出す
      DoLayout();            // 実際にレイアウトに展開する
-     SetXrossBoardManuBar(); // メニューバーを設定する
+     SetXrossBoardMenuBar(); // メニューバーを設定する
 
      // ユーザーが前回までに見ていた板一覧タブとスレッド一覧タブをセットする
      SetPreviousUserLookedTab();
@@ -348,10 +348,10 @@ XrossBoard::XrossBoard(wxWindow* parent, int id, const wxString& title, const wx
      *m_logCtrl << wxT("(ヽ´ん`)…レイアウト設定終わりです…\n");
 }
 /**
- * SetXrossBoardManuBar
+ * SetXrossBoardMenuBar
  * メニューバーの設定を行う
  */
-void XrossBoard::SetXrossBoardManuBar() 
+void XrossBoard::SetXrossBoardMenuBar() 
 {
      /*
       * メニューバーの設置
