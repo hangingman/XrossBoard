@@ -22,6 +22,7 @@
 #ifndef SETTINGWINDOW_HPP
 #define SETTINGWINDOW_HPP
 
+#include <wx/wx.h>
 #include <wx/splitter.h>
 #include <wx/treectrl.h>
 #include <wx/xrc/xmlres.h>
