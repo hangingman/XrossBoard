@@ -908,14 +908,14 @@ void XrossBoard::SetProperties()
      } 
 
      // 初回起動以外の際、確認のためディレクトリをチェックする
-     wxDir chkDir(xb);
+     const wxDir chkDir(xb);
      // dat, shingetsu, prop, cacheフォルダが存在するか確認。無ければ確認＆フォルダを作成
      wxArrayString xbNeedDir;
      xbNeedDir.Add(wxT("dat"));
      xbNeedDir.Add(wxT("shingetsu"));
      xbNeedDir.Add(wxT("prop"));
      xbNeedDir.Add(wxT("cache"));
-     for (unsigned int i = 0; i < xbNeedDir.GetCount(); i++ ) 
+     for (size_t i = 0; i < xbNeedDir.GetCount(); i++ ) 
      {
 	  XrossBoardUtil::CreateSpecifyDirectory(chkDir, xbNeedDir[i]);
      }
@@ -1021,6 +1021,10 @@ void XrossBoard::DoLayout()
 
      // Auiマネージャーがどのフレームを管理するか示す
      m_mgr.SetManagedWindow(this);
+
+     // XrossBoardのバージョン
+     wxString xbVer = xrossboardVersion;
+     XrossBoardUtil::GetXrossBoardProperties(wxT("XBVersion"), &xbVer);
 
      long x = 640, y = 480;
      XrossBoardUtil::GetXrossBoardProperties(wxT("FrameX"), &x);
