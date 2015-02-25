@@ -1117,9 +1117,6 @@ void XrossBoard::DoLayout()
  */
 void XrossBoard::SetAuiPaneInfo() 
 {     
-     // 板一覧ツリーを表示するかどうか
-     const bool enableBoardListTree = m_floatToolBar->GetToolToggled(ID_ShowBoardListTree);
-
      // 上部・検索バーを設定する
      wxAuiPaneInfo search;
      search.Name(wxT("searchbar")).ToolbarPane().Layer(1).Top().Position(0)
