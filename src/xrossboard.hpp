@@ -155,7 +155,7 @@ public:
 	  if ( ui == wxT("ThreadContentBar") ) {
 	       if ( ThreadContentBar* threadBar = dynamic_cast<ThreadContentBar*>(obj) ) {
 		    threadBar->UpdateResources();
-		    m_mgr.Update();
+		    threadBar->Layout();
 	       }
 	  } else if ( ui == wxT("SettingDialog") ) {
 	       if ( SettingDialog* settingDlg = dynamic_cast<SettingDialog*>(obj) ) {
@@ -231,8 +231,6 @@ public:
      void UserLastClosedThreadMenuUp(wxUpdateUIEvent& event);
      void UserLookingTabsMenuUp(wxUpdateUIEvent& event);
      void UserLookingTabsControl(wxUpdateUIEvent& event);
-     // Auiマネージャーの更新を行う
-     void XrossBoardMgrUpdate(wxUpdateUIEvent& event);
      // 閲覧中ツリーのデータ更新を行う
      void NowReadingTreectrlUpdate(wxUpdateUIEvent& event);
 
