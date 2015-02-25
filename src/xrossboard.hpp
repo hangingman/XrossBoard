@@ -418,7 +418,7 @@ private:
      // ThreadListクラスについてはdatatype.hpp参照
      WX_DECLARE_HASH_MAP( int, ThreadList*, wxIntegerHash, wxIntegerEqual, ThreadListHash );
 
-     // wxFileConigクラスのインスタンス
+     // wxFileConfigクラスのインスタンス
      wxFileConfig* config;
      // ポップアップウィンドウを出現させる
      void SetPopUpWindow(wxHtmlCellEvent& event, wxString& boardNameAscii,
