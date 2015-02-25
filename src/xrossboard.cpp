@@ -1037,7 +1037,7 @@ void XrossBoard::DoLayout()
 	       xbVer.Replace(wxT("."), wxEmptyString) == 2 )
 	  {
 	       wxString currentVer = xrossboardVersion;
-	       currentVer.Replace(".", "");
+	       currentVer.Replace(wxT("."), wxEmptyString);
 	       // TODO: 比較して処理する
 	  }
      }
