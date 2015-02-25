@@ -42,6 +42,7 @@
 
 #include "enums.hpp"
 #include "xrossboardutil.hpp"
+#include "drawpane.hpp"
 
 /**
  * 設定画面のGUIのコードは何をしてもぐちゃぐちゃになってしまう
