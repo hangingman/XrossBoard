@@ -287,7 +287,7 @@ public:
      void OnSetFocus(wxFocusEvent& event);
 
      // 各種GUI上の設定
-     void SetXrossBoardManuBar();
+     void SetXrossBoardMenuBar();
      void SetProperties();
      void DoLayout();
      void SetAuiPaneInfo();
