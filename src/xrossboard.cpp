@@ -2528,7 +2528,7 @@ void XrossBoard::Initialize2chBoardList() {
      // 検索用ツールバーを設定する
 #ifndef __WXMAC__ /** Windows & Linux */
      CreateCommonAuiToolBar(m_boardTreePanel, vbox, ID_BoardSearchBar);
-     vbox->Add(m_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+     vbox->Add(m_tree_ctrl, 1, wxEXPAND, 0);
 
 #else
      /** Mac OS X */
@@ -2606,7 +2606,7 @@ void XrossBoard::InitializeFavsList() {
      // ツリー用ウィジェットのインスタンスを用意する
      m_fav_tree_ctrl = new wxTreeCtrl(m_favoriteTreePanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 
 				      wxTR_HAS_BUTTONS|wxTR_DEFAULT_STYLE|wxSUNKEN_BORDER);
-     vbox->Add(m_fav_tree_ctrl, 1, wxEXPAND, 10);
+     vbox->Add(m_fav_tree_ctrl, 1, wxEXPAND, 0);
 
      // 検索用ツールバーを設定する
 #ifndef __WXMAC__ /** Windows & Linux */
@@ -2645,7 +2645,7 @@ void XrossBoard::InitializeNowReadingList() {
      // 検索用ツールバーを設定する
 #ifndef __WXMAC__ /** Windows & Linux */
      CreateCommonAuiToolBar(m_nowReadingTreePanel, vbox, ID_NowReadingSearchBar);
-     vbox->Add(m_now_reading_tree_ctrl, 1, wxEXPAND, 10);
+     vbox->Add(m_now_reading_tree_ctrl, 1, wxEXPAND, 0);
 #else
      /** Mac OS X */
      XrossBoardUiUtil::QueueEventHelper(wxEVT_UPDATE_UI, 
@@ -2681,7 +2681,7 @@ void XrossBoard::InitializeShingetsuNodeList() {
      // ツリー用ウィジェットのインスタンスを用意する
      m_shingetsu_tree_ctrl = new wxTreeCtrl(m_shingetsuTreePanel, ID_ShingetsuBoardTreectrl, wxDefaultPosition, wxDefaultSize, 
 					    wxTR_HAS_BUTTONS|wxTR_DEFAULT_STYLE|wxSUNKEN_BORDER);
-     vbox->Add(m_shingetsu_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+     vbox->Add(m_shingetsu_tree_ctrl, 1, wxEXPAND, 0);
 
      wxTreeItemData treeData;
      wxTreeItemId m_rootId;
@@ -4027,7 +4027,7 @@ wxPanel* XrossBoard::CreateAuiToolBar(wxWindow* parent, const wxString& boardNam
 	  (const wxString) outputPath,
 	  oldThreadMap);
      vbListCtrl->SetName(boardName);
-     vbox->Add(vbListCtrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 10);
+     vbox->Add(vbListCtrl, 1, wxEXPAND, 0);
 
      // カラムの幅を最大化
      const wxFont font = GetCurrentFont();
@@ -4225,7 +4225,7 @@ void XrossBoard::CreateCommonAuiToolBar(wxPanel* panel, wxBoxSizer* vbox, wxWind
 			wxT("検索ボックスを隠す"));
 
      searchBox->Realize();
-     vbox->Add(searchBox, 0, wxLEFT | wxTOP | wxEXPAND, 10);
+     vbox->Add(searchBox, 0, wxEXPAND, 0);
 }
 /**
  * 以前検索したキーワードをコンボボックスに補填する
@@ -4656,7 +4656,7 @@ void XrossBoard::SetShingetsuThreadListItemNew(const wxString& nodeHostname, con
 	  std::map<wxString, ThreadList>(),
 	  true);
      vbListCtrl->SetName(nodeHostname);
-     vbox->Add(vbListCtrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 10);
+     vbox->Add(vbListCtrl, 1, wxEXPAND, 0);
 
      // カラムの幅を最大化
      wxFont font = GetCurrentFont();
