@@ -21,7 +21,6 @@
 
 #include "otherpanels.hpp"
 #include "wx/dynarray.h"
-#include "drawpane.hpp"
 #include "sqliteaccessor.hpp"
 #include "socketcommunication.hpp"
 
