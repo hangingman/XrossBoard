@@ -1032,7 +1032,9 @@ void XrossBoard::DoLayout()
      }
      else
      {
-	  if ( xbVer.Contains(".") && xbVer != xrossboardVersion && xbVer.Replace(".", "") == 2 )
+	  if ( xbVer.Contains(wxT("."))   && 
+	       xbVer != xrossboardVersion && 
+	       xbVer.Replace(wxT("."), wxEmptyString) == 2 )
 	  {
 	       wxString currentVer = xrossboardVersion;
 	       currentVer.Replace(".", "");
