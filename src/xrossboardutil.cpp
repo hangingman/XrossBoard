@@ -1309,8 +1309,8 @@ void XrossBoardUtil::GenerateOldThreadMap(std::map<wxString,ThreadList>& oldThre
  * @param const <class T>& value  値
  */
 template <class T>
-void XrossBoardUtil::SetXrossBoardProperties(const wxString& key, const T& value) {
-
+void XrossBoardUtil::SetXrossBoardProperties(const wxString& key, const T& value) 
+{
      // 設定ファイルの準備をする
      const wxString xb = ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR;
      const wxDir xbDir(xb);
@@ -1332,8 +1332,8 @@ template void XrossBoardUtil::SetXrossBoardProperties<bool>(const wxString& key,
  * @param        <class T>* value  値
  */
 template <class T>
-void XrossBoardUtil::GetXrossBoardProperties(const wxString& key, T* value) {
-
+void XrossBoardUtil::GetXrossBoardProperties(const wxString& key, T* value) 
+{
      // 設定ファイルの準備をする
      const wxString xb = ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR;
      const wxDir xbDir(xb);
@@ -1352,8 +1352,8 @@ template void XrossBoardUtil::GetXrossBoardProperties<bool>(const wxString& key,
 /**
  * プロパティファイルの指定されたKEYがあるかどうか確認する
  */
-bool XrossBoardUtil::GetXrossBoardEntryExist(const wxString& key) {
-
+bool XrossBoardUtil::GetXrossBoardEntryExist(const wxString& key) 
+{
      // 設定ファイルの準備をする
      const wxString xb = ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR;
      const wxDir xbDir(xb);
@@ -1367,8 +1367,8 @@ bool XrossBoardUtil::GetXrossBoardEntryExist(const wxString& key) {
 /**
  * プロパティファイルの指定されたKEYを削除する
  */
-void XrossBoardUtil::DeleteXrossBoardPropertyEntry(const wxString& key) {
-
+void XrossBoardUtil::DeleteXrossBoardPropertyEntry(const wxString& key) 
+{
      // 設定ファイルの準備をする
      const wxString xb = ::wxGetHomeDir() + wxFILE_SEP_PATH + XROSSBOARD_DIR;
      const wxDir xbDir(xb);
@@ -1389,17 +1389,18 @@ void XrossBoardUtil::DeleteXrossBoardPropertyEntry(const wxString& key) {
 /**
  * 指定されたディレクトリの下に、指定された名前のディレクトリが存在するか確認して作成する
  */
-void XrossBoardUtil::CreateSpecifyDirectory(wxDir& specifyDir, const wxString& dirName) {
-
-     if (!specifyDir.HasSubDirs(dirName)) {
+void XrossBoardUtil::CreateSpecifyDirectory(const wxDir& specifyDir, const wxString& dirName) 
+{
+     if (!specifyDir.HasSubDirs(dirName)) 
+     {
 	  ::wxMkdir(specifyDir.GetName() + wxFILE_SEP_PATH + dirName);
      }
 }
 /**
  * 新月のCSVファイル保存場所を作成する
  */
-wxString XrossBoardUtil::CreateShingetsuThreadListFilePath(const wxString& nodeHostname) {
-
+wxString XrossBoardUtil::CreateShingetsuThreadListFilePath(const wxString& nodeHostname) 
+{
      // URIから各パラメーターを抜き取る
      PartOfURI* uri = new PartOfURI;
      bool urlIsSane = XrossBoardUtil::SubstringURI(nodeHostname, uri);
