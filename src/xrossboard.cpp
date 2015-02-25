@@ -908,7 +908,7 @@ void XrossBoard::SetProperties()
      } 
 
      // 初回起動以外の際、確認のためディレクトリをチェックする
-     const wxDir chkDir(xb);
+     wxDir chkDir(xb);
      // dat, shingetsu, prop, cacheフォルダが存在するか確認。無ければ確認＆フォルダを作成
      wxArrayString xbNeedDir;
      xbNeedDir.Add(wxT("dat"));

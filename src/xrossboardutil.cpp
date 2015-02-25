@@ -1389,7 +1389,7 @@ void XrossBoardUtil::DeleteXrossBoardPropertyEntry(const wxString& key)
 /**
  * 指定されたディレクトリの下に、指定された名前のディレクトリが存在するか確認して作成する
  */
-void XrossBoardUtil::CreateSpecifyDirectory(const wxDir& specifyDir, const wxString& dirName) 
+void XrossBoardUtil::CreateSpecifyDirectory(wxDir& specifyDir, const wxString& dirName) 
 {
      if (!specifyDir.HasSubDirs(dirName)) 
      {
