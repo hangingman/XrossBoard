@@ -55,6 +55,7 @@ public:
 			  const wxString& oid, const wxString& boardName) {
 	       
 	  // 各項目を設定する
+	  m_check		   = THREAD_STATE_NORMAL;
 	  m_number                 = number;
 	  m_title		   = title; 
 	  m_response		   = response;
