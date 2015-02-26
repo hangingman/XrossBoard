@@ -156,7 +156,6 @@ BEGIN_EVENT_TABLE(XrossBoard, wxFrame)
    EVT_UPDATE_UI(ID_UserLastClosedThreadMenuUp, XrossBoard::UserLastClosedThreadMenuUp)
    EVT_UPDATE_UI(ID_UserLastClosedBoardMenuUp, XrossBoard::UserLastClosedBoardMenuUp)
    EVT_UPDATE_UI(ID_UserLookingTabsMenuUp, XrossBoard::UserLookingTabsMenuUp)
-   EVT_UPDATE_UI(ID_XrossBoardMgrUpdate, XrossBoard::XrossBoardMgrUpdate)
    EVT_UPDATE_UI(ID_NowReadingTreectrlUpdate, XrossBoard::NowReadingTreectrlUpdate)
     
    // 2ch板一覧ツリーコントロールのイベント
@@ -325,7 +324,7 @@ XrossBoard::XrossBoard(wxWindow* parent, int id, const wxString& title, const wx
      // 各種GUI設定を行う
      SetProperties();       // 前回までの設定を読み出す
      DoLayout();            // 実際にレイアウトに展開する
-     SetXrossBoardManuBar(); // メニューバーを設定する
+     SetXrossBoardMenuBar(); // メニューバーを設定する
 
      // ユーザーが前回までに見ていた板一覧タブとスレッド一覧タブをセットする
      SetPreviousUserLookedTab();
@@ -349,10 +348,10 @@ XrossBoard::XrossBoard(wxWindow* parent, int id, const wxString& title, const wx
      *m_logCtrl << wxT("(ヽ´ん`)…レイアウト設定終わりです…\n");
 }
 /**
- * SetXrossBoardManuBar
+ * SetXrossBoardMenuBar
  * メニューバーの設定を行う
  */
-void XrossBoard::SetXrossBoardManuBar() 
+void XrossBoard::SetXrossBoardMenuBar() 
 {
      /*
       * メニューバーの設置
@@ -461,7 +460,7 @@ void XrossBoard::SetXrossBoardManuBar()
      menu2->Append(wxID_ANY, wxT("ビューア"));
      menu2->AppendCheckItem(wxID_ANY, wxT("Twitter"));
      menu2->AppendSeparator();
-     menu2->Append(ID_XrossBoardMgrUpdate, wxT("更新"));
+     menu2->Append(wxID_ANY, wxT("更新"));
      menu2->AppendSeparator();
      wxMenu *focus     = new wxMenu;
      focus->Append(wxID_ANY, wxT("次のペイン"));
@@ -1084,7 +1083,7 @@ void XrossBoard::DoLayout()
      // 設定ファイルからレイアウト情報を読み取る
      wxString perspective = wxEmptyString;
      XrossBoardUtil::GetXrossBoardProperties(wxT("Perspective"), &perspective);
-     m_mgr.LoadPerspective(perspective, true);
+     m_mgr.LoadPerspective(perspective, false);
 
      // プロパティファイルにフォント設定/背景色があれば使用する
      wxString widgetsName = wxT("ID_LogWindowFontButton");
@@ -1118,9 +1117,6 @@ void XrossBoard::DoLayout()
  */
 void XrossBoard::SetAuiPaneInfo() 
 {     
-     // 板一覧ツリーを表示するかどうか
-     const bool enableBoardListTree = m_floatToolBar->GetToolToggled(ID_ShowBoardListTree);
-
      // 上部・検索バーを設定する
      wxAuiPaneInfo search;
      search.Name(wxT("searchbar")).ToolbarPane().Layer(1).Top().Position(0)
@@ -2150,7 +2146,7 @@ void XrossBoard::CheckLogDirectory(wxCommandEvent& event)
 #ifndef __WXMSW__
      boardNoteBook->Thaw();
 #endif
-     m_mgr.Update();
+     boardNoteBook->Update();
 }
 /**
  * スレタブをひとつ閉じる
@@ -2439,9 +2435,6 @@ void XrossBoard::ReloadThread(wxString& title)
 	  wxPoint p;
 	  oldThreadBar->GetThreadContentWindowScrollPos(&p);
 	  oldThreadBar->ReloadThreadContentWindow(threadContentPath);
-	  oldThreadBar->Fit();
-	  
-	  m_mgr.Update();
 	  oldThreadBar->SetThreadContentWindowScroll(&p);
      }
      
@@ -2528,7 +2521,7 @@ void XrossBoard::Initialize2chBoardList() {
      // 検索用ツールバーを設定する
 #ifndef __WXMAC__ /** Windows & Linux */
      CreateCommonAuiToolBar(m_boardTreePanel, vbox, ID_BoardSearchBar);
-     vbox->Add(m_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+     vbox->Add(m_tree_ctrl, 1, wxEXPAND, 0);
 
 #else
      /** Mac OS X */
@@ -2592,7 +2585,7 @@ void XrossBoard::Initialize2chBoardList() {
 
      // パネルにSizerを設定する
      m_boardTreePanel->SetSizer(vbox);
-     m_boardTreePanel->Update();
+     m_boardTreePanel->Layout();
 }
 
 /**
@@ -2606,7 +2599,7 @@ void XrossBoard::InitializeFavsList() {
      // ツリー用ウィジェットのインスタンスを用意する
      m_fav_tree_ctrl = new wxTreeCtrl(m_favoriteTreePanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 
 				      wxTR_HAS_BUTTONS|wxTR_DEFAULT_STYLE|wxSUNKEN_BORDER);
-     vbox->Add(m_fav_tree_ctrl, 1, wxEXPAND, 10);
+     vbox->Add(m_fav_tree_ctrl, 1, wxEXPAND, 0);
 
      // 検索用ツールバーを設定する
 #ifndef __WXMAC__ /** Windows & Linux */
@@ -2624,7 +2617,7 @@ void XrossBoard::InitializeFavsList() {
 
      // パネルにSizerを設定する
      m_favoriteTreePanel->SetSizer(vbox);
-     m_favoriteTreePanel->Update();
+     m_favoriteTreePanel->Layout();
 }
      
 /**
@@ -2645,7 +2638,7 @@ void XrossBoard::InitializeNowReadingList() {
      // 検索用ツールバーを設定する
 #ifndef __WXMAC__ /** Windows & Linux */
      CreateCommonAuiToolBar(m_nowReadingTreePanel, vbox, ID_NowReadingSearchBar);
-     vbox->Add(m_now_reading_tree_ctrl, 1, wxEXPAND, 10);
+     vbox->Add(m_now_reading_tree_ctrl, 1, wxEXPAND, 0);
 #else
      /** Mac OS X */
      XrossBoardUiUtil::QueueEventHelper(wxEVT_UPDATE_UI, 
@@ -2659,7 +2652,7 @@ void XrossBoard::InitializeNowReadingList() {
 
      // パネルにSizerを設定する
      m_nowReadingTreePanel->SetSizer(vbox);
-     m_nowReadingTreePanel->Update();
+     m_nowReadingTreePanel->Layout();
 }
 
 #ifdef USE_SHINGETSU
@@ -2681,7 +2674,7 @@ void XrossBoard::InitializeShingetsuNodeList() {
      // ツリー用ウィジェットのインスタンスを用意する
      m_shingetsu_tree_ctrl = new wxTreeCtrl(m_shingetsuTreePanel, ID_ShingetsuBoardTreectrl, wxDefaultPosition, wxDefaultSize, 
 					    wxTR_HAS_BUTTONS|wxTR_DEFAULT_STYLE|wxSUNKEN_BORDER);
-     vbox->Add(m_shingetsu_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+     vbox->Add(m_shingetsu_tree_ctrl, 1, wxEXPAND, 0);
 
      wxTreeItemData treeData;
      wxTreeItemId m_rootId;
@@ -2706,7 +2699,7 @@ void XrossBoard::InitializeShingetsuNodeList() {
 
      // パネルにSizerを設定する
      m_shingetsuTreePanel->SetSizer(vbox);
-     m_shingetsuTreePanel->Update();
+     m_shingetsuTreePanel->Layout();
 }
 #endif /** USE_SHINGETSU */
 
@@ -3530,7 +3523,6 @@ void XrossBoard::OnChangedBoardTab(wxAuiNotebookEvent& event) {
 	  wxString message = wxT("(ヽ´ん`)…板タブ変更時にエラーあったみたい…\n");
 	  SendLogging(message);
 	  boardNoteBook->Thaw();
-	  m_mgr.Update();
 
 	  return;
      }
@@ -3552,8 +3544,6 @@ void XrossBoard::OnChangedBoardTab(wxAuiNotebookEvent& event) {
      SetTitle(selectedBoardName + wxT(" - XrossBoard"));
      // 最後に選択したノートブックの記録
      //this->userLastAttachedNotebook = BOARD_NOTEBOOK;
-     
-     m_mgr.Update();
 }
 /**
  * スレッド一覧タブを変更した後のイベント
@@ -3582,15 +3572,12 @@ void XrossBoard::OnChangedThreadTab(wxAuiNotebookEvent& event) {
 	  wxString message = wxT("(ヽ´ん`)…スレタブ変更時にエラーあったみたい…\n");
 	  SendLogging(message);
 	  threadNoteBook->Thaw();
-	  m_mgr.Update();
 
 	  return;
      }
 
      // 最後に選択したノートブックの記録
      //this->userLastAttachedNotebook = THREAD_NOTEBOOK;
-
-     m_mgr.Update();
 }
 
 void XrossBoard::OnClickURLWindowButton(wxCommandEvent& event) {
@@ -3924,12 +3911,6 @@ void XrossBoard::UserLookingTabsMenuUp(wxUpdateUIEvent& event) {
 	  lookingTB->Append(ID_UserLookingTabsMenuClick, array[i]);
      }
 }
-/**
- * Auiマネージャーの更新を行う
- */
-void XrossBoard::XrossBoardMgrUpdate(wxUpdateUIEvent& event) {
-     m_mgr.Update();
-}
 
 /**
  * 閲覧中ツリーのデータ更新を行う
@@ -4027,7 +4008,7 @@ wxPanel* XrossBoard::CreateAuiToolBar(wxWindow* parent, const wxString& boardNam
 	  (const wxString) outputPath,
 	  oldThreadMap);
      vbListCtrl->SetName(boardName);
-     vbox->Add(vbListCtrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 10);
+     vbox->Add(vbListCtrl, 1, wxEXPAND, 0);
 
      // カラムの幅を最大化
      const wxFont font = GetCurrentFont();
@@ -4225,7 +4206,7 @@ void XrossBoard::CreateCommonAuiToolBar(wxPanel* panel, wxBoxSizer* vbox, wxWind
 			wxT("検索ボックスを隠す"));
 
      searchBox->Realize();
-     vbox->Add(searchBox, 0, wxLEFT | wxTOP | wxEXPAND, 10);
+     vbox->Add(searchBox, 0, wxEXPAND, 0);
 }
 /**
  * 以前検索したキーワードをコンボボックスに補填する
@@ -4344,7 +4325,7 @@ void XrossBoard::HideSearchBar(wxCommandEvent& event) {
      wxWindow* window = dynamic_cast<wxWindow*>(event.GetEventObject());
      if (window != NULL && (window->GetLabel() == BOARD_TREE_SEARCH || window->GetLabel() == THREADLIST_SEARCH)) {
 	  window->Hide();
-	  m_mgr.Update();
+	  window->GetParent()->Layout();
      }
 }
 /** 
@@ -4656,7 +4637,7 @@ void XrossBoard::SetShingetsuThreadListItemNew(const wxString& nodeHostname, con
 	  std::map<wxString, ThreadList>(),
 	  true);
      vbListCtrl->SetName(nodeHostname);
-     vbox->Add(vbListCtrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 10);
+     vbox->Add(vbListCtrl, 1, wxEXPAND, 0);
 
      // カラムの幅を最大化
      wxFont font = GetCurrentFont();
@@ -4699,77 +4680,40 @@ void XrossBoard::SetShingetsuThreadListItemUpdate(const wxString& nodeHostname, 
  */
 void XrossBoard::CtrlF(wxKeyEvent& event) 
 {
+     wxWindow* searchBar = nullptr;
+     
      if (this->userLastAttachedNotebook == BOARD_NOTEBOOK) 
      {
 	  // スレッド一覧ウィンドウの処理
 	  wxWindow* target = boardNoteBook->GetPage(boardNoteBook->GetSelection());
-
-	  if ( wxAuiToolBar* toolBar 
-	       = dynamic_cast<wxAuiToolBar*>(wxWindow::FindWindowById(ID_ThreadSearchBar, target))) 
-	  {
-
-	       if (toolBar->IsShown()) 
-	       {
-		    toolBar->GetNextSibling()->SetFocus();
-		    toolBar->Hide();
-		    boardNoteBook->Fit();
-		    m_mgr.Update();
-	       } 
-	       else 
-	       {
-		    toolBar->Show();
-		    boardNoteBook->Fit();
-		    m_mgr.Update();
-	       }	  
-	  }
+	  searchBar = wxWindow::FindWindowById(ID_ThreadSearchBar, target);
      } 
      else if (this->userLastAttachedNotebook == THREAD_NOTEBOOK) 
      {
 	  // スレッド内容ウィンドウの処理
 	  ThreadContentBar* contentBar = 
 	       dynamic_cast<ThreadContentBar*>(threadNoteBook->GetPage(threadNoteBook->GetSelection()));
-	  
-	  if ( wxPanel* searchBarPanel 
-	       = dynamic_cast<wxPanel*>(wxWindow::FindWindowById(ID_ThreadContentSearchBar, contentBar))) 
-	  {
-	       // スレッド内容バーの子ウィンドウを取り出して命令する
-	       if (searchBarPanel->IsShown()) 
-	       {
-		    searchBarPanel->GetNextSibling()->SetFocus();
-		    searchBarPanel->Hide();
-		    threadNoteBook->Fit();
-		    m_mgr.Update();
-	       } 
-	       else 
-	       {
-		    searchBarPanel->Show();
-		    threadNoteBook->Fit();
-		    m_mgr.Update();
-	       }	       
-	  }
+	  searchBar = wxWindow::FindWindowById(ID_ThreadContentSearchBar, contentBar);
      } 
      else if (this->userLastAttachedNotebook == BOARD_TREE_NOTEBOOK) 
      {
 	  // 板一覧ウィンドウの処理
 	  wxWindow* target = boardTreeNoteBook->GetPage(boardTreeNoteBook->GetSelection());
+	  searchBar = wxWindow::FindWindowById(ID_BoardSearchBar, target);
+     }
 
-	  if ( wxAuiToolBar* toolBar 
-	       = dynamic_cast<wxAuiToolBar*>(wxWindow::FindWindowById(ID_BoardSearchBar, target))) 
+     if (searchBar)
+     {
+	  if (searchBar->IsShown()) 
 	  {
-	       if (toolBar->IsShown()) 
-	       {
-		    toolBar->GetNextSibling()->SetFocus();
-		    toolBar->Hide();
-		    boardTreeNoteBook->Fit();
-		    m_mgr.Update();
-	       } 
-	       else 
-	       {
-		    toolBar->Show();
-		    boardTreeNoteBook->Fit();
-		    m_mgr.Update();
-	       }	  
+	       searchBar->GetNextSibling()->SetFocus();
+	       searchBar->Hide();
+	  } 
+	  else 
+	  {
+	       searchBar->Show();
 	  }
+	  searchBar->GetParent()->Layout();
      }
 }
 

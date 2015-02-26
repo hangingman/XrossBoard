@@ -48,9 +48,6 @@ END_EVENT_TABLE()
 ThreadContentBar::ThreadContentBar(wxWindow* parent, int wxWindowID, const wxPoint& pos, const wxSize& size, long style):
 wxPanel(parent, wxWindowID, pos, size, wxDEFAULT_FRAME_STYLE)
 {
-     // PNGファイル読み込み準備
-     wxImage::AddHandler( new wxPNGHandler );
-
      // begin wxGlade: ThreadContentBar::ThreadContentBar
      threadContentsBarPanel = new wxPanel(this, wxID_ANY);
      threadContentsBarPanel->SetBackgroundColour(*wxLIGHT_GREY);
@@ -296,7 +293,7 @@ void ThreadContentBar::do_layout()
     threadContentsBarSizer->Add(searchBarPanel, 0, wxEXPAND, 0);
 
     // スレッドの内容部分
-    threadContentsBarSizer->Add(threadContentPanel, 1, wxEXPAND | wxBOTTOM, 5);
+    threadContentsBarSizer->Add(threadContentPanel, 1, wxEXPAND, 0);
     SetSizer(threadContentsBarSizer);
     Layout();
     // end wxGlade
@@ -317,10 +314,11 @@ void ThreadContentBar::SetThreadContentWindow(const wxString& threadContentPath,
      // スレッドの内容を表すウィンドウをthreadContentPanelを親として宣言する
      tcw = new WEB_RENDER_CLASS(threadContentPanel, threadContentPath);
      wxBoxSizer *vbox = new wxBoxSizer(wxVERTICAL);
-     vbox->Add(tcw, 1, wxEXPAND | wxALL, 5);
+     vbox->Add(tcw, 1, wxEXPAND, 0);
      threadContentPanel->SetSizer(vbox);
      // 内部に固有番号を持つ
      m_origNumber = origNumber;
+     threadContentPanel->Layout();
 }
 /**
  * スレッドをリロードする
@@ -333,8 +331,9 @@ void ThreadContentBar::ReloadThreadContentWindow(const wxString& threadContentPa
      tcw = new WEB_RENDER_CLASS(threadContentPanel, threadContentPath);
 
      wxBoxSizer *vbox = new wxBoxSizer(wxVERTICAL);
-     vbox->Add(tcw, 1, wxEXPAND | wxALL, 5);
+     vbox->Add(tcw, 1, wxEXPAND, 0);
      threadContentPanel->SetSizer(vbox);
+     threadContentPanel->Layout();
 }
 /**
  * 新着までスクロール
@@ -361,12 +360,6 @@ void ThreadContentBar::OnClickTCBHideSearchBar(wxCommandEvent& event) {
 	  searchBarPanel->Show();
      }
 
-     wxCommandEvent* cmEvent = new wxCommandEvent(wxEVT_UPDATE_UI, ID_XrossBoardMgrUpdate);
-
-#if wxCHECK_VERSION(2, 9, 0)
-     wxTheApp->GetTopWindow()->GetEventHandler()->QueueEvent(cmEvent->Clone());
-#else
-     this->GetEventHandler()->AddPendingEvent(*cmEvent);
-#endif
+     Layout();
 
 }

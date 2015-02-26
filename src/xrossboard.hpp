@@ -155,7 +155,7 @@ public:
 	  if ( ui == wxT("ThreadContentBar") ) {
 	       if ( ThreadContentBar* threadBar = dynamic_cast<ThreadContentBar*>(obj) ) {
 		    threadBar->UpdateResources();
-		    m_mgr.Update();
+		    threadBar->Layout();
 	       }
 	  } else if ( ui == wxT("SettingDialog") ) {
 	       if ( SettingDialog* settingDlg = dynamic_cast<SettingDialog*>(obj) ) {
@@ -180,9 +180,9 @@ public:
 		    // Sizer
 		    wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
 		    this->CreateCommonAuiToolBar(m_boardTreePanel, vbox, ID_BoardSearchBar);
-		    vbox->Add(m_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+		    vbox->Add(m_tree_ctrl, 1, wxEXPAND, 0);
 		    m_boardTreePanel->SetSizer(vbox);
-		    m_boardTreePanel->Fit();
+		    m_boardTreePanel->Layout();
 	       }
 	       break;
 
@@ -191,9 +191,9 @@ public:
 		    // Sizer
 		    wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
 		    this->CreateCommonAuiToolBar(m_favoriteTreePanel, vbox, ID_FavsSearchBar);
-		    vbox->Add(m_fav_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+		    vbox->Add(m_fav_tree_ctrl, 1, wxEXPAND, 0);
 		    m_favoriteTreePanel->SetSizer(vbox);
-		    m_favoriteTreePanel->Fit();
+		    m_favoriteTreePanel->Layout();
 	       } 
 	       break;
 
@@ -202,9 +202,9 @@ public:
 		    // Sizer
 		    wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
 		    this->CreateCommonAuiToolBar(m_nowReadingTreePanel, vbox, ID_NowReadingSearchBar);
-		    vbox->Add(m_now_reading_tree_ctrl, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+		    vbox->Add(m_now_reading_tree_ctrl, 1, wxEXPAND, 0);
 		    m_nowReadingTreePanel->SetSizer(vbox);
-		    m_nowReadingTreePanel->Fit();
+		    m_nowReadingTreePanel->Layout();
 	       } 
 	       break;
 	       
@@ -231,8 +231,6 @@ public:
      void UserLastClosedThreadMenuUp(wxUpdateUIEvent& event);
      void UserLookingTabsMenuUp(wxUpdateUIEvent& event);
      void UserLookingTabsControl(wxUpdateUIEvent& event);
-     // Auiマネージャーの更新を行う
-     void XrossBoardMgrUpdate(wxUpdateUIEvent& event);
      // 閲覧中ツリーのデータ更新を行う
      void NowReadingTreectrlUpdate(wxUpdateUIEvent& event);
 
@@ -289,7 +287,7 @@ public:
      void OnSetFocus(wxFocusEvent& event);
 
      // 各種GUI上の設定
-     void SetXrossBoardManuBar();
+     void SetXrossBoardMenuBar();
      void SetProperties();
      void DoLayout();
      void SetAuiPaneInfo();
