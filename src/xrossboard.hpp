@@ -96,10 +96,6 @@ public:
      void OnOpenXrossBoardOfficial(wxCommandEvent& event) {
 	  wxLaunchDefaultBrowser(XROSSBOARD_DOWNLOADSITE);
      };
-     // ●公式サイトをブラウザで開く
-     void OnOpen2chViewerOfficial(wxCommandEvent& event) {
-	  wxLaunchDefaultBrowser(IICH_VIEWER_OFFICIAL);
-     };
      // ログ出力
      void Logging(wxCommandEvent& event) {
 	  *m_logCtrl << event.GetString();
