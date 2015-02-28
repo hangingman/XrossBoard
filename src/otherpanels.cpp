@@ -99,7 +99,7 @@ NetworkSettingPanel::NetworkSettingPanel(wxWindow* parent)
 void NetworkSettingPanel::InitWidgetsFromXRC(wxWindow* parent)
 {
      // XRC の中にある name をキーにしてGUIの型をロードする
-     wxXmlResource::Get()->LoadObject(this, parent, "NetworkSettingPanel_Base", "wxPanel");
+     wxXmlResource::Get()->LoadObject(this, parent, wxT("NetworkSettingPanel_Base"), wxT("wxPanel"));
 
      proxyUseCheck	     = XRCCTRL(*this, "proxyUseCheck"		, wxCheckBox);
      proxyCacheUseCheck      = XRCCTRL(*this, "proxyCacheUseCheck"	, wxCheckBox);
