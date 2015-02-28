@@ -158,10 +158,6 @@ public:
 		    threadBar->UpdateResources();
 		    threadBar->Layout();
 	       }
-	  } else if ( ui == wxT("SettingDialog") ) {
-	       if ( SettingDialog* settingDlg = dynamic_cast<SettingDialog*>(obj) ) {
-		    settingDlg->UpdateResources();
-	       }
 	  } else if ( ui == wxT("ColorFontSettingPanel") ) {
 	       if ( ColorFontSettingPanel* colour = dynamic_cast<ColorFontSettingPanel*>(obj) ) {
 		    colour->UpdateResources();
