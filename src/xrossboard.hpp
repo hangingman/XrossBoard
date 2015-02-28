@@ -40,6 +40,11 @@
 #include "xrossboardimageviewer.hpp"
 #include "xrossboarduiutil.hpp"
 
+#ifdef __WXMAC__
+   #include "threadcontentbar.hpp"
+   #include "settingwindow.hpp"
+#endif
+
 /**
  * XrossBoardのGUI本体部分を構成するクラス
  */
