@@ -162,10 +162,6 @@ public:
 	       if ( SettingDialog* settingDlg = dynamic_cast<SettingDialog*>(obj) ) {
 		    settingDlg->UpdateResources();
 	       }
-	  } else if ( ui == wxT("NetworkSettingPanel") ) {
-	       if ( NetworkSettingPanel* net = dynamic_cast<NetworkSettingPanel*>(obj) ) {
-		    net->UpdateResources();
-	       }
 	  } else if ( ui == wxT("ColorFontSettingPanel") ) {
 	       if ( ColorFontSettingPanel* colour = dynamic_cast<ColorFontSettingPanel*>(obj) ) {
 		    colour->UpdateResources();

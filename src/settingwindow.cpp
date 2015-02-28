@@ -54,14 +54,10 @@ SettingDialog::SettingDialog(wxWindow* parent, int id, const wxString& title)
      DoLayout();
 
      // 初回は通信パネルを開く
-#ifndef __WXMAC__
      wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
      vbox->Add(new NetworkSettingPanel(settingPanel));
      settingPanel->SetSizer(vbox);
-#else
-     // メインスレッドに更新してもらう
-     SendUIUpdateEvent();
-#endif
+
      this->SetTitle(wxT("設定 - 通信"));
 }
 /**
