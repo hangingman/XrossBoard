@@ -42,17 +42,15 @@
  * 定数値の宣言
  */
 /** XrossBoard公式サイトのURL */
-#define XROSSBOARD_DOWNLOADSITE wxT("http://hiroyuki-nagata.github.io/")
-/** ●公式サイトのURL */
-#define IICH_VIEWER_OFFICIAL   wxT("http://2ch.tora3.net/")
+#define XROSSBOARD_DOWNLOADSITE wxT("http://hiroyuki-nagata.github.io/XrossBoard/")
 /** XrossBoardの作業用隠しフォルダ名 */
-#define XROSSBOARD_DIR wxT(".xb")
+#define XROSSBOARD_DIR          wxT(".xb")
 /** コンフィグファイル名 */
-#define APP_CONFIG_FILE wxT("xrossboard.env")
+#define APP_CONFIG_FILE         wxT("xrossboard.env")
 /** クッキーの設定ファイル */
-#define COOKIE_CONFIG_FILE wxT("xrossboard.env")
+#define COOKIE_CONFIG_FILE      wxT("xrossboard.env")
 /** Mac OSX のアプリケーションバンドル構造 */
-#define MAC_OSX_CURDIR_PREFIX wxGetCwd() + wxT("/XrossBoard.app/Contents/MacOS/")
+#define MAC_OSX_CURDIR_PREFIX   wxGetCwd() + wxT("/XrossBoard.app/Contents/MacOS/")
 /** HTML中のタグ */
 #define BR "<br/>"
 
