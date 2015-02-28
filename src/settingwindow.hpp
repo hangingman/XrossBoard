@@ -30,6 +30,10 @@
 #include <wx/msgdlg.h>
 #include "enums.hpp"
 
+#ifdef __WXMAC__
+   #include "otherpanels.hpp"
+#endif
+
 class SettingDialog: public wxDialog 
 {
 
