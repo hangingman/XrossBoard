@@ -45,6 +45,8 @@
 #define XROSSBOARD_DOWNLOADSITE wxT("http://hiroyuki-nagata.github.io/XrossBoard/")
 /** XrossBoardの作業用隠しフォルダ名 */
 #define XROSSBOARD_DIR          wxT(".xb")
+/** デフォルトの板一覧取得URL */
+#define DEFAULT_BOARDLIST_URL   wxT("http://kita.jikkyo.org/cbm/cbm.cgi/20.p0.m0.jb.vs.op.sc.nb.bb/-all/bbsmenu.html")
 /** コンフィグファイル名 */
 #define APP_CONFIG_FILE         wxT("xrossboard.env")
 /** クッキーの設定ファイル */
