@@ -101,10 +101,6 @@ public:
      void OnOpenXrossBoardOfficial(wxCommandEvent& event) {
 	  wxLaunchDefaultBrowser(XROSSBOARD_DOWNLOADSITE);
      };
-     // ●公式サイトをブラウザで開く
-     void OnOpen2chViewerOfficial(wxCommandEvent& event) {
-	  wxLaunchDefaultBrowser(IICH_VIEWER_OFFICIAL);
-     };
      // ログ出力
      void Logging(wxCommandEvent& event) {
 	  *m_logCtrl << event.GetString();
@@ -161,14 +157,6 @@ public:
 	       if ( ThreadContentBar* threadBar = dynamic_cast<ThreadContentBar*>(obj) ) {
 		    threadBar->UpdateResources();
 		    threadBar->Layout();
-	       }
-	  } else if ( ui == wxT("SettingDialog") ) {
-	       if ( SettingDialog* settingDlg = dynamic_cast<SettingDialog*>(obj) ) {
-		    settingDlg->UpdateResources();
-	       }
-	  } else if ( ui == wxT("NetworkSettingPanel") ) {
-	       if ( NetworkSettingPanel* net = dynamic_cast<NetworkSettingPanel*>(obj) ) {
-		    net->UpdateResources();
 	       }
 	  } else if ( ui == wxT("ColorFontSettingPanel") ) {
 	       if ( ColorFontSettingPanel* colour = dynamic_cast<ColorFontSettingPanel*>(obj) ) {

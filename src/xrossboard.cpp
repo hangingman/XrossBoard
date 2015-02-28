@@ -105,7 +105,6 @@ BEGIN_EVENT_TABLE(XrossBoard, wxFrame)
    EVT_MENU(ID_ReloadThisThread, XrossBoard::ReloadThisThread)
    EVT_MENU(ID_CallResponseWindow, XrossBoard::CallResponseWindow)
    EVT_MENU(ID_OnOpenXrossBoardOfficial, XrossBoard::OnOpenXrossBoardOfficial)
-   EVT_MENU(ID_OnOpen2chViewerOfficial, XrossBoard::OnOpen2chViewerOfficial)
    EVT_MENU(ID_AddThreadFavorite, XrossBoard::AddThreadFavorite)
    EVT_MENU(ID_DelThreadFavorite, XrossBoard::DelThreadFavorite)
    EVT_MENU(ID_AddAllThreadFavorite, XrossBoard::AddAllThreadFavorite)
@@ -819,8 +818,6 @@ void XrossBoard::SetXrossBoardMenuBar()
      menu10->Append(wxID_ANY, wxT("ヘルプ"));
      menu10->AppendSeparator();
      menu10->Append(ID_OnOpenXrossBoardOfficial, wxT("XrossBoard公式サイトをブラウザで開く"));
-     menu10->AppendSeparator();
-     menu10->Append(ID_OnOpen2chViewerOfficial, wxT("2ちゃんねるビューア●に登録"));
      menu10->AppendSeparator();
      menu10->Append(wxID_ANY, wxT("アップデートチェック"));
      menu10->AppendSeparator();
@@ -2789,38 +2786,38 @@ void XrossBoard::SetBoardList(const bool updateHash)
 void XrossBoard::OnVersionInfo(wxCommandEvent&) {
 
      wxAboutDialogInfo info;
-     info.SetName(wxT("XrossBoard - ２ちゃんねるビューア"));
-     info.AddDeveloper(wxT("Hiroyuki Nagata\tnewserver002@gmail.com"));
-     info.AddDeveloper(wxT("K.Watanabe\tkwtnb@outlook.com"));
-     info.AddDeveloper(wxT("Vabock\tvabock@gmail.com"));
+     info.SetName(wxT("XrossBoard - 汎用掲示板クライアント"));
+     info.AddDeveloper(wxT("Hiroyuki Nagata    newserver002@gmail.com"));
+     info.AddDeveloper(wxT("K.Watanabe         kwtnb@outlook.com"));
+     info.AddDeveloper(wxT("Vabock             vabock@gmail.com"));
      info.SetVersion(xrossboardVersion);
-     info.SetCopyright(wxT("Copyright(C) 2015 Nagata Hiroyuki, All Rights Reserved. "));
+     info.SetCopyright(wxT("Copyright(C) 2015 Hiroyuki Nagata, All Rights Reserved. "));
      info.SetWebSite(wxT("http://nantonaku-shiawase.hatenablog.com/"));
 
      // 説明を追加
      wxString description = wxT("wxWidgetsのバージョン:");
-     description += wxVERSION_STRING;
-     description += wxT("\n");
-     description += wxT("Curlのバージョン:");
+     description << wxVERSION_STRING;
+     description << wxT("\n");
+     description << wxT("Curlのバージョン:");
 
      /** curlをwxWidgetsから呼ぶテスト */
      curl_version_info_data* data = curl_version_info(CURLVERSION_NOW);
-     description += wxString::From8BitData(data->version);
-     description += wxT("\n");
+     description << wxString::From8BitData(data->version);
+     description << wxT("\n");
+     description << wxT("対応プロトコル:");
 
-     description += wxT("対応プロトコル:");
      for (int i = 0; i < sizeof data->protocols; i++) {
-	  description += wxString::From8BitData(data->protocols[i]);
-	  description += wxT(", ");	  
+	  description << wxString::From8BitData(data->protocols[i]);
+	  description << wxT(", ");	  
      }
 
-     description += wxT("OpenSSLのバージョン:");
-     description += wxString::From8BitData(data->ssl_version);
-     description += wxT("\n");
+     description << wxT("OpenSSLのバージョン:");
+     description << wxString::From8BitData(data->ssl_version);
+     description << wxT("\n");
 
-     description += wxT("zlibのバージョン");
-     description += wxString::From8BitData(data->libz_version);
-     description += wxT("\n");
+     description << wxT("zlibのバージョン");
+     description << wxString::From8BitData(data->libz_version);
+     description << wxT("\n");
 
      info.SetDescription(description);
 
@@ -2830,9 +2827,11 @@ void XrossBoard::OnVersionInfo(wxCommandEvent&) {
      wxString licence;
 
      // ファイルがオープンされているならば
-     if (licenceFile.IsOpened()) {
-	  for (licence += licenceFile.GetFirstLine(); !licenceFile.Eof(); licence += licenceFile.GetNextLine()) {
-	       licence += wxT("\n");
+     if (licenceFile.IsOpened()) 
+     {
+	  for (licence << licenceFile.GetFirstLine(); !licenceFile.Eof(); licence << licenceFile.GetNextLine()) 
+	  {
+	       licence << wxT("\n");
 	  }
      }
      // ここまで来てしまった場合空文字を返す
