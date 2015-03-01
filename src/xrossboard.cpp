@@ -26,7 +26,6 @@
 #include <wx/msgdlg.h>
 #include <wx/imaglist.h>
 #include <wx/artprov.h>
-#include <wx/fileconf.h>
 #include <wx/tokenzr.h>
 #include <wx/filesys.h>
 #include <wx/filename.h>

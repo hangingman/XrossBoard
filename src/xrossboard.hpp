@@ -35,6 +35,7 @@
 #include <wx/menu.h>
 #include <wx/html/htmlwin.h>
 #include <wx/treectrl.h>
+#include <wx/fileconf.h>
 
 #include "datatype.hpp"
 #include "xrossboardimageviewer.hpp"
@@ -43,6 +44,11 @@
 #ifdef __WXMAC__
    #include "threadcontentbar.hpp"
    #include "settingwindow.hpp"
+#endif
+
+#ifdef __WXMSW__
+   #include "threadcontentbar.hpp"
+   #include "virtualboardlistctrl.hpp"
 #endif
 
 /**
