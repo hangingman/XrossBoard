@@ -19,14 +19,14 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Options.hpp>
-#include <curlpp/Infos.hpp>
-
-#include <wx/protocol/http.h>
 #include <wx/wfstream.h>
 #include <wx/uri.h>
 #include <wx/datstrm.h>
+#include <wx/protocol/http.h> /** wx must be forward declaration than curl */
+
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Infos.hpp>
 
 #include "socketcommunication.hpp"
 #include "sqliteaccessor.hpp"
