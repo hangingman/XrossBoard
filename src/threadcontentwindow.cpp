@@ -56,10 +56,7 @@ BEGIN_EVENT_TABLE(ThreadContentWindow, wxHtmlWindow)
    EVT_SIZE(ThreadContentWindow::OnSize) 
 
 #ifdef __WXMSW__ /** Windows Only */
-   EVT_SCROLLWIN_PAGEUP(ThreadContentWindow::PageUp)
-   EVT_SCROLLWIN_PAGEDOWN(ThreadContentWindow::PageDown)
-   EVT_SCROLLWIN_LINEUP(ThreadContentWindow::PageUp)
-   EVT_SCROLLWIN_LINEDOWN(ThreadContentWindow::PageDown)
+   EVT_MOUSEWHEEL(ThreadContentWindow::PageUpDown)
 #endif
 END_EVENT_TABLE()
 
@@ -1081,22 +1078,21 @@ wxString ThreadContentWindow::ReadPlainTextFile(const wxString& filePath)
      return htmlDOM;
 }
 
-#ifdef __WXMSW__ /** Windows上のScrolledWindowのワークアラウンド */
+#ifdef __WXMSW__ /** Windows Only */
 
-void ThreadContentWindow::PageUp(wxScrollWinEvent& event)
+void ThreadContentWindow::PageUpDown(wxMouseEvent& event)
 {
      wxPoint p;
      this->GetHtmlWindowScrollPos(&p);
-     //XrossBoardUiUtil::SendLoggingHelper(wxString::Format( wxT("x: %d y: %d\n"), p.x, p.y));
-     Scroll(p.x, p.y + 30);
+
+     if ( event.GetWheelRotation() > 0 )
+     {
+	  Scroll(p.x, p.y - 30);
+     }
+     else
+     {
+	  Scroll(p.x, p.y + 30);
+     }
 }
 
-void ThreadContentWindow::PageDown(wxScrollWinEvent& event)
-{
-     wxPoint p;
-     this->GetHtmlWindowScrollPos(&p);
-     //XrossBoardUiUtil::SendLoggingHelper(wxString::Format( wxT("x: %d y: %d\n"), p.x, p.y));
-     Scroll(p.x, p.y - 30);
-}
-
-#endif /** Windows上のScrolledWindowのワークアラウンド */
+#endif
