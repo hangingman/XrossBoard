@@ -120,7 +120,7 @@ private:
      wxString ReadPlainTextFile(const wxString& filePath);
 
 #ifdef __WXMSW__ /** Windows Only */
-     void PageUpDown(wxScrollWinEvent& event);
+     void PageUpDown(wxMouseEvent& event);
 #endif
 
      DECLARE_EVENT_TABLE()
