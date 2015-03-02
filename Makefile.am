@@ -74,7 +74,7 @@ MAKENSIS    = makensis
 NSIS_NSI_IN = $(top_builddir)/misc/xrossboard.nsi.in
 NSIS_NSI    = $(top_builddir)/extras/xrossboard.nsi
 NLIST	    = $(shell for x in {1..$(words $(WIN32_DEP))}; do echo $$x; done)
-WIN32_DEP   = libstdc++ libgcc libxml2 zlib libcurl libjpeg libpng libtiff ssleay32 libeay32
+WIN32_DEP   = libstdc++ libgcc libxml2 zlib libcurl libjpeg libpng libtiff ssleay32 libeay32 libssp
 
 # RPM用設定ファイル
 RPM_MACRO   = $(top_builddir)/extras/package/.rpmmacros
