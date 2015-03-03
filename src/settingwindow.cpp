@@ -57,6 +57,7 @@ SettingDialog::SettingDialog(wxWindow* parent, int id, const wxString& title)
      wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
      vbox->Add(new NetworkSettingPanel(settingPanel));
      settingPanel->SetSizer(vbox);
+     settingPanel->GetSizer()->Fit(settingPanel);
 
      this->SetTitle(wxT("設定 - 通信"));
 }
