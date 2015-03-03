@@ -28,6 +28,7 @@
 
 #include <wx/wx.h>
 #include <vector>
+#include <tuple>
 #include <map>
 #include <memory>
 #include <wx/regex.h>
@@ -191,6 +192,9 @@ static const wxString amazonIconImg      = wxT(RESOURCE_PATH L"amazon.png");
 /**
  * 構造体
  */
+
+// 板一覧情報のタプル
+typedef std::tuple<wxString, wxString, wxString> BoardRowTuple;
 
 // 2chの板名とURLを対応させるクラス
 typedef struct

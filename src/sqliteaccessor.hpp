@@ -71,7 +71,7 @@ public:
      /**
       * 板一覧情報のコミットを行う
       */
-     void SetBoardInfoCommit(wxArrayString* boardInfoArray);
+     static void SetBoardInfoCommit(std::vector<BoardRowTuple>& tuples);
      /**
       * 板一覧情報をSQLite内のテーブルから取得しArrayStringの形で返す
       */
