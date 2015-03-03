@@ -27,7 +27,7 @@
 #include <wx/wx.h>
 #include "datatype.hpp"
 
-class wxImagePanel : public wxPanel {
+class wxImagePanel : public wxScrolledWindow {
 
      wxBitmap image;
 
