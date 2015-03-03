@@ -26,13 +26,12 @@
  * ExtractBoardList
  * コンストラクタ
  */
-ExtractBoardList::ExtractBoardList(const char* file) {
+void ExtractBoardList::ExtractBoardInfo(const char* file) {
 
      // HTML読み込み用構造体
      htmlDocPtr m_doc;
-     // SQLiteAccessorのインスタンスを準備する
-     SQLiteAccessor* accessor = new SQLiteAccessor();
-     boardInfoArray = new wxArrayString();
+     // 板情報を含む可変長配列
+     wxArrayString array;
 
      // ファイル名とエンコードの設定
      const char* enc = "utf-8";
@@ -44,8 +43,6 @@ ExtractBoardList::ExtractBoardList(const char* file) {
 	  // NULLが返された場合その時点で終了する
 	  xmlCleanupParser();
 	  xmlCleanupCharEncodingHandlers();
-	  delete accessor;
-	  delete boardInfoArray;
 	  return;
      }
 
@@ -56,25 +53,21 @@ ExtractBoardList::ExtractBoardList(const char* file) {
 	  // NULLが返された場合その時点で終了する
 	  xmlCleanupParser();
 	  xmlCleanupCharEncodingHandlers();
-	  delete accessor;
-	  delete boardInfoArray;
 	  return;
      } else {
 	  // 正常処理
-	  FindBoardInfo(root);
+	  FindBoardInfo(array, root);
 	  xmlCleanupParser();
 	  xmlCleanupCharEncodingHandlers();
      }
 
-     accessor->SetBoardInfoCommit(boardInfoArray);
-     delete accessor;
-     delete boardInfoArray;
+     SQLiteAccessor::SetBoardInfoCommit(array);
 }
 /**
  *  板一覧情報を収集しSQLiteに格納する
  */
-void ExtractBoardList::FindBoardInfo(xmlNode*& element) {
-
+void ExtractBoardList::FindBoardInfo(wxArrayString& array, xmlNode*& element) 
+{
      wxString lsCategory;
      wxString lsName;
      wxString lsUrl;
@@ -88,7 +81,7 @@ void ExtractBoardList::FindBoardInfo(xmlNode*& element) {
 		    if (sizeof(node->children->content) > 0) {
 			 // wx-2.8ではキャストの方法がこれしかない
 			 wxString category((const char*) node->children->content,wxConvUTF8);
-			 if (category == excludeCategory1 || category == excludeCategory2) continue;
+			 if (category == EXCLUDECATEGORY1 || category == EXCLUDECATEGORY2) continue;
 			 lsCategory = category;
 		    }
 	       }
@@ -105,15 +98,14 @@ void ExtractBoardList::FindBoardInfo(xmlNode*& element) {
 				   lsName = name;
 				   lsUrl = url;
 
-				   // 格納した情報をMetakitに配置する
-				   this->SetBoardInfo(lsCategory, lsName, lsUrl);
+				   ExtractBoardList::SetBoardInfo(array, lsCategory, lsName, lsUrl);
 			      }
 			 }
 		    }
 	       }
 	       // 再帰的に処理する
 	       if (node->children != NULL) {
-		    ExtractBoardList::FindBoardInfo(node->children);
+		    ExtractBoardList::FindBoardInfo(array, node->children);
 	       }
 	  }
      }
@@ -121,23 +113,25 @@ void ExtractBoardList::FindBoardInfo(xmlNode*& element) {
 /**
  * 板一覧情報をクラス変数の配列に追加する
  */
-void ExtractBoardList::SetBoardInfo(const wxString category, const wxString name, const wxString url) {
-
+void ExtractBoardList::SetBoardInfo(wxArrayString& array, const wxString category, const wxString name, const wxString url) 
+{
      // それぞれの中身が空でなければ配列に板一覧情報を設定する
      if (name.Length() > 0 && url.Length() > 0 && category.Length() > 0) {
-	  boardInfoArray->Add(name);
-	  boardInfoArray->Add(url);
-	  boardInfoArray->Add(category);
+	  array.Add(name);
+	  array.Add(url);
+	  array.Add(category);
      }
 }
 
-static int writeToWxString(void* context, const char* buffer, int len) {
+static int writeToWxString(void* context, const char* buffer, int len) 
+{
      wxString* t = static_cast<wxString*>(context);
      *t += wxString(buffer, wxConvUTF8, len);
      return len;
 }
 
-static int closeWxString(void* context) {
+static int closeWxString(void* context) 
+{
      wxString* t = static_cast<wxString*>(context);
      *t += wxT("\n");
      return 0;

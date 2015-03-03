@@ -71,7 +71,7 @@ public:
      /**
       * 板一覧情報のコミットを行う
       */
-     void SetBoardInfoCommit(wxArrayString* boardInfoArray);
+     static void SetBoardInfoCommit(wxArrayString& boardInfoArray);
      /**
       * 板一覧情報をSQLite内のテーブルから取得しArrayStringの形で返す
       */
