@@ -53,6 +53,32 @@
 <a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>概要</h3>
 
 <p>クロスプラットフォームで動作する汎用掲示板クライアント</p>
+    
+<h3>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>ダウンロード</h3>
+<b>Windows</b><br>
+以下のリンクから、win32/win64のzipファイルをダウンロードしてください
+<a href='https://bintray.com/hiroyuki-nagata/generic/XrossBoard/_latestVersion'><img src='https://api.bintray.com/packages/hiroyuki-nagata/generic/XrossBoard/images/download.svg'></a>
+<br>
+<b>Linux</b><br>
+<b>Debian/Ubuntu</b><br>
+コマンドラインから、以下を実行し /etc/apt/sources.list にレポジトリの場所を追加してください。<br>
+<pre><code># echo "deb http://dl.bintray.com/hiroyuki-nagata/deb /" | sudo tee -a /etc/apt/sources.list 
+# echo "deb-src http://dl.bintray.com/hiroyuki-nagata/deb /" | sudo tee -a /etc/apt/sources.list
+</code></pre>
+
+apt-get コマンドにてxrossboardがインストール可能であることを確認してインストールしてください。<br>
+<pre><code># apt-get update
+# apt-cache search xrossboard
+xrossboard - Cross Platform 2ch browser
+# apt-get install xrossboard
+</code></pre>
+
+<b>Mac OS X</b><br>
+以下のリンクから、dmgファイルをダウンロードしてください<br>
+<a href='https://bintray.com/hiroyuki-nagata/generic/XrossBoard/_latestVersion'><img src='https://api.bintray.com/packages/hiroyuki-nagata/generic/XrossBoard/images/download.svg'></a>
+<br>
+<b>※実行できない時は、「システム環境設定 -> セキュリティとプライバシー」からダウンロードしたアプリケーションの実行許可を与えてください</b>
       
 <h3>
 <a id="build" class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>ビルド</h3>
