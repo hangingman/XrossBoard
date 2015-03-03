@@ -22,9 +22,13 @@
 #ifndef EXTRACTBOARDLIST_HPP_
 #define EXTRACTBOARDLIST_HPP_
 
+#include <utility>
+#include <tuple>
+#include <vector>
 #include <libxml/HTMLparser.h>
 #include <libxml/HTMLtree.h>
 #include <wx/wx.h>
+#include "datatype.hpp"
 
 // 除外するカテゴリ
 #define EXCLUDECATEGORY1 wxT("特別企画")
@@ -40,11 +44,7 @@ public:
 
 private:
      // 内部の処理関数
-     static void FindBoardInfo(wxArrayString& array, xmlNode*& element);
-     static void SetBoardInfo(wxArrayString& array, const wxString category, const wxString name, const wxString url);
-     
-     // 構造体
-     htmlDocPtr m_doc;
+     static void FindBoardInfo(std::vector<BoardRowTuple>& array, xmlNode*& element);
 };
 
 #endif // EXTRACTBOARDLIST_HPP

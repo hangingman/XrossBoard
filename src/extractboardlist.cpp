@@ -23,15 +23,15 @@
 #include "sqliteaccessor.hpp"
 
 /**
- * ExtractBoardList
- * コンストラクタ
+ * 板一覧情報をHTMLからパースしてSQLiteに格納する
+ * @param const char* 対象ファイル
  */
 void ExtractBoardList::ExtractBoardInfo(const char* file) {
 
      // HTML読み込み用構造体
      htmlDocPtr m_doc;
-     // 板情報を含む可変長配列
-     wxArrayString array;
+     // 板情報
+     std::vector<BoardRowTuple> array;
 
      // ファイル名とエンコードの設定
      const char* enc = "utf-8";
@@ -66,19 +66,23 @@ void ExtractBoardList::ExtractBoardInfo(const char* file) {
 /**
  *  板一覧情報を収集しSQLiteに格納する
  */
-void ExtractBoardList::FindBoardInfo(wxArrayString& array, xmlNode*& element) 
+void ExtractBoardList::FindBoardInfo(std::vector<BoardRowTuple>& array, xmlNode*& element) 
 {
      wxString lsCategory;
      wxString lsName;
      wxString lsUrl;
 
      // 板一覧の配列
-     for (htmlNodePtr node = element; node != NULL; node = node->next) {
-	  if (node->type == XML_ELEMENT_NODE) {
+     for (htmlNodePtr node = element; node != NULL; node = node->next) 
+     {
+	  if (node->type == XML_ELEMENT_NODE) 
+	  {
 	       /** もしノードの中身が「B」タグだったら:カテゴリ名 */
-	       if (xmlStrcasecmp(node->name, (const xmlChar*) "B") == 0) {
+	       if (xmlStrcasecmp(node->name, (const xmlChar*) "B") == 0) 
+	       {
 		    // 配列に要素を詰め込む
-		    if (sizeof(node->children->content) > 0) {
+		    if (sizeof(node->children->content) > 0) 
+		    {
 			 // wx-2.8ではキャストの方法がこれしかない
 			 wxString category((const char*) node->children->content,wxConvUTF8);
 			 if (category == EXCLUDECATEGORY1 || category == EXCLUDECATEGORY2) continue;
@@ -86,40 +90,36 @@ void ExtractBoardList::FindBoardInfo(wxArrayString& array, xmlNode*& element)
 		    }
 	       }
 	       /** もしノードの中身が「A」タグだったら：板名 */
-	       if (xmlStrcasecmp(node->name, (const xmlChar*) "A") == 0) {
-		    for (xmlAttrPtr attr = node->properties; attr != NULL; attr = attr->next) {
-			 if (xmlStrcasecmp(attr->name, (const xmlChar*) "HREF") == 0) {
+	       if (xmlStrcasecmp(node->name, (const xmlChar*) "A") == 0) 
+	       {
+		    for (xmlAttrPtr attr = node->properties; attr != NULL; attr = attr->next) 
+		    {
+			 if (xmlStrcasecmp(attr->name, (const xmlChar*) "HREF") == 0) 
+			 {
 			      // 配列に要素を詰め込む
 			      if (sizeof(node->children->content) > 0 && 
-				  sizeof(node->properties[0].children->content) > 0) {
+				  sizeof(node->properties[0].children->content) > 0) 
+			      {
 				   // wx-2.8ではキャストの方法がこれしかない
 				   wxString name((const char*) node->children->content, wxConvUTF8);
 				   wxString url((const char*) node->properties[0].children->content, wxConvUTF8);
 				   lsName = name;
 				   lsUrl = url;
 
-				   ExtractBoardList::SetBoardInfo(array, lsCategory, lsName, lsUrl);
+				   if ( !lsName.IsEmpty() && !lsUrl.IsEmpty() && !lsCategory.IsEmpty() )
+				   {
+					array.push_back(std::make_tuple(lsName, lsUrl, lsCategory));
+				   }
 			      }
 			 }
 		    }
 	       }
 	       // 再帰的に処理する
-	       if (node->children != NULL) {
+	       if (node->children != NULL) 
+	       {
 		    ExtractBoardList::FindBoardInfo(array, node->children);
 	       }
 	  }
-     }
-}
-/**
- * 板一覧情報をクラス変数の配列に追加する
- */
-void ExtractBoardList::SetBoardInfo(wxArrayString& array, const wxString category, const wxString name, const wxString url) 
-{
-     // それぞれの中身が空でなければ配列に板一覧情報を設定する
-     if (name.Length() > 0 && url.Length() > 0 && category.Length() > 0) {
-	  array.Add(name);
-	  array.Add(url);
-	  array.Add(category);
      }
 }
 
@@ -138,7 +138,8 @@ static int closeWxString(void* context)
 }
 
 /**
- * HTML整形
+ * HTML整形を行う
+ * @param const wxString& 整形対象のHTMLのデータ
  */
 const wxString ExtractBoardList::HtmlFormat(const wxString& html)
 {
