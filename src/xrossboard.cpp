@@ -895,7 +895,7 @@ void XrossBoard::SetProperties()
 	       }
 	       // 板一覧情報を展開し、SQLiteに設定する
 	       wxString boardListPath = BOARD_LIST_PATH;
-	       new ExtractBoardList(boardListPath.mb_str());
+	       ExtractBoardList::ExtractBoardInfo(boardListPath.mb_str());
 
 	       *m_logCtrl << wxT("(ヽ´ん`) 板一覧更新完了\n");
 	  }
@@ -1629,7 +1629,7 @@ void XrossBoard::OnGetBoardList(wxCommandEvent&) {
 	  // 板一覧情報を展開し、SQLiteに設定する
 	  SQLiteAccessor::DeleteTableData(wxT("BOARD_INFO"));
 	  wxString boardListPath = BOARD_LIST_PATH;
-	  new ExtractBoardList(boardListPath.mb_str());
+	  ExtractBoardList::ExtractBoardInfo(boardListPath.mb_str());
 
 	  // 板一覧更新
 	  SetBoardList();

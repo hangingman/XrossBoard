@@ -26,26 +26,25 @@
 #include <libxml/HTMLtree.h>
 #include <wx/wx.h>
 
-class ExtractBoardList {
+// 除外するカテゴリ
+#define EXCLUDECATEGORY1 wxT("特別企画")
+#define EXCLUDECATEGORY2 wxT("他のサイト")
 
+class ExtractBoardList 
+{
 public:
-     // コンストラクタ
-     ExtractBoardList(const char* file);
+     // 板一覧抽出
+     static void ExtractBoardInfo(const char* file);
      // HTML整形
      static const wxString HtmlFormat(const wxString& html);
 
 private:
      // 内部の処理関数
-     void FindBoardInfo(xmlNode*& element);
-     void SetBoardInfo(const wxString category, const wxString name, const wxString url);
+     static void FindBoardInfo(wxArrayString& array, xmlNode*& element);
+     static void SetBoardInfo(wxArrayString& array, const wxString category, const wxString name, const wxString url);
      
      // 構造体
      htmlDocPtr m_doc;
-     // 板情報を含む配列
-     wxArrayString* boardInfoArray;
-     // 除外するカテゴリ
-     const wxString excludeCategory1 = wxT("特別企画");
-     const wxString excludeCategory2 = wxT("他のサイト");
 };
 
 #endif // EXTRACTBOARDLIST_HPP
