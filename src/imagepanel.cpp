@@ -114,7 +114,8 @@ void wxImagePanel::PaintNow()
 void wxImagePanel::Render(wxDC&  dc) 
 {
      dc.Clear();
-     const wxPoint p = this->GetViewStart();
+     wxPoint p;
+     this->GetViewStart(&p.x, &p.y);
      dc.DrawBitmap( image, -p.x, -p.y, false );
 }
 /**
