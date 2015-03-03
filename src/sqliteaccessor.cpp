@@ -76,7 +76,7 @@ SQLiteAccessor::SQLiteAccessor() {
 /**
  * 板一覧情報のコミットを行う
  */
-void SQLiteAccessor::SetBoardInfoCommit(wxArrayString& boardInfoArray) {
+void SQLiteAccessor::SetBoardInfoCommit(std::vector<BoardRowTuple>& tuples) {
 
      // dbファイルの初期化
      wxString dbFile = GetDBFilePath();
@@ -98,12 +98,12 @@ void SQLiteAccessor::SetBoardInfoCommit(wxArrayString& boardInfoArray) {
 	  const wxString sqlIn = wxT("INSERT INTO BOARD_INFO (BOARDNAME_KANJI, BOARD_URL, CATEGORY, IS_OUTSIDE) VALUES (?, ?, ?, '0')");
 	  wxSQLite3Statement stmt2 = db.PrepareStatement (sqlIn);
 
-	  for (unsigned int i = 0; i < boardInfoArray.GetCount(); i += 3) {
+	  for (unsigned int i = 0; i < tuples.size(); i += 3) {
 	       // レコードを追加する
 	       stmt2.ClearBindings();
-	       stmt2.Bind(1, boardInfoArray.Item(i));
-	       stmt2.Bind(2, boardInfoArray.Item(i+1));
-	       stmt2.Bind(3, boardInfoArray.Item(i+2));
+	       stmt2.Bind(1, std::get<0>(tuples.at(i)));
+	       stmt2.Bind(2, std::get<1>(tuples.at(i)));
+	       stmt2.Bind(3, std::get<2>(tuples.at(i)));
 	       stmt2.ExecuteUpdate();
 	  }
 	  // コミット実行
