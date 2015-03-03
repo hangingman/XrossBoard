@@ -452,61 +452,6 @@ protected:
 };
 
 /**
- * ユーザー設定設定用画面
- */
-class UserSettingPanel: public wxPanel {
-public:
-     // begin wxGlade: UserSettingPanel::ids
-     // end wxGlade
-     UserSettingPanel(wxWindow* parent, 
-		      const wxPoint& pos=wxDefaultPosition, 
-		      const wxSize& size=wxDefaultSize, 
-		      long style=0);
-
-     void save_properties();
-
-private:
-     // begin wxGlade: UserSettingPanel::methods
-     void set_properties();
-     void do_layout();
-     // end wxGlade
-
-     // ユーザーがリンクをクリックした場合ブラウザでジャンプ
-     void OnLinkClocked(wxHtmlLinkEvent& event)
-	  {
-	       const wxHtmlLinkInfo linkInfo = event.GetLinkInfo();
-	       const wxString href = linkInfo.GetHref();
-	       wxLaunchDefaultBrowser(href);
-	  };
-
-protected:
-     // begin wxGlade: UserSettingPanel::attributes
-     wxStaticBox* sizer_3_staticbox;
-     wxStaticBox* sizer_2_staticbox;
-     wxHtmlWindow* window_1;
-     wxStaticText* label_1;
-     wxTextCtrl* maruUserID;
-     wxPanel* panel_8;
-     wxStaticText* label_2;
-     wxTextCtrl* maruUserPassword;
-     wxPanel* panel_9;
-     wxCheckBox* maruAutoLoginCheck;
-     wxButton* maruLogoutButton;
-     wxPanel* panel_5;
-     wxPanel* panel_2;
-     wxHtmlWindow* window_2;
-     wxStaticText* label_3;
-     wxTextCtrl* beMailAddress;
-     wxPanel* panel_6;
-     wxStaticText* label_4;
-     wxTextCtrl* bePassword;
-     wxPanel* panel_7;
-     wxPanel* panel_3;
-     // end wxGlade
-     DECLARE_EVENT_TABLE()
-}; // wxGlade: end class
-
-/**
  * 色・フォント設定用画面
  */
 class ColorFontSettingPanel: public wxPanel {

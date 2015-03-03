@@ -78,7 +78,6 @@ void SettingDialog::SetProperties() {
      settingTreeCtrl->AppendItem(item, wxT("書き込み"));
      settingTreeCtrl->AppendItem(item, wxT("Doe"));
      settingTreeCtrl->AppendItem(item, wxT("その他１"));
-     settingTreeCtrl->AppendItem(item, wxT("User"));
      item = settingTreeCtrl->AppendItem(settingTreeCtrl->GetRootItem(), wxT("機能"));
      settingTreeCtrl->AppendItem(item, wxT("ヒント"));
      settingTreeCtrl->AppendItem(item, wxT("あぼーん"));
@@ -120,17 +119,7 @@ void SettingDialog::DoLayout() {
  */
 void SettingDialog::SaveConfig(const wxString& title)
 {
-     if ( title.Contains(wxT("User"))) 
-     {
-	  if ( UserSettingPanel* user = 
-	       dynamic_cast<UserSettingPanel*>
-	       (wxWindow::FindWindowById(ID_UserSettingPanel, settingPanel))) 
-	  {
-	       // ユーザー設定パネル
-	       user->save_properties();
-	  }
-     }
-     else if (title.Contains(wxT("通信")))	  
+     if (title.Contains(wxT("通信")))	  
      {
 	  if ( NetworkSettingPanel* network = 
 	       dynamic_cast<NetworkSettingPanel*>
@@ -211,10 +200,6 @@ void SettingDialog::OnChangeSettingPanel(wxTreeEvent& event) {
      } else if (itemStr == wxT("その他１")) {
 	  wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
 	  vbox->Add(new OtherSettingPanelOne(settingPanel));
-	  settingPanel->SetSizer(vbox);
-     } else if (itemStr == wxT("User")) {
-	  wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
-	  vbox->Add(new UserSettingPanel(settingPanel));
 	  settingPanel->SetSizer(vbox);
      } else if (itemStr == wxT("色・フォント")) {
 	  wxBoxSizer* vbox = new wxBoxSizer(wxVERTICAL);
