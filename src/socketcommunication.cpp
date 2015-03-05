@@ -72,6 +72,12 @@ SocketCommunication::SocketCommunication()
 	  {
 	       propMap[key] = val;
 	  }
+
+	  if ( key == wxT("ID_NetworkPanelBoardListURL") && val.IsEmpty() )
+	  {
+	       // ボード一覧取得URLが空であればデフォルトのURLを設定する
+	       propMap[key] = DEFAULT_BOARDLIST_URL;
+	  }
      }
 }
 /**
@@ -86,14 +92,15 @@ int SocketCommunication::DownloadBoardList(const wxString& outputPath,
      // 拡張子をgzipに変える
      wxString gzipPath = outputPath;
      gzipPath.Replace(wxT(".html"), wxT(".gzip"));
-     // 一時保存用ファイルのパスを設定する
+
+     // 一時保存用ファイルのパスを設定する (~/.xb/dat/tmp.html)
      wxString tmpPath = ::wxGetHomeDir() 
-	  + wxFILE_SEP_PATH 
-	  + XROSSBOARD_DIR
-	  + wxFILE_SEP_PATH
-	  + wxT("dat")
-	  + wxFILE_SEP_PATH
-	  + wxT("tmp.html");
+	  << wxFILE_SEP_PATH 
+	  << XROSSBOARD_DIR
+	  << wxFILE_SEP_PATH
+	  << wxT("dat")
+	  << wxFILE_SEP_PATH
+	  << wxT("tmp.html");
 
      if ((!wxFileExists(outputPath)) || (!wxFileExists(headerPath))) 
      {
@@ -110,7 +117,7 @@ int SocketCommunication::DownloadBoardList(const wxString& outputPath,
      {
 	  // gzip拡張子のファイルがあれば、ファイルの解凍・UTF化を行う
 	  XrossBoardUtil::DecommpressFile(gzipPath, tmpPath);
-	  XrossBoardUtil::ConvertSJISToUTF8(tmpPath, (wxString&) outputPath);
+	  XrossBoardUtil::ConvertSJISToUTF8(tmpPath, outputPath);
 	  // 更新が終わったらgzipファイルを消しておく
 	  RemoveTmpFile(gzipPath);
 	  RemoveTmpFile(tmpPath);
@@ -126,17 +133,18 @@ int SocketCommunication::DownloadBoardListNew(const wxString& outputPath,
 					      const wxString& headerPath) 
 {
 
+     PartOfURI partOfUri;
+     XrossBoardUtil::SubstringURI(propMap[wxT("ID_NetworkPanelBoardListURL")], &partOfUri);
+     const wxString server = partOfUri.hostname;
+     const wxString path   = partOfUri.path;
+
      // ヘッダの作成
      std::list<std::string> headers;
      headers.push_back("Accept-Encoding: gzip");
-     headers.push_back("Host: menu.2ch.net");
+     headers.push_back("Host: " + std::string(server.mb_str()));
      headers.push_back("Accept: ");
-     headers.push_back("Referer: http://menu.2ch.net/");
      headers.push_back("Accept-Language: ja");
      headers.push_back("User-Agent: " + userAgent);
-
-     wxString server = wxT("menu.2ch.net");
-     wxString path = wxT("/bbsmenu.html");
 
      const std::string url = std::string(server.mb_str()) + std::string(path.mb_str());
 
@@ -159,9 +167,9 @@ int SocketCommunication::DownloadBoardListNew(const wxString& outputPath,
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("2chの板一覧情報を取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
@@ -195,22 +203,23 @@ int SocketCommunication::DownloadBoardListMod(const wxString& outputPath,
      wxString lastModifiedTime = GetHTTPResponseCode(headerPath,wxT("Last-Modified:"));
      // バイナリとヘッダは前回取得した名前と同じでは困るのでtmpファイルとして作成しておく
      wxString tmpOutputPath = outputPath;
-     tmpOutputPath += wxT(".sjis");
+     tmpOutputPath << wxT(".sjis");
      wxString tmpHeaderPath = headerPath;
-     tmpHeaderPath += wxT(".tmp");
+     tmpHeaderPath << wxT(".tmp");
+
+     PartOfURI partOfUri;
+     XrossBoardUtil::SubstringURI(propMap[wxT("ID_NetworkPanelBoardListURL")], &partOfUri);
+     const wxString server = partOfUri.hostname;
+     const wxString path   = partOfUri.path;
 
      // ヘッダの作成
      std::list<std::string> headers;
      headers.push_back("Accept-Encoding: gzip");
-     headers.push_back("Host: menu.2ch.net");
+     headers.push_back("Host: " + std::string(server.mb_str()));
      headers.push_back("If-Modified-Since:" + std::string(lastModifiedTime.mb_str()));
      headers.push_back("Accept: ");
-     headers.push_back("Referer: http://menu.2ch.net/");
      headers.push_back("Accept-Language: ja");
      headers.push_back("User-Agent: " + userAgent);
-
-     wxString server = wxT("menu.2ch.net");
-     wxString path = wxT("/bbsmenu.html");
 
      const std::string url = std::string(server.mb_str()) + std::string(path.mb_str());
 
@@ -232,9 +241,9 @@ int SocketCommunication::DownloadBoardListMod(const wxString& outputPath,
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("2chの板一覧情報を取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 	  
 	  myRequest.perform();
@@ -332,8 +341,8 @@ wxString SocketCommunication::DownloadThreadList(wxString& boardName, wxString& 
      const wxString outputFileName = GetOutputFileName(isShitaraba, boardNameAscii);
      // 出力先のファイルパスを設定する
      wxString outputFilePath = GetOutputFilePath(isShitaraba, boardNameAscii);
-     outputFilePath += wxFILE_SEP_PATH;
-     outputFilePath += outputFileName;
+     outputFilePath << wxFILE_SEP_PATH;
+     outputFilePath << outputFileName;
 
      // gzip用のパスを設定する
      wxString gzipPath = outputFilePath;
@@ -420,8 +429,8 @@ int SocketCommunication::DownloadThreadListNew(const wxString& gzipPath,
 
      // 取得先のパスを引数から作成する
      wxString getPath = wxT("GET /");
-     getPath += boardNameAscii;
-     getPath += wxT("/subject.txt");
+     getPath << boardNameAscii;
+     getPath << wxT("/subject.txt");
 
      // ヘッダの作成
      std::list<std::string> headers;
@@ -436,8 +445,8 @@ int SocketCommunication::DownloadThreadListNew(const wxString& gzipPath,
 
      wxString server = hostName;
      wxString path = wxT("/");
-     path += boardNameAscii;
-     path += wxT("/subject.txt");
+     path << boardNameAscii;
+     path << wxT("/subject.txt");
 
      const std::string url = std::string(server.mb_str()) + std::string(path.mb_str());
 
@@ -459,9 +468,9 @@ int SocketCommunication::DownloadThreadListNew(const wxString& gzipPath,
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("スレッド一覧を取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
@@ -517,8 +526,8 @@ int SocketCommunication::DownloadThreadListMod(const wxString& gzipPath,
 
      // 取得先のパスを引数から作成する
      wxString getPath = wxT("GET /");
-     getPath += boardNameAscii;
-     getPath += wxT("/subject.txt");
+     getPath << boardNameAscii;
+     getPath << wxT("/subject.txt");
 
      // ヘッダの作成
      std::list<std::string> headers;
@@ -534,8 +543,8 @@ int SocketCommunication::DownloadThreadListMod(const wxString& gzipPath,
 
      wxString server = hostName;
      wxString path = wxT("/");
-     path += boardNameAscii;
-     path += wxT("/subject.txt");
+     path << boardNameAscii;
+     path << wxT("/subject.txt");
 
      const std::string url = std::string(server.mb_str()) + std::string(path.mb_str());
 
@@ -557,9 +566,9 @@ int SocketCommunication::DownloadThreadListMod(const wxString& gzipPath,
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("スレッド一覧を取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
@@ -601,12 +610,12 @@ wxString SocketCommunication::DownloadThread(const wxString& boardName,
      // 出力先のファイルパスを設定する
      wxString outputFilePath = 
 	  ::wxGetHomeDir()
-	  + wxFILE_SEP_PATH 
-	  + XROSSBOARD_DIR
-	  + wxFILE_SEP_PATH
-	  + wxT("dat")
-	  + wxFILE_SEP_PATH
-	  + boardNameAscii;
+	  << wxFILE_SEP_PATH 
+	  << XROSSBOARD_DIR
+	  << wxFILE_SEP_PATH
+	  << wxT("dat")
+	  << wxFILE_SEP_PATH
+	  << boardNameAscii;
 
      // 保存用フォルダ存在するか確認。無ければフォルダを作成
      if (!wxDir::Exists(outputFilePath)) 
@@ -614,8 +623,8 @@ wxString SocketCommunication::DownloadThread(const wxString& boardName,
 	  ::wxMkdir(outputFilePath);
      }
 
-     outputFilePath += wxFILE_SEP_PATH;
-     outputFilePath += outputFileName;
+     outputFilePath << wxFILE_SEP_PATH;
+     outputFilePath << outputFileName;
 
      // gzip用のパスを設定する
      wxString gzipPath = outputFilePath;
@@ -735,9 +744,9 @@ void SocketCommunication::DownloadThreadNew(const wxString& gzipPath,
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("2chのスレッドを取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
@@ -873,9 +882,9 @@ int SocketCommunication::DownloadThreadMod(const wxString& gzipPath,
 				curlpp::types::WriteFunctionFunctor(this, &SocketCommunication::WriteDataInternal)));	  
 
 	  wxString message = wxT("2chのスレッドを取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  myRequest.perform();
@@ -987,25 +996,25 @@ int SocketCommunication::DownloadThreadPast(const wxString& gzipPath, const wxSt
      
      if (origNumber.Len() == 10) 
      {
-	  path += wxT("/");
-	  path += boardNameAscii; 
-	  path += wxT("/kako/");
-	  path += origNumber.Mid(0, 4);
-	  path += wxT("/");
-	  path += origNumber.Mid(0, 5);
-	  path += wxT("/");
-	  path += origNumber;
-	  path += ext;
+	  path << wxT("/");
+	  path << boardNameAscii; 
+	  path << wxT("/kako/");
+	  path << origNumber.Mid(0, 4);
+	  path << wxT("/");
+	  path << origNumber.Mid(0, 5);
+	  path << wxT("/");
+	  path << origNumber;
+	  path << ext;
      } 
      else if (origNumber.Len() == 9) 
      {
-	  path += wxT("/");
-	  path += boardNameAscii; 
-	  path += wxT("/kako/");
-	  path += origNumber.Mid(0, 3);
-	  path += wxT("/");
-	  path += origNumber;
-	  path += ext;
+	  path << wxT("/");
+	  path << boardNameAscii; 
+	  path << wxT("/kako/");
+	  path << origNumber.Mid(0, 3);
+	  path << wxT("/");
+	  path << origNumber;
+	  path << ext;
      } 
      else 
      {
@@ -1051,9 +1060,9 @@ int SocketCommunication::DownloadThreadPast(const wxString& gzipPath, const wxSt
 	  myRequest.setOpt(ws);
 
 	  wxString message = wxT("2chのスレッド(過去スレ)を取得 (ん`　 )\n");
-	  message += server;
-	  message += path;
-	  message += wxT("\n");
+	  message << server;
+	  message << path;
+	  message << wxT("\n");
 	  XrossBoardUiUtil::SendLoggingHelper(message);
 
 	  // 過去スレ取得は２回目のクラスメソッド起動になるはずなので

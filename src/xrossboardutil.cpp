@@ -60,7 +60,7 @@ void XrossBoardUtil::DecommpressFile(const wxString& inputPath, const wxString& 
  * @param wxString& inputPath  読み込み元のパス
  * @param wxString& outputPath 出力先ファイルのパス
  */
-void XrossBoardUtil::ConvertSJISToUTF8(wxString & inputPath, wxString & outputPath) 
+void XrossBoardUtil::ConvertSJISToUTF8(const wxString& inputPath, const wxString& outputPath) 
 {
      std::ifstream ifs(inputPath.mb_str());
      std::ofstream ofs(outputPath.mb_str());
@@ -76,7 +76,7 @@ void XrossBoardUtil::ConvertSJISToUTF8(wxString & inputPath, wxString & outputPa
  * @param wxString& inputPath  読み込み元のパス
  * @param wxString& outputPath 出力先ファイルのパス
  */
-void XrossBoardUtil::ConvertEUCJPToUTF8(wxString& inputPath, wxString& outputPath)
+void XrossBoardUtil::ConvertEUCJPToUTF8(const wxString& inputPath, const wxString& outputPath)
 {
      std::ifstream ifs(inputPath.mb_str());
      std::ofstream ofs(outputPath.mb_str());
