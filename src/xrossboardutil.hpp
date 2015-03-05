@@ -60,16 +60,16 @@ public:
      static void DecommpressFile(const wxString& inputPath, const wxString& outputPath);
      /**
       * ダウンロードしたファイルの文字コードをShift-JISからUTF-8に変換する処理
-      * @param wxString& inputPath  読み込み元のパス
-      * @param wxString& outputPath 出力先ファイルのパス
+      * @param const wxString& inputPath  読み込み元のパス
+      * @param const wxString& outputPath 出力先ファイルのパス
       */
-     static void ConvertSJISToUTF8(wxString& inputPath, wxString& outputPath);
+     static void ConvertSJISToUTF8(const wxString& inputPath, const wxString& outputPath);
      /**
       * ダウンロードしたファイルの文字コードをEUC-JPからUTF-8に変換する処理
       * @param wxString& inputPath  読み込み元のパス
       * @param wxString& outputPath 出力先ファイルのパス
       */
-     static void ConvertEUCJPToUTF8(wxString& inputPath, wxString& outputPath);
+     static void ConvertEUCJPToUTF8(const wxString& inputPath, const wxString& outputPath);
 	
      /**
       * 指定されたパスにあるHTTPヘッダファイルから取得日時を取得する処理
