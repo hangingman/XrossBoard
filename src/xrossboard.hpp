@@ -92,6 +92,7 @@ public:
      void OnRestart(wxCommandEvent& event);
      void WindowMinimize(wxCommandEvent& event);
      void OnGetBoardList(wxCommandEvent& event);
+     static void GetBoardListImpl();
      void CheckLogDirectory(wxCommandEvent& event);
      void OnVersionInfo(wxCommandEvent& event);
      void AddThreadFavorite(wxCommandEvent& event);

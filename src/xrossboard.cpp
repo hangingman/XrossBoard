@@ -878,28 +878,17 @@ void XrossBoard::SetProperties()
 	  InitializeXrossBoard(xb);
 	  // ソケット通信を行う
 	  std::unique_ptr<SocketCommunication> sock(new SocketCommunication());
-	  int rc = sock->DownloadBoardList(BOARD_LIST_PATH, BOARD_LIST_HEADER_PATH);
-	  
 
 	  // 実行コード別のダイアログを出す
-	  if (rc != 0) 
+	  if (0 != sock->DownloadBoardList(BOARD_LIST_PATH, BOARD_LIST_HEADER_PATH)) 
 	  {
 	       wxMessageBox(wxT("板一覧情報取得に失敗しました。ネットワークの接続状況を確認してください。"));
 	  } 
 	  else 
 	  {
-	       // もし板一覧情報テーブルが空でなければテーブルを削除しておく
-	       if (SQLiteAccessor::TableHasData(wxT("BOARD_INFO"))) 
-	       {
-		    SQLiteAccessor::DropTable(wxT("BOARD_INFO"));
-	       }
-	       // 板一覧情報を展開し、SQLiteに設定する
-	       wxString boardListPath = BOARD_LIST_PATH;
-	       ExtractBoardList::ExtractBoardInfo(boardListPath.mb_str());
-
-	       *m_logCtrl << wxT("(ヽ´ん`) 板一覧更新完了\n");
+	       // 板一覧情報取得
+	       GetBoardListImpl();
 	  }
-	  
      } 
 
      // 初回起動以外の際、確認のためディレクトリをチェックする
@@ -1611,33 +1600,40 @@ void XrossBoard::UpdateThreadTabIcons()
  */
 void XrossBoard::OnGetBoardList(wxCommandEvent&) {
 
-     wxString message1 = wxT("三┏（ ；´ん｀）┛…板一覧更新\n");
-     SendLogging(message1);
+     XrossBoardUiUtil::SendLoggingHelper(wxT("三┏（ ；´ん｀）┛…板一覧更新\n"));
 
      // ソケット通信を行う
      std::unique_ptr<SocketCommunication> sock(new SocketCommunication());
-     int rc = sock->DownloadBoardList(BOARD_LIST_PATH, BOARD_LIST_HEADER_PATH);
-     
 
      // 実行コード別のダイアログを出す
-     if (rc != 0) 
+     if (0 != sock->DownloadBoardList(BOARD_LIST_PATH, BOARD_LIST_HEADER_PATH)) 
      {
 	  wxMessageBox(wxT("板一覧情報取得に失敗しました。ネットワークの接続状況を確認してください。"));
      } 
      else 
      {
-	  // 板一覧情報を展開し、SQLiteに設定する
-	  SQLiteAccessor::DeleteTableData(wxT("BOARD_INFO"));
-	  wxString boardListPath = BOARD_LIST_PATH;
-	  ExtractBoardList::ExtractBoardInfo(boardListPath.mb_str());
-
+	  // 板一覧情報取得
+	  GetBoardListImpl();
 	  // 板一覧更新
 	  SetBoardList();
 	  
-	  wxString message2 = wxT("　　　(ヽ´ん`) 完了\n");
-	  SendLogging(message2);
+	  XrossBoardUiUtil::SendLoggingHelper(wxT("　　　(ヽ´ん`) 完了\n"));
      }
 }
+
+/**
+ * 板一覧情報取得処理の実体
+ * 板一覧情報を展開しSQLiteに設定する
+ */
+void XrossBoard::GetBoardListImpl()
+{
+     // 板一覧情報を展開し、SQLiteに設定する
+     SQLiteAccessor::DeleteTableData(wxT("BOARD_INFO"));
+     wxString boardListPath = BOARD_LIST_PATH;
+     ExtractBoardList::ExtractBoardInfo(boardListPath.mb_str());
+     XrossBoardUiUtil::SendLoggingHelper(wxT("(ヽ´ん`) 板一覧更新完了\n"));
+}
+
 /**
  * HtmlWindow上でマウスホバーが起きた場合の処理
  */
