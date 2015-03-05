@@ -98,7 +98,7 @@ void SQLiteAccessor::SetBoardInfoCommit(std::vector<BoardRowTuple>& tuples) {
 	  const wxString sqlIn = wxT("INSERT INTO BOARD_INFO (BOARDNAME_KANJI, BOARD_URL, CATEGORY, IS_OUTSIDE) VALUES (?, ?, ?, '0')");
 	  wxSQLite3Statement stmt2 = db.PrepareStatement (sqlIn);
 
-	  for (unsigned int i = 0; i < tuples.size(); i += 3) {
+	  for (unsigned int i = 0; i < tuples.size(); i++) {
 	       // レコードを追加する
 	       stmt2.ClearBindings();
 	       stmt2.Bind(1, std::get<0>(tuples.at(i)));
