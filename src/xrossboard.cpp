@@ -253,8 +253,31 @@ void XrossBoard::SetThreadInfoHash(ThreadInfoHash& threadInfoHash)
 {
      if (!threadInfoHash.empty()) 
      {
-	  this->tiHash.clear();          // delete
+	  this->tiHash.clear();		 // delete
 	  this->tiHash = threadInfoHash; // copy
+     }
+}
+
+/**
+ * 現在XrossBoardが保持している画像情報を取得する
+ */
+void XrossBoard::GetHashedImageFileSet(std::set<wxString>& hashedImageFileSet)
+{
+     if (!this->hashedImageFileSet.empty()) 
+     {
+	  hashedImageFileSet = std::set<wxString>(this->hashedImageFileSet); // copy
+     }
+}
+
+/**
+ * 現在XrossBoardが保持している画像情報を設定する
+ */
+void XrossBoard::SetHashedImageFileSet(std::set<wxString>& hashedImageFileSet)
+{
+     if (!hashedImageFileSet.empty()) 
+     {
+	  this->hashedImageFileSet.clear();              // delete
+	  this->hashedImageFileSet = hashedImageFileSet; // copy
      }
 }
 
