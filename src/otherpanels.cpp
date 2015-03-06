@@ -90,6 +90,8 @@ NetworkSettingPanel::NetworkSettingPanel(wxWindow* parent)
      {
 	  boardListURLTC->SetValue(DEFAULT_BOARDLIST_URL);
      }
+
+     Layout();
 }
 
 void NetworkSettingPanel::InitWidgetsFromXRC(wxWindow* parent)
@@ -107,7 +109,7 @@ void NetworkSettingPanel::InitWidgetsFromXRC(wxWindow* parent)
      authSSLPortTC	     = XRCCTRL(*this, "authSSLPortTC"		, wxTextCtrl);
      basicAuthUserNameTC     = XRCCTRL(*this, "basicAuthUserNameTC"	, wxTextCtrl);
      basicAuthPasswordTC     = XRCCTRL(*this, "basicAuthPasswordTC"	, wxTextCtrl);
-     basicAuthPasswordTC->SetWindowStyle(wxTE_PASSWORD); // windows,osxで動くかな？
+     basicAuthPasswordTC->SetWindowStyle(wxTE_PASSWORD); // windows,osxで動くかな -> やっぱ動いてない…
      receiveTimeoutTC	     = XRCCTRL(*this, "receiveTimeoutTC"	, wxTextCtrl);
      connectTimeoutTC	     = XRCCTRL(*this, "connectTimeoutTC"	, wxTextCtrl);
      boardListURLTC	     = XRCCTRL(*this, "boardListURLTC"		, wxTextCtrl);

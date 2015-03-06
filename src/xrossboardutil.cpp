@@ -831,7 +831,7 @@ void XrossBoardUtil::AddImgTag(wxString& responseText) {
 
 		    wxImage thumbnail;
 
-		    if ( ::wxFileName(imageFilePath).Exists() && thumbnail.LoadFile(imageFilePath))
+		    if ( ::wxFileName(imageFilePath).FileExists() && thumbnail.LoadFile(imageFilePath))
 		    {
 			 const wxBitmap thumbnailBitmap = wxBitmap(thumbnail);
 
