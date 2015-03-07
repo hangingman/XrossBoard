@@ -179,6 +179,10 @@ public:
       */
      static wxString DetermineContentType(const wxString& href);
      /**
+      * URLの末尾にある拡張子が何か判別し、wxBitmapTypeを返す
+      */
+     static wxBitmapType DetermineBitmapType(const wxString& ext);
+     /**
       * URIから各パラメーターを抜き取る
       */
      static bool SubstringURI(const wxString& uri, PartOfURI* partOfUri);

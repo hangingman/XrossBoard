@@ -30,6 +30,7 @@
 #include <babel.h>
 
 #include "xrossboardutil.hpp"
+#include "xrossboard.hpp"
 #include "enums.hpp"
 #include "xrossboarduiutil.hpp"
 
@@ -751,7 +752,8 @@ void XrossBoardUtil::AddImgTag(wxString& responseText) {
 	  wxBitmap bitmap;
 
           // load wxImage
-	  if (!image.LoadFile(defaultIconImg)) {
+	  if (!image.LoadFile(defaultIconImg)) 
+	  {
 	       wxMessageBox(wxT("画像ファイルの読み出しに失敗しました"),
 			    wxT("wxMemoryFSHandler"),
 			    wxICON_ERROR);
@@ -760,7 +762,8 @@ void XrossBoardUtil::AddImgTag(wxString& responseText) {
 	  // wxImage to wxBitmap
 	  bitmap = wxBitmap(image);
 
-	  if (!bitmap.Ok()) {
+	  if (!bitmap.Ok()) 
+	  {
 	       wxMessageBox(wxT("画像ファイルの読み出しに失敗しました"),
 			    wxT("wxMemoryFSHandler"),
 			    wxICON_ERROR);
@@ -771,21 +774,92 @@ void XrossBoardUtil::AddImgTag(wxString& responseText) {
 	  responseText.Append(wxT(BR));
 
 	  for (tmp = text; regexImage.Matches(tmp);
-	       tmp = tmp.SubString(start + len, tmp.Len())) {
+	       tmp = tmp.SubString(start + len, tmp.Len())) 
+	  {
 	       // ex) tmp = http://hogehoge.jpg
 	       regexImage.GetMatch(&start, &len, 0);
 	       array.Add(tmp.SubString(start, start + len - 1));
 	  }
 
+	  if (array.GetCount() == 0)
+	  {
+	       // 画像ファイルがなければHTMLに改行を加えて終了
+	       responseText.Append(wxT(BR));
+	       return;
+	  }
+
+	  // XrossBoardのフレームを呼び出す
+	  XrossBoard* wxXrossBoard = dynamic_cast<XrossBoard*>(wxWindow::FindWindowById(ID_WxXrossBoard));
+	  std::set<wxString> hashedImageFileSet;
+	  wxXrossBoard->GetHashedImageFileSet(hashedImageFileSet);
+
 	  for (int i = 0; i < array.GetCount();i++) {
+
+
+	       //
+	       // array { 
+	       //   "http://hogehogeA.jpg",
+	       //   "http://hogehogeB.jpg",
+	       //   "http://hogehogeC.jpg"
+	       // };
+	       //
 	       // ex) <img src=\"memory:logo.pcx\">
-	       wxString filename = wxFileSystem::URLToFileName(array[i]).GetFullName();
-	       // FIXME: XrossBoard-1.1.3
-	       //wxMemoryFSHandler::AddFile(filename, bitmap, wxBITMAP_TYPE_PNG);
-	       responseText.Append(wxT("<p><img src=\"memory:") + filename + wxT("\" width=16 height=16 /></p>"));
+	       const wxString url = array[i];
+	       
+	       PartOfURI uri;
+	       if (XrossBoardUtil::SubstringURI(url, &uri))
+	       {
+		    const wxString ext = ::wxFileName(uri.path, wxPATH_UNIX).GetExt();
+		    const wxBitmapType type = DetermineBitmapType(ext);
+		    const wxString hashedName = GenerateMD5String(url) + wxT(".") + ext;
+
+		    if (hashedImageFileSet.find( hashedName ) != hashedImageFileSet.end())
+		    {
+			 // すでにwxMemoryFSHandlerに登録済みのファイルなのでスキップする
+			 continue;
+		    }
+
+		    wxString imageFilePath = ::wxGetHomeDir();
+		    imageFilePath << wxFILE_SEP_PATH;
+		    imageFilePath << XROSSBOARD_DIR;
+		    imageFilePath << wxFILE_SEP_PATH;
+		    imageFilePath << wxT("cache");
+		    imageFilePath << wxFILE_SEP_PATH;
+		    imageFilePath << GenerateMD5String(url);
+		    imageFilePath << wxT(".");
+		    imageFilePath << ext;
+
+		    wxImage thumbnail;
+
+		    if ( ::wxFileName(imageFilePath).FileExists() && thumbnail.LoadFile(imageFilePath))
+		    {
+			 const wxBitmap thumbnailBitmap = wxBitmap(thumbnail);
+
+			 if (thumbnailBitmap.Ok())
+			 {
+			      // 画像ファイルが存在するならば
+			      wxMemoryFSHandler::AddFile(hashedName, thumbnailBitmap, type);
+			      hashedImageFileSet.insert(hashedName);
+			      
+			      const int height = thumbnailBitmap.GetHeight();
+			      const int width  = thumbnailBitmap.GetWidth();
+
+			      // 高さは150pで合わせる
+			      const wxString thumbnailWidth = 
+				   wxString::Format(wxT("\" width=%d height=150 /></p>"), width * 150 / height);
+			      const wxString tag = wxT("<p><img src=\"memory:") + hashedName + thumbnailWidth;
+			      responseText.Append(tag);
+			 }
+		    }
+	       }
+	       else
+	       {
+		    responseText.Append(wxT("<p><img src=\"memory:") + defaultIconImg + wxT("\" width=16 height=16 /></p>"));
+	       }
 	  }
 	  // HTMLに改行を加える
 	  responseText.Append(wxT(BR));
+	  wxXrossBoard->SetHashedImageFileSet(hashedImageFileSet);
      }
 }
 /**
@@ -1155,6 +1229,54 @@ wxString XrossBoardUtil::DetermineContentType(const wxString& href) {
 
      return wxEmptyString;
 }
+
+/**
+ * 拡張子が何か判別し、wxBitmapTypeを返す
+ */
+wxBitmapType XrossBoardUtil::DetermineBitmapType(const wxString& ext) 
+{
+     wxBitmapType type = wxBITMAP_TYPE_ANY;
+
+     if (!ext.CmpNoCase(wxT("png"))) 
+     {
+	  type = wxBITMAP_TYPE_PNG;
+     } 
+     else if (!ext.CmpNoCase(wxT("jpg"))) 
+     {
+	  type = wxBITMAP_TYPE_JPEG;
+     } 
+     else if (!ext.CmpNoCase(wxT("jpeg"))) 
+     {
+	  type = wxBITMAP_TYPE_JPEG;
+     } 
+     else if (!ext.CmpNoCase(wxT("gif"))) 
+     {
+	  type = wxBITMAP_TYPE_GIF;
+     } 
+     else if (!ext.CmpNoCase(wxT("bmp"))) 
+     {
+	  type = wxBITMAP_TYPE_BMP;
+     } 
+     else if (!ext.CmpNoCase(wxT("ico"))) 
+     {
+	  type = wxBITMAP_TYPE_ICO;
+     } 
+     else if (!ext.CmpNoCase(wxT("xpm"))) 
+     {
+	  type = wxBITMAP_TYPE_XPM;
+     } 
+     else if (!ext.CmpNoCase(wxT("tiff"))) 
+     {
+	  type = wxBITMAP_TYPE_TIF;
+     } 
+     else 
+     {
+	  type = wxBITMAP_TYPE_ANY;
+     }
+
+     return type;
+}
+
 /**
  * URIから各パラメーターを抜き取る
  */
