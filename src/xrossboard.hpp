@@ -22,6 +22,7 @@
 #ifndef XROSSBOARD_HPP_
 #define XROSSBOARD_HPP_
 
+#include <set>
 #include <wx/wx.h>
 #include <wx/app.h>
 #include <wx/aui/aui.h>
@@ -396,8 +397,14 @@ public:
 
      // ユーザーがタブに保持しているスレッドの情報を保存するHashSet
      ThreadInfoHash tiHash;
+     // 現在XrossBoardが保持している画像情報を保持するSet
+     std::set<wxString> hashedImageFileSet;
 
 public:
+     //
+     // グローバルに参照したいデータ
+     //
+
      /**
       * 現在XrossBoardが保持しているスレッド情報を取得する
       */
@@ -406,6 +413,14 @@ public:
       * 現在XrossBoardが保持しているスレッド情報を設定する
       */
      void SetThreadInfoHash(ThreadInfoHash& threadInfoHash);
+     /**
+      * 現在XrossBoardが保持している画像情報を取得する
+      */
+     void GetHashedImageFileSet(std::set<wxString>& hashedImageFileSet);
+     /**
+      * 現在XrossBoardが保持している画像情報を設定する
+      */
+     void SetHashedImageFileSet(std::set<wxString>& hashedImageFileSet);
 
 private:
      /**

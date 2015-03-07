@@ -800,51 +800,13 @@ void ThreadContentWindow::SetXrossBoardImageViewer(const wxString& href, const w
      imageViewer->Raise();
 
      // wxMemoryFSHandlerに登録されているファイルを削除し、新しいファイルを登録する
-     wxString filename = wxFileSystem::URLToFileName(result->imageURL).GetFullName();
+     const wxString filename = wxFileSystem::URLToFileName(result->imageURL).GetFullName();
 
      // FIXME: XrossBoard-1.1.5
      //wxMemoryFSHandler::RemoveFile(filename);
 
      // wxBitmapTypeの判別
-     wxBitmapType type;
-
-     // FIXME: たぶん正規表現使った方がいい
-     if (!ext.CmpNoCase(wxT("png"))) 
-     {
-	  type = wxBITMAP_TYPE_PNG;
-     } 
-     else if (!ext.CmpNoCase(wxT("jpg"))) 
-     {
-	  type = wxBITMAP_TYPE_JPEG;
-     } 
-     else if (!ext.CmpNoCase(wxT("jpeg"))) 
-     {
-	  type = wxBITMAP_TYPE_JPEG;
-     } 
-     else if (!ext.CmpNoCase(wxT("gif"))) 
-     {
-	  type = wxBITMAP_TYPE_GIF;
-     } 
-     else if (!ext.CmpNoCase(wxT("bmp"))) 
-     {
-	  type = wxBITMAP_TYPE_BMP;
-     } 
-     else if (!ext.CmpNoCase(wxT("ico"))) 
-     {
-	  type = wxBITMAP_TYPE_ICO;
-     } 
-     else if (!ext.CmpNoCase(wxT("xpm"))) 
-     {
-	  type = wxBITMAP_TYPE_XPM;
-     } 
-     else if (!ext.CmpNoCase(wxT("tiff"))) 
-     {
-	  type = wxBITMAP_TYPE_TIF;
-     } 
-     else 
-     {
-	  type = wxBITMAP_TYPE_ANY;
-     }
+     wxBitmapType type = XrossBoardUtil::DetermineBitmapType(ext);
 
      // resultの結果を元に画像のサムネイルと画像を配置する
      wxImage image;
