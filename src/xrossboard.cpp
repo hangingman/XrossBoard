@@ -55,6 +55,8 @@
 #include "settingwindow.hpp"
 #include "otherpanels.hpp"
 
+#include "wx/wx_twitter_notebook.hpp"
+
 #ifndef __WXMSW__
    #include"../rc/xrossboard.xpm"
 #endif
@@ -876,7 +878,7 @@ void XrossBoard::SetProperties()
      /**
       * XrossBoardの各種初期化処理
       */
-
+     
      // sqliteの初期化を行う
      std::unique_ptr<SQLiteAccessor> sqliteAccessor(new SQLiteAccessor());
      // Curlの初期化を行う
@@ -1209,6 +1211,12 @@ void XrossBoard::SetAuiPaneInfo()
 	  threadNoteBook->SetFont(ReadFontInfo(THREAD_NOTEBOOK));
 	  *m_logCtrl << wxT("フォント情報の読み出し終了…\n");
      }
+
+     // FIXME: テスト用の実装
+     wxTwitterNotebook twitter;
+     twitter.SetLoggingTextCtrl(m_logCtrl);
+     twitter.Initialize();
+     // FIXME
 
      UpdatePanes(false);
 }
