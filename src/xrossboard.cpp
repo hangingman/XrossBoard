@@ -1213,8 +1213,14 @@ void XrossBoard::SetAuiPaneInfo()
      }
 
      // FIXME: テスト用の実装
+     const wxString ctwDir = \
+	  ::wxGetHomeDir()   \
+	  + wxFILE_SEP_PATH  \
+	  + XROSSBOARD_DIR;
+
      wxTwitterNotebook twitter;
      twitter.SetLoggingTextCtrl(m_logCtrl);
+     twitter.SetAppDir(ctwDir);
      twitter.Initialize();
      // FIXME
 

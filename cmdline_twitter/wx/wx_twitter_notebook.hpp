@@ -33,32 +33,29 @@
 
 class wxTwitterNotebook : public wxAuiNotebook
 {
-
+     
 public:
      void Initialize();
      void SetLoggingTextCtrl(wxTextCtrl* logging);
      void SetAppDir(const wxString& dir);
+     void SetComsumerPair(const wxString& key,const wxString& sec);
      const wxString GetAppDir();
 
 private:
 
      void DoAuthentication();
-
-     TwitterClient client;
-     wxTextCtrl* log;
-     wxString appDir;
-     
-/**
-     bool ReadAccesskey();
-     bool InitUserinfo();
-     void DoSimpleUImode();
-	
+     bool ReadAccessKey();
      void InitSetting();
      void ReadSetting();
      void WriteSetting();
-*/
-     //cmdlineOption        opt;
-     //minisetting::object  setting;
+     
+     minisetting::object setting;
+     TwitterClient       client;
+     wxTextCtrl*         log;
+     wxString            appDir;
+     static wxString	 AP_COMSUMER_KEY;
+     static wxString	 AP_COMSUMER_SECRET;
+     
 };
 
 #endif // WX_TWITTER_NOTEBOOK_HPP_
