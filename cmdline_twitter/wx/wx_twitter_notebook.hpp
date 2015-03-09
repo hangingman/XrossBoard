@@ -37,13 +37,18 @@ class wxTwitterNotebook : public wxAuiNotebook
 public:
      void Initialize();
      void SetLoggingTextCtrl(wxTextCtrl* logging);
+     void SetAppDir(const wxString& dir);
+     const wxString GetAppDir();
 
 private:
 
+     void DoAuthentication();
+
+     TwitterClient client;
      wxTextCtrl* log;
+     wxString appDir;
      
 /**
-     void DoAuthentication();
      bool ReadAccesskey();
      bool InitUserinfo();
      void DoSimpleUImode();
