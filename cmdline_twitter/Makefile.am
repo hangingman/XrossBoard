@@ -40,7 +40,7 @@ noinst_HEADERS =                      \
 	http/httpclient.hpp
 
 # wxWidgets related source ( if you would not to build it, comment out below )
-WX_UI_SRCS   		= wx/wx_twitter_notebook.cpp wx_twitter_notebook.hpp
+WX_UI_SRCS   		= wx/wx_twitter_notebook.cpp wx/wx_twitter_notebook.hpp
 libctw_a_SOURCES	+= $(WX_UI_SRCS)
 libctw_a_CXXFLAGS	+= -I$(top_builddir)/cmdline_twitter
 # Header file directory is wx/*.hpp according to wx tradition. It plays a role of namespace.
