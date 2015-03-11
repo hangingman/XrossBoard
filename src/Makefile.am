@@ -68,14 +68,29 @@ xrossboard_SOURCES += threadcontentwindow.cpp    \
 JC_FLAG_STRING	   = `@WX_CONFIG_PATH@ --version=@WX_VERSION_MAJOR@.@WX_VERSION_MINOR@ --libs aui,qa,adv,base,core,html,net,xrc`
 endif
 
+######################################################################################################
 # common build rule
-xrossboard_CXXFLAGS = @CXXFLAGS@ @XML2CFLAGS@ @CRYPTO_CFLAGS@ \
-		     -I$(top_builddir)/babel          \
-		     -I$(top_builddir)/src/rc
+xrossboard_CXXFLAGS = @CXXFLAGS@ @XML2CFLAGS@ @CRYPTO_CFLAGS@    \
+		     -I$(top_builddir)/babel                     \
+		     -I$(top_builddir)/src/rc                    \
+		     -I$(top_builddir)/cmdline_twitter/hashcodes \
+		     -I$(top_builddir)/cmdline_twitter/http	 \
+		     -I$(top_builddir)/cmdline_twitter/oauth	 \
+		     -I$(top_builddir)/cmdline_twitter/twitter	 \
+		     -I$(top_builddir)/cmdline_twitter/include   \
+		     -I$(top_builddir)/cmdline_twitter
+
 
 ACLOCAL_AMFLAGS    = -I m4
+#####################################################################################################
 
+
+
+
+
+###################################################################################################### 
 # For Icon build and library dependency
+#
 if USE_WINDRES
 # Platform is Windows
 xrossboard_LDFLAGS  = $(JC_FLAG_STRING) -s
@@ -90,8 +105,15 @@ xrossboard_LDFLAGS  = $(JC_FLAG_STRING)
 xrossboard_LDADD    = @XML2LIBS@ @CRYPTO_LIBS@ $(top_builddir)/cmdline_twitter/libctw.a
 
 endif
+#####################################################################################################
 
+
+
+
+
+#####################################################################################################
 # Build or not
+#
 if BUILDING_WXSQLITE3
   xrossboard_CXXFLAGS += -I$(top_builddir)/wxsqlite3
   xrossboard_LDADD    += $(top_builddir)/wxsqlite3/libwxsqlite3.a
@@ -110,3 +132,4 @@ if BUILDING_CURLPP
 		        $(top_builddir)/curlpp/src/utilspp/libutilspp.la 	  \
 		        $(top_builddir)/curlpp/src/curlpp/internal/libinternal.la
 endif
+####################################################################################################
