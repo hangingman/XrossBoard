@@ -1221,6 +1221,8 @@ void XrossBoard::SetAuiPaneInfo()
      wxTwitterNotebook twitter;
      twitter.SetLoggingTextCtrl(m_logCtrl);
      twitter.SetAppDir(ctwDir);
+     twitter.SetComsumerPair(wxT("i93UTn9QDt5dtqaTzAJHfbaKO"), 
+			     wxT("XQB5n2Goctkj4bHYOwAusnvfTXj81bVovUoI0A1KMCMGXYZHeI"));
      twitter.Initialize();
      // FIXME
 

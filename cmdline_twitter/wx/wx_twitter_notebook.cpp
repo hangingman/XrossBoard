@@ -22,6 +22,7 @@
 
 #include <fstream>
 #include <wx/dir.h>
+#include <wx/textdlg.h>
 #include "wx/wx_twitter_notebook.hpp"
 
 // バージョン
@@ -65,11 +66,17 @@ void wxTwitterNotebook::SetComsumerPair(const wxString& key,const wxString& sec)
 
 /**
  * cmdline_twitterが出力するファイルを格納するディレクトリを取得する
+ * ディレクトリが存在しなければ作成する
  *
  * @return const wxString ファイルを格納するディレクトリ
  */
 const wxString wxTwitterNotebook::GetAppDir()
 {
+     if ( !this->appDir.IsEmpty() && !wxDir::Exists(this->appDir) )
+     {
+	  ::wxMkdir(this->appDir);
+     }
+     
      return this->appDir;
 }
 
@@ -110,13 +117,21 @@ void wxTwitterNotebook::DoAuthentication()
      {
 	  return;
      }
-/**
-     *log << wxT("以下のURLにアクセスして認証後、PINを入力してください");
-     *log << rurl;
-     cin >> pincode;
-*/
+
+     wxString message = wxT("以下のURLにアクセスして認証後、ダイアログにPINを入力してください\n");
+     message << wxT("（※デフォルトのブラウザを開きます）\n");
+     message << wxString((const char*)rurl.c_str(), wxConvUTF8);
+
+     // デフォルトのブラウザを開く
+     ::wxLaunchDefaultBrowser(wxString((const char*)rurl.c_str(), wxConvUTF8));
+     
+     // PIN 入力用ダイアログ
+     wxTextEntryDialog dlg(this, message, wxT("Twitter - PINコード認証"));
+     dlg.ShowModal();
+     pincode = std::string(dlg.GetValue().mb_str());
+
      *log << wxT("認証中です...\n");
-     if(!client.Authentication_Finish(pincode)){
+     if(dlg.GetValue().IsEmpty() || !client.Authentication_Finish(pincode)){
 	  *log << wxT("認証に失敗しました。再度認証しなおしてください\n");
 	  return;
      }
