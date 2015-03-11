@@ -160,8 +160,8 @@ void wxTwitterNotebook::DoAuthentication()
 		
 	  return;
      }
-     fout << key;
-     fout << sec;
+     fout << key << std::endl;
+     fout << sec << std::endl;
      fout.close();
 
      return;
