@@ -79,8 +79,8 @@ const wxString wxTwitterNotebook::GetAppDir()
 void wxTwitterNotebook::Initialize()
 {
      // このアプリのコンシューマキーなどを設定
-     client.setComsumerPair(std::string(AP_COMSUMER_KEY.c_str()),
-			    std::string(AP_COMSUMER_SECRET.c_str()));
+     client.setComsumerPair(std::string(AP_COMSUMER_KEY.mb_str()),
+			    std::string(AP_COMSUMER_SECRET.mb_str()));
      // 認証
      DoAuthentication();
      // 設定読み込み
@@ -138,7 +138,7 @@ void wxTwitterNotebook::DoAuthentication()
      fname << DEFAULT_AUTH_FILE;
 	
      client.getUserAccessPair(key,sec);
-     fout.open(fname.c_str(), std::ios::out);
+     fout.open(fname.mb_str(), std::ios::out);
      if(! fout.is_open()){
 	  *log << wxT("設定ファイルを開けませんでした。\n");
 	  *log << wxT("再度認証しなおしてください\n");
@@ -172,7 +172,7 @@ bool wxTwitterNotebook::ReadAccessKey()
      fname << wxFILE_SEP_PATH;
      fname << DEFAULT_AUTH_FILE;
      
-     fin.open(fname.c_str());
+     fin.open(fname.mb_str());
      if(! fin.is_open())
      {
 	  *log << wxT("設定ファイルを開けませんでした。\n");
@@ -236,7 +236,7 @@ void wxTwitterNotebook::ReadSetting()
      fname << wxFILE_SEP_PATH;
      fname << DEFAULT_SETTING_FILE;
 
-     fin.open(fname.c_str());
+     fin.open(fname.mb_str());
      if(! fin.is_open())
      {
 	  *log << wxT("設定ファイルを開けませんでした。\n");
@@ -269,7 +269,7 @@ void wxTwitterNotebook::WriteSetting()
      fname << wxFILE_SEP_PATH;
      fname << DEFAULT_SETTING_FILE;
 
-     fout.open(fname.c_str(),ios::out);
+     fout.open(fname.mb_str(),ios::out);
      if(! fout.is_open())
      {
 	  return;
