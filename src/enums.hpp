@@ -38,9 +38,10 @@ X_TABLE_ITEM(ID_WindowMinimize)			/* ウィンドウを最小化する					*/ \
 X_TABLE_ITEM(ID_GetBoardList)			/* 板一覧情報取得						*/ \
 X_TABLE_ITEM(ID_CheckLogDirectory)		/* 保存されているログをスレッド一覧に表示する			*/ \
 X_TABLE_ITEM(ID_GetVersionInfo)			/* バージョン情報						*/ \
-X_TABLE_ITEM(ID_WxXrossBoard)                    /* メインのウィンドウID                                         */ \
+X_TABLE_ITEM(ID_WxXrossBoard)                   /* メインのウィンドウID                                         */ \
 X_TABLE_ITEM(ID_ThreadNoteBook)			/* スレッド一覧ノートブックに使うID				*/ \
 X_TABLE_ITEM(ID_BoardNoteBook)			/* 板一覧用ノートブックに使うID					*/ \
+X_TABLE_ITEM(ID_TwitterNoteBook)		/* Twitter用ノートブックに使うID				*/ \
 X_TABLE_ITEM(ID_ThumbnailNoteBook)		/* 画像ビューア用ID						*/ \
 X_TABLE_ITEM(ID_BoardTreectrl)			/* 板一覧ツリー用ID						*/ \
 X_TABLE_ITEM(ID_ShingetsuBoardTreectrl)		/* 新月公開ノード一覧ツリー用ID					*/ \
@@ -125,6 +126,7 @@ X_TABLE_ITEM(ID_FloatToolBar)			/* アイコン付きのツールバー自体の
 X_TABLE_ITEM(ID_SwitchSeparateXY)		/* 縦⇔横分割切り替え						*/ \
 X_TABLE_ITEM(ID_SwitchTwoThreePane)		/* ２⇔３ペイン切り替え						*/ \
 X_TABLE_ITEM(ID_ShowBoardListTree)		/* 板一覧ツリー表示切り替え					*/ \
+X_TABLE_ITEM(ID_ShowTwitterClient)		/* Twitterクライアントの表示					*/ \
 X_TABLE_ITEM(ID_SwitchRightPane)		/* 右側ペインの内容切り替え					*/ \
 X_TABLE_ITEM(ID_CallSettingWindow)		/* 設定画面を呼び出す					        */ \
 X_TABLE_ITEM(ID_CallViewerSettingWindow)        /* ビューア設定画面を呼び出す 					*/ \

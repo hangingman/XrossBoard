@@ -52,6 +52,8 @@
    #include "virtualboardlistctrl.hpp"
 #endif
 
+#include "wx/wx_twitter_notebook.hpp"
+
 /**
  * XrossBoardのGUI本体部分を構成するクラス
  */
@@ -74,10 +76,12 @@ public:
 
      // HashMapの本体
      NameURLHash retainHash;
-     // 板名のツリーコントロールをクリックした場合表示されるwxNoteBook
+     // 板一覧のためのノートブック
      wxAuiNotebook* boardNoteBook;
-     // 板名のツリーコントロールをクリックした場合表示されるwxNoteBook
+     // スレ一覧のためのノートブック
      wxAuiNotebook* threadNoteBook;
+     // Twitterのためのノートブック
+     wxTwitterNotebook* twitterNoteBook;
 
      // XrossBoard内部のイメージビューアのインスタンス
      static XrossBoardImageViewer* imageViewer;
@@ -365,6 +369,8 @@ public:
      bool paneIsThree;
      // GUI右側に表示するウィジェット(true:スレッド一覧, false:スレ欄)
      bool rightIsThreadList;
+     // Twitterクライアントを表示するか(true:表示する, false:表示しない)
+     bool showTwitterClient;
 
      // ツリーコントロールの表示・非表示切り替え
      void ShowBoardListTree(wxCommandEvent& event);

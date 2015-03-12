@@ -55,8 +55,6 @@
 #include "settingwindow.hpp"
 #include "otherpanels.hpp"
 
-#include "wx/wx_twitter_notebook.hpp"
-
 #ifndef __WXMSW__
    #include"../rc/xrossboard.xpm"
 #endif
@@ -937,12 +935,16 @@ void XrossBoard::SetProperties()
      // ノートブックのサイズ調整
      wxSize client_size = GetClientSize();
 
-     // 板名のツリーコントロールをクリックした場合表示されるwxAuiNoteBook
+     // 板一覧のためのノートブック
      boardNoteBook = new wxAuiNotebook(this, ID_BoardNoteBook, wxPoint(client_size.x, client_size.y), 
 				       wxDefaultSize, wxAUI_NB_DEFAULT_STYLE | wxAUI_NB_WINDOWLIST_BUTTON);
      
-     // 板名のツリーコントロールをクリックした場合表示されるwxAuiNoteBook
+     // スレ一覧のためのノートブック
      threadNoteBook = new wxAuiNotebook(this, ID_ThreadNoteBook, wxPoint(client_size.x, client_size.y), 
+					wxDefaultSize, wxAUI_NB_DEFAULT_STYLE | wxAUI_NB_WINDOWLIST_BUTTON);
+
+     // Twitterのためのノートブック
+     twitterNoteBook = new wxTwitterNotebook(this, ID_TwitterNoteBook, wxPoint(client_size.x, client_size.y), 
 					wxDefaultSize, wxAUI_NB_DEFAULT_STYLE | wxAUI_NB_WINDOWLIST_BUTTON);
 
      // 画像ビューアのインスタンスを作る
@@ -996,6 +998,11 @@ void XrossBoard::DoLayout()
 			     wxT("右側切り替え"),
 			     wxBitmap(twoPaneWinImg, wxBITMAP_TYPE_ANY),
 			     wxT("右側切り替え"));
+     m_floatToolBar->AddSeparator();
+     m_floatToolBar->AddTool(ID_ShowTwitterClient,
+	                     wxT("Twitterクライアントの表示"),
+	                     wxBitmap(twitterIconImg, wxBITMAP_TYPE_PNG),
+	                     wxT("Twitterクライアントの表示"));
      m_floatToolBar->AddSeparator();
      m_floatToolBar->AddTool(ID_CallResponseWindow,
 			     wxT("スレッド新規作成"),
@@ -1086,7 +1093,9 @@ void XrossBoard::DoLayout()
      // GUI右側に表示するウィジェットは何か
      rightIsThreadList = true; // デフォルト値=スレッド一覧
      XrossBoardUtil::GetXrossBoardProperties(wxT("RightIsThreadList"), &rightIsThreadList);
-
+     // Twitterクライアントを表示するか
+     showTwitterClient = false; // デフォルト値=表示しない
+     XrossBoardUtil::GetXrossBoardProperties(wxT("ShowTwitterClient"), &showTwitterClient);
      // それぞれのペインの情報を設定する
      SetAuiPaneInfo();
 
@@ -1153,7 +1162,7 @@ void XrossBoard::SetAuiPaneInfo()
      // 左側下部・ログ出力ウィンドウを設定する
      wxAuiPaneInfo logWindow;
      logWindow.Name(wxT("logWindow")).Layer(1).Left().CaptionVisible(false).Floatable(false)
-	  .BestSize(bestWidth, 100);;
+	  .BestSize(bestWidth, 100);
 
      // 右側上部・板一覧のノートブックとスレッド一覧リストが載ったウィンドウ
      wxAuiPaneInfo boardListThreadListInfo;
@@ -1165,6 +1174,11 @@ void XrossBoard::SetAuiPaneInfo()
      threadTabThreadContentInfo.Name(wxT("threadTabThreadContentInfo")).CenterPane()
 	  .Floatable(false).BestSize(400, 400);
 
+     // Twitterクライアントが載ったウィンドウ
+     wxAuiPaneInfo twitterClientInfo;
+     twitterClientInfo.Name(wxT("twitterClientInfo")).Floatable(false).Right().CloseButton(false)
+	  .BestSize(400, 400);
+
      m_mgr.AddPane(m_search_ctrl, search);
      m_mgr.AddPane(m_floatToolBar, toolBar);
      m_mgr.AddPane(m_url_input_panel, url);
@@ -1173,16 +1187,20 @@ void XrossBoard::SetAuiPaneInfo()
 
      m_mgr.AddPane(boardNoteBook, boardListThreadListInfo);
      m_mgr.AddPane(threadNoteBook, threadTabThreadContentInfo);
+     m_mgr.AddPane(twitterNoteBook, twitterClientInfo);
 
      // 各ウィンドウで識別用のラベルを設定する
+     // 環境によってはウィンドウに文字列が入るので削除しておく
      this->SetLabel(XROSSBOARD_WINDOW);
      m_search_ctrl->SetLabel(SEARCH_BAR);
-     m_search_ctrl->Clear(); // ウィンドウに文字列が入るので削除
+     m_search_ctrl->Clear(); 
      m_url_input_panel->SetLabel(URL_BAR);
      m_logCtrl->SetLabel(LOG_WINDOW);
+     m_logCtrl->Clear();
      boardNoteBook->SetLabel(BOARD_NOTEBOOK);
      threadNoteBook->SetLabel(THREAD_NOTEBOOK);
      boardTreeNoteBook->SetLabel(BOARD_TREE_NOTEBOOK);
+     twitterNoteBook->SetLabel(TWITTER_NOTEBOOK);
 
      // 板一覧更ツリーの初期化
      InitializeBoardList();
@@ -1218,6 +1236,7 @@ void XrossBoard::SetAuiPaneInfo()
 	  + wxFILE_SEP_PATH  \
 	  + XROSSBOARD_DIR;
 
+/**
      wxTwitterNotebook twitter;
      twitter.SetLoggingTextCtrl(m_logCtrl);
      twitter.SetAppDir(ctwDir);
@@ -1225,7 +1244,7 @@ void XrossBoard::SetAuiPaneInfo()
 			     wxT("XQB5n2Goctkj4bHYOwAusnvfTXj81bVovUoI0A1KMCMGXYZHeI"));
      twitter.Initialize();
      // FIXME
-
+*/
      UpdatePanes(false);
 }
 /**
@@ -2947,6 +2966,8 @@ void XrossBoard::OnCloseWindow(wxCloseEvent& event) {
      XrossBoardUtil::SetXrossBoardProperties(wxT("PaneIsThree"), paneIsThree);
      // GUI右側に表示するウィジェットは何か
      XrossBoardUtil::SetXrossBoardProperties(wxT("RightIsThreadList"), rightIsThreadList);
+     // Twitterクライアントを表示するか
+     XrossBoardUtil::SetXrossBoardProperties(wxT("ShowTwitterClient"), showTwitterClient);
 
      SetStatusText(wxT("終了前処理が終わりました！"));
 

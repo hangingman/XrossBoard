@@ -35,6 +35,12 @@ class wxTwitterNotebook : public wxAuiNotebook
 {
      
 public:
+     wxTwitterNotebook(wxWindow* parent,
+		       wxWindowID id = wxID_ANY,
+		       const wxPoint& pos = wxDefaultPosition,
+		       const wxSize& size = wxDefaultSize,
+		       long style = wxAUI_NB_DEFAULT_STYLE): wxAuiNotebook(parent, id, pos, size, style){}
+
      void Initialize();
      void SetLoggingTextCtrl(wxTextCtrl* logging);
      void SetAppDir(const wxString& dir);

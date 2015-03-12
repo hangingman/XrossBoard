@@ -111,6 +111,7 @@
 #define BOARD_NOTEBOOK         wxT("boardNoteBook")
 #define THREAD_NOTEBOOK        wxT("threadNoteBook")
 #define BOARD_TREE_NOTEBOOK    wxT("boardTreeNoteBook")
+#define TWITTER_NOTEBOOK       wxT("twitterNoteBook")
 
 // ユーザーエージェント
 #ifdef PACKAGE_VERSION
@@ -167,6 +168,7 @@ static const wxString sideTreeImg        = wxT(RESOURCE_PATH L"application-side-
 static const wxString twoPaneWinImg	 = wxT(RESOURCE_PATH L"application-tile-horizontal.png");
 static const wxString thrPaneWinImg	 = wxT(RESOURCE_PATH L"view-choose.png");
 static const wxString thrColumnWinImg	 = wxT(RESOURCE_PATH L"view-file-columns.png");
+static const wxString twitterIconImg     = wxT(RESOURCE_PATH L"twitter-icon.png");
 static const wxString configImg		 = wxT(RESOURCE_PATH L"configure-2.png");
 static const wxString logSearchImg	 = wxT(RESOURCE_PATH L"system-search-5.png");
 static const wxString helpImg		 = wxT(RESOURCE_PATH L"help-browser.png");
