@@ -39,7 +39,12 @@ public:
 		       wxWindowID id = wxID_ANY,
 		       const wxPoint& pos = wxDefaultPosition,
 		       const wxSize& size = wxDefaultSize,
-		       long style = wxAUI_NB_DEFAULT_STYLE): wxAuiNotebook(parent, id, pos, size, style){}
+		       long style = wxAUI_NB_TOP    |
+		       wxAUI_NB_TAB_SPLIT	    |
+		       wxAUI_NB_TAB_MOVE	    |
+		       wxAUI_NB_WINDOWLIST_BUTTON   |
+		       wxAUI_NB_SCROLL_BUTTONS):
+	  wxAuiNotebook(parent, id, pos, size, style){}
 
      void Initialize();
      void SetLoggingTextCtrl(wxTextCtrl* logging);
@@ -54,6 +59,7 @@ private:
      void InitSetting();
      void ReadSetting();
      void WriteSetting();
+     void DoWxWidgetsUIMode();
      
      minisetting::object setting;
      TwitterClient       client;

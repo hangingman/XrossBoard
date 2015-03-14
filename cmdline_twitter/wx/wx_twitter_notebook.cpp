@@ -89,18 +89,26 @@ void wxTwitterNotebook::Initialize()
      // このアプリのコンシューマキーなどを設定
      client.setComsumerPair(std::string(AP_COMSUMER_KEY.mb_str()),
 			    std::string(AP_COMSUMER_SECRET.mb_str()));
-     // 認証
-     DoAuthentication();
+
      // 設定読み込み
      ReadSetting();
 	
      // ここから先はユーザのアクセスキーが必要
      if(!ReadAccessKey())
      {
-	  return;
+          // 認証
+	  DoAuthentication();
      }
 
-     //DoWxWidgetsUIMode();
+     std::string key, sec;
+     client.getUserAccessPair(key,sec);
+     if(key.empty() || sec.empty())
+     {
+	  // アクセスキーがない
+	  return;
+     }
+     
+     DoWxWidgetsUIMode();
      return;
 }
 
@@ -330,3 +338,16 @@ void wxTwitterNotebook::WriteSetting()
      fout.close();
 }
 
+/**
+ * GUIのウィジェット設定
+ */
+void wxTwitterNotebook::DoWxWidgetsUIMode()
+{
+     wxPanel* dummy1 = new wxPanel(this);
+     wxPanel* dummy2 = new wxPanel(this);
+     wxPanel* dummy3 = new wxPanel(this);
+     
+     AddPage(dummy1, wxT("タイムライン"), false);
+     AddPage(dummy2, wxT("通知"), false);
+     AddPage(dummy3, wxT("メッセージ"), false);
+}

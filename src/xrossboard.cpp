@@ -366,6 +366,23 @@ XrossBoard::XrossBoard(wxWindow* parent, int id, const wxString& title, const wx
 			     wxMouseEventHandler(XrossBoard::OnEnterWindow),
 			     NULL, this);
 
+     // 前回Twitterクライアントを開いていれば設定する
+     if (showTwitterClient)
+     {
+	  // 表示するならば初期化も行う
+	  const wxString ctwDir = \
+	       ::wxGetHomeDir()   \
+	       + wxFILE_SEP_PATH  \
+	       + XROSSBOARD_DIR;
+
+	  twitterNoteBook->SetLoggingTextCtrl(m_logCtrl);
+	  twitterNoteBook->SetAppDir(ctwDir);
+	  // FIXME - consumer key & secret
+	  twitterNoteBook->SetComsumerPair(wxT("i93UTn9QDt5dtqaTzAJHfbaKO"), 
+					   wxT("XQB5n2Goctkj4bHYOwAusnvfTXj81bVovUoI0A1KMCMGXYZHeI"));
+	  twitterNoteBook->Initialize();
+     }     
+
      SetStatusText(wxT(" 完了"));
      *m_logCtrl << wxT("(ヽ´ん`)…レイアウト設定終わりです…\n");
 }
@@ -945,8 +962,7 @@ void XrossBoard::SetProperties()
 					wxDefaultSize, wxAUI_NB_DEFAULT_STYLE | wxAUI_NB_WINDOWLIST_BUTTON);
 
      // Twitterのためのノートブック
-     twitterNoteBook = new wxTwitterNotebook(this, ID_TwitterNoteBook, wxPoint(client_size.x, client_size.y), 
-					wxDefaultSize, wxAUI_NB_DEFAULT_STYLE | wxAUI_NB_WINDOWLIST_BUTTON);
+     twitterNoteBook = new wxTwitterNotebook(this, ID_TwitterNoteBook, wxPoint(client_size.x, client_size.y));
 
      // 画像ビューアのインスタンスを作る
      imageViewer = new XrossBoardImageViewer(this, wxID_ANY, wxT("画像ビューア"));
@@ -1231,21 +1247,6 @@ void XrossBoard::SetAuiPaneInfo()
 	  *m_logCtrl << wxT("フォント情報の読み出し終了…\n");
      }
 
-     // FIXME: テスト用の実装
-     const wxString ctwDir = \
-	  ::wxGetHomeDir()   \
-	  + wxFILE_SEP_PATH  \
-	  + XROSSBOARD_DIR;
-
-/**
-     wxTwitterNotebook twitter;
-     twitter.SetLoggingTextCtrl(m_logCtrl);
-     twitter.SetAppDir(ctwDir);
-     twitter.SetComsumerPair(wxT("i93UTn9QDt5dtqaTzAJHfbaKO"), 
-			     wxT("XQB5n2Goctkj4bHYOwAusnvfTXj81bVovUoI0A1KMCMGXYZHeI"));
-     twitter.Initialize();
-     // FIXME
-*/
      UpdatePanes(false);
 }
 /**
@@ -4594,6 +4595,22 @@ void XrossBoard::SwitchTwitterClientPane(wxCommandEvent& event)
 {
      showTwitterClient = !showTwitterClient;
      UpdatePanes();
+
+     if (showTwitterClient)
+     {
+	  // 表示するならば初期化も行う
+	  const wxString ctwDir = \
+	       ::wxGetHomeDir()   \
+	       + wxFILE_SEP_PATH  \
+	       + XROSSBOARD_DIR;
+
+	  twitterNoteBook->SetLoggingTextCtrl(m_logCtrl);
+	  twitterNoteBook->SetAppDir(ctwDir);
+	  // FIXME - consumer key & secret
+	  twitterNoteBook->SetComsumerPair(wxT("i93UTn9QDt5dtqaTzAJHfbaKO"), 
+					   wxT("XQB5n2Goctkj4bHYOwAusnvfTXj81bVovUoI0A1KMCMGXYZHeI"));
+	  twitterNoteBook->Initialize();
+     }     
 }
 
 /**
