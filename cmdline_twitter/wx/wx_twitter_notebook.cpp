@@ -23,6 +23,7 @@
 #include <fstream>
 #include <wx/dir.h>
 #include <wx/textdlg.h>
+#include <wx/thread.h>
 #include "wx/wx_twitter_notebook.hpp"
 
 // バージョン
@@ -124,11 +125,17 @@ void wxTwitterNotebook::DoAuthentication()
 
      // デフォルトのブラウザを開く
      ::wxLaunchDefaultBrowser(wxString((const char*)rurl.c_str(), wxConvUTF8));
-     
+
+     // メインのループを待つ
+     wxMutexGuiEnter();
+
      // PIN 入力用ダイアログ
      wxTextEntryDialog dlg(this, message, wxT("Twitter - PINコード認証"));
      dlg.ShowModal();
      pincode = std::string(dlg.GetValue().mb_str());
+
+     // 処理が終わったので次へ
+     wxMutexGuiLeave();
 
      *log << wxT("認証中です...\n");
      if(dlg.GetValue().IsEmpty() || !client.Authentication_Finish(pincode)){

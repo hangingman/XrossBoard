@@ -135,6 +135,7 @@ BEGIN_EVENT_TABLE(XrossBoard, wxFrame)
    EVT_MENU(ID_SwitchSeparateXY, XrossBoard::SwitchSeparateXY)
    EVT_MENU(ID_SwitchTwoThreePane, XrossBoard::SwitchTwoThreePane)
    EVT_MENU(ID_SwitchRightPane, XrossBoard::SwitchRightPane)
+   EVT_MENU(ID_ShowTwitterClient, XrossBoard::SwitchTwitterClientPane)
    EVT_MENU(ID_CallSettingWindow, XrossBoard::CallSettingWindow)
    EVT_MENU(ID_CallViewerSettingWindow, XrossBoard::CallViewerSettingWindow)
 
@@ -4522,6 +4523,7 @@ void XrossBoard::UpdatePanes(bool immediate)
      wxAuiPaneInfo& logWindow		       = m_mgr.GetPane(m_logCtrl);
      wxAuiPaneInfo& boardListThreadListInfo    = m_mgr.GetPane(boardNoteBook);
      wxAuiPaneInfo& threadTabThreadContentInfo = m_mgr.GetPane(threadNoteBook);
+     wxAuiPaneInfo& twitterClientInfo          = m_mgr.GetPane(twitterNoteBook);
 
      const bool flag = m_floatToolBar->GetToolToggled(ID_ShowBoardListTree);
      boardTree.Position(0).Show(flag);
@@ -4552,6 +4554,8 @@ void XrossBoard::UpdatePanes(bool immediate)
 				    wxBitmap(separateIsX ? thrPaneWinImg : thrColumnWinImg,
 					     wxBITMAP_TYPE_ANY));
 
+     twitterClientInfo.Floatable(false).Right().CloseButton(false).Show(showTwitterClient);
+
      if (immediate)
 	  m_mgr.Update();
 }
@@ -4580,6 +4584,15 @@ void XrossBoard::SwitchTwoThreePane(wxCommandEvent& event)
 void XrossBoard::SwitchRightPane(wxCommandEvent& event)
 {
      rightIsThreadList = !rightIsThreadList;
+     UpdatePanes();
+}
+
+/**
+ * Twitterクライアント表示切り替え
+ */
+void XrossBoard::SwitchTwitterClientPane(wxCommandEvent& event)
+{
+     showTwitterClient = !showTwitterClient;
      UpdatePanes();
 }
 

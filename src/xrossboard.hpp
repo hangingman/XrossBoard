@@ -380,6 +380,8 @@ public:
      void SwitchTwoThreePane(wxCommandEvent& event);
      // 右側切り替え
      void SwitchRightPane(wxCommandEvent& event);
+     // Twitterクライアント表示切り替え
+     void SwitchTwitterClientPane(wxCommandEvent& event);
      // 設定画面を呼び出す
      void CallSettingWindow(wxCommandEvent& event);
      // 設定画面を呼び出す
