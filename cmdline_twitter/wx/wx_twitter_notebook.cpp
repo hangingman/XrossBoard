@@ -343,9 +343,58 @@ void wxTwitterNotebook::WriteSetting()
  */
 void wxTwitterNotebook::DoWxWidgetsUIMode()
 {
+     DeleteAllPages();
+
      wxPanel* dummy1 = new wxPanel(this);
+     wxBoxSizer* dummy1_sizer = new wxBoxSizer(wxHORIZONTAL);
+     wxTextCtrl* dummy1_txt   = new wxTextCtrl(dummy1, 
+					       wxID_ANY, 
+					       wxEmptyString, 
+					       wxDefaultPosition, 
+					       wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
+     dummy1_sizer->Add(dummy1_txt, 1, wxEXPAND, 0);
+     dummy1->SetSizer(dummy1_sizer);
+
      wxPanel* dummy2 = new wxPanel(this);
+     wxBoxSizer* dummy2_sizer = new wxBoxSizer(wxHORIZONTAL);
+     wxTextCtrl* dummy2_txt   = new wxTextCtrl(dummy2, 
+					       wxID_ANY, 
+					       wxEmptyString, 
+					       wxDefaultPosition, 
+					       wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
+     dummy2_sizer->Add(dummy2_txt, 1, wxEXPAND, 0);
+     dummy2->SetSizer(dummy2_sizer);
+
      wxPanel* dummy3 = new wxPanel(this);
+     wxBoxSizer* dummy3_sizer = new wxBoxSizer(wxHORIZONTAL);
+     wxTextCtrl* dummy3_txt   = new wxTextCtrl(dummy3, 
+					       wxID_ANY, 
+					       wxEmptyString, 
+					       wxDefaultPosition, 
+					       wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
+     dummy3_sizer->Add(dummy3_txt, 1, wxEXPAND, 0);
+     dummy3->SetSizer(dummy3_sizer);
+
+     // タイムラインの取得
+     uint16_t count = 30;
+     const std::string since_id;
+     const std::string max_id;
+     bool include_rts;
+     bool include_replies;
+     picojson::array rtimeline;
+
+     if (client.getHomeTimeline(count, since_id, max_id, include_rts, include_replies, rtimeline))
+     {
+	  for (picojson::array::iterator i = rtimeline.begin(); i != rtimeline.end(); i++) {
+
+	       std::string str = i->serialize(true);
+	       *dummy1_txt << wxString((const char*) str.c_str(), wxConvUTF8) << wxT("\n");
+	  }
+     }
+     else
+     {
+	  *log << wxT("タイムラインの取得に失敗しました\n");
+     }
      
      AddPage(dummy1, wxT("タイムライン"), false);
      AddPage(dummy2, wxT("通知"), false);
