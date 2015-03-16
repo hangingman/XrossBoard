@@ -21,6 +21,7 @@
  */
 
 #include <fstream>
+#include <wx/app.h>
 #include <wx/dir.h>
 #include <wx/textdlg.h>
 #include <wx/thread.h>
@@ -96,8 +97,14 @@ void wxTwitterNotebook::Initialize()
      // ここから先はユーザのアクセスキーが必要
      if(!ReadAccessKey())
      {
-          // 認証
+#if wxCHECK_VERSION(3, 0, 0)
+	  // 認証
+	  wxTheApp->GetTopWindow()->GetEventHandler()->CallAfter([&]{
+		    this->DoAuthentication();
+	       });
+#else
 	  DoAuthentication();
+#endif
      }
 
      std::string key, sec;
@@ -134,16 +141,10 @@ void wxTwitterNotebook::DoAuthentication()
      // デフォルトのブラウザを開く
      ::wxLaunchDefaultBrowser(wxString((const char*)rurl.c_str(), wxConvUTF8));
 
-     // メインのループを待つ
-     wxMutexGuiEnter();
-
      // PIN 入力用ダイアログ
      wxTextEntryDialog dlg(this, message, wxT("Twitter - PINコード認証"));
      dlg.ShowModal();
      pincode = std::string(dlg.GetValue().mb_str());
-
-     // 処理が終わったので次へ
-     wxMutexGuiLeave();
 
      *log << wxT("認証中です...\n");
      if(dlg.GetValue().IsEmpty() || !client.Authentication_Finish(pincode)){
