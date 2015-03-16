@@ -26,6 +26,7 @@
 #include <wx/textdlg.h>
 #include <wx/thread.h>
 #include "wx/wx_twitter_notebook.hpp"
+#include "wx/wx_twitter_notebook.hpp"
 
 // バージョン
 static const std::string THIS_VERSION	   = "PACKAGE_VERSION";
