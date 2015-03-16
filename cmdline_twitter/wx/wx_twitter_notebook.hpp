@@ -60,6 +60,7 @@ private:
      void ReadSetting();
      void WriteSetting();
      void DoWxWidgetsUIMode();
+     void ReceivePincode(const wxString& pin);
      
      minisetting::object setting;
      TwitterClient       client;

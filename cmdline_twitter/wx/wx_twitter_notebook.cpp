@@ -97,14 +97,8 @@ void wxTwitterNotebook::Initialize()
      // ここから先はユーザのアクセスキーが必要
      if(!ReadAccessKey())
      {
-#if wxCHECK_VERSION(3, 0, 0)
 	  // 認証
-	  wxTheApp->GetTopWindow()->GetEventHandler()->CallAfter([&]{
-		    this->DoAuthentication();
-	       });
-#else
 	  DoAuthentication();
-#endif
      }
 
      std::string key, sec;
@@ -141,13 +135,24 @@ void wxTwitterNotebook::DoAuthentication()
      // デフォルトのブラウザを開く
      ::wxLaunchDefaultBrowser(wxString((const char*)rurl.c_str(), wxConvUTF8));
 
-     // PIN 入力用ダイアログ
-     wxTextEntryDialog dlg(this, message, wxT("Twitter - PINコード認証"));
-     dlg.ShowModal();
-     pincode = std::string(dlg.GetValue().mb_str());
+     // PIN 入力用ダイアログを出す
+     // OSX に対応させるため少し奇怪な書き方になっている。嫌ならAppleを批判しろ。
+     wxTextEntryDialog* dlg = new wxTextEntryDialog(this, message, wxT("Twitter - PINコード認証"));
+     wxTheApp->GetTopWindow()->GetEventHandler()->CallAfter([&, dlg]{
+	       dlg->ShowModal();
+	       this->ReceivePincode(dlg->GetValue());
+	       this->Initialize();
+	  });
+
+     return;
+}
+
+void wxTwitterNotebook::ReceivePincode(const wxString& pin)
+{
+     std::string pincode = std::string(pin.mb_str());
 
      *log << wxT("認証中です...\n");
-     if(dlg.GetValue().IsEmpty() || !client.Authentication_Finish(pincode)){
+     if(pin.IsEmpty() || !client.Authentication_Finish(pincode)){
 	  *log << wxT("認証に失敗しました。再度認証しなおしてください\n");
 	  return;
      }
