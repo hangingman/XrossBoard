@@ -497,7 +497,8 @@ void XrossBoard::SetXrossBoardMenuBar()
      searchBar->AppendCheckItem(wxID_ANY, wxT("板ツリー検索バー"));
      menu2->AppendSubMenu(searchBar, wxT("検索バー"));
      menu2->Append(wxID_ANY, wxT("ビューア"));
-     menu2->AppendCheckItem(wxID_ANY, wxT("Twitter"));
+     menu2->AppendCheckItem(ID_ShowTwitterClient, wxT("Twitter"));
+     menu2->Check(ID_ShowTwitterClient, showTwitterClient);
      menu2->AppendSeparator();
      menu2->Append(wxID_ANY, wxT("更新"));
      menu2->AppendSeparator();

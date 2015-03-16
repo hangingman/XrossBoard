@@ -136,13 +136,21 @@ void wxTwitterNotebook::DoAuthentication()
      ::wxLaunchDefaultBrowser(wxString((const char*)rurl.c_str(), wxConvUTF8));
 
      // PIN 入力用ダイアログを出す
-     // OSX に対応させるため少し奇怪な書き方になっている。嫌ならAppleを批判しろ。
      wxTextEntryDialog* dlg = new wxTextEntryDialog(this, message, wxT("Twitter - PINコード認証"));
+
+     // OSX に対応させるため少し奇怪な書き方になっている。嫌ならAppleを批判しろ。
+#if wxCHECK_VERSION(3, 0, 0)
      wxTheApp->GetTopWindow()->GetEventHandler()->CallAfter([&, dlg]{
 	       dlg->ShowModal();
 	       this->ReceivePincode(dlg->GetValue());
 	       this->Initialize();
 	  });
+#else
+     // wx-2.8 互換
+     dlg->ShowModal();
+     this->ReceivePincode(dlg->GetValue());
+     this->Initialize();
+#endif
 
      return;
 }
