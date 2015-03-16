@@ -27,13 +27,36 @@
 #include <wx/html/htmldefs.h>
 #include <wx/event.h>
 
+#include "twitter_client.hpp"
+
+
+
 class wxTwitterHtmlWindow : public wxHtmlWindow 
 {
 
 public:
 
+     // 表示するウィジェットの種類
+     enum TwitterViewKind {
+	  TWITTER_HOME,    // 自分のタイムライン取得
+	  TWITTER_MENTION, // 自分への言及
+	  COL_ENUMS_END    // 列挙型がいくつあるか
+     };
+
+     wxTwitterHtmlWindow(wxWindow* parent,
+			 wxWindowID id = wxID_ANY,
+		         const wxPoint& pos = wxDefaultPosition,
+		         const wxSize& size = wxDefaultSize,
+		         long style = wxHW_SCROLLBAR_AUTO):
+	  wxHtmlWindow(parent, id, pos, size, style){}
+
+     // Twitterクライアントの実体を渡す
+     void Initialize(TwitterClient& client, const wxTwitterHtmlWindow::TwitterViewKind kind);
 
 
+private:
+     // 自分のタイムライン取得
+     void ReloadHomeTimeline(TwitterClient& client);
 
 #ifdef __WXMSW__ /** Windows Only */
      void PageUpDown(wxMouseEvent& event);

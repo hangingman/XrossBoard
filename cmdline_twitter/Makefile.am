@@ -43,13 +43,15 @@ noinst_HEADERS =                      \
 WX_UI_SRCS   		= wx/wx_twitter_notebook.cpp   \
 			  wx/wx_twitter_notebook.hpp   \
 			  wx/wx_twitter_htmlwindow.cpp \
-			  wx/wx_twitter_htmlwindow.hpp
+			  wx/wx_twitter_htmlwindow.hpp \
+			  wx/wx_twitter_const.hpp
 
 libctw_a_SOURCES	+= $(WX_UI_SRCS)
 libctw_a_CXXFLAGS	+= -I$(top_builddir)/cmdline_twitter
 # Header file directory is wx/*.hpp according to wx tradition. It plays a role of namespace.
-noinst_HEADERS          += wx/wx_twitter_notebook.hpp  \
-			   wx/wx_twitter_htmlwindow.hpp
+noinst_HEADERS          += wx/wx_twitter_notebook.hpp   \
+			   wx/wx_twitter_htmlwindow.hpp \
+			   wx/wx_twitter_const.hpp
 
 $(KEYS):
 	-@ ./write_apikeys.sh

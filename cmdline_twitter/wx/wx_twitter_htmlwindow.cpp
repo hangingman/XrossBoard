@@ -20,7 +20,8 @@
  *	Hiroyuki Nagata <newserver002@gmail.com>
  */
 
-#include "wx/wx_twitter_notebook.hpp"
+#include "wx/wx_twitter_htmlwindow.hpp"
+#include "wx/wx_twitter_const.hpp"
 
 /**
 BEGIN_EVENT_TABLE(wxTwitterHtmlWindow, wxHtmlWindow)
@@ -34,8 +35,64 @@ BEGIN_EVENT_TABLE(wxTwitterHtmlWindow, wxHtmlWindow)
 
 END_EVENT_TABLE()
 
-wxTwitterHtmlWindow::wxTwitterHtmlWindow()
+*/
+
+void wxTwitterHtmlWindow::Initialize(TwitterClient& client, const wxTwitterHtmlWindow::TwitterViewKind kind)
 {
+     // 自動スクロールは混乱の元なので使わない
+     this->StopAutoScrolling();
+
+     switch(kind)
+     {
+     case TwitterViewKind::TWITTER_HOME:
+	  ReloadHomeTimeline(client);
+	  break;
+     case TwitterViewKind::TWITTER_MENTION:
+	  // FIXME -> Imple later
+	  // ReloadTwitterMention 
+	  break;
+     default:
+	  break;
+     }
 }
 
+/**
+ * 自分のタイムライン取得
+ * @param TwitterClient& Twitterクライアントの実体
+ */
+void wxTwitterHtmlWindow::ReloadHomeTimeline(TwitterClient& client)
+{
+     uint16_t count = 30;
+     const std::string since_id;
+     const std::string max_id;
+     bool include_rts;
+     bool include_replies;
+     picojson::array rtimeline;
+
+     wxString source = WX_TWITTER_HTML_HEADER;
+     source << wxT("<p>Hello, World !!</p>");
+     source << WX_TWITTER_HTML_FOOTER;
+
+/**
+     if (client.getHomeTimeline(count, since_id, max_id, include_rts, include_replies, rtimeline))
+     {
+	  for (picojson::array::iterator i = rtimeline.begin(); i != rtimeline.end(); i++) {
+
+	       std::string str = i->serialize(true);
+	       *dummy1_txt << wxString((const char*) str.c_str(), wxConvUTF8) << wxT("\n");
+	  }
+     }
+     else
+     {
+	  // FAIL
+	  // *log << wxT("タイムラインの取得に失敗しました\n");
+     }
 */
+
+     // メモリに読み込んだHTMLを表示する
+     this->AppendToPage(source);
+}
+
+
+
+

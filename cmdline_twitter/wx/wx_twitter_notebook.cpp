@@ -26,7 +26,7 @@
 #include <wx/textdlg.h>
 #include <wx/thread.h>
 #include "wx/wx_twitter_notebook.hpp"
-#include "wx/wx_twitter_notebook.hpp"
+#include "wx/wx_twitter_htmlwindow.hpp"
 
 // バージョン
 static const std::string THIS_VERSION	   = "PACKAGE_VERSION";
@@ -362,11 +362,7 @@ void wxTwitterNotebook::DoWxWidgetsUIMode()
 
      wxPanel* dummy1 = new wxPanel(this);
      wxBoxSizer* dummy1_sizer = new wxBoxSizer(wxHORIZONTAL);
-     wxTextCtrl* dummy1_txt   = new wxTextCtrl(dummy1, 
-					       wxID_ANY, 
-					       wxEmptyString, 
-					       wxDefaultPosition, 
-					       wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
+     wxTwitterHtmlWindow* dummy1_txt = new wxTwitterHtmlWindow(dummy1);
      dummy1_sizer->Add(dummy1_txt, 1, wxEXPAND, 0);
      dummy1->SetSizer(dummy1_sizer);
 
@@ -390,28 +386,9 @@ void wxTwitterNotebook::DoWxWidgetsUIMode()
      dummy3_sizer->Add(dummy3_txt, 1, wxEXPAND, 0);
      dummy3->SetSizer(dummy3_sizer);
 
-     // タイムラインの取得
-     uint16_t count = 30;
-     const std::string since_id;
-     const std::string max_id;
-     bool include_rts;
-     bool include_replies;
-     picojson::array rtimeline;
-
-     if (client.getHomeTimeline(count, since_id, max_id, include_rts, include_replies, rtimeline))
-     {
-	  for (picojson::array::iterator i = rtimeline.begin(); i != rtimeline.end(); i++) {
-
-	       std::string str = i->serialize(true);
-	       *dummy1_txt << wxString((const char*) str.c_str(), wxConvUTF8) << wxT("\n");
-	  }
-     }
-     else
-     {
-	  *log << wxT("タイムラインの取得に失敗しました\n");
-     }
-     
      AddPage(dummy1, wxT("タイムライン"), false);
+     dummy1_txt->Initialize(client, wxTwitterHtmlWindow::TwitterViewKind::TWITTER_HOME);
+
      AddPage(dummy2, wxT("通知"), false);
      AddPage(dummy3, wxT("メッセージ"), false);
 }
